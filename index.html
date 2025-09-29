@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FliegHeute.de – Flieg. Heute.</title>
 
-  <!-- Fonts -->
+  <!-- === FONTS & FAVICON === -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/img/plany.svg">
 
   <style>
+    /* === ROOT VARIABLES === */
     :root{
       --brand:#7183f5;      /* Spicy Blue (CTA) */
-      --ink:#0b0b13;        /* Spicy Black (Text) */
+      --ink:#0b0b13;        /* Textfarbe */
       --muted:#6e7280;
       --bg:#f7f7f7;         /* Seitenhintergrund */
-      --hero:#eeeeee;       /* Hero-Cluster-Hintergrund */
-      --card:#ffffff;       /* Karten/Flächen in Weiß */
+      --hero:#eeeeee;       /* Hero-Hintergrund */
+      --card:#ffffff;       /* Kartenflächen */
       --header:#c7c7c7;     /* Header-Hintergrund */
-      --deal:#f571b4;       /* Spicy Pink (Hot-Deal) */
+      --deal:#f571b4;       /* Pink für Deals */
       --radius:16px;
       --shadow:0 10px 30px rgba(21,25,62,.08);
     }
@@ -29,92 +29,61 @@
     a{text-decoration:none;color:inherit}
     .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    /* Header */
+    /* === HEADER STYLE === */
     header{
       position:sticky;top:0;z-index:50;
-      background:var(--header);
+      background:var(--header); /* Header-Hintergrundfarbe */
       border-bottom:1px solid rgba(0,0,0,.08);
       backdrop-filter:saturate(120%);
     }
-    .hdr{
-      min-height:68px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;
-    }
-    .brand{
-      display:flex;align-items:center;gap:12px;
-      font-weight:800;font-size:24px; /* +20% */
-      font-family:"Inter Tight",sans-serif;
-      line-height:1;
-    }
+    .hdr{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;
+      font-weight:800;font-size:24px; /* Schriftgröße Logo-Text */
+      font-family:"Inter Tight",sans-serif;line-height:1;}
     .brand img{width:36px;height:36px}
     .brand span{color:var(--brand)}
-
     nav{display:flex;gap:16px;align-items:center}
-    nav a{
-      display:inline-flex;align-items:center;justify-content:center;
+    nav a{display:inline-flex;align-items:center;justify-content:center;
       line-height:1;height:40px;padding:0 6px;
-      color:var(--ink); /* dunkler Text auf hellem Header */
-      font-weight:600;
-    }
-    nav a.cta{
-      background:var(--brand);color:#fff;
+      color:var(--ink);font-weight:600}
+    nav a.cta{background:var(--brand);color:#fff;
       padding:8px 14px;border-radius:999px;font-weight:700;
-      transition:background .2s ease,transform .15s ease;
-    }
+      transition:background .2s ease,transform .15s ease}
     nav a.cta:hover{background:#5a6de0;transform:translateY(-2px)}
 
-    /* Hero */
+    /* === HERO STYLE === */
     .hero-wrap{background:var(--hero);color:var(--ink)}
-    .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:56px 0
-    }
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:56px 0}
     @media (max-width:900px){.hero{grid-template-columns:1fr;padding:40px 0}}
-    .h-title{
-      font-size:56px;line-height:1.02;margin:0 0 8px;font-weight:800;letter-spacing:-.5px;
-      font-family:"Inter Tight",sans-serif
-    }
+    .h-title{font-size:56px;line-height:1.02;margin:0 0 8px;font-weight:800;letter-spacing:-.5px;font-family:"Inter Tight",sans-serif}
     .h-sub{opacity:.95;margin:0 0 22px;font-size:18px}
     .lift{display:inline-block;transform:rotate(-6deg) translateY(-1px)}
     .lift:hover{transform:rotate(-10deg) translate(2px,-4px);transition:transform .18s ease-out}
 
-    /* Search */
-    .search{
-      background:var(--card);border-radius:14px;padding:12px;
-      display:flex;gap:10px;flex-wrap:wrap;
-      box-shadow:var(--shadow)
-    }
+    /* === SEARCH STYLE === */
+    .search{background:var(--card);border-radius:14px;padding:12px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:var(--shadow)}
     .field{flex:1 1 180px;background:#f1f3ff;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:10px 12px}
     .field input{width:100%;border:0;outline:0;background:transparent;font-size:16px}
     .toggle{display:flex;gap:6px;align-items:center;background:#f1f3ff;border-radius:999px;padding:6px}
     .toggle input{display:none}
     .toggle label{padding:8px 10px;border-radius:999px;font-weight:600;color:#2a2e43;cursor:pointer}
     .toggle input:checked+label{background:#fff}
-    .go{
-      background:var(--brand);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;
-      transition:background .2s ease,transform .15s ease
-    }
+    .go{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;transition:background .2s ease,transform .15s ease}
     .go:hover{background:#5a6de0;transform:translateY(-2px)}
 
-    /* Sections */
+    /* === SECTIONS STYLE === */
     main section{padding:34px 0}
     .section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
     .section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
     .link{color:var(--brand);font-weight:700}
 
-    /* Ticker */
+    /* === TICKER STYLE === */
     .ticker{overflow:auto}
     .chips{display:flex;gap:10px;min-height:56px;padding-bottom:2px}
-    .chip{
-      flex:0 0 auto;background:var(--card);
-      border:1px solid rgba(0,0,0,.06);border-radius:999px;
-      padding:10px 14px;display:flex;gap:10px;align-items:center;
-      box-shadow:var(--shadow)
-    }
-    .chip .badge{
-      padding:4px 8px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;background:var(--deal)
-    }
+    .chip{flex:0 0 auto;background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:10px 14px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
+    .chip .badge{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;background:var(--deal)}
 
-    /* Grid & Cards */
+    /* === GRID & CARDS STYLE === */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
     @media (max-width:600px){.grid{grid-template-columns:1fr}}
@@ -129,19 +98,15 @@
     .b{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}
     .b.deal{background:#ffe3ea;color:#c0183b}
     .b.ok{background:#e9f8ef;color:#0f8d54}
-    .cta{
-      display:inline-flex;gap:8px;align-items:center;margin-top:12px;
-      background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;
-      transition:background .2s ease,transform .15s ease
-    }
+    .cta{display:inline-flex;gap:8px;align-items:center;margin-top:12px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;transition:background .2s ease,transform .15s ease}
     .cta:hover{background:#5a6de0;transform:translateY(-2px)}
 
-    /* Panels */
+    /* === PANELS / SPLIT STYLE === */
     .cta-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media (max-width:900px){.cta-split{grid-template-columns:1fr}}
     .panel{background:#ffffff;border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:18px}
 
-    /* KI-Bar */
+    /* === KI-BAR STYLE === */
     .ki{background:#0f1230;color:#e9ebff}
     .ki .bar{display:flex;align-items:center;gap:12px;padding:10px 0}
     .switch{display:flex;gap:8px;align-items:center}
@@ -150,12 +115,13 @@
     .switch input::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .18s}
     .switch input:checked::after{transform:translateX(18px)}
 
+    /* === FOOTER STYLE === */
     footer{padding:26px 0;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- === HEADER === -->
   <header>
     <div class="container hdr">
       <a class="brand" href="/">
@@ -170,13 +136,14 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- === HERO === -->
   <div class="hero-wrap">
     <div class="container hero">
       <div>
         <h1 class="h-title">Flieg. <span class="lift">Heute.</span></h1>
         <p class="h-sub">KI-kuratierte Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
 
+        <!-- === SEARCH FORM === -->
         <form class="search" action="#deals" method="get">
           <div class="field"><input name="from" placeholder="Abflugort (auto)" aria-label="Abflugort"></div>
           <div class="field"><input name="to" placeholder="Ziel (Anywhere)" aria-label="Ziel"></div>
@@ -201,9 +168,10 @@
     </div>
   </div>
 
+  <!-- === MAIN DEALS === -->
   <main id="deals" class="container">
 
-    <!-- 24h Ticker -->
+    <!-- === 24h TICKER === -->
     <section>
       <div class="section-h">
         <h2>Heute (24h)</h2>
@@ -220,13 +188,14 @@
       </div>
     </section>
 
-    <!-- 48 Stunden Grid -->
+    <!-- === 48h GRID === -->
     <section>
       <div class="section-h">
         <h2>48 Stunden</h2>
         <a class="link" href="#">Mehr Deals</a>
       </div>
       <div class="grid">
+        <!-- CARD 1 -->
         <article class="card">
           <div class="media"></div>
           <div class="body">
@@ -241,7 +210,7 @@
             <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
           </div>
         </article>
-
+        <!-- CARD 2 -->
         <article class="card">
           <div class="media"></div>
           <div class="body">
@@ -255,7 +224,7 @@
             <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
           </div>
         </article>
-
+        <!-- CARD 3 -->
         <article class="card">
           <div class="media"></div>
           <div class="body">
@@ -272,7 +241,7 @@
       </div>
     </section>
 
-    <!-- Alerts / Newsletter -->
+    <!-- === ALERTS / NEWSLETTER === -->
     <section id="alerts" class="cta-split">
       <div class="panel">
         <h3>Alerts in 10 Sekunden</h3>
@@ -282,17 +251,15 @@
           <a class="cta" href="https://t.me/fliegheute" target="_blank" rel="noopener">Telegram beitreten</a>
         </div>
       </div>
-
       <div class="panel">
         <h3>Wartezeit wird belohnt</h3>
         <p class="meta">Airport-Timer → Punkte. Partner-Boosts bei Duty Free &amp; Catering. <strong>App bald.</strong></p>
         <a class="cta" href="#">Mehr erfahren</a>
       </div>
     </section>
-
   </main>
 
-  <!-- KI-Transparenz -->
+  <!-- === KI-BAR === -->
   <div class="ki">
     <div class="container bar">
       <span>Deals sind <strong>KI-kuratierte Vorschläge</strong>.</span>
@@ -304,6 +271,7 @@
     </div>
   </div>
 
+  <!-- === FOOTER === -->
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
       <div>© <span id="y"></span> fliegheute.de</div>
@@ -311,6 +279,7 @@
     </div>
   </footer>
 
+  <!-- === SCRIPT === -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
