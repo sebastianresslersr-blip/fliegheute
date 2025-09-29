@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FliegHeute.de – Flieg. Heute.</title>
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/img/plany.svg">
 
   <style>
@@ -15,7 +17,7 @@
       --muted:#6e7280;
       --bg:#f7f8ff;
       --card:#fff;
-      --deal:#f571b4;       /* Spicy Pink für Hot Deals */
+      --deal:#f571b4;       /* Spicy Pink */
       --radius:16px;
       --shadow:0 10px 30px rgba(21,25,62,.08);
     }
@@ -27,47 +29,78 @@
     /* Header */
     header{position:sticky;top:0;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.06);z-index:50}
     .hdr{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:#fff}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;font-family:"Inter Tight",sans-serif;color:var(--brand)}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;font-family:"Inter Tight",sans-serif}
     .brand span{color:var(--brand)}
     nav{display:flex;gap:16px}
     nav a{color:#fff}
-    nav a.cta{background:var(--brand);color:#fff;padding:8px 14px;border-radius:999px;font-weight:700}
+    nav a.cta{background:var(--brand);color:#fff;padding:8px 14px;border-radius:999px;font-weight:700;transition:background 0.2s ease, transform 0.15s ease}
+    nav a.cta:hover{background:#5a6de0;transform:translateY(-2px)}
 
     /* Hero Cluster Hintergrund */
     .hero-wrap{background:#eeeeee;color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:56px 0}
+    @media (max-width:900px){ .hero{grid-template-columns:1fr; padding:40px 0} }
+    .h-title{font-size:56px;line-height:1.02;margin:0 0 8px;font-weight:800;letter-spacing:-.5px;font-family:"Inter Tight",sans-serif}
+    .h-sub{opacity:.95;margin:0 0 22px;font-size:18px}
+    .lift{display:inline-block;transform:rotate(-6deg) translateY(-1px)}
+    .lift:hover{transform:rotate(-10deg) translate(2px,-4px);transition:transform .18s ease-out}
 
-/* CTA Buttons einheitlich */
-.cta,
-nav a.cta,
-.go,
-.panel a.cta{
-  background:var(--brand);
-  color:#fff !important;
-  border:0;
-  border-radius:10px;
-  padding:10px 14px;
-  font-weight:700;
-  transition: background 0.2s ease, transform 0.15s ease;
-}
+    /* Search */
+    .search{background:#fff;border-radius:14px;padding:12px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:var(--shadow)}
+    .field{flex:1 1 180px;background:#f1f3ff;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:10px 12px}
+    .field input{width:100%;border:0;outline:0;background:transparent;font-size:16px}
+    .toggle{display:flex;gap:6px;align-items:center;background:#f1f3ff;border-radius:999px;padding:6px}
+    .toggle input{display:none}
+    .toggle label{padding:8px 10px;border-radius:999px;font-weight:600;color:#2a2e43;cursor:pointer}
+    .toggle input:checked + label{background:#fff}
+    .go{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;transition:background 0.2s ease, transform 0.15s ease}
+    .go:hover{background:#5a6de0;transform:translateY(-2px)}
 
-/* Hover-Effekt */
-.cta:hover,
-nav a.cta:hover,
-.go:hover,
-.panel a.cta:hover{
-  background:#5a6de0; /* etwas dunkleres Spicy Blue */
-  transform: translateY(-2px); /* leichter Lift */
-}
+    /* Sections */
+    main section{padding:34px 0}
+    .section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+    .section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
+    .link{color:var(--brand);font-weight:700}
 
-    /* Hot Deal Badge */
-    .chip .badge{
-      padding:4px 8px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      color:#fff;
-      background:var(--deal);
-    }
+    /* Ticker & Chips */
+    .ticker{overflow:auto}
+    .chips{display:flex;gap:10px;min-height:56px;padding-bottom:2px}
+    .chip{flex:0 0 auto;background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:10px 14px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
+    .chip .badge{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;background:var(--deal)}
+
+    /* Grid & Cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:600px){ .grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+    .media{aspect-ratio:16/9;background:linear-gradient(120deg,#eef1ff,#dde4ff)}
+    .body{padding:14px}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .route{font-weight:800}
+    .price{font-size:22px;font-weight:800}
+    .meta{color:var(--muted);font-size:13px;margin-top:6px}
+    .badges{display:flex;gap:8px;margin-top:10px}
+    .b{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}
+    .b.deal{background:#ffe3ea;color:#c0183b}
+    .b.ok{background:#e9f8ef;color:#0f8d54}
+    .cta{display:inline-flex;gap:8px;align-items:center;margin-top:12px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;transition:background 0.2s ease, transform 0.15s ease}
+    .cta:hover{background:#5a6de0;transform:translateY(-2px)}
+
+    /* Panels */
+    .cta-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:900px){ .cta-split{grid-template-columns:1fr} }
+    .panel{background:var(--bg);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:18px}
+
+    /* KI-Bar */
+    .ki{background:#0f1230;color:#e9ebff}
+    .ki .bar{display:flex;align-items:center;gap:12px;padding:10px 0}
+    .switch{display:flex;gap:8px;align-items:center}
+    .switch input{appearance:none;width:40px;height:22px;background:#3b3f66;border-radius:999px;position:relative;outline:none;cursor:pointer}
+    .switch input:checked{background:#4ade80}
+    .switch input::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .18s}
+    .switch input:checked::after{transform:translateX(18px)}
+
+    footer{padding:26px 0;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
   </style>
 </head>
 <body>
@@ -93,4 +126,143 @@ nav a.cta:hover,
       <div>
         <h1 class="h-title">Flieg. <span class="lift">Heute.</span></h1>
         <p class="h-sub">KI-kuratierte Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
-        ...
+
+        <form class="search" action="#deals" method="get">
+          <div class="field"><input name="from" placeholder="Abflugort (auto)" aria-label="Abflugort"></div>
+          <div class="field"><input name="to" placeholder="Ziel (Anywhere)" aria-label="Ziel"></div>
+          <div class="toggle" role="tablist" aria-label="Zeitraum">
+            <input type="radio" id="t24" name="t" checked><label for="t24">24h</label>
+            <input type="radio" id="t48" name="t"><label for="t48">48h</label>
+            <input type="radio" id="tbald" name="t"><label for="tbald">Bald</label>
+          </div>
+          <button class="go" type="submit">Finde Deals</button>
+        </form>
+
+        <div class="micro">
+          <span>✅ Kostenfrei</span>
+          <span>✅ Affiliate-Transparenz</span>
+          <span>✅ Keine versteckten Gebühren</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center">
+        <img src="/img/plany.svg" alt="Plany Logo" width="120" height="auto" style="filter: drop-shadow(0 16px 24px rgba(0,0,0,.2))">
+      </div>
+    </div>
+  </div>
+
+  <main id="deals" class="container">
+
+    <!-- 24h Ticker -->
+    <section>
+      <div class="section-h">
+        <h2>Heute (24h)</h2>
+        <a class="link" href="#">Alle 24h-Deals</a>
+      </div>
+      <div class="ticker">
+        <div class="chips">
+          <div class="chip"><strong>FRA → BCN</strong><small>13:25</small><span class="badge">🔥 49€</span></div>
+          <div class="chip"><strong>BER → LON</strong><small>18:40</small><span class="badge">⚡ 39€</span></div>
+          <div class="chip"><strong>STR → ROM</strong><small>20:10</small><span class="badge">🔥 59€</span></div>
+          <div class="chip"><strong>MUC → LIS</strong><small>22:05</small><span class="badge">⚡ 89€</span></div>
+          <div class="chip"><strong>DUS → OPO</strong><small>06:50</small><span class="badge">🔥 69€</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 48 Stunden Grid -->
+    <section>
+      <div class="section-h">
+        <h2>48 Stunden</h2>
+        <a class="link" href="#">Mehr Deals</a>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="media"></div>
+          <div class="body">
+            <div class="row">
+              <div>
+                <div class="route">FRA → BCN</div>
+                <div class="meta">Heute 21:30 • 2h 10m • Nonstop</div>
+              </div>
+              <div class="price">49 €</div>
+            </div>
+            <div class="badges"><span class="b deal">–22% unter üblich</span><span class="b ok">Gepäck inkl.</span></div>
+            <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="media"></div>
+          <div class="body">
+            <div class="row">
+              <div>
+                <div class="route">BER → LON</div>
+                <div class="meta">Morgen 07:15 • 1h 55m • 1 Stopp</div>
+              </div>
+              <div class="price">39 €</div>
+            </div>
+            <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="media"></div>
+          <div class="body">
+            <div class="row">
+              <div>
+                <div class="route">STR → ROM</div>
+                <div class="meta">Morgen 19:10 • 2h 05m • Nonstop</div>
+              </div>
+              <div class="price">59 €</div>
+            </div>
+            <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Alerts / Newsletter -->
+    <section id="alerts" class="cta-split">
+      <div class="panel">
+        <h3>Alerts in 10 Sekunden</h3>
+        <p class="meta">Verpasse keinen 24h-Deal. E-Mail oder Telegram – du entscheidest.</p>
+        <div class="ml-embedded" data-form="hadGdY"></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <a class="cta" href="https://t.me/fliegheute" target="_blank" rel="noopener">Telegram beitreten</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Wartezeit wird belohnt</h3>
+        <p class="meta">Airport-Timer → Punkte. Partner-Boosts bei Duty Free &amp; Catering. <strong>App bald.</strong></p>
+        <a class="cta" href="#">Mehr erfahren</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- KI-Transparenz -->
+  <div class="ki">
+    <div class="container bar">
+      <span>Deals sind <strong>KI-kuratierte Vorschläge</strong>.</span>
+      <div class="switch" title="KI-Ansicht umschalten">
+        <input type="checkbox" id="kiaus">
+      </div>
+      <label for="kiaus">KI aus → Rohdaten</label>
+      <span style="margin-left:auto;opacity:.8">„Warum dieser Deal?“ erklärt Preis &amp; Regeln</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>© <span id="y"></span> fliegheute.de</div>
+      <div class="meta"><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">Partner werden</a></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
