@@ -39,15 +39,19 @@
     .seg button[aria-pressed="true"]{background:#eef1ff}
     .pax{height:var(--ctl-h);display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-pill);background:#fff;padding:0 10px}
     .pax button{width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;cursor:pointer}
-
     .line{display:flex;gap:10px;align-items:center}
     .field{flex:1;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
     .field input{border:0;background:transparent;flex:1;font-size:16px}
     .swap{width:var(--ctl-h);height:var(--ctl-h);border-radius:var(--r-pill);border:1px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
     .geo{width:100%;height:var(--ctl-h);margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:10px;font-weight:600;cursor:pointer}
     .go{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:0 16px;height:var(--ctl-h);font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
-
     .micro{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;color:#111;font-size:14px}
+
+    /* Sections */
+    section{margin-top:100px}
+    .section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+    .section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
+    .link{color:var(--brand);font-weight:700}
 
     /* Chips */
     .chips{display:flex;gap:10px;overflow:auto;padding:10px 0}
@@ -68,14 +72,14 @@
     .cta{display:inline-block;margin-top:10px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
 
     /* FAQ */
-    .faq{max-width:900px;margin:50px auto;padding:0 20px}
+    .faq{max-width:900px;margin:100px auto;padding:0 20px}
     .faq h2{margin-bottom:16px}
     details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:8px;cursor:pointer}
     summary{font-weight:600}
     summary::-webkit-details-marker{display:none}
 
     /* Footer */
-    footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
+    footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:100px}
     .footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     .transparency{margin-top:10px;font-size:13px}
   </style>
@@ -139,25 +143,35 @@
     </div>
   </div>
 
-  <!-- Deals (Dummy) -->
-  <main class="container">
-    <section>
+  <!-- Heute 24h -->
+  <section class="container">
+    <div class="section-h">
       <h2>Heute (24h)</h2>
-      <div class="chips">
-        <div class="chip"><strong>FRA → BCN</strong><small>13:25</small><span class="badge">🔥 49€</span></div>
-        <div class="chip"><strong>BER → LON</strong><small>18:40</small><span class="badge">⚡ 39€</span></div>
-      </div>
-    </section>
-    <section>
+      <a class="link" href="#">Alle 24h-Deals</a>
+    </div>
+    <div class="chips">
+      <div class="chip"><strong>FRA → BCN</strong><small>13:25</small><span class="badge">🔥 49€</span></div>
+      <div class="chip"><strong>BER → LON</strong><small>18:40</small><span class="badge">⚡ 39€</span></div>
+      <div class="chip"><strong>STR → ROM</strong><small>20:10</small><span class="badge">🔥 59€</span></div>
+      <div class="chip"><strong>MUC → LIS</strong><small>22:05</small><span class="badge">⚡ 89€</span></div>
+    </div>
+  </section>
+
+  <!-- 48h -->
+  <section class="container">
+    <div class="section-h">
       <h2>48 Stunden</h2>
-      <div class="grid">
-        <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">FRA → BCN</div><div class="meta">Heute 21:30 • 2h 10m</div></div><div class="price">49 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      </div>
-    </section>
-  </main>
+      <a class="link" href="#">Mehr Deals</a>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">FRA → BCN</div><div class="meta">Heute 21:30 • 2h 10m</div></div><div class="price">49 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
+      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">BER → LON</div><div class="meta">Morgen 07:15 • 1h 55m</div></div><div class="price">39 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
+      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">STR → ROM</div><div class="meta">Morgen 19:10 • 2h 05m</div></div><div class="price">59 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
+    </div>
+  </section>
 
   <!-- FAQ -->
-  <section class="faq" id="hilfe">
+  <section class="faq">
     <h2>Häufig gestellte Fragen</h2>
     <details><summary>Was muss ich wissen, bevor ich einen Flug buche?</summary><p>Prüfe deine Reisedokumente, Gepäckregeln und mögliche Zusatzkosten.</p></details>
     <details><summary>Wann ist die beste Zeit, Flüge zu buchen?</summary><p>Viele günstige Tickets tauchen 1–3 Tage vor Abflug auf.</p></details>
