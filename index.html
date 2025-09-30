@@ -6,260 +6,164 @@
   <title>fliegheute.de – Flieg heute & in 48h günstig</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     /* =========================
-       DESIGN TOKENS / THEME
+       DESIGN TOKENS
        ========================= */
     :root{
-      /* Farben */
-      --brand:#7183f5;        /* Spicy Blue */
-      --ink:#0b0b13;          /* Primärtext */
-      --muted:#6e7280;        /* Sekundärtext */
-      --bg:#f7f7f7;           /* Seitenhintergrund */
-      --card:#ffffff;         /* Karten / Flächen */
-      --border:#ececf3;       /* zarte Ränder */
-
-      /* Badges / Status */
-      --chip:#ffe6f2;         /* Preischip rosa */
-      --chipText:#b21b50;     /* Preischip Text */
-      --flame-bg:#fff3e1;
-      --flame-bd:#ffe0b0;
-      --flame-tx:#b45309;
-
-      /* Maße / Radii / Shadow */
-      --r-lg:18px;            /* große Boxen */
-      --r-sm:12px;            /* Inputs / Chips */
-      --h-ctl:44px;           /* EINHEITLICHE Höhe aller Controls */
-      --shadow:0 10px 30px rgba(0,0,0,.06);
-      --shadow-soft:0 6px 16px rgba(0,0,0,.04);
-
-      /* Header + Sticky-Suche */
-      --header-h:64px;
-      --sticky-search-h:60px;
+      --brand:#7183f5; --ink:#0b0b13; --muted:#6e7280; --bg:#f7f7f7;
+      --card:#ffffff; --border:#ececf3;
+      --chip:#ffe6f2; --chipText:#b21b50;
+      --flame-bg:#fff3e1; --flame-bd:#ffe0b0; --flame-tx:#b45309;
+      --r-lg:18px; --r-sm:12px; --h-ctl:44px;
+      --shadow:0 10px 30px rgba(0,0,0,.06); --shadow-soft:0 6px 16px rgba(0,0,0,.04);
+      --header-h:64px; --sticky-search-h:60px;
     }
 
-    /* Global */
-    *{box-sizing:border-box}
+    /* Reset für konsistente Inputs/Buttons */
+    *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0; background:var(--bg); color:var(--ink);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-    a{color:inherit; text-decoration:none}
-    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
-      outline:2px solid var(--brand); outline-offset:2px; border-radius:10px;
-    }
-    img{max-width:100%; display:block}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    input,select,button{font:inherit}
+    input[type="text"],select{-webkit-appearance:none;appearance:none}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:10px}
 
     /* =========================
        HEADER (weiß, sticky)
        ========================= */
-    header{
-      position:sticky; top:0; z-index:1000; height:var(--header-h);
-      background:rgba(255,255,255,.94);
-      backdrop-filter:saturate(1.2) blur(8px);
-      border-bottom:1px solid #e9e9ef;
-    }
-    .bar{max-width:1200px; margin:0 auto; height:100%;
-      display:flex; align-items:center; gap:16px; padding:0 16px;}
-    .logo img{height:28px; width:auto}
-    nav{margin-left:auto; display:flex; gap:16px; align-items:center}
-    .navlink{padding:8px 10px; border-radius:999px; color:#3a3d4a}
+    header{position:sticky;top:0;z-index:1000;height:var(--header-h);background:rgba(255,255,255,.94);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #e9e9ef}
+    .bar{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;gap:16px;padding:0 16px}
+    .logo img{height:28px;width:auto}
+    nav{margin-left:auto;display:flex;gap:16px;align-items:center}
+    .navlink{padding:8px 10px;border-radius:999px;color:#3a3d4a}
     .navlink:hover{background:#f1f1f6}
-    .cta{background:#0b0b13; color:#fff; padding:8px 12px; border-radius:999px; font-weight:800}
+    .cta{background:#0b0b13;color:#fff;padding:8px 12px;border-radius:999px;font-weight:800}
 
     /* =========================
-       KOMPAKTE STICKY-SUCHE (erscheint beim Scroll)
+       KOMPAKTE STICKY-SUCHE (beim Scroll)
        ========================= */
-    .sticky-search{
-      position:sticky; top:var(--header-h); z-index:900;
-      background:rgba(255,255,255,.96); border-bottom:1px solid var(--border);
-      transform:translateY(-120%); opacity:0; pointer-events:none;
-      transition:transform .28s ease, opacity .28s ease;
-    }
-    .sticky-search.visible{transform:translateY(0); opacity:1; pointer-events:auto}
-    .sticky-wrap{max-width:1200px; margin:0 auto; height:var(--sticky-search-h);
-      display:flex; gap:10px; align-items:center; padding:8px 16px}
-    .sticky-input{
-      height:40px; border:1px solid var(--border); border-radius:999px;
-      background:#fff; padding:0 12px; display:flex; align-items:center; gap:8px;
-    }
-    .sticky-input input{border:0; outline:0; width:160px}
-    .sticky-seg{display:inline-flex; border:1px solid var(--border); border-radius:999px; overflow:hidden}
-    .sticky-seg button{padding:8px 12px; background:transparent; border:0; cursor:pointer; font-weight:700}
+    .sticky-search{position:sticky;top:var(--header-h);z-index:900;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);transform:translateY(-120%);opacity:0;pointer-events:none;transition:transform .28s ease,opacity .28s ease}
+    .sticky-search.visible{transform:translateY(0);opacity:1;pointer-events:auto}
+    .sticky-wrap{max-width:1200px;margin:0 auto;height:var(--sticky-search-h);display:flex;gap:10px;align-items:center;padding:8px 16px}
+    .sticky-input{height:40px;border:1px solid var(--border);border-radius:999px;background:#fff;padding:0 12px;display:flex;align-items:center;gap:8px}
+    .sticky-input input{border:0;outline:0;width:160px}
+    .sticky-seg{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+    .sticky-seg button{padding:8px 12px;background:transparent;border:0;cursor:pointer;font-weight:700}
     .sticky-seg button[aria-pressed="true"]{background:#eef1ff}
-    .sticky-go{background:var(--brand); color:#fff; border:0; border-radius:999px; padding:10px 14px; font-weight:800}
+    .sticky-go{background:var(--brand);color:#fff;border:0;border-radius:999px;padding:10px 14px;font-weight:800}
 
     /* =========================
-       HERO + GRID
+       HERO
        ========================= */
-    .hero{
-      padding:28px 16px 22px;
-      background:
-        radial-gradient(1200px 400px at 30% -10%, rgba(113,131,245,.10), transparent 60%),
-        linear-gradient(180deg, #f8f8fb 0%, #f6f6f8 60%, #f7f7f7 100%);
-      border-bottom:1px solid #efeff5;
-    }
-    .wrap{max-width:1200px; margin:0 auto}
-    .hero-top{display:flex; align-items:flex-start; gap:16px}
+    .hero{padding:28px 16px 22px;background:
+      radial-gradient(1200px 400px at 30% -10%, rgba(113,131,245,.10), transparent 60%),
+      linear-gradient(180deg,#f8f8fb 0%,#f6f6f8 60%,#f7f7f7 100%);border-bottom:1px solid #efeff5}
+    .wrap{max-width:1200px;margin:0 auto}
+    .hero-top{display:flex;align-items:flex-start;gap:16px}
+    .mascot{width:120px;height:auto}
     .title{flex:1}
-    .title h1{font-size:56px; line-height:1.05; margin:6px 0 12px}
-    .title p{margin:0; color:var(--muted)}
-    .mascot{width:120px; height:auto}
-
-    .hero-grid{margin-top:12px; display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
-    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+    .title h1{font-size:56px;line-height:1.05;margin:6px 0 12px}
+    .title p{margin:0;color:var(--muted)}
+    .hero-grid{margin-top:12px;display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
 
     /* =========================
        SUCHE (groß, aus einem Guss)
        ========================= */
-    /* Form-Reset – gleiche Optik in allen Browsern */
-    input, select, button { font: inherit; }
-    input[type="text"], select { appearance:none; -webkit-appearance:none; }
-
-    .search{
-      background:var(--card); border:1px solid var(--border);
-      border-radius:var(--r-lg); box-shadow:var(--shadow); padding:16px;
-    }
-    .search .row{display:grid; grid-template-columns:repeat(12,1fr); gap:12px}
+    .search{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:16px}
+    .search .row{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
     .search .cell{grid-column:span 6}
     .search .cell.sm{grid-column:span 3}
-    @media (max-width:900px){ .search .cell, .search .cell.sm {grid-column:1/-1} }
+    @media (max-width:900px){.search .cell,.search .cell.sm{grid-column:1/-1}}
+    .search label{display:block;margin:4px 0 6px;font-size:12px;letter-spacing:.3px;text-transform:uppercase;color:#9aa0b4}
 
-    .search label{
-      display:block; margin:4px 0 6px;
-      font-size:12px; letter-spacing:.3px; text-transform:uppercase; color:#9aa0b4;
-    }
-    .seg{display:inline-flex; border:1px solid #e6e7ee; border-radius:999px; overflow:hidden}
-    .seg button{
-      height:var(--h-ctl); padding:0 14px; border:0; background:#fff;
-      cursor:pointer; font-weight:700; color:#3a3d4a;
-    }
-    .seg button[aria-pressed="true"]{ background:#eef1ff; }
+    /* Segmente oben */
+    .seg{display:inline-flex;border:1px solid #e6e7ee;border-radius:999px;overflow:hidden}
+    .seg button{height:var(--h-ctl);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700;color:#3a3d4a}
+    .seg button[aria-pressed="true"]{background:#eef1ff}
 
-    .people{
-      height:var(--h-ctl); display:flex; align-items:center; gap:10px;
-      background:#fff; border:1px solid #e6e7ee; border-radius:999px; padding:0 8px;
-    }
-    .people button{
-      width:32px; height:32px; display:grid; place-items:center;
-      border:1px solid #dadbe6; border-radius:10px; background:#fff; font-weight:800; cursor:pointer;
-    }
+    /* Pax-Pille */
+    .people{height:var(--h-ctl);display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e6e7ee;border-radius:999px;padding:0 8px}
+    .people button{width:32px;height:32px;display:grid;place-items:center;border:1px solid #dadbe6;border-radius:10px;background:#fff;font-weight:800;cursor:pointer}
 
-    .search input[type="text"], .search select{
-      height:var(--h-ctl); padding:0 14px;
-      border:1px solid #e6e7ee; border-radius:var(--r-sm);
-      background:#fff; color:var(--ink);
-    }
+    /* Inputs */
+    .search input[type="text"], .search select{height:var(--h-ctl);padding:0 14px;border:1px solid #e6e7ee;border-radius:var(--r-sm);background:#fff;color:var(--ink)}
 
-    .swap{
-      width:var(--h-ctl); height:var(--h-ctl); border-radius:999px;
-      border:1px solid #e6e7ee; background:#fff; display:grid; place-items:center; cursor:pointer;
-    }
-
-    .primary{height:var(--h-ctl); padding:0 16px; border-radius:12px; background:var(--brand); color:#fff; border:0; font-weight:800}
-    .secondary{height:var(--h-ctl); padding:0 14px; border-radius:12px; background:#fff; color:#1c1f2b; border:1px solid #e6e7ee; font-weight:700}
-    .ticks{display:flex; gap:16px; align-items:center; margin-top:10px; color:#1e293b; font-size:14px}
-    .tick{display:inline-flex; gap:6px; align-items:center}
-    .tick svg{width:18px; height:18px; color:#16a34a}
+    /* Von/Nach + Swap + Geo-Pille + CTA */
+    .swap{width:var(--h-ctl);height:var(--h-ctl);border-radius:999px;border:1px solid #e6e7ee;background:#fff;display:grid;place-items:center;cursor:pointer}
+    .primary{height:var(--h-ctl);padding:0 16px;border-radius:12px;background:var(--brand);color:#fff;border:0;font-weight:800}
+    .secondary{height:var(--h-ctl);padding:0 14px;border-radius:12px;background:#fff;color:#1c1f2b;border:1px solid #e6e7ee;font-weight:700}
+    .ticks{display:flex;gap:16px;align-items:center;margin-top:10px;color:#1e293b;font-size:14px}
+    .tick{display:inline-flex;gap:6px;align-items:center}
+    .tick svg{width:18px;height:18px;color:#16a34a}
 
     /* =========================
-       SPOTLIGHT-DEAL
+       SPOTLIGHT-DEAL (rechts)
        ========================= */
-    .spot{
-      background:var(--card); border:1px solid var(--border);
-      border-radius:var(--r-lg); box-shadow:var(--shadow);
-      padding:12px; display:grid; gap:10px;
-    }
-    .spot-banner{
-      position:relative; border-radius:14px; overflow:hidden; aspect-ratio:16/9;
-      background:linear-gradient(180deg,#e9eefb,#f8f8ff);
-    }
-    .spot-pill{
-      position:absolute; left:10px; top:10px;
-      display:inline-flex; gap:8px; align-items:center;
-      background:var(--flame-bg); border:1px solid var(--flame-bd); color:var(--flame-tx);
-      border-radius:999px; padding:6px 10px; font-weight:800;
-    }
-    .spot-ticket{
-      position:absolute; left:10px; right:10px; bottom:10px;
-      background:linear-gradient(90deg,#ff7eb8,#ff5db3);
-      color:#fff; border-radius:20px; padding:12px 16px; font-weight:800;
-      display:flex; gap:8px; align-items:center;
-    }
-    .spot-ticket .dot{width:8px; height:8px; border-radius:50%; background:#fff; opacity:.8}
+    .spot{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:12px;display:grid;gap:10px}
+    .spot-banner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(180deg,#e9eefb,#f8f8ff)}
+    .spot-pill{position:absolute;left:10px;top:10px;display:inline-flex;gap:8px;align-items:center;background:var(--flame-bg);border:1px solid var(--flame-bd);color:var(--flame-tx);border-radius:999px;padding:6px 10px;font-weight:800}
+    .spot-ticket{position:absolute;left:10px;right:10px;bottom:10px;background:linear-gradient(90deg,#ff7eb8,#ff5db3);color:#fff;border-radius:20px;padding:12px 16px;font-weight:800;display:flex;gap:8px;align-items:center}
+    .spot-ticket .dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:.8}
 
     /* =========================
-       24H CHIP-LEISTE (EXAKT wie besprochen)
+       24H CHIP-LEISTE
        ========================= */
-    .hotbar{max-width:1200px; margin:18px auto 0; padding:0 16px}
-    .hotbar-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px}
-    .hotbar-head a{color:#4f46e5; font-weight:700}
-    .chips{
-      display:flex; gap:10px; overflow:auto; padding:8px 0 12px;
-      mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
-    }
-    .chip{
-      white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
-      background:#fff; border:1px solid var(--border); border-radius:999px;
-      padding:8px 12px; box-shadow:var(--shadow-soft);
-    }
+    .hotbar{max-width:1200px;margin:18px auto 0;padding:0 16px}
+    .hotbar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+    .hotbar-head a{color:#4f46e5;font-weight:700}
+    .chips{display:flex;gap:10px;overflow:auto;padding:8px 0 12px;mask-image:linear-gradient(90deg,transparent 0,#000 24px,#000 calc(100% - 24px),transparent 100%)}
+    .chips::-webkit-scrollbar{height:6px}
+    .chips::-webkit-scrollbar-thumb{background:#d8d8e3;border-radius:999px}
+    .chip{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 12px;box-shadow:var(--shadow-soft)}
     .chip .route{font-weight:800}
-    .chip .time{color:var(--muted); font-weight:700}
-    .chip .pricepill{
-      display:inline-flex; align-items:center; gap:6px;
-      background:var(--chip); color:var(--chipText);
-      font-weight:900; border-radius:999px; padding:6px 10px;
-    }
-    .chip .chev{color:#9aa0b4; font-weight:900}
+    .chip .time{color:var(--muted);font-weight:700}
+    .chip .pricepill{display:inline-flex;align-items:center;gap:6px;background:var(--chip);color:var(--chipText);font-weight:900;border-radius:999px;padding:6px 10px}
+    .chip .chev{color:#9aa0b4;font-weight:900}
+    /* dezent graue „Schiene“ unter den Chips wie im Screen */
+    .hotbar::after{content:"";display:block;height:6px;margin:8px 0;border-radius:999px;background:#e9e9f2}
 
     /* =========================
        48H KARTEN
        ========================= */
-    main{max-width:1200px; margin:28px auto 70px; padding:0 16px}
-    .section-head{display:flex; align-items:center; justify-content:space-between}
-    .grid{margin-top:12px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    main{max-width:1200px;margin:28px auto 70px;padding:0 16px}
+    .section-head{display:flex;align-items:center;justify-content:space-between}
+    .grid{margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:680px){.grid{grid-template-columns:1fr}}
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:24px;
-      box-shadow:var(--shadow); overflow:hidden; display:grid; grid-template-rows:auto auto;
-    }
-    .ph{aspect-ratio:16/10; background:linear-gradient(180deg,#eef1ff,#f6f7fb)}
-    .meta{padding:14px; display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-rows:auto auto}
+    .ph{aspect-ratio:16/10;background:linear-gradient(180deg,#eef1ff,#f6f7fb)}
+    .meta{padding:14px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
     .meta h3{margin:0 0 6px}
     .sub{color:var(--muted)}
-    .pill{display:flex; gap:8px; align-items:center; margin-top:8px}
-    .b{display:inline-flex; align-items:center; border-radius:999px; font-weight:700; padding:4px 8px; border:1px solid var(--border)}
-    .b.good{color:#14532d; border-color:#c7f0d5; background:#eafaf0}
-    .b.drop{color:#b91c1c; border-color:#ffd1d1; background:#fff1f1}
-    .price{font-size:22px; font-weight:800}
-    .buy{grid-column:1/-1; display:flex; gap:10px; padding:0 14px 14px}
-    .btn{background:var(--brand); color:#fff; border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer}
-    .btn.ghost{background:#fff; border:1px solid var(--border); color:#1c1f2b}
+    .pill{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .b{display:inline-flex;align-items:center;border-radius:999px;font-weight:700;padding:4px 8px;border:1px solid var(--border)}
+    .b.good{color:#14532d;border-color:#c7f0d5;background:#eafaf0}
+    .b.drop{color:#b91c1c;border-color:#ffd1d1;background:#fff1f1}
+    .price{font-size:22px;font-weight:800}
+    .buy{grid-column:1/-1;display:flex;gap:10px;padding:0 14px 14px}
+    .btn{background:var(--brand);color:#fff;border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}
+    .btn.ghost{background:#fff;border:1px solid var(--border);color:#1c1f2b}
 
     /* =========================
-       FAQ + FOOTER
+       FAQ / FOOTER
        ========================= */
-    .faq{max-width:1200px; margin:30px auto; padding:0 16px}
-    details{background:#fff; border:1px solid var(--border); border-radius:14px; padding:12px 16px}
+    .faq{max-width:1200px;margin:30px auto;padding:0 16px}
+    details{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px 16px}
     details+details{margin-top:10px}
-    summary{cursor:pointer; font-weight:700}
+    summary{cursor:pointer;font-weight:700}
     summary::-webkit-details-marker{display:none}
-
-    .footer{max-width:1200px; margin:30px auto 80px; padding:0 16px; color:#6b7280; font-size:14px}
-    .transparency{border-top:1px solid var(--border); padding-top:8px; margin-top:18px}
+    .footer{max-width:1200px;margin:30px auto 80px;padding:0 16px;color:#6b7280;font-size:14px}
+    .transparency{border-top:1px solid var(--border);padding-top:8px;margin-top:18px}
   </style>
 </head>
 <body>
-  <!-- ===== Sticky Header ===== -->
+  <!-- ===== Header ===== -->
   <header role="banner" aria-label="Hauptnavigation">
     <div class="bar">
-      <a class="logo" href="/">
-        <img src="/assets/logo-plany-header.svg" alt="fliegheute.de">
-      </a>
+      <a class="logo" href="/"><img src="/assets/logo-plany-header.svg" alt="fliegheute.de"></a>
       <nav>
         <a class="navlink" href="#explore">Inspiration</a>
         <a class="navlink" href="#hilfe">Hilfe</a>
@@ -270,15 +174,15 @@
     </div>
   </header>
 
-  <!-- ===== Compact Sticky Search (shows after Hero scroll) ===== -->
+  <!-- ===== Kompakte Sticky-Suche (erscheint beim Scroll) ===== -->
   <div class="sticky-search" id="stickySearch" aria-hidden="true">
     <div class="sticky-wrap">
       <div class="sticky-seg" role="tablist" aria-label="Reiseart">
-        <button type="button" role="tab" aria-pressed="true"  data-trip="rt">Hin & Rück</button>
+        <button type="button" role="tab" aria-pressed="true" data-trip="rt">Hin & Rück</button>
         <button type="button" role="tab" aria-pressed="false" data-trip="ow">Nur Hin</button>
       </div>
       <div class="sticky-seg" role="tablist" aria-label="Zeitraum">
-        <button type="button" role="tab" aria-pressed="true"  data-mode="24h">24h</button>
+        <button type="button" role="tab" aria-pressed="true" data-mode="24h">24h</button>
         <button type="button" role="tab" aria-pressed="false" data-mode="48h">48h</button>
         <button type="button" role="tab" aria-pressed="false" data-mode="bald" disabled>Bald</button>
       </div>
@@ -289,7 +193,7 @@
     </div>
   </div>
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-top">
@@ -301,10 +205,10 @@
       </div>
 
       <div class="hero-grid">
-        <!-- ===== GROSSE SUCHE ===== -->
+        <!-- ===== Suchmodul (groß) ===== -->
         <form class="search" id="searchForm" aria-label="Flug-Suche">
           <div class="row">
-            <!-- Kopf: Reiseart / Zeitraum / Pax -->
+            <!-- Kopf-Zeile: Segmente + Pax -->
             <div class="cell sm">
               <label>Reiseart</label>
               <div class="seg" role="tablist" aria-label="Reiseart">
@@ -329,10 +233,10 @@
               </div>
             </div>
 
-            <!-- Zeile 2: Von / Swap / Nach -->
+            <!-- Zeile 2: Von ↔ Nach + CTA + Geo-Pille darunter links -->
             <div class="cell">
               <label for="from">Von</label>
-              <div style="display:flex; gap:10px; align-items:center">
+              <div style="display:flex;gap:10px;align-items:center">
                 <input id="from" name="from" placeholder="FRA" maxlength="3" autocomplete="off">
                 <button class="swap" type="button" id="swap" title="Von/Nach tauschen" aria-label="Von und Nach tauschen">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -340,17 +244,15 @@
                   </svg>
                 </button>
                 <input id="to" name="to" placeholder="BCN oder Barcelona" autocomplete="off" style="flex:1">
+                <button class="primary" type="submit">Entdecken</button>
               </div>
-            </div>
-
-            <!-- CTA + Geo -->
-            <div class="cell sm" style="display:flex; align-items:flex-end; gap:10px">
-              <button class="secondary" type="button" id="useGeo">Abflug: Nächsten Airport setzen</button>
-              <button class="primary" type="submit">Entdecken</button>
+              <div style="margin-top:10px">
+                <button class="secondary" type="button" id="useGeo">Abflug: Nächsten Airport setzen</button>
+              </div>
             </div>
           </div>
 
-          <!-- Trust-Häkchen -->
+          <!-- Häkchen-Zeile -->
           <div class="ticks" aria-hidden="true">
             <span class="tick">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -367,7 +269,7 @@
           </div>
         </form>
 
-        <!-- ===== SPOTLIGHT-DEAL ===== -->
+        <!-- ===== Spotlight-Deal ===== -->
         <aside class="spot" aria-label="Spotlight-Deal">
           <div class="spot-banner" aria-hidden="true">
             <div class="spot-pill">⚡ Jetzt oder nie, Koffer packen!</div>
@@ -403,20 +305,16 @@
   <!-- ===== FAQ ===== -->
   <section class="faq" id="hilfe">
     <h2 style="margin:0 0 10px">Häufig gestellte Fragen</h2>
-    <details>
-      <summary>Was sollte ich vor der Flugbuchung prüfen?</summary>
+    <details><summary>Was sollte ich vor der Flugbuchung prüfen?</summary>
       <div>Reisedokumente, Gepäckregeln, Storno/Umbuchung. Preise ändern sich schnell – final ist der Preis beim Anbieter.</div>
     </details>
-    <details>
-      <summary>Wo finde ich die besten Angebote?</summary>
-      <div>Teste nahe Abflughäfen, flexible Tage (±1–3) und unsere 24/48-h-Filter. Große Preisfälle tauchen häufig kurzfristig auf.</div>
+    <details><summary>Wie finde ich günstige Angebote?</summary>
+      <div>Nahe Abflughäfen, flexible Tage (±1–3) und unsere 24/48-h-Filter testen. Große Preisfälle sind oft kurzfristig.</div>
     </details>
-    <details>
-      <summary>Wie funktionieren Preis-Alerts?</summary>
+    <details><summary>Wie funktionieren Preis-Alerts?</summary>
       <div>Strecke & Zeitraum abonnieren – wir melden signifikante Änderungen. Abmeldung jederzeit. Keine versteckten Gebühren.</div>
     </details>
-    <details>
-      <summary>Was bedeutet „Weiter zur Airline/OTA“?</summary>
+    <details><summary>Was bedeutet „Weiter zur Airline/OTA“?</summary>
       <div>Wir vergleichen – die Buchung erfolgt beim Anbieter. Dort gelten dessen AGB, Gebühren und Zahlungsarten.</div>
     </details>
   </section>
@@ -424,169 +322,138 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div>© fliegheute.de</div>
-    <div class="transparency">
-      Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Preise können sich ändern; ggf. fallen Gebühren/Zusatzleistungen beim Anbieter an. Kein Aufpreis durch uns.
-    </div>
+    <div class="transparency">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Preise können sich ändern; ggf. fallen Gebühren/Zusatzleistungen beim Anbieter an. Kein Aufpreis durch uns.</div>
   </footer>
 
   <script>
-    /* =========================
-       kleine Helpers
-       ========================= */
+    // ============ Helpers ============
     const $  = s => document.querySelector(s);
     const $$ = s => Array.from(document.querySelectorAll(s));
 
-    // --- State ---
-    let trip = 'rt';
-    let mode = '24h';
-    let pax  = 1;
+    // ============ State ============
+    let trip='rt', mode='24h', pax=1;
 
-    // Pax Control
+    // Pax
     const paxOut = $('#pax');
     $('.people').addEventListener('click', e=>{
-      const b = e.target.closest('button'); if(!b) return;
-      pax = Math.min(9, Math.max(1, (+paxOut.value || 1) + (+b.dataset.d)));
-      paxOut.value = pax; paxOut.textContent = String(pax);
-      $('#sPax').value = pax; // sync compact
+      const b=e.target.closest('button'); if(!b) return;
+      pax=Math.min(9,Math.max(1,(+paxOut.value||1)+(+b.dataset.d)));
+      paxOut.value=pax; paxOut.textContent=String(pax);
+      const sP = $('#sPax'); if(sP) sP.value=pax;
     });
 
-    // Segmented Controls (Reiseart/Zeitraum)
-    function bindSeg(containerSel, onChange){
-      $$(containerSel+' button').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
+    // Segmented Controls
+    function bindSeg(sel,cb){
+      $$(sel+' button').forEach(btn=>{
+        btn.addEventListener('click',()=>{
           if(btn.disabled) return;
-          $$(containerSel+' button').forEach(b=>b.setAttribute('aria-pressed','false'));
-          btn.setAttribute('aria-pressed','true');
-          onChange(btn.dataset.trip || btn.dataset.mode);
+          $$(sel+' button').forEach(b=>b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed','true'); cb(btn.dataset.trip||btn.dataset.mode);
         });
       });
     }
     bindSeg('.seg[aria-label="Reiseart"]', v=>{
-      trip = v;
-      $$('.sticky-seg[aria-label="Reiseart"] button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.trip===v ? 'true':'false'));
+      trip=v;
+      $$('.sticky-seg[aria-label="Reiseart"] button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.trip===v?'true':'false'));
     });
     bindSeg('.seg[aria-label="Zeitraum"]', v=>{
-      mode = v;
-      $$('.sticky-seg[aria-label="Zeitraum"] button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mode===v ? 'true':'false'));
+      mode=v;
+      $$('.sticky-seg[aria-label="Zeitraum"] button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mode===v?'true':'false'));
     });
 
     // Inputs
-    const from = $('#from'); const to = $('#to');
-    from.value = 'FRA'; $('#sFrom').value = from.value;
+    const from=$('#from'), to=$('#to'); from.value='FRA'; $('#sFrom').value=from.value;
 
-    // Swap Von/Nach
-    $('#swap').addEventListener('click', ()=>{
-      const tmp = from.value; from.value = to.value; to.value = tmp;
-      $('#sFrom').value = from.value; $('#sTo').value = to.value;
-    });
+    // Swap
+    $('#swap').addEventListener('click',()=>{const t=from.value;from.value=to.value;to.value=t;$('#sFrom').value=from.value;$('#sTo').value=to.value;});
 
-    // Geolocation → nächster großer DE-Airport (Fallback FRA)
-    const airports = [
-      {code:'FRA', lat:50.0379, lon:8.5622}, {code:'BER', lat:52.3667, lon:13.5033},
-      {code:'MUC', lat:48.3537, lon:11.7750}, {code:'STR', lat:48.6899, lon:9.2219},
-      {code:'DUS', lat:51.2895, lon:6.7668}, {code:'CGN', lat:50.8659, lon:7.1427},
-      {code:'HAM', lat:53.6304, lon:9.9882}
-    ];
-    const toRad = d=>d*Math.PI/180;
-    const dist = (a,b,c,d)=>{const R=6371, dLat=toRad(c-a), dLon=toRad(d-b);
-      const A=Math.sin(dLat/2)**2+Math.cos(toRad(a))*Math.cos(toRad(c))*Math.sin(dLon/2)**2; return 2*R*Math.asin(Math.sqrt(A));};
-    function nearest(lat,lon){return airports.reduce((m,a)=>{const dd=dist(lat,lon,a.lat,a.lon);return dd<(m.d||1e9)?{a,d:dd}:m;},{a:airports[0],d:1e9}).a;}
-    $('#useGeo').addEventListener('click', ()=>{
-      if(!navigator.geolocation){from.value='FRA'; $('#sFrom').value='FRA'; return;}
+    // Geolocation → nächster großer DE-Airport
+    const airports=[{code:'FRA',lat:50.0379,lon:8.5622},{code:'BER',lat:52.3667,lon:13.5033},{code:'MUC',lat:48.3537,lon:11.7750},{code:'STR',lat:48.6899,lon:9.2219},{code:'DUS',lat:51.2895,lon:6.7668},{code:'CGN',lat:50.8659,lon:7.1427},{code:'HAM',lat:53.6304,lon:9.9882}];
+    const toRad=d=>d*Math.PI/180;
+    const dist=(a,b,c,d)=>{const R=6371,dLat=toRad(c-a),dLon=toRad(d-b);const A=Math.sin(dLat/2)**2+Math.cos(toRad(a))*Math.cos(toRad(c))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(A));};
+    const nearest=(lat,lon)=>airports.reduce((m,a)=>{const dd=dist(lat,lon,a.lat,a.lon);return dd<(m.d||1e9)?{a,d:dd}:m;},{a:airports[0],d:1e9}).a;
+    $('#useGeo').addEventListener('click',()=>{
+      if(!navigator.geolocation){from.value='FRA';$('#sFrom').value='FRA';return;}
       navigator.geolocation.getCurrentPosition(
-        pos=>{const a=nearest(pos.coords.latitude,pos.coords.longitude); from.value=a.code; $('#sFrom').value=a.code;},
-        _=>{from.value='FRA'; $('#sFrom').value='FRA';},
+        pos=>{const a=nearest(pos.coords.latitude,pos.coords.longitude);from.value=a.code;$('#sFrom').value=a.code;},
+        _=>{from.value='FRA';$('#sFrom').value='FRA';},
         {timeout:4000}
       );
     });
 
-    // Sticky Search sichtbar, wenn Hero nicht mehr im Viewport
-    const sticky = $('#stickySearch');
-    const hero   = document.querySelector('.hero');
-    const io = new IntersectionObserver(entries=>{
+    // Sticky Suche sichtbar, wenn Hero aus dem Viewport
+    const sticky=$('#stickySearch'), hero=document.querySelector('.hero');
+    const io=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          sticky.classList.remove('visible'); sticky.setAttribute('aria-hidden','true');
-        }else{
-          sticky.classList.add('visible');    sticky.setAttribute('aria-hidden','false');
-        }
+        if(entry.isIntersecting){sticky.classList.remove('visible');sticky.setAttribute('aria-hidden','true');}
+        else{sticky.classList.add('visible');sticky.setAttribute('aria-hidden','false');}
       });
-    }, {rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))}px 0px 0px 0px`});
+    },{rootMargin:`-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))}px 0px 0px 0px`});
     io.observe(hero);
 
-    // Werte zwischen groß & compact spiegeln
+    // Werte zwischen groß & kompakt spiegeln
     ['input','change','keyup'].forEach(evt=>{
-      from.addEventListener(evt, ()=> $('#sFrom').value = from.value.toUpperCase());
-      to.addEventListener(evt,   ()=> $('#sTo').value   = to.value);
-      $('#sFrom').addEventListener(evt, ()=> from.value = $('#sFrom').value.toUpperCase());
-      $('#sTo').addEventListener(evt,   ()=> to.value   = $('#sTo').value);
+      from.addEventListener(evt,()=>$('#sFrom').value=from.value.toUpperCase());
+      to.addEventListener(evt,()=>$('#sTo').value=to.value);
+      $('#sFrom').addEventListener(evt,()=>from.value=$('#sFrom').value.toUpperCase());
+      $('#sTo').addEventListener(evt,()=>to.value=$('#sTo').value);
     });
-    $('#sPax').addEventListener('change', ()=>{pax = Math.min(9, Math.max(1, +$('#sPax').value||1)); paxOut.value=pax; paxOut.textContent=String(pax); });
+    $('#sPax')?.addEventListener('change',()=>{pax=Math.min(9,Math.max(1,+$('#sPax').value||1));paxOut.value=pax;paxOut.textContent=String(pax);});
 
-    // Suche abschicken (beide UIs benutzen denselben Handler)
+    // Suche abschicken (beide UIs)
     function submitSearch(payload){
-      console.log('SEARCH', payload);
-      alert(`Suche gestartet:\n${JSON.stringify(payload,null,2)}\n(TODO: fetch('/api/search', ...) anschließen)`);
+      console.log('SEARCH',payload);
+      alert(`Suche gestartet:\n${JSON.stringify(payload,null,2)}\n(TODO: fetch('/api/search', ...) anbinden)`);
     }
-    $('#searchForm').addEventListener('submit', e=>{
+    $('#searchForm').addEventListener('submit',e=>{
       e.preventDefault();
-      submitSearch({ trip, mode, from: from.value.trim().toUpperCase(), to: to.value.trim(), pax });
+      submitSearch({trip,mode,from:from.value.trim().toUpperCase(),to:to.value.trim(),pax});
     });
-    $('#sGo').addEventListener('click', ()=>{
-      submitSearch({
-        trip, mode,
-        from: $('#sFrom').value.trim().toUpperCase() || 'FRA',
-        to: $('#sTo').value.trim(),
-        pax: +$('#sPax').value || 1
-      });
+    $('#sGo').addEventListener('click',()=>{
+      submitSearch({trip,mode,from:$('#sFrom').value.trim().toUpperCase()||'FRA',to:$('#sTo').value.trim(),pax:+($('#sPax').value||1)});
     });
 
-    /* =========================
-       DUMMY-DATEN → später API
-       ========================= */
-    const hot24 = [
-      {route:'FRA → BCN', time:'13:25', price:49, flag:'flame'},
-      {route:'BER → LON', time:'18:40', price:39, flag:'bolt'},
-      {route:'STR → ROM', time:'20:10', price:59, flag:'flame'},
-      {route:'MUC → LIS', time:'22:05', price:89, flag:'flame'},
-      {route:'DUS → OPO', time:'09:10', price:69, flag:'bolt'},
-      {route:'HAM → CPH', time:'12:40', price:45, flag:'bolt'}
+    // ===== Dummy-Daten (API später) =====
+    const hot24=[
+      {route:'FRA → BCN',time:'13:25',price:49,flag:'flame'},
+      {route:'BER → LON',time:'18:40',price:39,flag:'bolt'},
+      {route:'STR → ROM',time:'20:10',price:59,flag:'flame'},
+      {route:'MUC → LIS',time:'22:05',price:89,flag:'flame'},
+      {route:'DUS → OPO',time:'09:10',price:69,flag:'bolt'},
+      {route:'HAM → CPH',time:'12:40',price:45,flag:'bolt'}
     ];
-    const deals48 = [
-      {route:'FRA → BCN', sub:'Heute 21:30 • 2h 10m • Nonstop', price:49, drop:'22% unter üblich', good:'Gepäck inkl.'},
-      {route:'BER → LON', sub:'Morgen 07:15 • 1h 55m • 1 Stopp', price:39, drop:'', good:''},
-      {route:'STR → ROM', sub:'Morgen 19:10 • 2h 05m • Nonstop', price:59, drop:'', good:''}
+    const deals48=[
+      {route:'FRA → BCN',sub:'Heute 21:30 • 2h 10m • Nonstop',price:49,drop:'22% unter üblich',good:'Gepäck inkl.'},
+      {route:'BER → LON',sub:'Morgen 07:15 • 1h 55m • 1 Stopp',price:39,drop:'',good:''},
+      {route:'STR → ROM',sub:'Morgen 19:10 • 2h 05m • Nonstop',price:59,drop:'',good:''}
     ];
 
-    // Chips rendern – Icon IN der rosa Preis-Pille
-    const chipHost = $('#hotChips'); chipHost.innerHTML = '';
+    // Chips (Icon IN Preis-Pill)
+    const chipHost=$('#hotChips'); chipHost.innerHTML='';
     hot24.forEach(x=>{
-      const icon = x.flag==='bolt' ? '⚡' : '🔥';
-      const el = document.createElement('div');
-      el.className = 'chip'; el.setAttribute('role','listitem');
-      el.innerHTML = `
-        <span class="route">${x.route}</span>
-        <span class="time">${x.time}</span>
-        <span class="pricepill">${icon} ${x.price}€</span>
-        <span class="chev">›</span>
-      `;
+      const icon=x.flag==='bolt'?'⚡':'🔥';
+      const el=document.createElement('div');
+      el.className='chip'; el.setAttribute('role','listitem');
+      el.innerHTML=`<span class="route">${x.route}</span>
+                    <span class="time">${x.time}</span>
+                    <span class="pricepill">${icon} ${x.price}€</span>
+                    <span class="chev">›</span>`;
       chipHost.appendChild(el);
     });
 
-    // Karten rendern
-    const grid = $('#dealGrid');
+    // 48h-Karten
+    const grid=$('#dealGrid');
     deals48.forEach(d=>{
-      const card = document.createElement('article');
-      card.className='card';
-      card.innerHTML = `
+      const card=document.createElement('article'); card.className='card';
+      card.innerHTML=`
         <div class="ph" aria-hidden="true"></div>
         <div class="meta">
           <div>
             <h3>${d.route}</h3>
             <div class="sub">${d.sub}</div>
             <div class="pill">
-              ${d.drop ? `<span class="b drop">-${d.drop.replace(/[^0-9]/g,'')}% unter üblich</span>` : ''}
-              ${d.good ? `<span class="b good">${d.good}</span>` : ''}
+              ${d.drop?`<span class="b drop">-${d.drop.replace(/[^0-9]/g,'')}% unter üblich</span>`:''}
+              ${d.good?`<span class="b good">${d.good}</span>`:''}
             </div>
           </div>
           <div class="price">${d.price} €</div>
@@ -594,16 +461,9 @@
             <button class="btn">Weiter zur Airline/OTA</button>
             <button class="btn ghost">Merken</button>
           </div>
-        </div>
-      `;
+        </div>`;
       grid.appendChild(card);
     });
-
-    /* =========================
-       BACKEND-HOOKS (Platzhalter)
-       - /api/search  POST  -> payload
-       - /api/deals?window=24h|48h  GET -> Chips/Karten
-       ========================= */
   </script>
 </body>
 </html>
