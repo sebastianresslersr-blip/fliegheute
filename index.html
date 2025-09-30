@@ -54,7 +54,17 @@
     .link{color:var(--brand);font-weight:700}
 
     /* Chips */
-    .chips{display:flex;gap:10px;overflow:auto;padding:10px 0}
+    .chips{
+  display:flex;
+  gap:10px;
+  padding:10px 0;
+  justify-content:space-between; /* verteilt Chips über gesamte Breite */
+}
+.chip{
+  flex:1 1 22%; /* jeder Chip ca. 1/4 breit */
+  justify-content:space-between;
+}
+
     .chip{background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
     .chip .badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
 
