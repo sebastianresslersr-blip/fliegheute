@@ -36,7 +36,20 @@
     .controls{display:flex;gap:10px;flex-wrap:wrap}
     .seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-pill);overflow:hidden}
     .seg button{height:var(--ctl-h);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700}
-    .seg button[aria-pressed="true"]{background:#eef1ff}
+    .seg button {
+  height: var(--ctl-h);
+  padding: 0 14px;
+  border: 0;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--ink); /* Standard-Textrfarbe */
+}
+
+.seg button[aria-pressed="true"] {
+  background: var(--brand);
+  color: #fff;
+}
     .pax{height:var(--ctl-h);display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-pill);background:#fff;padding:0 10px}
     .pax button{width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;cursor:pointer}
     .line{display:flex;gap:10px;align-items:center}
