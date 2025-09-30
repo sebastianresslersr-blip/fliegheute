@@ -1,145 +1,180 @@
-/assets/logo-plany-header.svg (Header-Logo)
-/assets/logo-plany-mascot.svg (Plany-Maske im Hero)
-  <script>
-    // Jahr im Footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // ---- State ----
-    let trip='rt', mode='24h', pax=1;
-
-    // Segmented Controls (groß + kompakt synchron)
-    function bindSeg(containerSel, cb){
-      document.querySelectorAll(containerSel+' button').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          if(btn.disabled) return;
-          document.querySelectorAll(containerSel+' button').forEach(b=>b.setAttribute('aria-pressed','false'));
-          btn.setAttribute('aria-pressed','true');
-          cb(btn.dataset.trip || btn.dataset.mode);
-          // Spiegeln in die jeweils andere Bar
-          document.querySelectorAll('button[data-trip],button[data-mode]').forEach(b=>{
-            if(b.dataset.trip && btn.dataset.trip) b.setAttribute('aria-pressed', b.dataset.trip===btn.dataset.trip ? 'true':'false');
-            if(b.dataset.mode && btn.dataset.mode) b.setAttribute('aria-pressed', b.dataset.mode===btn.dataset.mode ? 'true':'false');
-          });
-        });
-      });
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>fliegheute.de – Flieg. Heute.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#7183f5; --ink:#0b0b13; --muted:#6e7280;
+      --bg:#f7f7f7; --hero:#eeeeee; --card:#fff;
+      --border:#e5e7eb; --radius:16px; --shadow:0 10px 30px rgba(21,25,62,.08);
+      --ctl-h:44px; --r-pill:999px;
     }
-    bindSeg('.seg[aria-label="Reiseart"]', v=>trip=v);
-    bindSeg('.seg[aria-label="Zeitraum"]', v=>mode=v);
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    // Pax-Controller
-    const paxOut = document.getElementById('pax');
-    document.querySelector('.pax').addEventListener('click', e=>{
-      const b=e.target.closest('button'); if(!b) return;
-      pax = Math.min(9, Math.max(1, (+paxOut.value||1) + (+b.dataset.d)));
-      paxOut.value = pax; paxOut.textContent = String(pax);
-      const sP = document.getElementById('sPax'); if(sP) sP.value = pax;
-    });
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
+    .hdr{height:80px;display:flex;align-items:center;justify-content:space-between}
+    .hdr img{height:32px}
+    nav{display:flex;gap:20px;align-items:center}
+    nav a{font-weight:600}
+    nav .cta{background:var(--ink);color:#fff;padding:8px 14px;border-radius:var(--r-pill);font-weight:700}
 
-    // Von/Nach + Swap
-    const from = document.getElementById('from');
-    const to   = document.getElementById('to');
-    from.value = 'FRA';
-    document.getElementById('swap').addEventListener('click', ()=>{
-      const t = from.value; from.value = to.value; to.value = t;
-      const sF = document.getElementById('sFrom'), sT = document.getElementById('sTo');
-      if(sF && sT){ sF.value = from.value; sT.value = to.value; }
-    });
+    /* Hero */
+    .hero-wrap{background:var(--hero)}
+    .hero{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:50px 0}
+    .hero h1{font-size:52px;font-family:"Inter Tight",sans-serif;font-weight:800;margin-bottom:8px}
+    .hero p{color:var(--muted);margin-bottom:20px}
 
-    // Geolocation → nächster großer DE-Airport (Fallback FRA)
-    const airports=[{code:'FRA',lat:50.0379,lon:8.5622},{code:'BER',lat:52.3667,lon:13.5033},{code:'MUC',lat:48.3537,lon:11.7750},{code:'STR',lat:48.6899,lon:9.2219},{code:'DUS',lat:51.2895,lon:6.7668},{code:'CGN',lat:50.8659,lon:7.1427},{code:'HAM',lat:53.6304,lon:9.9882}];
-    const toRad=d=>d*Math.PI/180;
-    const dist=(a,b,c,d)=>{const R=6371,dLat=toRad(c-a),dLon=toRad(d-b);const A=Math.sin(dLat/2)**2+Math.cos(toRad(a))*Math.cos(toRad(c))*Math.sin(dLon/2)**2;return 2*R*Math.asin(Math.sqrt(A));};
-    const nearest=(lat,lon)=>airports.reduce((m,a)=>{const dd=dist(lat,lon,a.lat,a.lon);return dd<(m.d||1e9)?{a,d:dd}:m;},{a:airports[0],d:1e9}).a;
-    document.getElementById('useGeo').addEventListener('click', ()=>{
-      if(!navigator.geolocation){ from.value='FRA'; return; }
-      navigator.geolocation.getCurrentPosition(
-        pos=>{ const a=nearest(pos.coords.latitude,pos.coords.longitude); from.value=a.code; },
-        _=>{ from.value='FRA'; },
-        {timeout:4000}
-      );
-    });
+    /* Suche */
+    .search{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:14px}
+    .controls{display:flex;gap:10px;flex-wrap:wrap}
+    .seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-pill);overflow:hidden}
+    .seg button{height:var(--ctl-h);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700}
+    .seg button[aria-pressed="true"]{background:#eef1ff}
+    .pax{height:var(--ctl-h);display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-pill);background:#fff;padding:0 10px}
+    .pax button{width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;cursor:pointer}
 
-    // Sticky-Mini-Search zeigen, wenn Hero aus dem Viewport ist
-    const mini = document.getElementById('miniSearch');
-    const hero = document.getElementById('hero');
-    const io = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ mini.classList.remove('visible'); mini.setAttribute('aria-hidden','true'); }
-        else { mini.classList.add('visible'); mini.setAttribute('aria-hidden','false'); }
-      });
-    }, {rootMargin:'-100px 0px 0px 0px'}); // 100px ≈ Headerhöhe
-    io.observe(hero);
+    .line{display:flex;gap:10px;align-items:center}
+    .field{flex:1;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
+    .field input{border:0;background:transparent;flex:1;font-size:16px}
+    .swap{width:var(--ctl-h);height:var(--ctl-h);border-radius:var(--r-pill);border:1px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
+    .geo{width:100%;height:var(--ctl-h);margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:10px;font-weight:600;cursor:pointer}
+    .go{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:0 16px;height:var(--ctl-h);font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
 
-    // Werte zwischen groß und kompakt spiegeln
-    ['input','change','keyup'].forEach(evt=>{
-      const sFrom = document.getElementById('sFrom');
-      const sTo   = document.getElementById('sTo');
-      if(sFrom && sTo){
-        from.addEventListener(evt, ()=> sFrom.value = from.value.toUpperCase());
-        to.addEventListener(evt,   ()=> sTo.value   = to.value);
-        sFrom.addEventListener(evt,()=> from.value = sFrom.value.toUpperCase());
-        sTo.addEventListener(evt,  ()=> to.value   = sTo.value);
-      }
-    });
+    .micro{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;color:#111;font-size:14px}
 
-    // Suche aus beiden UIs
-    function submitSearch(payload){
-      console.log('SEARCH', payload);
-      // TODO: fetch('/api/search', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
-      alert('Suche gestartet:\\n' + JSON.stringify(payload,null,2));
-    }
-    document.getElementById('searchForm').addEventListener('submit', e=>{
-      e.preventDefault();
-      submitSearch({trip,mode,from:from.value.trim().toUpperCase(),to:to.value.trim(),pax});
-    });
-    document.getElementById('sGo').addEventListener('click', ()=>{
-      const sFrom = document.getElementById('sFrom'), sTo = document.getElementById('sTo'), sP = document.getElementById('sPax');
-      submitSearch({trip,mode,from:(sFrom?.value||'FRA').trim().toUpperCase(),to:(sTo?.value||'').trim(),pax:+(sP?.value||1)});
-    });
+    /* Chips */
+    .chips{display:flex;gap:10px;overflow:auto;padding:10px 0}
+    .chip{background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
+    .chip .badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
 
-    // ===== Dummy-Daten (Ticker & Karten) =====
-    const hot24=[
-      {route:'FRA → BCN',time:'13:25',price:49,flag:'flame'},
-      {route:'BER → LON',time:'18:40',price:39,flag:'bolt'},
-      {route:'STR → ROM',time:'20:10',price:59,flag:'flame'},
-      {route:'MUC → LIS',time:'22:05',price:89,flag:'bolt'},
-      {route:'DUS → OPO',time:'06:50',price:69,flag:'flame'}
-    ];
-    const chipsHost = document.getElementById('hotChips');
-    hot24.forEach(x=>{
-      const el = document.createElement('div');
-      const icon = x.flag==='bolt' ? '⚡' : '🔥';
-      el.className='chip';
-      el.innerHTML = `<strong>${x.route}</strong><small>${x.time}</small><span class="badge">${icon} ${x.price}€</span>`;
-      chipsHost.appendChild(el);
-    });
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .media{aspect-ratio:16/9;background:#eef1ff}
+    .body{padding:14px}
+    .row{display:flex;justify-content:space-between;align-items:center}
+    .route{font-weight:800}
+    .price{font-size:22px;font-weight:800}
+    .meta{color:var(--muted);font-size:13px;margin-top:4px}
+    .cta{display:inline-block;margin-top:10px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
 
-    const deals = [
-      {route:'FRA → BCN',meta:'Heute 21:30 • 2h 10m • Nonstop',price:49,drop:'–22% unter üblich',ok:'Gepäck inkl.'},
-      {route:'BER → LON',meta:'Morgen 07:15 • 1h 55m • 1 Stopp',price:39},
-      {route:'STR → ROM',meta:'Morgen 19:10 • 2h 05m • Nonstop',price:59}
-    ];
-    const grid = document.getElementById('dealGrid');
-    deals.forEach(d=>{
-      const a=document.createElement('article'); a.className='card';
-      a.innerHTML = `
-        <div class="media"></div>
-        <div class="body">
-          <div class="row">
-            <div>
-              <div class="route">${d.route}</div>
-              <div class="meta">${d.meta}</div>
+    /* FAQ */
+    .faq{max-width:900px;margin:50px auto;padding:0 20px}
+    .faq h2{margin-bottom:16px}
+    details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:8px;cursor:pointer}
+    summary{font-weight:600}
+    summary::-webkit-details-marker{display:none}
+
+    /* Footer */
+    footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border)}
+    .footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .transparency{margin-top:10px;font-size:13px}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container hdr">
+      <a href="/"><img src="/assets/logo-plany-header.svg" alt="fliegheute.de"></a>
+      <nav>
+        <a href="#inspiration">Inspiration</a>
+        <a href="#hilfe">Hilfe</a>
+        <a href="#business">Für Business</a>
+        <a href="#login">Einloggen</a>
+        <a class="cta" href="#signup">Registrieren</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero-wrap">
+    <div class="container hero">
+      <div>
+        <h1>Flieg<span style="color:var(--brand)">Heute!</span></h1>
+        <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
+
+        <form class="search">
+          <div class="controls">
+            <div class="seg">
+              <button type="button" aria-pressed="true">Hin- & Rückflug</button>
+              <button type="button" aria-pressed="false">Nur Hinflug</button>
             </div>
-            <div class="price">${d.price} €</div>
+            <div class="seg">
+              <button type="button" aria-pressed="true">24h</button>
+              <button type="button" aria-pressed="false">48h</button>
+              <button type="button" aria-pressed="false" disabled>Bald</button>
+            </div>
+            <div class="pax">
+              <button type="button">–</button>
+              <output>1</output>
+              <button type="button">+</button>
+            </div>
           </div>
-          ${d.drop||d.ok ? `<div class="badges">
-            ${d.drop?`<span class="b deal">${d.drop}</span>`:''}
-            ${d.ok?`<span class="b ok">${d.ok}</span>`:''}
-          </div>`:''}
-          <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
-        </div>`;
-      grid.appendChild(a);
-    });
+
+          <div class="line">
+            <div class="field"><input placeholder="FRA"></div>
+            <button class="swap">⇆</button>
+            <div class="field"><input placeholder="BCN oder Barcelona"></div>
+            <button class="go">🔍 Flüge</button>
+          </div>
+          <button type="button" class="geo">Abflug: Nächsten Airport setzen</button>
+
+          <div class="micro">
+            <span>✅ Beste Deals im Web</span>
+            <span>✅ Preise werden laufend aktualisiert</span>
+            <span>✅ Gespart & abgehoben</span>
+          </div>
+        </form>
+      </div>
+      <img src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen" width="120">
+    </div>
+  </div>
+
+  <!-- Deals (Dummy) -->
+  <main class="container">
+    <section>
+      <h2>Heute (24h)</h2>
+      <div class="chips">
+        <div class="chip"><strong>FRA → BCN</strong><small>13:25</small><span class="badge">🔥 49€</span></div>
+        <div class="chip"><strong>BER → LON</strong><small>18:40</small><span class="badge">⚡ 39€</span></div>
+      </div>
+    </section>
+    <section>
+      <h2>48 Stunden</h2>
+      <div class="grid">
+        <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">FRA → BCN</div><div class="meta">Heute 21:30 • 2h 10m</div></div><div class="price">49 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FAQ -->
+  <section class="faq" id="hilfe">
+    <h2>Häufig gestellte Fragen</h2>
+    <details><summary>Was muss ich wissen, bevor ich einen Flug buche?</summary><p>Prüfe deine Reisedokumente, Gepäckregeln und mögliche Zusatzkosten.</p></details>
+    <details><summary>Wann ist die beste Zeit, Flüge zu buchen?</summary><p>Viele günstige Tickets tauchen 1–3 Tage vor Abflug auf.</p></details>
+    <details><summary>Kann ich mit Zwischenstopps sparen?</summary><p>Oft sind Flüge mit Stopps günstiger als Nonstop-Verbindungen.</p></details>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer">
+      <div>© <span id="y"></span> fliegheute.de</div>
+      <div><a href="#">Impressum</a> · <a href="#">Datenschutz</a></div>
+    </div>
+    <div class="footer transparency">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
