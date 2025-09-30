@@ -1,287 +1,609 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FliegHeute.de – Flieg. Heute.</title>
-
-  <!-- === FONTS & FAVICON === -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/img/plany.svg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>fliegheute.de – Flieg heute & in 48h günstig</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* === ROOT VARIABLES === */
+    /* =========================
+       DESIGN TOKENS / THEME
+       ========================= */
     :root{
-      --brand:#7183f5;      /* Spicy Blue (CTA) */
-      --ink:#0b0b13;        /* Textfarbe */
-      --muted:#6e7280;
-      --bg:#f7f7f7;         /* Seitenhintergrund */
-      --hero:#eeeeee;       /* Hero-Hintergrund */
-      --card:#ffffff;       /* Kartenflächen */
-      --header:#ffffff;     /* Header-Hintergrund */
-      --deal:#f571b4;       /* Pink für Deals */
-      --radius:16px;
-      --shadow:0 10px 30px rgba(21,25,62,.08);
+      /* Farben */
+      --brand:#7183f5;        /* Spicy Blue */
+      --ink:#0b0b13;          /* Primärtext */
+      --muted:#6e7280;        /* Sekundärtext */
+      --bg:#f7f7f7;           /* Seitenhintergrund */
+      --card:#ffffff;         /* Karten / Flächen */
+      --border:#ececf3;       /* zarte Ränder */
+
+      /* Badges / Status */
+      --chip:#ffe6f2;         /* Preischip rosa */
+      --chipText:#b21b50;     /* Preischip Text */
+      --flame-bg:#fff3e1;
+      --flame-bd:#ffe0b0;
+      --flame-tx:#b45309;
+
+      /* Maße / Radii / Shadow */
+      --r-lg:18px;            /* große Boxen */
+      --r-sm:12px;            /* Inputs / Chips */
+      --h-ctl:44px;           /* EINHEITLICHE Höhe aller Controls */
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --shadow-soft:0 6px 16px rgba(0,0,0,.04);
+
+      /* Header + Sticky-Suche */
+      --header-h:64px;
+      --sticky-search-h:60px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-    a{text-decoration:none;color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    /* Global */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:inherit; text-decoration:none}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
+      outline:2px solid var(--brand); outline-offset:2px; border-radius:10px;
+    }
+    img{max-width:100%; display:block}
 
-    /* === HEADER STYLE === */
+    /* =========================
+       HEADER (weiß, sticky)
+       ========================= */
     header{
-      position:sticky;top:0;z-index:50;
-      background:var(--header); /* Header-Hintergrundfarbe */
-      border-bottom:1px solid rgba(0,0,0,.08);
-      backdrop-filter:saturate(120%);
+      position:sticky; top:0; z-index:1000; height:var(--header-h);
+      background:rgba(255,255,255,.94);
+      backdrop-filter:saturate(1.2) blur(8px);
+      border-bottom:1px solid #e9e9ef;
     }
-    .hdr{min-height:100px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px;
-      font-weight:800;font-size:24px; /* Schriftgröße Logo-Text */
-      font-family:"Inter Tight",sans-serif;line-height:1;}
-    .brand img{width:80px;height:80px}
-    .brand span{color:var(--brand)}
-    nav{display:flex;gap:16px;align-items:center}
-    nav a{display:inline-flex;align-items:center;justify-content:center;
-      line-height:1;height:40px;padding:0 6px;
-      color:var(--ink);font-weight:600}
-    nav a.cta{background:var(--brand);color:#fff;
-      padding:8px 14px;border-radius:999px;font-weight:700;
-      transition:background .2s ease,transform .15s ease}
-    nav a.cta:hover{background:#5a6de0}
+    .bar{max-width:1200px; margin:0 auto; height:100%;
+      display:flex; align-items:center; gap:16px; padding:0 16px;}
+    .logo img{height:28px; width:auto}
+    nav{margin-left:auto; display:flex; gap:16px; align-items:center}
+    .navlink{padding:8px 10px; border-radius:999px; color:#3a3d4a}
+    .navlink:hover{background:#f1f1f6}
+    .cta{background:#0b0b13; color:#fff; padding:8px 12px; border-radius:999px; font-weight:800}
 
-    /* === HERO STYLE === */
-    .hero-wrap{background:var(--hero);color:var(--ink)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:56px 0}
-    @media (max-width:900px){.hero{grid-template-columns:1fr;padding:40px 0}}
-    .h-title{font-size:56px;line-height:1.02;margin:0 0 8px;font-weight:800;letter-spacing:-.5px;font-family:"Inter Tight",sans-serif}
-    .h-sub{opacity:.95;margin:0 0 22px;font-size:18px}
-    .lift{display:inline-block;transform:rotate(-6deg) translateY(-1px)}
-    .lift:hover{transform:rotate(-10deg) translate(2px,-4px);transition:transform .18s ease-out}
+    /* =========================
+       KOMPAKTE STICKY-SUCHE (erscheint beim Scroll)
+       ========================= */
+    .sticky-search{
+      position:sticky; top:var(--header-h); z-index:900;
+      background:rgba(255,255,255,.96); border-bottom:1px solid var(--border);
+      transform:translateY(-120%); opacity:0; pointer-events:none;
+      transition:transform .28s ease, opacity .28s ease;
+    }
+    .sticky-search.visible{transform:translateY(0); opacity:1; pointer-events:auto}
+    .sticky-wrap{max-width:1200px; margin:0 auto; height:var(--sticky-search-h);
+      display:flex; gap:10px; align-items:center; padding:8px 16px}
+    .sticky-input{
+      height:40px; border:1px solid var(--border); border-radius:999px;
+      background:#fff; padding:0 12px; display:flex; align-items:center; gap:8px;
+    }
+    .sticky-input input{border:0; outline:0; width:160px}
+    .sticky-seg{display:inline-flex; border:1px solid var(--border); border-radius:999px; overflow:hidden}
+    .sticky-seg button{padding:8px 12px; background:transparent; border:0; cursor:pointer; font-weight:700}
+    .sticky-seg button[aria-pressed="true"]{background:#eef1ff}
+    .sticky-go{background:var(--brand); color:#fff; border:0; border-radius:999px; padding:10px 14px; font-weight:800}
 
-    /* === SEARCH STYLE === */
-    .search{background:var(--card);border-radius:14px;padding:12px;display:flex;gap:10px;flex-wrap:wrap;box-shadow:var(--shadow)}
-    .field{flex:1 1 180px;background:#f1f3ff;border:1px solid rgba(0,0,0,.06);border-radius:10px;padding:10px 12px}
-    .field input{width:100%;border:0;outline:0;background:transparent;font-size:16px}
-    .toggle{display:flex;gap:6px;align-items:center;background:#f1f3ff;border-radius:999px;padding:6px}
-    .toggle input{display:none}
-    .toggle label{padding:8px 10px;border-radius:999px;font-weight:600;color:#2a2e43;cursor:pointer}
-    .toggle input:checked+label{background:#fff}
-    .go{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;transition:background .2s ease,transform .15s ease}
-    .go:hover{background:#5a6de0;transform:translateY(-2px)}
+    /* =========================
+       HERO + GRID
+       ========================= */
+    .hero{
+      padding:28px 16px 22px;
+      background:
+        radial-gradient(1200px 400px at 30% -10%, rgba(113,131,245,.10), transparent 60%),
+        linear-gradient(180deg, #f8f8fb 0%, #f6f6f8 60%, #f7f7f7 100%);
+      border-bottom:1px solid #efeff5;
+    }
+    .wrap{max-width:1200px; margin:0 auto}
+    .hero-top{display:flex; align-items:flex-start; gap:16px}
+    .title{flex:1}
+    .title h1{font-size:56px; line-height:1.05; margin:6px 0 12px}
+    .title p{margin:0; color:var(--muted)}
+    .mascot{width:120px; height:auto}
 
-    /* === SECTIONS STYLE === */
-    main section{padding:34px 0}
-    .section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
-    .section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
-    .link{color:var(--brand);font-weight:700}
+    .hero-grid{margin-top:12px; display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
 
-    /* === TICKER STYLE === */
-    .ticker{overflow:auto}
-    .chips{display:flex;gap:10px;min-height:56px;padding-bottom:2px}
-    .chip{flex:0 0 auto;background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:10px 14px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow)}
-    .chip .badge{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;background:var(--deal)}
+    /* =========================
+       SUCHE (groß, aus einem Guss)
+       ========================= */
+    /* Form-Reset – gleiche Optik in allen Browsern */
+    input, select, button { font: inherit; }
+    input[type="text"], select { appearance:none; -webkit-appearance:none; }
 
-    /* === GRID & CARDS STYLE === */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:600px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(0,0,0,.06)}
-    .media{aspect-ratio:16/9;background:linear-gradient(120deg,#eef1ff,#dde4ff)}
-    .body{padding:14px}
-    .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-    .route{font-weight:800}
-    .price{font-size:22px;font-weight:800}
-    .meta{color:var(--muted);font-size:13px;margin-top:6px}
-    .badges{display:flex;gap:8px;margin-top:10px}
-    .b{padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}
-    .b.deal{background:#ffe3ea;color:#c0183b}
-    .b.ok{background:#e9f8ef;color:#0f8d54}
-    .cta{display:inline-flex;gap:8px;align-items:center;margin-top:12px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;transition:background .2s ease,transform .15s ease}
-    .cta:hover{background:#5a6de0;transform:translateY(-2px)}
+    .search{
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--r-lg); box-shadow:var(--shadow); padding:16px;
+    }
+    .search .row{display:grid; grid-template-columns:repeat(12,1fr); gap:12px}
+    .search .cell{grid-column:span 6}
+    .search .cell.sm{grid-column:span 3}
+    @media (max-width:900px){ .search .cell, .search .cell.sm {grid-column:1/-1} }
 
-    /* === PANELS / SPLIT STYLE === */
-    .cta-split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media (max-width:900px){.cta-split{grid-template-columns:1fr}}
-    .panel{background:#ffffff;border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:18px}
+    .search label{
+      display:block; margin:4px 0 6px;
+      font-size:12px; letter-spacing:.3px; text-transform:uppercase; color:#9aa0b4;
+    }
+    .seg{display:inline-flex; border:1px solid #e6e7ee; border-radius:999px; overflow:hidden}
+    .seg button{
+      height:var(--h-ctl); padding:0 14px; border:0; background:#fff;
+      cursor:pointer; font-weight:700; color:#3a3d4a;
+    }
+    .seg button[aria-pressed="true"]{ background:#eef1ff; }
 
-    /* === KI-BAR STYLE === */
-    .ki{background:#0f1230;color:#e9ebff}
-    .ki .bar{display:flex;align-items:center;gap:12px;padding:10px 0}
-    .switch{display:flex;gap:8px;align-items:center}
-    .switch input{appearance:none;width:40px;height:22px;background:#3b3f66;border-radius:999px;position:relative;outline:none;cursor:pointer}
-    .switch input:checked{background:#4ade80}
-    .switch input::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:transform .18s}
-    .switch input:checked::after{transform:translateX(18px)}
+    .people{
+      height:var(--h-ctl); display:flex; align-items:center; gap:10px;
+      background:#fff; border:1px solid #e6e7ee; border-radius:999px; padding:0 8px;
+    }
+    .people button{
+      width:32px; height:32px; display:grid; place-items:center;
+      border:1px solid #dadbe6; border-radius:10px; background:#fff; font-weight:800; cursor:pointer;
+    }
 
-    /* === FOOTER STYLE === */
-    footer{padding:26px 0;color:var(--muted);border-top:1px solid rgba(0,0,0,.06)}
+    .search input[type="text"], .search select{
+      height:var(--h-ctl); padding:0 14px;
+      border:1px solid #e6e7ee; border-radius:var(--r-sm);
+      background:#fff; color:var(--ink);
+    }
+
+    .swap{
+      width:var(--h-ctl); height:var(--h-ctl); border-radius:999px;
+      border:1px solid #e6e7ee; background:#fff; display:grid; place-items:center; cursor:pointer;
+    }
+
+    .primary{height:var(--h-ctl); padding:0 16px; border-radius:12px; background:var(--brand); color:#fff; border:0; font-weight:800}
+    .secondary{height:var(--h-ctl); padding:0 14px; border-radius:12px; background:#fff; color:#1c1f2b; border:1px solid #e6e7ee; font-weight:700}
+    .ticks{display:flex; gap:16px; align-items:center; margin-top:10px; color:#1e293b; font-size:14px}
+    .tick{display:inline-flex; gap:6px; align-items:center}
+    .tick svg{width:18px; height:18px; color:#16a34a}
+
+    /* =========================
+       SPOTLIGHT-DEAL
+       ========================= */
+    .spot{
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--r-lg); box-shadow:var(--shadow);
+      padding:12px; display:grid; gap:10px;
+    }
+    .spot-banner{
+      position:relative; border-radius:14px; overflow:hidden; aspect-ratio:16/9;
+      background:linear-gradient(180deg,#e9eefb,#f8f8ff);
+    }
+    .spot-pill{
+      position:absolute; left:10px; top:10px;
+      display:inline-flex; gap:8px; align-items:center;
+      background:var(--flame-bg); border:1px solid var(--flame-bd); color:var(--flame-tx);
+      border-radius:999px; padding:6px 10px; font-weight:800;
+    }
+    .spot-ticket{
+      position:absolute; left:10px; right:10px; bottom:10px;
+      background:linear-gradient(90deg,#ff7eb8,#ff5db3);
+      color:#fff; border-radius:20px; padding:12px 16px; font-weight:800;
+      display:flex; gap:8px; align-items:center;
+    }
+    .spot-ticket .dot{width:8px; height:8px; border-radius:50%; background:#fff; opacity:.8}
+
+    /* =========================
+       24H CHIP-LEISTE (EXAKT wie besprochen)
+       ========================= */
+    .hotbar{max-width:1200px; margin:18px auto 0; padding:0 16px}
+    .hotbar-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px}
+    .hotbar-head a{color:#4f46e5; font-weight:700}
+    .chips{
+      display:flex; gap:10px; overflow:auto; padding:8px 0 12px;
+      mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    }
+    .chip{
+      white-space:nowrap; display:inline-flex; align-items:center; gap:10px;
+      background:#fff; border:1px solid var(--border); border-radius:999px;
+      padding:8px 12px; box-shadow:var(--shadow-soft);
+    }
+    .chip .route{font-weight:800}
+    .chip .time{color:var(--muted); font-weight:700}
+    .chip .pricepill{
+      display:inline-flex; align-items:center; gap:6px;
+      background:var(--chip); color:var(--chipText);
+      font-weight:900; border-radius:999px; padding:6px 10px;
+    }
+    .chip .chev{color:#9aa0b4; font-weight:900}
+
+    /* =========================
+       48H KARTEN
+       ========================= */
+    main{max-width:1200px; margin:28px auto 70px; padding:0 16px}
+    .section-head{display:flex; align-items:center; justify-content:space-between}
+    .grid{margin-top:12px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    @media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:680px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:24px;
+      box-shadow:var(--shadow); overflow:hidden; display:grid; grid-template-rows:auto auto;
+    }
+    .ph{aspect-ratio:16/10; background:linear-gradient(180deg,#eef1ff,#f6f7fb)}
+    .meta{padding:14px; display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center}
+    .meta h3{margin:0 0 6px}
+    .sub{color:var(--muted)}
+    .pill{display:flex; gap:8px; align-items:center; margin-top:8px}
+    .b{display:inline-flex; align-items:center; border-radius:999px; font-weight:700; padding:4px 8px; border:1px solid var(--border)}
+    .b.good{color:#14532d; border-color:#c7f0d5; background:#eafaf0}
+    .b.drop{color:#b91c1c; border-color:#ffd1d1; background:#fff1f1}
+    .price{font-size:22px; font-weight:800}
+    .buy{grid-column:1/-1; display:flex; gap:10px; padding:0 14px 14px}
+    .btn{background:var(--brand); color:#fff; border:0; border-radius:12px; padding:10px 14px; font-weight:800; cursor:pointer}
+    .btn.ghost{background:#fff; border:1px solid var(--border); color:#1c1f2b}
+
+    /* =========================
+       FAQ + FOOTER
+       ========================= */
+    .faq{max-width:1200px; margin:30px auto; padding:0 16px}
+    details{background:#fff; border:1px solid var(--border); border-radius:14px; padding:12px 16px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer; font-weight:700}
+    summary::-webkit-details-marker{display:none}
+
+    .footer{max-width:1200px; margin:30px auto 80px; padding:0 16px; color:#6b7280; font-size:14px}
+    .transparency{border-top:1px solid var(--border); padding-top:8px; margin-top:18px}
   </style>
 </head>
 <body>
-
-  <!-- === HEADER === -->
-  <header>
-    <div class="container hdr">
-      <a class="brand" href="/">
-        <img src="/img/plany.svg" alt="Plany Logo" width="80" height="80">
-        <span>fliegheute.de</span>
+  <!-- ===== Sticky Header ===== -->
+  <header role="banner" aria-label="Hauptnavigation">
+    <div class="bar">
+      <a class="logo" href="/">
+        <img src="/assets/logo-plany-header.svg" alt="fliegheute.de">
       </a>
       <nav>
-        <a href="#deals">Deals</a>
-        <a href="https://t.me/fliegheute" target="_blank" rel="noopener">Telegram</a>
-        <a class="cta" href="#alerts">Alerts aktivieren</a>
+        <a class="navlink" href="#explore">Inspiration</a>
+        <a class="navlink" href="#hilfe">Hilfe</a>
+        <a class="navlink" href="#business">Für Business</a>
+        <a class="navlink" href="#login">Einloggen</a>
+        <a class="cta" href="#signup">Registrieren</a>
       </nav>
     </div>
   </header>
 
-  <!-- === HERO === -->
-  <div class="hero-wrap">
-    <div class="container hero">
-      <div>
-        <h1 class="h-title">Flieg<span class="lift">Heute!</span></h1>
-        <p class="h-sub">Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
+  <!-- ===== Compact Sticky Search (shows after Hero scroll) ===== -->
+  <div class="sticky-search" id="stickySearch" aria-hidden="true">
+    <div class="sticky-wrap">
+      <div class="sticky-seg" role="tablist" aria-label="Reiseart">
+        <button type="button" role="tab" aria-pressed="true"  data-trip="rt">Hin & Rück</button>
+        <button type="button" role="tab" aria-pressed="false" data-trip="ow">Nur Hin</button>
+      </div>
+      <div class="sticky-seg" role="tablist" aria-label="Zeitraum">
+        <button type="button" role="tab" aria-pressed="true"  data-mode="24h">24h</button>
+        <button type="button" role="tab" aria-pressed="false" data-mode="48h">48h</button>
+        <button type="button" role="tab" aria-pressed="false" data-mode="bald" disabled>Bald</button>
+      </div>
+      <div class="sticky-input"><span>Von</span><input id="sFrom" placeholder="FRA" maxlength="3"></div>
+      <div class="sticky-input"><span>Nach</span><input id="sTo" placeholder="BCN oder Barcelona"></div>
+      <div class="sticky-input"><span>👤</span><input id="sPax" type="number" min="1" max="9" value="1" style="width:56px"></div>
+      <button class="sticky-go" id="sGo">Suchen</button>
+    </div>
+  </div>
 
-        <!-- === SEARCH FORM === -->
-        <form class="search" action="#deals" method="get">
-          <div class="field"><input name="from" placeholder="Abflugort (auto)" aria-label="Abflugort"></div>
-          <div class="field"><input name="to" placeholder="Ziel (Anywhere)" aria-label="Ziel"></div>
-          <div class="toggle" role="tablist" aria-label="Zeitraum">
-            <input type="radio" id="t24" name="t" checked><label for="t24">24h</label>
-            <input type="radio" id="t48" name="t"><label for="t48">48h</label>
-            <input type="radio" id="tbald" name="t"><label for="tbald">Bald</label>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <img class="mascot" src="/assets/logo-plany-mascot.svg" alt="Plany – dein Flugfreund">
+        <div class="title">
+          <h1>Echt günstig davon gekommen!</h1>
+          <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <!-- ===== GROSSE SUCHE ===== -->
+        <form class="search" id="searchForm" aria-label="Flug-Suche">
+          <div class="row">
+            <!-- Kopf: Reiseart / Zeitraum / Pax -->
+            <div class="cell sm">
+              <label>Reiseart</label>
+              <div class="seg" role="tablist" aria-label="Reiseart">
+                <button type="button" role="tab" aria-pressed="true" data-trip="rt">Hin- & Rückflug</button>
+                <button type="button" role="tab" aria-pressed="false" data-trip="ow">Nur Hinflug</button>
+              </div>
+            </div>
+            <div class="cell sm">
+              <label>Zeitraum</label>
+              <div class="seg" role="tablist" aria-label="Zeitraum">
+                <button type="button" role="tab" aria-pressed="true" data-mode="24h">24h</button>
+                <button type="button" role="tab" aria-pressed="false" data-mode="48h">48h</button>
+                <button type="button" role="tab" aria-pressed="false" data-mode="bald" disabled>Bald</button>
+              </div>
+            </div>
+            <div class="cell sm">
+              <label>Erwachsene</label>
+              <div class="people" aria-label="Anzahl Reisende">
+                <button type="button" data-d="-1" aria-label="Eine Person weniger">–</button>
+                <output id="pax" name="pax" aria-live="polite" style="min-width:24px;text-align:center;font-weight:800">1</output>
+                <button type="button" data-d="1" aria-label="Eine Person mehr">+</button>
+              </div>
+            </div>
+
+            <!-- Zeile 2: Von / Swap / Nach -->
+            <div class="cell">
+              <label for="from">Von</label>
+              <div style="display:flex; gap:10px; align-items:center">
+                <input id="from" name="from" placeholder="FRA" maxlength="3" autocomplete="off">
+                <button class="swap" type="button" id="swap" title="Von/Nach tauschen" aria-label="Von und Nach tauschen">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M7 7h11M13 3l4 4-4 4M17 17H6M10 21l-4-4 4-4"/>
+                  </svg>
+                </button>
+                <input id="to" name="to" placeholder="BCN oder Barcelona" autocomplete="off" style="flex:1">
+              </div>
+            </div>
+
+            <!-- CTA + Geo -->
+            <div class="cell sm" style="display:flex; align-items:flex-end; gap:10px">
+              <button class="secondary" type="button" id="useGeo">Abflug: Nächsten Airport setzen</button>
+              <button class="primary" type="submit">Entdecken</button>
+            </div>
           </div>
-          <button class="go" type="submit">Finde Deals</button>
+
+          <!-- Trust-Häkchen -->
+          <div class="ticks" aria-hidden="true">
+            <span class="tick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Deine besten Flug-Deals im Web</span>
+            </span>
+            <span class="tick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Preise werden laufend aktualisiert</span>
+            </span>
+            <span class="tick">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Gespart & abgehoben</span>
+            </span>
+          </div>
         </form>
 
-        <div class="micro" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
-          <span>✅ Beste Deals im Web </span>
-          <span>✅ Direkt sparen </span>
-          <span>✅ Abflug </span>
-        </div>
-      </div>
-
-      <div style="display:flex;align-items:center;justify-content:center">
-        <img src="/img/plany.svg" alt="Plany Logo" width="120" style="filter: drop-shadow(0 16px 24px rgba(0,0,0,.2))">
+        <!-- ===== SPOTLIGHT-DEAL ===== -->
+        <aside class="spot" aria-label="Spotlight-Deal">
+          <div class="spot-banner" aria-hidden="true">
+            <div class="spot-pill">⚡ Jetzt oder nie, Koffer packen!</div>
+            <div class="spot-ticket">
+              <span class="dot"></span>
+              <span><strong>Frankfurt → Barcelona</strong> 19:20 • direkt • ab 1 Pers.</span>
+              <span style="margin-left:auto;font-size:22px">27€</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
+  </section>
+
+  <!-- ===== 24H CHIP-LEISTE ===== -->
+  <div class="hotbar">
+    <div class="hotbar-head">
+      <h3 style="margin:0">24H</h3>
+      <a href="#all24h" aria-label="Alle 24h-Deals">Alle 24h-Deals</a>
+    </div>
+    <div class="chips" id="hotChips" role="list"></div>
   </div>
 
-  <!-- === MAIN DEALS === -->
-  <main id="deals" class="container">
-
-    <!-- === 24h TICKER === -->
-    <section>
-      <div class="section-h">
-        <h2>Heute (24h)</h2>
-        <a class="link" href="#">Alle 24h-Deals</a>
-      </div>
-      <div class="ticker">
-        <div class="chips">
-          <div class="chip"><strong>FRA → BCN</strong><small>13:25</small><span class="badge">🔥 49€</span></div>
-          <div class="chip"><strong>BER → LON</strong><small>18:40</small><span class="badge">⚡ 39€</span></div>
-          <div class="chip"><strong>STR → ROM</strong><small>20:10</small><span class="badge">🔥 59€</span></div>
-          <div class="chip"><strong>MUC → LIS</strong><small>22:05</small><span class="badge">⚡ 89€</span></div>
-          <div class="chip"><strong>DUS → OPO</strong><small>06:50</small><span class="badge">🔥 69€</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- === 48h GRID === -->
-    <section>
-      <div class="section-h">
-        <h2>48 Stunden</h2>
-        <a class="link" href="#">Mehr Deals</a>
-      </div>
-      <div class="grid">
-        <!-- CARD 1 -->
-        <article class="card">
-          <div class="media"></div>
-          <div class="body">
-            <div class="row">
-              <div>
-                <div class="route">FRA → BCN</div>
-                <div class="meta">Heute 21:30 • 2h 10m • Nonstop</div>
-              </div>
-              <div class="price">49 €</div>
-            </div>
-            <div class="badges"><span class="b deal">–22% unter üblich</span><span class="b ok">Gepäck inkl.</span></div>
-            <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
-          </div>
-        </article>
-        <!-- CARD 2 -->
-        <article class="card">
-          <div class="media"></div>
-          <div class="body">
-            <div class="row">
-              <div>
-                <div class="route">BER → LON</div>
-                <div class="meta">Morgen 07:15 • 1h 55m • 1 Stopp</div>
-              </div>
-              <div class="price">39 €</div>
-            </div>
-            <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
-          </div>
-        </article>
-        <!-- CARD 3 -->
-        <article class="card">
-          <div class="media"></div>
-          <div class="body">
-            <div class="row">
-              <div>
-                <div class="route">STR → ROM</div>
-                <div class="meta">Morgen 19:10 • 2h 05m • Nonstop</div>
-              </div>
-              <div class="price">59 €</div>
-            </div>
-            <a class="cta" href="#" target="_blank" rel="noopener">Jetzt buchen</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- === ALERTS / NEWSLETTER === -->
-    <section id="alerts" class="cta-split">
-      <div class="panel">
-        <h3>Alerts in 10 Sekunden</h3>
-        <p class="meta">Verpasse keinen 24h-Deal. E-Mail oder Telegram – du entscheidest.</p>
-        <div class="ml-embedded" data-form="hadGdY"></div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
-          <a class="cta" href="https://t.me/fliegheute" target="_blank" rel="noopener">Telegram beitreten</a>
-        </div>
-      </div>
-      <div class="panel">
-        <h3>Wartezeit wird belohnt</h3>
-        <p class="meta">Airport-Timer → Punkte. Partner-Boosts bei Duty Free &amp; Catering. <strong>App bald.</strong></p>
-        <a class="cta" href="#">Mehr erfahren</a>
-      </div>
-    </section>
+  <!-- ===== 48H KARTEN ===== -->
+  <main id="main">
+    <div class="section-head">
+      <h2 style="margin:0">48H</h2>
+      <a href="#more" style="color:#4f46e5;font-weight:700">Mehr Deals</a>
+    </div>
+    <div class="grid" id="dealGrid" aria-label="Deals in den nächsten 48 Stunden"></div>
   </main>
 
-  <!-- === KI-BAR === -->
-  <div class="ki">
-    <div class="container bar">
-      <span>Deals sind <strong>KI-kuratierte Vorschläge</strong>.</span>
-      <div class="switch" title="KI-Ansicht umschalten">
-        <input type="checkbox" id="kiaus">
-      </div>
-      <label for="kiaus">KI aus → Rohdaten</label>
-      <span style="margin-left:auto;opacity:.8">„Warum dieser Deal?“ erklärt Preis &amp; Regeln</span>
-    </div>
-  </div>
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="hilfe">
+    <h2 style="margin:0 0 10px">Häufig gestellte Fragen</h2>
+    <details>
+      <summary>Was sollte ich vor der Flugbuchung prüfen?</summary>
+      <div>Reisedokumente, Gepäckregeln, Storno/Umbuchung. Preise ändern sich schnell – final ist der Preis beim Anbieter.</div>
+    </details>
+    <details>
+      <summary>Wo finde ich die besten Angebote?</summary>
+      <div>Teste nahe Abflughäfen, flexible Tage (±1–3) und unsere 24/48-h-Filter. Große Preisfälle tauchen häufig kurzfristig auf.</div>
+    </details>
+    <details>
+      <summary>Wie funktionieren Preis-Alerts?</summary>
+      <div>Strecke & Zeitraum abonnieren – wir melden signifikante Änderungen. Abmeldung jederzeit. Keine versteckten Gebühren.</div>
+    </details>
+    <details>
+      <summary>Was bedeutet „Weiter zur Airline/OTA“?</summary>
+      <div>Wir vergleichen – die Buchung erfolgt beim Anbieter. Dort gelten dessen AGB, Gebühren und Zahlungsarten.</div>
+    </details>
+  </section>
 
-  <!-- === FOOTER === -->
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
-      <div>© <span id="y"></span> fliegheute.de</div>
-      <div class="meta"><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">Partner werden</a></div>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div>© fliegheute.de</div>
+    <div class="transparency">
+      Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Preise können sich ändern; ggf. fallen Gebühren/Zusatzleistungen beim Anbieter an. Kein Aufpreis durch uns.
     </div>
   </footer>
 
-  <!-- === SCRIPT === -->
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    /* =========================
+       kleine Helpers
+       ========================= */
+    const $  = s => document.querySelector(s);
+    const $$ = s => Array.from(document.querySelectorAll(s));
+
+    // --- State ---
+    let trip = 'rt';
+    let mode = '24h';
+    let pax  = 1;
+
+    // Pax Control
+    const paxOut = $('#pax');
+    $('.people').addEventListener('click', e=>{
+      const b = e.target.closest('button'); if(!b) return;
+      pax = Math.min(9, Math.max(1, (+paxOut.value || 1) + (+b.dataset.d)));
+      paxOut.value = pax; paxOut.textContent = String(pax);
+      $('#sPax').value = pax; // sync compact
+    });
+
+    // Segmented Controls (Reiseart/Zeitraum)
+    function bindSeg(containerSel, onChange){
+      $$(containerSel+' button').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          if(btn.disabled) return;
+          $$(containerSel+' button').forEach(b=>b.setAttribute('aria-pressed','false'));
+          btn.setAttribute('aria-pressed','true');
+          onChange(btn.dataset.trip || btn.dataset.mode);
+        });
+      });
+    }
+    bindSeg('.seg[aria-label="Reiseart"]', v=>{
+      trip = v;
+      $$('.sticky-seg[aria-label="Reiseart"] button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.trip===v ? 'true':'false'));
+    });
+    bindSeg('.seg[aria-label="Zeitraum"]', v=>{
+      mode = v;
+      $$('.sticky-seg[aria-label="Zeitraum"] button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.mode===v ? 'true':'false'));
+    });
+
+    // Inputs
+    const from = $('#from'); const to = $('#to');
+    from.value = 'FRA'; $('#sFrom').value = from.value;
+
+    // Swap Von/Nach
+    $('#swap').addEventListener('click', ()=>{
+      const tmp = from.value; from.value = to.value; to.value = tmp;
+      $('#sFrom').value = from.value; $('#sTo').value = to.value;
+    });
+
+    // Geolocation → nächster großer DE-Airport (Fallback FRA)
+    const airports = [
+      {code:'FRA', lat:50.0379, lon:8.5622}, {code:'BER', lat:52.3667, lon:13.5033},
+      {code:'MUC', lat:48.3537, lon:11.7750}, {code:'STR', lat:48.6899, lon:9.2219},
+      {code:'DUS', lat:51.2895, lon:6.7668}, {code:'CGN', lat:50.8659, lon:7.1427},
+      {code:'HAM', lat:53.6304, lon:9.9882}
+    ];
+    const toRad = d=>d*Math.PI/180;
+    const dist = (a,b,c,d)=>{const R=6371, dLat=toRad(c-a), dLon=toRad(d-b);
+      const A=Math.sin(dLat/2)**2+Math.cos(toRad(a))*Math.cos(toRad(c))*Math.sin(dLon/2)**2; return 2*R*Math.asin(Math.sqrt(A));};
+    function nearest(lat,lon){return airports.reduce((m,a)=>{const dd=dist(lat,lon,a.lat,a.lon);return dd<(m.d||1e9)?{a,d:dd}:m;},{a:airports[0],d:1e9}).a;}
+    $('#useGeo').addEventListener('click', ()=>{
+      if(!navigator.geolocation){from.value='FRA'; $('#sFrom').value='FRA'; return;}
+      navigator.geolocation.getCurrentPosition(
+        pos=>{const a=nearest(pos.coords.latitude,pos.coords.longitude); from.value=a.code; $('#sFrom').value=a.code;},
+        _=>{from.value='FRA'; $('#sFrom').value='FRA';},
+        {timeout:4000}
+      );
+    });
+
+    // Sticky Search sichtbar, wenn Hero nicht mehr im Viewport
+    const sticky = $('#stickySearch');
+    const hero   = document.querySelector('.hero');
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          sticky.classList.remove('visible'); sticky.setAttribute('aria-hidden','true');
+        }else{
+          sticky.classList.add('visible');    sticky.setAttribute('aria-hidden','false');
+        }
+      });
+    }, {rootMargin: `-${parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'))}px 0px 0px 0px`});
+    io.observe(hero);
+
+    // Werte zwischen groß & compact spiegeln
+    ['input','change','keyup'].forEach(evt=>{
+      from.addEventListener(evt, ()=> $('#sFrom').value = from.value.toUpperCase());
+      to.addEventListener(evt,   ()=> $('#sTo').value   = to.value);
+      $('#sFrom').addEventListener(evt, ()=> from.value = $('#sFrom').value.toUpperCase());
+      $('#sTo').addEventListener(evt,   ()=> to.value   = $('#sTo').value);
+    });
+    $('#sPax').addEventListener('change', ()=>{pax = Math.min(9, Math.max(1, +$('#sPax').value||1)); paxOut.value=pax; paxOut.textContent=String(pax); });
+
+    // Suche abschicken (beide UIs benutzen denselben Handler)
+    function submitSearch(payload){
+      console.log('SEARCH', payload);
+      alert(`Suche gestartet:\n${JSON.stringify(payload,null,2)}\n(TODO: fetch('/api/search', ...) anschließen)`);
+    }
+    $('#searchForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      submitSearch({ trip, mode, from: from.value.trim().toUpperCase(), to: to.value.trim(), pax });
+    });
+    $('#sGo').addEventListener('click', ()=>{
+      submitSearch({
+        trip, mode,
+        from: $('#sFrom').value.trim().toUpperCase() || 'FRA',
+        to: $('#sTo').value.trim(),
+        pax: +$('#sPax').value || 1
+      });
+    });
+
+    /* =========================
+       DUMMY-DATEN → später API
+       ========================= */
+    const hot24 = [
+      {route:'FRA → BCN', time:'13:25', price:49, flag:'flame'},
+      {route:'BER → LON', time:'18:40', price:39, flag:'bolt'},
+      {route:'STR → ROM', time:'20:10', price:59, flag:'flame'},
+      {route:'MUC → LIS', time:'22:05', price:89, flag:'flame'},
+      {route:'DUS → OPO', time:'09:10', price:69, flag:'bolt'},
+      {route:'HAM → CPH', time:'12:40', price:45, flag:'bolt'}
+    ];
+    const deals48 = [
+      {route:'FRA → BCN', sub:'Heute 21:30 • 2h 10m • Nonstop', price:49, drop:'22% unter üblich', good:'Gepäck inkl.'},
+      {route:'BER → LON', sub:'Morgen 07:15 • 1h 55m • 1 Stopp', price:39, drop:'', good:''},
+      {route:'STR → ROM', sub:'Morgen 19:10 • 2h 05m • Nonstop', price:59, drop:'', good:''}
+    ];
+
+    // Chips rendern – Icon IN der rosa Preis-Pille
+    const chipHost = $('#hotChips'); chipHost.innerHTML = '';
+    hot24.forEach(x=>{
+      const icon = x.flag==='bolt' ? '⚡' : '🔥';
+      const el = document.createElement('div');
+      el.className = 'chip'; el.setAttribute('role','listitem');
+      el.innerHTML = `
+        <span class="route">${x.route}</span>
+        <span class="time">${x.time}</span>
+        <span class="pricepill">${icon} ${x.price}€</span>
+        <span class="chev">›</span>
+      `;
+      chipHost.appendChild(el);
+    });
+
+    // Karten rendern
+    const grid = $('#dealGrid');
+    deals48.forEach(d=>{
+      const card = document.createElement('article');
+      card.className='card';
+      card.innerHTML = `
+        <div class="ph" aria-hidden="true"></div>
+        <div class="meta">
+          <div>
+            <h3>${d.route}</h3>
+            <div class="sub">${d.sub}</div>
+            <div class="pill">
+              ${d.drop ? `<span class="b drop">-${d.drop.replace(/[^0-9]/g,'')}% unter üblich</span>` : ''}
+              ${d.good ? `<span class="b good">${d.good}</span>` : ''}
+            </div>
+          </div>
+          <div class="price">${d.price} €</div>
+          <div class="buy">
+            <button class="btn">Weiter zur Airline/OTA</button>
+            <button class="btn ghost">Merken</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    /* =========================
+       BACKEND-HOOKS (Platzhalter)
+       - /api/search  POST  -> payload
+       - /api/deals?window=24h|48h  GET -> Chips/Karten
+       ========================= */
   </script>
 </body>
 </html>
