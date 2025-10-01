@@ -27,7 +27,22 @@
 
     /* Hero */
     .hero-wrap{background:var(--hero)}
-    .hero{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:100px 0}
+    .hero {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:40px;
+  padding:100px 0;
+}
+
+.hero .search {
+  max-width:640px;   /* Suchfeld fix auf 640px */
+  width:100%;
+}
+
+.hero img {
+  flex-shrink:0;     /* verhindert, dass das Maskottchen gequetscht wird */
+}
     .hero h1{font-size:52px;font-family:"Inter Tight",sans-serif;font-weight:800;margin-bottom:8px}
     .hero p{color:var(--muted);margin-bottom:20px}
 
