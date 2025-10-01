@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>fliegheute.de – Flieg. Heute.</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
-  <style>
+  <style id="fh-styles">
     :root{
       --brand:#7183f5; --ink:#0b0b13; --muted:#6e7280;
       --bg:#f9f9f9; --hero:#eeeeee; --card:#fff;
@@ -14,214 +14,217 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
-    a{text-decoration:none;color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    /* Header */
-    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
-    .hdr{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .hdr img{height:32px}
-    nav{display:flex;gap:20px;align-items:center}
-    nav a{font-weight:600}
-    nav .cta{background:var(--ink);color:#fff;padding:8px 14px;border-radius:var(--r-pill);font-weight:700}
+    /* ===== Layout / Container ===== */
+    .fh-container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-    /* Hero */
-    .hero-wrap{background:var(--hero)}
-    .hero{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
+    /* ===== Header ===== */
+    .fh-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
+    .fh-hdr{height:80px;display:flex;align-items:center;justify-content:space-between}
+    .fh-hdr img{height:32px}
+    .fh-nav{display:flex;gap:20px;align-items:center}
+    .fh-nav a{font-weight:600;text-decoration:none;color:inherit}
+    .fh-nav .fh-cta{background:var(--ink);color:#fff;padding:8px 14px;border-radius:var(--r-pill);font-weight:700}
+
+    /* ===== Hero ===== */
+    .fh-hero-wrap{background:var(--hero)}
+    .fh-hero{
+      display:grid;
+      grid-template-columns: 640px auto;   /* linke Spalte fix 640px */
+      align-items:start;
       gap:40px;
       padding:100px 0;
     }
-    .hero-left{
-      flex:0 0 640px;
-      max-width:640px;
-    }
-    .hero .search{width:100%}
-    .hero img{
-      flex:0 0 auto;
-      width:180px;
-      height:auto;
-      align-self:flex-start;
-    }
-    .hero h1{font-size:52px;font-family:"Inter Tight",sans-serif;font-weight:800;margin-bottom:8px}
-    .hero p{color:var(--muted);margin-bottom:20px}
+    .fh-hero h1{font-size:52px;font-family:"Inter Tight",sans-serif;font-weight:800;margin-bottom:8px}
+    .fh-hero p{color:var(--muted);margin-bottom:20px}
+    .fh-mascot{width:180px;height:auto;justify-self:end}
 
-    /* Suche */
-    .search{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:14px}
-    .controls{display:flex;gap:10px;flex-wrap:wrap}
-    .seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-pill);overflow:hidden}
-    .seg button{height:var(--ctl-h);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700;color:var(--ink)}
-    .seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
-    .pax{display:flex;align-items:center;gap:8px}
-    .pax-btn{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .pax-count{min-width:36px;height:36px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
-    .line{display:flex;align-items:center;gap:10px}
-    .field{flex:1;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
-    .field input{border:0;background:transparent;flex:1;font-size:16px}
-    .swap{width:var(--ctl-h);height:var(--ctl-h);border-radius:var(--r-pill);border:1px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
-    .geo{width:100%;height:var(--ctl-h);margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:10px;font-weight:600;cursor:pointer}
-    .go{background:var(--brand);color:#fff;border:0;border-radius:10px;padding:0 16px;height:var(--ctl-h);font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
-    .micro{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;color:#111;font-size:14px}
+    /* ===== Suche ===== */
+    .fh-search{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:14px;width:100%}
+    .fh-controls{display:flex;gap:12px;flex-wrap:wrap}
+    .fh-seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-pill);overflow:hidden}
+    .fh-seg button{height:var(--ctl-h);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700;color:var(--ink)}
+    .fh-seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
 
-    /* Sections */
-    section{margin-top:100px}
-    .section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
-    .section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
-    .link{color:var(--brand);font-weight:700}
+    .fh-pax{display:flex;align-items:center;gap:8px}
+    .fh-pax-btn{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    .fh-pax-count{min-width:36px;height:36px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
 
-    /* Chips */
-    .chips{display:flex;gap:10px;padding:10px 0;justify-content:space-between}
-    .chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
-    .chip .badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
+    .fh-line{display:flex;align-items:center;gap:10px}
+    .fh-field{flex:1;min-width:0;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
+    .fh-field input{border:0;background:transparent;flex:1;min-width:0;font-size:16px}
+    .fh-swap{width:var(--ctl-h);height:var(--ctl-h);border-radius:var(--r-pill);border:1px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media(max-width:800px){.grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.grid{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .media{aspect-ratio:16/9;background:#eef1ff}
-    .body{padding:14px}
-    .row{display:flex;justify-content:space-between;align-items:center}
-    .route{font-weight:800}
-    .price{font-size:22px;font-weight:800}
-    .meta{color:var(--muted);font-size:13px;margin-top:4px}
-    .cta{display:inline-block;margin-top:10px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+    .fh-go{flex:0 0 auto;background:var(--brand);color:#fff;border:0;border-radius:10px;padding:0 16px;height:var(--ctl-h);font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
+    .fh-go img{display:block}
 
-    /* FAQ */
-    .faq{margin:100px 0;}
-    .faq h2{margin-bottom:16px}
+    .fh-geo{width:100%;height:var(--ctl-h);margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:10px;font-weight:600;cursor:pointer}
+    .fh-micro{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;color:#111;font-size:14px}
+
+    /* ===== Sections ===== */
+    .fh-section{margin-top:100px}
+    .fh-section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+    .fh-section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
+    .fh-link{color:var(--brand);font-weight:700;text-decoration:none}
+
+    /* ===== Chips ===== */
+    .fh-chips{display:flex;gap:10px;padding:10px 0;justify-content:space-between}
+    .fh-chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+    .fh-chip .fh-badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
+
+    /* ===== Grid ===== */
+    .fh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:800px){.fh-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.fh-grid{grid-template-columns:1fr}}
+    .fh-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .fh-media{aspect-ratio:16/9;background:#eef1ff}
+    .fh-body{padding:14px}
+    .fh-row{display:flex;justify-content:space-between;align-items:center}
+    .fh-route{font-weight:800}
+    .fh-price{font-size:22px;font-weight:800}
+    .fh-meta{color:var(--muted);font-size:13px;margin-top:4px}
+    .fh-cta{display:inline-block;margin-top:10px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+
+    /* ===== FAQ & Footer ===== */
+    .fh-faq{margin:100px 0}
+    .fh-faq h2{margin-bottom:16px}
     details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:8px;cursor:pointer}
-    summary{font-weight:600}
-    summary::-webkit-details-marker{display:none}
+    summary{font-weight:600} summary::-webkit-details-marker{display:none}
 
-    /* Footer */
     footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:100px}
-    .footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .transparency{margin-top:10px;font-size:13px}
+    .fh-footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .fh-transp{margin-top:10px;font-size:13px}
   </style>
 </head>
 <body>
+
   <!-- Header -->
-  <header>
-    <div class="container hdr">
+  <header class="fh-header">
+    <div class="fh-container fh-hdr">
       <a href="/"><img src="/assets/logo-plany-header.svg" alt="fliegheute.de"></a>
-      <nav>
+      <nav class="fh-nav">
         <a href="#inspiration">Inspiration</a>
         <a href="#hilfe">Hilfe</a>
         <a href="#business">Für Business</a>
         <a href="#login">Einloggen</a>
-        <a class="cta" href="#signup">Registrieren</a>
+        <a class="fh-cta" href="#signup">Registrieren</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <div class="hero-wrap">
-    <div class="container hero">
-      <div class="hero-left">
+  <div class="fh-hero-wrap">
+    <div class="fh-container fh-hero">
+      <div>
         <h1>Flieg<span style="color:var(--ink)">Heute!</span></h1>
         <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
 
-        <form class="search">
-          <div class="controls">
-            <div class="seg">
+        <form class="fh-search">
+          <div class="fh-controls">
+            <div class="fh-seg">
               <button type="button" aria-pressed="true">Hin- & Rückflug</button>
               <button type="button" aria-pressed="false">Nur Hinflug</button>
             </div>
-            <div class="seg">
+            <div class="fh-seg">
               <button type="button" aria-pressed="true">24h</button>
               <button type="button" aria-pressed="false">48h</button>
               <button type="button" aria-pressed="false" disabled>Bald</button>
             </div>
-            <div class="pax">
-              <button type="button" class="pax-btn minus">–</button>
-              <span class="pax-count">1</span>
-              <button type="button" class="pax-btn plus">+</button>
+            <div class="fh-pax">
+              <button type="button" class="fh-pax-btn fh-minus">–</button>
+              <span class="fh-pax-count">1</span>
+              <button type="button" class="fh-pax-btn fh-plus">+</button>
             </div>
           </div>
 
-          <div class="line">
-            <div class="field"><input placeholder="FRA"></div>
-            <button class="swap">⇆</button>
-            <div class="field"><input placeholder="BCN oder Barcelona"></div>
-            <button class="go">
-              <img src="/assets/search.svg" alt="Lupe" width="20" height="20">
+          <div class="fh-line">
+            <div class="fh-field"><input placeholder="FRA"></div>
+            <button class="fh-swap" type="button">⇆</button>
+            <div class="fh-field"><input placeholder="BCN oder Barcelona"></div>
+            <button class="fh-go" type="button">
+              <img src="/assets/search.svg" alt="Lupe" width="18" height="18">
               Suchen
             </button>
           </div>
 
-          <button type="button" class="geo">Abflug: Airport in der Nähe</button>
+          <button type="button" class="fh-geo">Abflug: Airport in der Nähe</button>
 
-          <div class="micro">
+          <div class="fh-micro">
             <span>✅ Beste Deals im Web</span>
             <span>✅ Preise werden laufend aktualisiert</span>
             <span>✅ Gespart & abgehoben</span>
           </div>
         </form>
       </div>
-      <img src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
+
+      <img class="fh-mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
     </div>
   </div>
 
   <!-- Heute 24h -->
-  <section class="container">
-    <div class="section-h">
+  <section class="fh-container fh-section">
+    <div class="fh-section-h">
       <h2>Heute (24h)</h2>
-      <a class="link" href="#">Alle 24h-Deals</a>
+      <a class="fh-link" href="#">Alle 24h-Deals</a>
     </div>
-    <div class="chips">
-      <div class="chip"><strong>FRA → BCN</strong><small>13:25</small><span class="badge">🔥 49€</span></div>
-      <div class="chip"><strong>BER → LON</strong><small>18:40</small><span class="badge">⚡ 39€</span></div>
-      <div class="chip"><strong>STR → ROM</strong><small>20:10</small><span class="badge">🔥 59€</span></div>
-      <div class="chip"><strong>MUC → LIS</strong><small>22:05</small><span class="badge">⚡ 89€</span></div>
+    <div class="fh-chips">
+      <div class="fh-chip"><strong>FRA → BCN</strong><small>13:25</small><span class="fh-badge">🔥 49€</span></div>
+      <div class="fh-chip"><strong>BER → LON</strong><small>18:40</small><span class="fh-badge">⚡ 39€</span></div>
+      <div class="fh-chip"><strong>STR → ROM</strong><small>20:10</small><span class="fh-badge">🔥 59€</span></div>
+      <div class="fh-chip"><strong>MUC → LIS</strong><small>22:05</small><span class="fh-badge">⚡ 89€</span></div>
     </div>
   </section>
 
   <!-- 48h -->
-  <section class="container">
-    <div class="section-h">
+  <section class="fh-container fh-section">
+    <div class="fh-section-h">
       <h2>48 Stunden</h2>
-      <a class="link" href="#">Mehr Deals</a>
+      <a class="fh-link" href="#">Mehr Deals</a>
     </div>
-    <div class="grid">
-      <!-- hier deine 9 Karten wie gehabt -->
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">FRA → BCN</div><div class="meta">Heute 21:30 • 2h 10m</div></div><div class="price">49 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">BER → LON</div><div class="meta">Morgen 07:15 • 1h 55m</div></div><div class="price">39 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">STR → ROM</div><div class="meta">Morgen 19:10 • 2h 05m</div></div><div class="price">59 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <!-- usw. alle weiteren Deals einfügen -->
+    <div class="fh-grid">
+      <!-- 9 Cards (Beispiele) -->
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → BCN</div><div class="fh-meta">Heute 21:30 • 2h 10m</div></div><div class="fh-price">49 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → LON</div><div class="fh-meta">Morgen 07:15 • 1h 55m</div></div><div class="fh-price">39 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">STR → ROM</div><div class="fh-meta">Morgen 19:10 • 2h 05m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">MUC → LIS</div><div class="fh-meta">Heute 12:00 • 3h 00m</div></div><div class="fh-price">89 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">DUS → OPO</div><div class="fh-meta">Heute 14:20 • 2h 45m</div></div><div class="fh-price">69 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">HAM → VIE</div><div class="fh-meta">Morgen 09:45 • 1h 40m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">CGN → MAD</div><div class="fh-meta">Heute 16:30 • 2h 30m</div></div><div class="fh-price">79 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → IST</div><div class="fh-meta">Heute 19:00 • 3h 15m</div></div><div class="fh-price">99 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → AMS</div><div class="fh-meta">Morgen 11:20 • 1h 20m</div></div><div class="fh-price">45 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="faq">
-    <div class="container">
+  <section class="fh-faq">
+    <div class="fh-container">
       <h2>Häufig gestellte Fragen</h2>
-      <details><summary>Was muss ich wissen, bevor ich einen Flug buche?</summary><p>Prüfe Reisedokumente, Gepäckregeln und mögliche Zusatzkosten.</p></details>
-      <details><summary>Wann ist die beste Zeit, Flüge zu buchen?</summary><p>Viele günstige Tickets tauchen 1–3 Tage vor Abflug auf.</p></details>
-      <details><summary>Kann ich mit Zwischenstopps sparen?</summary><p>Oft sind Flüge mit Stopps günstiger als Nonstop-Verbindungen.</p></details>
+      <details><summary>Was muss ich wissen, bevor ich einen Flug buche?</summary><p>Reisedokumente, Gepäckregeln und mögliche Zusatzkosten prüfen.</p></details>
+      <details><summary>Wann ist die beste Zeit, Flüge zu buchen?</summary><p>Häufig 1–3 Tage vor Abflug; Preise schwanken dynamisch.</p></details>
+      <details><summary>Kann ich mit Zwischenstopps sparen?</summary><p>Oft günstiger als Nonstop; dauert aber länger.</p></details>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="footer">
-      <div>© <span id="y"></span> fliegheute.de</div>
+    <div class="fh-footer">
+      <div>© <span id="fh-y"></span> fliegheute.de</div>
       <div><a href="#">Impressum</a> · <a href="#">Datenschutz</a></div>
     </div>
-    <div class="footer transparency">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
+    <div class="fh-footer fh-transp">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const paxMinus=document.querySelector('.pax .minus');
-    const paxPlus=document.querySelector('.pax .plus');
-    const paxCount=document.querySelector('.pax .pax-count');
-    let pax=1;
-    function updatePax(){paxCount.textContent=pax;}
-    paxMinus.addEventListener('click',()=>{if(pax>1){pax--;updatePax();}});
-    paxPlus.addEventListener('click',()=>{pax++;updatePax();});
+    // Jahr
+    document.getElementById('fh-y').textContent = new Date().getFullYear();
+
+    // Pax Counter
+    const fhMinus=document.querySelector('.fh-minus');
+    const fhPlus=document.querySelector('.fh-plus');
+    const fhCount=document.querySelector('.fh-pax-count');
+    let pax=1; const upd=()=>fhCount.textContent=pax;
+    fhMinus.addEventListener('click',()=>{if(pax>1){pax--;upd();}});
+    fhPlus.addEventListener('click',()=>{pax++;upd();});
   </script>
 </body>
 </html>
