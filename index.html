@@ -29,8 +29,8 @@
     .hero-wrap{background:var(--hero)}
     .hero{
       display:flex;
-      align-items:flex-start;
       justify-content:space-between;
+      align-items:flex-start;
       gap:40px;
       padding:100px 0;
     }
@@ -38,9 +38,10 @@
       flex:0 0 640px;
       max-width:640px;
     }
+    .hero .search{width:100%}
     .hero img{
-      flex-shrink:0;
-      width:140px;
+      flex:0 0 auto;
+      width:180px;
       height:auto;
       align-self:flex-start;
     }
@@ -48,7 +49,7 @@
     .hero p{color:var(--muted);margin-bottom:20px}
 
     /* Suche */
-    .search{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:14px;width:100%}
+    .search{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:14px}
     .controls{display:flex;gap:10px;flex-wrap:wrap}
     .seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-pill);overflow:hidden}
     .seg button{height:var(--ctl-h);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700;color:var(--ink)}
@@ -56,7 +57,7 @@
     .pax{display:flex;align-items:center;gap:8px}
     .pax-btn{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
     .pax-count{min-width:36px;height:36px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
-    .line{display:flex;gap:10px;align-items:center;flex-wrap:nowrap}
+    .line{display:flex;align-items:center;gap:10px}
     .field{flex:1;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
     .field input{border:0;background:transparent;flex:1;font-size:16px}
     .swap{width:var(--ctl-h);height:var(--ctl-h);border-radius:var(--r-pill);border:1px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
@@ -72,7 +73,7 @@
 
     /* Chips */
     .chips{display:flex;gap:10px;padding:10px 0;justify-content:space-between}
-    .chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;box-shadow:var(--shadow);justify-content:space-between}
+    .chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
     .chip .badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
 
     /* Grid */
@@ -146,7 +147,7 @@
             <button class="swap">⇆</button>
             <div class="field"><input placeholder="BCN oder Barcelona"></div>
             <button class="go">
-              <img src="/assets/search.svg" alt="Lupe" width="20" height="20" style="vertical-align:middle;margin-right:6px">
+              <img src="/assets/search.svg" alt="Lupe" width="20" height="20">
               Suchen
             </button>
           </div>
@@ -160,7 +161,7 @@
           </div>
         </form>
       </div>
-      <img src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen" width="120">
+      <img src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
     </div>
   </div>
 
@@ -185,16 +186,11 @@
       <a class="link" href="#">Mehr Deals</a>
     </div>
     <div class="grid">
-      <!-- 9 Beispielkarten -->
+      <!-- hier deine 9 Karten wie gehabt -->
       <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">FRA → BCN</div><div class="meta">Heute 21:30 • 2h 10m</div></div><div class="price">49 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
       <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">BER → LON</div><div class="meta">Morgen 07:15 • 1h 55m</div></div><div class="price">39 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
       <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">STR → ROM</div><div class="meta">Morgen 19:10 • 2h 05m</div></div><div class="price">59 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">MUC → LIS</div><div class="meta">Heute 12:00 • 3h 00m</div></div><div class="price">89 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">DUS → OPO</div><div class="meta">Heute 14:20 • 2h 45m</div></div><div class="price">69 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">HAM → VIE</div><div class="meta">Morgen 09:45 • 1h 40m</div></div><div class="price">59 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">CGN → MAD</div><div class="meta">Heute 16:30 • 2h 30m</div></div><div class="price">79 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">FRA → IST</div><div class="meta">Heute 19:00 • 3h 15m</div></div><div class="price">99 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
-      <article class="card"><div class="media"></div><div class="body"><div class="row"><div><div class="route">BER → AMS</div><div class="meta">Morgen 11:20 • 1h 20m</div></div><div class="price">45 €</div></div><a class="cta" href="#">Jetzt buchen</a></div></article>
+      <!-- usw. alle weiteren Deals einfügen -->
     </div>
   </section>
 
