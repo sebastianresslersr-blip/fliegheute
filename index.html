@@ -15,7 +15,7 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
     a{text-decoration:none;color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:100 20px}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
 
     /* Header */
     header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
@@ -27,12 +27,30 @@
 
     /* Hero */
     .hero-wrap{background:var(--hero)}
-    .hero {
+    .hero{
   display:flex;
-  justify-content:space-between;
   align-items:flex-start;
+  justify-content:space-between;
+  flex-wrap:nowrap;          /* kein Umbruch */
   gap:40px;
   padding:100px 0;
+}
+
+/* Linke Spalte (Text + Suche) fest auf 640px */
+.hero > div:first-child{
+  flex:0 0 640px;
+  max-width:640px;
+}
+
+/* Formular auf volle Breite innerhalb der 640px */
+.hero .search{width:100%}
+
+/* Plany rechts bleibt oben und schrumpft nicht */
+.hero img{
+  flex:0 0 auto;
+  width:140px;               /* gern anpassen (120–160) */
+  height:auto;
+  align-self:flex-start;     /* nicht nach unten rutschen */
 }
 
 .hero .search {
