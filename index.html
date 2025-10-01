@@ -50,8 +50,38 @@
   background: var(--brand);
   color: #fff;
 }
-    .pax{height:var(--ctl-h);display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:var(--r-pill);background:#fff;padding:0 10px}
-    .pax button{width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;cursor:pointer}
+    .pax {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+    .pax-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.pax-count {
+  min-width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--brand); /* Spicy Blue */
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
     .line{display:flex;gap:10px;align-items:center}
     .field{flex:1;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
     .field input{border:0;background:transparent;flex:1;font-size:16px}
@@ -141,12 +171,10 @@
               <button type="button" aria-pressed="false" disabled>Bald</button>
             </div>
             <div class="pax">
-              <button type="button">–</button>
-              <output>1</output>
-              <button type="button">+</button>
-            </div>
-          </div>
-
+  <button type="button" class="pax-btn minus">–</button>
+  <span class="pax-count">1</span>
+  <button type="button" class="pax-btn plus">+</button>
+</div>
           <div class="line">
             <div class="field"><input placeholder="FRA"></div>
             <button class="swap">⇆</button>
