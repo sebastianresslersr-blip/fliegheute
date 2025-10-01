@@ -380,5 +380,26 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+  
+  <script>
+  const paxMinus = document.querySelector('.pax .minus');
+  const paxPlus = document.querySelector('.pax .plus');
+  const paxCount = document.querySelector('.pax .pax-count');
+
+  let pax = 1;
+
+  function updatePax(){
+    paxCount.textContent = pax;
+  }
+
+  paxMinus.addEventListener('click', () => {
+    if(pax > 1){ pax--; updatePax(); }
+  });
+
+  paxPlus.addEventListener('click', () => {
+    pax++; updatePax();
+  });
+</script>
+  
 </body>
 </html>
