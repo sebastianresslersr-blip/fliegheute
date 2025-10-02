@@ -39,26 +39,11 @@
     .fh-hero p{color:var(--muted);margin-bottom:20px}
     .fh-mascot{width:180px;height:auto;justify-self:end}
 
-    /* ===== Suche ===== */
-    .fh-search{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;display:grid;gap:14px;width:100%}
-    .fh-controls{display:flex;gap:12px;flex-wrap:wrap}
-    .fh-seg{display:inline-flex;border:1px solid var(--border);border-radius:var(--r-pill);overflow:hidden}
-    .fh-seg button{height:var(--ctl-h);padding:0 14px;border:0;background:#fff;cursor:pointer;font-weight:700;color:var(--ink)}
-    .fh-seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
-
-    .fh-pax{display:flex;align-items:center;gap:8px}
-    .fh-pax-btn{width:36px;height:36px;border:1px solid var(--border);border-radius:8px;background:#fff;font-weight:800;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .fh-pax-count{min-width:36px;height:36px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center}
-
-    .fh-line{display:flex;align-items:center;gap:10px}
-    .fh-field{flex:1;min-width:0;background:#f1f3ff;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;padding:0 12px;height:var(--ctl-h)}
-    .fh-field input{border:0;background:transparent;flex:1;min-width:0;font-size:16px}
-    .fh-swap{width:var(--ctl-h);height:var(--ctl-h);border-radius:var(--r-pill);border:1px solid var(--border);background:#fff;display:grid;place-items:center;cursor:pointer}
-
-    .fh-go{flex:0 0 auto;background:var(--brand);color:#fff;border:0;border-radius:10px;padding:0 16px;height:var(--ctl-h);font-weight:700;display:flex;align-items:center;gap:6px;white-space:nowrap}
-    .fh-go img{display:block}
-
-    .fh-geo{width:100%;height:var(--ctl-h);margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:10px;font-weight:600;cursor:pointer}
+    /* ===== Suche (angepasst für Widget) ===== */
+    .fh-search-widget {
+      background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;
+      width:100%; max-width:600px;
+    }
     .fh-micro{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;color:#111;font-size:14px}
 
     /* ===== Sections ===== */
@@ -117,15 +102,6 @@
         <a class="fh-cta" href="#signup">Registrieren</a>
       </nav>
     </div>
-    <section class="search-section">
-    <h1>Flieg Heute – Deine Last-Minute-Suche</h1>
-    <div id="aviasales-widget"></div>
-    <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139.ID676139&show_hotels=false&powered_by=false&locale=de&searchUrl=www.aviasales.at%2Fsearch&primary_override=%23F571B4&color_button=%237183F5ff&color_icons=%237183F5&dark=%230B0B14&light=%23F9F9F9&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=14&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
-    <div class="trust-bar" style="font-size: 12px; color: #666; margin: 10px 0;">
-        <p>Preise aktualisiert: 02.10.2025, 17:12</p>
-        <p>Wir verdienen via Provision, dein Preis bleibt gleich.</p>
-    </div>
-</section>
   </header>
 
   <!-- Hero -->
@@ -135,42 +111,21 @@
         <h1>Flieg<span style="color:var(--ink)">Heute!</span></h1>
         <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
 
-        <form class="fh-search">
-          <div class="fh-controls">
-            <div class="fh-seg">
-              <button type="button" aria-pressed="true">Hin- & Rückflug</button>
-              <button type="button" aria-pressed="false">Nur Hinflug</button>
-            </div>
-            <div class="fh-seg">
-              <button type="button" aria-pressed="true">24h</button>
-              <button type="button" aria-pressed="false">48h</button>
-              <button type="button" aria-pressed="false" disabled>Bald</button>
-            </div>
-            <div class="fh-pax">
-              <button type="button" class="fh-pax-btn fh-minus">–</button>
-              <span class="fh-pax-count">1</span>
-              <button type="button" class="fh-pax-btn fh-plus">+</button>
-            </div>
-          </div>
-
-          <div class="fh-line">
-            <div class="fh-field"><input placeholder="FRA"></div>
-            <button class="fh-swap" type="button">⇆</button>
-            <div class="fh-field"><input placeholder="BCN oder Barcelona"></div>
-            <button class="fh-go" type="button">
-              <img src="/assets/search.svg" alt="Lupe" width="18" height="18">
-              Suchen
-            </button>
-          </div>
-
-          <button type="button" class="fh-geo">Abflug: Airport in der Nähe</button>
-
+        <!-- Aviasales Widget als Haupt-Suche -->
+        <div class="fh-search-widget">
+          <div id="aviasales-widget"></div>
+          <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139.ID676139&show_hotels=false&powered_by=false&locale=de&searchUrl=www.aviasales.at%2Fsearch&primary_override=%23F571B4&color_button=%237183F5ff&color_icons=%237183F5&dark=%230B0B14&light=%23F9F9F9&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=14&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
           <div class="fh-micro">
             <span>✅ Beste Deals im Web</span>
             <span>✅ Preise werden laufend aktualisiert</span>
             <span>✅ Gespart & abgehoben</span>
           </div>
-        </form>
+        </div>
+
+        <div class="trust-bar" style="font-size: 12px; color: #666; margin: 10px 0;">
+          <p>Preise aktualisiert: 02.10.2025, 17:38</p>
+          <p>Wir verdienen via Provision, dein Preis bleibt gleich.</p>
+        </div>
       </div>
 
       <img class="fh-mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
@@ -233,14 +188,6 @@
   <script>
     // Jahr
     document.getElementById('fh-y').textContent = new Date().getFullYear();
-
-    // Pax Counter
-    const fhMinus=document.querySelector('.fh-minus');
-    const fhPlus=document.querySelector('.fh-plus');
-    const fhCount=document.querySelector('.fh-pax-count');
-    let pax=1; const upd=()=>fhCount.textContent=pax;
-    fhMinus.addEventListener('click',()=>{if(pax>1){pax--;upd();}});
-    fhPlus.addEventListener('click',()=>{pax++;upd();});
   </script>
 </body>
 </html>
