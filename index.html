@@ -1,253 +1,816 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fliegheute.de – Flieg. Heute.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
-  <style id="fh-styles">
-    :root{
-      --brand:#7183f5; --ink:#0b0b13; --muted:#6e7280;
-      --bg:#f9f9f9; --hero:#eeeeee; --card:#fff;
-      --border:#e5e7eb; --radius:16px; --shadow:0 10px 30px rgba(21,25,62,.08);
-      --ctl-h:44px; --r-pill:999px;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fliegheute.de – Reisen, genießen und ein neues Leben leben</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #7183f5;
+      --ink: #0b0b13;
+      --muted: #6e7280;
+      --bg: #f9f9f9;
+      --hero: #eeeeee;
+      --card: #fff;
+      --border: #e5e7eb;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(21,25,62,.08);
+      --r-pill: 999px;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
-
-    /* ===== Layout / Container ===== */
-    .fh-container{max-width:1120px;margin:0 auto;padding:0 20px}
-
-    /* ===== Header ===== */
-    .fh-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid rgba(0,0,0,.08)}
-    .fh-hdr{height:80px;display:flex;align-items:center;justify-content:space-between}
-    .fh-hdr img{height:32px}
-    .fh-nav{display:flex;gap:20px;align-items:center}
-    .fh-nav a{font-weight:600;text-decoration:none;color:inherit}
-    .fh-nav .fh-cta{background:var(--ink);color:#fff;padding:8px 14px;border-radius:var(--r-pill);font-weight:700}
-
-    /* ===== Hero ===== */
-    .fh-hero-wrap{background:var(--hero)}
-    .fh-hero{
-      display:grid;
-      grid-template-columns: 640px auto;   /* linke Spalte fix 640px */
-      align-items:start;
-      gap:40px;
-      padding:100px 0;
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
     }
-    .fh-hero h1{font-size:52px;font-family:"Inter Tight",sans-serif;font-weight:800;margin-bottom:8px}
-    .fh-hero p{color:var(--muted);margin-bottom:20px}
-    .fh-mascot{width:180px;height:auto;justify-self:0}
 
-    /* ===== Suche (angepasst für Widget) ===== */
-    .fh-search-widget {
-      background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px;
-      width:100%; max-width:600px;
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .fh-micro{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;color:#111;font-size:14px}
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--brand);
+    }
+    .logo img {
+      height: 32px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .auth {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .login {
+      color: var(--ink);
+    }
+    .signup {
+      background-color: #fff;
+      border: 1px solid var(--ink);
+      padding: 8px 20px;
+      border-radius: var(--r-pill);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .lang {
+      color: var(--ink);
+    }
 
-    /* ===== Sections ===== */
-    .fh-section{margin-top:100px}
-    .fh-section-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
-    .fh-section-h h2{margin:0;font-size:22px;font-family:"Inter Tight",sans-serif}
-    .fh-link{color:var(--brand);font-weight:700;text-decoration:none}
+    /* Hero Section mit Gradient und Such-Widget */
+    .hero {
+      background: linear-gradient(135deg, var(--hero), #fff);
+      padding: 100px 50px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-content {
+      max-width: 50%;
+    }
+    .hero-subtitle {
+      color: #F571B4;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-size: 64px;
+      line-height: 1.1;
+      margin: 10px 0;
+      font-weight: 800;
+    }
+    .hero-title span {
+      border-bottom: 4px solid #F571B4;
+      color: var(--brand);
+    }
+    .hero-desc {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .btn-primary {
+      background-color: var(--brand);
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .btn-play {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #F571B4;
+      text-decoration: none;
+    }
+    .play-icon {
+      background-color: #F571B4;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mascot {
+      width: 180px;
+      height: auto;
+    }
+    .search-widget {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      max-width: 600px;
+      margin: 30px auto 0;
+    }
 
-    /* ===== Chips ===== */
-    .fh-chips{display:flex;gap:10px;padding:10px 0;justify-content:space-between}
-    .fh-chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
-    .fh-chip .fh-badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
+    /* Services Section mit Gradient */
+    .services {
+      padding: 100px 50px;
+      text-align: center;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .section-title {
+      font-size: 48px;
+      margin: 10px 0 50px;
+      font-weight: 800;
+    }
+    .services-grid {
+      display: flex;
+      justify-content: space-around;
+      gap: 30px;
+    }
+    .service-card {
+      background: linear-gradient(135deg, var(--card), #f8f8f8);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 20%;
+      text-align: left;
+      position: relative;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background-color: #F571B4;
+      border-radius: var(--radius);
+      opacity: 0.1;
+      z-index: -1;
+    }
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+      background: url('/assets/wetter.png') no-repeat center/cover;
+    }
+    .service-title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-    /* ===== Grid ===== */
-    .fh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media(max-width:800px){.fh-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.fh-grid{grid-template-columns:1fr}}
-    .fh-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .fh-media{aspect-ratio:16/9;background:#eef1ff}
-    .fh-body{padding:14px}
-    .fh-row{display:flex;justify-content:space-between;align-items:center}
-    .fh-route{font-weight:800}
-    .fh-price{font-size:22px;font-weight:800}
-    .fh-meta{color:var(--muted);font-size:13px;margin-top:4px}
-    .fh-cta{display:inline-block;margin-top:10px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+    /* Destinations Section */
+    .destinations {
+      padding: 0 50px 100px;
+      text-align: center;
+    }
+    .dest-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .dest-card {
+      background: linear-gradient(135deg, var(--card), #f8f8f8);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      max-width: 30%;
+    }
+    .dest-image {
+      height: 300px;
+      background: url('/assets/dest_rome.png') no-repeat center/cover;
+    }
+    .dest-info {
+      padding: 20px;
+      text-align: left;
+    }
+    .dest-name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .dest-price {
+      color: var(--ink);
+      font-weight: 600;
+      float: right;
+    }
+    .dest-trip {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #flightCards {
+      margin-top: 50px;
+    }
 
-    /* ===== FAQ & Footer ===== */
-    .fh-faq{margin:100px 0}
-    .fh-faq h2{margin-bottom:16px}
-    details{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-bottom:8px;cursor:pointer}
-    summary{font-weight:600} summary::-webkit-details-marker{display:none}
+    /* Booking Section */
+    .booking {
+      padding: 100px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .booking-content {
+      max-width: 40%;
+    }
+    .booking-subtitle {
+      color: #F571B4;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .booking-title {
+      font-size: 48px;
+      margin: 10px 0 30px;
+      font-weight: 800;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .step-icon {
+      background-color: var(--brand);
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .step-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .booking-image {
+      max-width: 50%;
+      position: relative;
+    }
+    .booking-main-img {
+      height: 400px;
+      border-radius: var(--radius);
+      background: url('/assets/booking_greece.png') no-repeat center/cover;
+    }
+    .booking-overlay {
+      position: absolute;
+      top: 50px;
+      right: -50px;
+      background-color: var(--card);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .overlay-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .overlay-desc {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .progress {
+      background-color: var(--border);
+      height: 5px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      background-color: var(--brand);
+      width: 40%;
+      height: 100%;
+    }
 
-    footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:100px}
-    .fh-footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .fh-transp{margin-top:10px;font-size:13px}
+    /* Testimonials Section */
+    .testimonials {
+      padding: 0 50px 100px;
+    }
+    .test-subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .test-title {
+      font-size: 48px;
+      margin: 10px 0 50px;
+      font-weight: 800;
+    }
+    .test-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .test-card {
+      background: linear-gradient(135deg, var(--card), #f8f8f8);
+      padding: 30px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 30%;
+      position: relative;
+    }
+    .test-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: url('/assets/testimonial_avatar.png') no-repeat center/cover;
+      margin-bottom: 20px;
+    }
+    .test-quote {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .test-name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .test-location {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .test-job {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Partners Section */
+    .partners {
+      padding: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: var(--bg);
+    }
+    .partner-logo {
+      width: 100px;
+      height: 50px;
+      background: url('/assets/partner_axon.png') no-repeat center/contain;
+    }
+
+    /* Subscribe Section */
+    .subscribe {
+      background-color: #F3E9FC;
+      padding: 100px 50px;
+      text-align: center;
+      position: relative;
+      border-radius: 50px;
+      margin: 0 50px;
+    }
+    .sub-title {
+      font-size: 32px;
+      max-width: 60%;
+      margin: 0 auto 30px;
+      font-weight: 800;
+    }
+    .sub-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .sub-input {
+      padding: 15px 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--r-pill);
+      width: 70%;
+      background-color: var(--card);
+    }
+    .sub-btn {
+      background-color: #F571B4;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: var(--r-pill);
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      padding: 100px 50px 50px;
+      display: flex;
+      justify-content: space-between;
+      background-color: #F3E9FC;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+    .footer-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-column {
+      max-width: 20%;
+    }
+    .footer-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .social {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .social-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: url('/assets/placeholder-social.jpg') no-repeat center/cover;
+    }
+    .app-stores {
+      display: flex;
+      gap: 10px;
+    }
+    .app-icon {
+      width: 120px;
+      height: 40px;
+      border-radius: 5px;
+      background: url('/assets/placeholder-app.jpg') no-repeat center/cover;
+    }
+    .copyright {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 50px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero, .booking {
+        flex-direction: column;
+      }
+      .hero-content, .booking-content, .booking-image {
+        max-width: 100%;
+      }
+      .services-grid, .dest-grid, .test-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-card, .dest-card, .test-card {
+        max-width: 80%;
+      }
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-column {
+        max-width: 80%;
+        margin-bottom: 30px;
+      }
+    }
   </style>
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-    (function () {
-        var script = document.createElement("script");
-        script.async = 1;
-        script.src = 'https://emrldco.com/676139.js?t=676139';
-        document.head.appendChild(script);
-    })();
-  </script>
 </head>
 <body>
+
   <!-- Header -->
-  <header class="fh-header">
-    <div class="fh-container fh-hdr">
-      <a href="/"><img src="/assets/logo-plany-header.svg" alt="fliegheute.de"></a>
-      <nav class="fh-nav">
-        <a href="#inspiration">Inspiration</a>
-        <a href="#hilfe">Hilfe</a>
-        <a href="#business">Für Business</a>
-        <a href="#login">Login</a>
-        <a class="fh-cta" href="#signup">Registrieren</a>
-      </nav>
+  <header>
+    <div class="logo"><img src="/assets/logo-plany-header.svg" alt="fliegheute.de"></div>
+    <nav>
+      <ul>
+        <li><a href="destinations.html">Ziele</a></li>
+        <li><a href="hotels.html">Hotels</a></li>
+        <li><a href="flights.html">Flüge</a></li>
+        <li><a href="bookings.html">Buchungen</a></li>
+      </ul>
+    </nav>
+    <div class="auth">
+      <a href="login.html" class="login">Anmelden</a>
+      <a href="signup.html" class="signup">Registrieren</a>
+      <span class="lang">DE ▼</span>
     </div>
   </header>
 
-  <!-- Hero -->
-  <div class="fh-hero-wrap">
-    <div class="fh-container fh-hero">
-      <div>
-        <h1>Flieg<span style="color:var(--ink)">Heute!</span></h1>
-        <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
-
-        <!-- Aviasales Widget als Haupt-Suche -->
-        <div class="fh-search-widget">
-          <div id="aviasales-widget"></div>
-          <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139.ID676139&show_hotels=false&powered_by=false&locale=de&searchUrl=www.aviasales.at%2Fsearch&primary_override=%23F571B4&color_button=%237183F5ff&color_icons=%237183F5&dark=%230B0B14&light=%23F9F9F9&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=14&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
-          <div class="fh-micro">
-            <span>✅ Beste Deals im Web</span>
-            <span>✅ Preise werden laufend aktualisiert</span>
-            <span>✅ Gespart & abgehoben</span>
-          </div>
-        </div>
-
-        <div class="trust-bar" style="font-size: 12px; color: #666; margin: 10px 0;">
-          <p>Preise aktualisiert: 02.10.2025, 17:38</p>
-        </div>
+  <!-- Hero Section mit Such-Widget und Bildwechsel -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">BESTE ZIELE WELTWEIT</p>
+      <h1 class="hero-title">Reisen, <span>genießen</span> und ein neues volles Leben leben</h1>
+      <p class="hero-desc">Built Wicket longer admire do barton vanity itself do in it. Preferred to sportsmen it engrossed listening. Park gate sell they west hard for the.</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Mehr erfahren</a>
+        <a href="#" class="btn-play" onclick="alert('Demo wird abgespielt!');">
+          <div class="play-icon">▶</div>
+          Demo abspielen
+        </a>
       </div>
-
-      <img class="fh-mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
+      <div class="search-widget">
+        <div id="aviasales-widget"></div>
+        <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139.ID676139&show_hotels=false&powered_by=false&locale=de&searchUrl=www.aviasales.at%2Fsearch&primary_override=%23F571B4&color_button=%237183F5ff&color_icons=%237183F5&dark=%230B0B14&light=%23F9F9F9&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%2332a8dd&border_radius=14&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
+      </div>
     </div>
-  </div>
-
-  <!-- Heute 24h -->
-  <section class="fh-container fh-section">
-    <div class="fh-section-h">
-      <h2>Heute (24h)</h2>
-      <a class="fh-link" href="#">Alle 24h-Deals</a>
+    <div class="hero-image" id="heroImage">
+      <img src="/assets/herobild1v3.png" alt="Hero-Bild" style="width: 100%; height: auto; display: block;">
     </div>
-    <div class="fh-chips">
-      <div class="fh-chip"><strong>FRA → BCN</strong><small>13:25</small><span class="fh-badge">🔥 49€</span></div>
-      <div class="fh-chip"><strong>BER → LON</strong><small>18:40</small><span class="fh-badge">⚡ 39€</span></div>
-      <div class="fh-chip"><strong>STR → ROM</strong><small>20:10</small><span class="fh-badge">🔥 59€</span></div>
-      <div class="fh-chip"><strong>MUC → LIS</strong><small>22:05</small><span class="fh-badge">⚡ 89€</span></div>
+    <img class="mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <p class="section-subtitle">KATEGORIE</p>
+    <h2 class="section-title">Wir bieten die besten Dienste</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"></div>
+        <h3 class="service-title">Berechnetes Wetter</h3>
+        <p class="service-desc">Built Wicket longer admire do barton vanity itself do in it.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"></div>
+        <h3 class="service-title">Beste Flüge</h3>
+        <p class="service-desc">Engrossed listening. Park gate sell they west hard for the.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"></div>
+        <h3 class="service-title">Lokale Veranstaltungen</h3>
+        <p class="service-desc">Barton vanity itself do in it. Preferred to men it engrossed listening.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"></div>
+        <h3 class="service-title">Anpassung</h3>
+        <p class="service-desc">We deliver outsourced aviation services for military customers</p>
+      </div>
     </div>
   </section>
 
-  <!-- 48h -->
-  <section class="fh-container fh-section">
-    <div class="fh-section-h">
-      <h2>48 Stunden</h2>
-      <a class="fh-link" href="#">Mehr Deals</a>
+  <!-- Destinations Section mit Amadeus -->
+  <section class="destinations">
+    <h2 class="section-title">Top-Verkaufte Ziele</h2>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-image"></div>
+        <div class="dest-info">
+          <span class="dest-name">Rom, Italien</span>
+          <span class="dest-price">5,42k €</span>
+          <p class="dest-trip">▶ 10 Tage Reise</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-image"></div>
+        <div class="dest-info">
+          <span class="dest-name">London, UK</span>
+          <span class="dest-price">4,2k €</span>
+          <p class="dest-trip">▶ 12 Tage Reise</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-image"></div>
+        <div class="dest-info">
+          <span class="dest-name">Ganz Europa</span>
+          <span class="dest-price">15k €</span>
+          <p class="dest-trip">▶ 28 Tage Reise</p>
+        </div>
+      </div>
     </div>
-    <div class="fh-grid">
-      <!-- 9 Cards (Beispiele) -->
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → BCN</div><div class="fh-meta">Heute 21:30 • 2h 10m</div></div><div class="fh-price">49 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → LON</div><div class="fh-meta">Morgen 07:15 • 1h 55m</div></div><div class="fh-price">39 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">STR → ROM</div><div class="fh-meta">Morgen 19:10 • 2h 05m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">MUC → LIS</div><div class="fh-meta">Heute 12:00 • 3h 00m</div></div><div class="fh-price">89 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">DUS → OPO</div><div class="fh-meta">Heute 14:20 • 2h 45m</div></div><div class="fh-price">69 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">HAM → VIE</div><div class="fh-meta">Morgen 09:45 • 1h 40m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">CGN → MAD</div><div class="fh-meta">Heute 16:30 • 2h 30m</div></div><div class="fh-price">79 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → IST</div><div class="fh-meta">Heute 19:00 • 3h 15m</div></div><div class="fh-price">99 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → AMS</div><div class="fh-meta">Morgen 11:20 • 1h 20m</div></div><div class="fh-price">45 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+    <div id="flightCards">
+      <!-- Amadeus Flüge laden -->
     </div>
   </section>
-<section class="fh-container fh-section">
-  <div class="fh-section-h">
-    <h2>Travel Tips</h2>
-  </div>
-  <div class="fh-grid">
-    <article class="fh-card">
-      <div class="fh-body">
-        <h3>Top 5 Last-Minute-Deals aus FRA</h3>
-        <p>Tipps: BCN für 49€, LON für 39€. Pack leicht!</p>
+
+  <!-- Booking Section -->
+  <section class="booking">
+    <div class="booking-content">
+      <p class="booking-subtitle">Einfach und schnell</p>
+      <h2 class="booking-title">Buchen Sie Ihre nächste Reise in 3 einfachen Schritten</h2>
+      <div class="step">
+        <div class="step-icon">📍</div>
+        <div>
+          <h3 class="step-title">Ziel wählen</h3>
+          <p class="step-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.</p>
+        </div>
       </div>
-    </article>
-    <article class="fh-card">
-      <div class="fh-body">
-        <h3>Warum 24h-Deals rocken</h3>
-        <p>Spontan sparen. Setze Alerts!</p>
+      <div class="step">
+        <div class="step-icon">💳</div>
+        <div>
+          <h3 class="step-title">Zahlung leisten</h3>
+          <p class="step-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.</p>
+        </div>
       </div>
-    </article>
-    <article class="fh-card">
-      <div class="fh-body">
-        <h3>Günstig buchen</h3>
-        <p>Vergleiche früh morgens – Deals warten!</p>
+      <div class="step">
+        <div class="step-icon">✈️</div>
+        <div>
+          <h3 class="step-title">Am Flughafen eintreffen</h3>
+          <p class="step-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.</p>
+        </div>
       </div>
-    </article>
-  </div>
-</section>
-  <!-- FAQ -->
-  <section class="fh-faq">
-    <div class="fh-container">
-      <h2>Häufig gestellte Fragen</h2>
-      <details><summary>Was muss ich wissen, bevor ich einen Flug buche?</summary><p>Reisedokumente, Gepäckregeln und mögliche Zusatzkosten prüfen.</p></details>
-      <details><summary>Wann ist die beste Zeit, Flüge zu buchen?</summary><p>Häufig 1–3 Tage vor Abflug; Preise schwanken dynamisch.</p></details>
-      <details><summary>Kann ich mit Zwischenstopps sparen?</summary><p>Oft günstiger als Nonstop; dauert aber länger.</p></details>
     </div>
+    <div class="booking-image">
+      <div class="booking-main-img"></div>
+      <div class="booking-overlay">
+        <p class="overlay-title">Reise nach Griechenland</p>
+        <p class="overlay-desc">14-29 Juni | von Robbin j</p>
+        <div class="overlay-icons">🌿 📖 ✈️</div>
+        <p>24 Personen unterwegs</p>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="overlay-trip">
+          <p>Laufend</p>
+          <p>Reise nach Rom</p>
+          <p>40% abgeschlossen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <p class="test-subtitle">ZEUGNISSE</p>
+    <h2 class="test-title">Was Leute über uns sagen.</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-avatar"></div>
+        <p class="test-quote">"On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no."</p>
+        <h3 class="test-name">Mike Taylor</h3>
+        <p class="test-location">Lahore, Pakistan</p>
+      </div>
+      <div class="test-card">
+        <h3 class="test-name">Chris Thomas</h3>
+        <p class="test-job">CEO von Red Button</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="partners">
+    <div class="partner-logo"></div>
+    <div class="partner-logo"></div>
+    <div class="partner-logo"></div>
+    <div class="partner-logo"></div>
+    <div class="partner-logo"></div>
+  </section>
+
+  <!-- Subscribe Section -->
+  <section class="subscribe">
+    <h2 class="sub-title">Abonnieren Sie für Informationen, neueste Nachrichten und andere interessante Angebote über fliegheute</h2>
+    <form class="sub-form" action="#" method="post">
+      <input type="email" class="sub-input" placeholder="Ihre E-Mail">
+      <button type="submit" class="sub-btn">Abonnieren</button>
+    </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="fh-footer">
-      <div>© <span id="fh-y"></span> fliegheute.de</div>
-      <div><a href="#">Impressum</a> · <a href="#">Datenschutz</a></div>
+    <div class="footer-column">
+      <div class="footer-logo">fliegheute.</div>
+      <p class="footer-desc">Buchen Sie Ihre Reise in Minuten, haben Sie volle Kontrolle für viel länger.</p>
     </div>
-    <div class="fh-footer fh-transp">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
+    <div class="footer-column">
+      <h3 class="footer-title">Unternehmen</h3>
+      <ul class="footer-links">
+        <li><a href="#">Über uns</a></li>
+        <li><a href="#">Karrieren</a></li>
+        <li><a href="#">Mobile</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Kontakt</h3>
+      <ul class="footer-links">
+        <li><a href="#">Hilfe/FAQ</a></li>
+        <li><a href="#">Presse</a></li>
+        <li><a href="#">Affiliates</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3 class="footer-title">Mehr</h3>
+      <ul class="footer-links">
+        <li><a href="#">Airline-Gebühren</a></li>
+        <li><a href="#">Airline</a></li>
+        <li><a href="#">Tipps für günstige Tarife</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <div class="social">
+        <div class="social-icon"></div>
+        <div class="social-icon"></div>
+        <div class="social-icon"></div>
+      </div>
+      <p>Entdecken Sie unsere App</p>
+      <div class="app-stores">
+        <div class="app-icon"></div>
+        <div class="app-icon"></div>
+      </div>
+    </div>
+    <p class="copyright">Alle Rechte vorbehalten @ fliegheute.de</p>
   </footer>
 
   <script>
-    // Jahr
-    document.getElementById('fh-y').textContent = new Date().getFullYear();
-  </script>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>FliegHeute</title>
-</head>
-<body>
-  <script>
-  async function fetchAmadeusFlights() {
-    const response = await fetch("https://amadeus-proxy.sebastianressler-sr.workers.dev");
-    const data = await response.json();
-    const cards = document.getElementById("flightCards");
-    if (data.data && data.data.length > 0) {
-      cards.innerHTML = "<h3>Live Deals</h3>";
-      data.data.forEach(offer => {
-        const segment = offer.itineraries[0].segments[0];
-        const card = document.createElement("div");
-        card.style.border = "1px solid #e5e7eb";
-        card.style.padding = "15px";
-        card.style.margin = "10px 0";
-        card.style.borderRadius = "10px";
-        card.innerHTML = `
-          <h4>${segment.departure.iataCode} → ${segment.arrival.iataCode}</h4>
-          <p><strong>Preis:</strong> ${offer.price.total} ${offer.price.currency}</p>
-          <p><strong>Zeit:</strong> ${segment.departure.at} – ${segment.arrival.at}</p>
-          <p><strong>Airline:</strong> ${segment.carrierCode}</p>
-          <button style="background: #7183f5; color: white; padding: 10px; border: none; border-radius: 5px;">Buchen</button>
-        `;
-        cards.appendChild(card);
-      });
-    } else {
-      cards.innerHTML += "<p>Keine Flüge verfügbar.</p>";
+    // Hero-Bildwechsel alle 5 Sekunden
+    let currentImage = 0;
+    const heroImages = ['/assets/herobild1v3.png', '/assets/herobild2v3.png', '/assets/herobild3v3.png']; // Erweitere mit weiteren Bildern
+    const heroImage = document.getElementById('heroImage');
+    setInterval(() => {
+      currentImage = (currentImage + 1) % heroImages.length;
+      heroImage.innerHTML = `<img src="${heroImages[currentImage]}" alt="Hero-Bild" style="width: 100%; height: auto; display: block;">`;
+    }, 5000);
+
+    // Amadeus Flüge fetchen
+    async function fetchAmadeusFlights() {
+      const response = await fetch("https://amadeus-proxy.sebastianressler-sr.workers.dev");
+      const data = await response.json();
+      const cards = document.getElementById("flightCards");
+      if (data.data && data.data.length > 0) {
+        cards.innerHTML = "<h3>Live Deals</h3>";
+        data.data.forEach(offer => {
+          const segment = offer.itineraries[0].segments[0];
+          const card = document.createElement("div");
+          card.style.border = "1px solid var(--border)";
+          card.style.padding = "15px";
+          card.style.margin = "10px 0";
+          card.style.borderRadius = var(--radius);
+          card.innerHTML = `
+            <h4>${segment.departure.iataCode} → ${segment.arrival.iataCode}</h4>
+            <p><strong>Preis:</strong> ${offer.price.total} ${offer.price.currency}</p>
+            <p><strong>Zeit:</strong> ${segment.departure.at} – ${segment.arrival.at}</p>
+            <p><strong>Airline:</strong> ${segment.carrierCode}</p>
+            <button style="background: var(--brand); color: white; padding: 10px; border: none; border-radius: var(--r-pill);">Buchen</button>
+          `;
+          cards.appendChild(card);
+        });
+      } else {
+        cards.innerHTML += "<p>Keine Flüge verfügbar.</p>";
+      }
     }
-  }
-  fetchAmadeusFlights();
-</script>
-  </body>
-</html>
+    fetchAmadeusFlights();
+  </script>
 </body>
 </html>
