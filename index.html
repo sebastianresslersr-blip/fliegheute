@@ -194,43 +194,42 @@
   <title>FliegHeute</title>
 </head>
 <body>
-  <!-- Dein bestehender Content hier -->
-  <div id="flightCards"></div>
-  <script>
-    async function fetchFlights() {
-      const token = "duffel_test_xuRPZddzWOgYNam0Wp8IGtoybAVJOFBVw02pKIWXNLy";
-      const response = await fetch("https://test.api.duffel.com/air/offer_requests", {
-        method: "POST",
-        headers: {
-          "Authorization": "Bearer " + token,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          "slices": [{"origin": "FRA", "destination": "BCN", "departure_date": "2025-10-03"}],
-          "passengers": [{"type": "adult"}]
-        })
+<div id="flightCards" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+  <h3>Live Flight Deals (Amadeus)</h3>
+  <p>Loading...</p>
+</div>
+<script>
+  async function fetchAmadeusFlights() {
+    const token = "YCkdND6jfnre4yJjhT60WxVSpGGh"; // Ersetze mit deinem Token
+    const response = await fetch("https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=FRA&destinationLocationCode=BCN&departureDate=2025-10-03", {
+      headers: { "Authorization": token }
+    });
+    const data = await response.json();
+    const cards = document.getElementById("flightCards");
+    if (data.data && data.data.length > 0) {
+      cards.innerHTML = "<h3>Live Deals</h3>";
+      data.data.forEach(offer => {
+        const segment = offer.itineraries[0].segments[0];
+        const card = document.createElement("div");
+        card.style.border = "1px solid #e5e7eb";
+        card.style.padding = "15px";
+        card.style.margin = "10px 0";
+        card.style.borderRadius = "10px";
+        card.innerHTML = `
+          <h4>${segment.departure.iataCode} → ${segment.arrival.iataCode}</h4>
+          <p><strong>Preis:</strong> ${offer.price.total} ${offer.price.currency}</p>
+          <p><strong>Zeit:</strong> ${segment.departure.at} – ${segment.arrival.at}</p>
+          <p><strong>Airline:</strong> ${segment.carrierCode}</p>
+          <button style="background: #7183f5; color: white; padding: 10px; border: none; border-radius: 5px;">Buchen</button>
+        `;
+        cards.appendChild(card);
       });
-      const data = await response.json();
-      const cards = document.getElementById("flightCards");
-      if (data.data && data.data.length > 0) {
-        data.data.forEach(offer => {
-          const card = document.createElement("div");
-          card.style.border = "1px solid #ccc";
-          card.style.padding = "10px";
-          card.style.margin = "10px";
-          card.innerHTML = `
-            <h3>${offer.total_amount} ${offer.total_currency}</h3>
-            <p>${offer.slices[0].segments[0].departing_at} → ${offer.slices[0].segments[0].arriving_at}</p>
-            <p>Airline: ${offer.slices[0].segments[0].operating_carrier.name}</p>
-          `;
-          cards.appendChild(card);
-        });
-      } else {
-        cards.innerHTML = "<p>No flights available.</p>";
-      }
+    } else {
+      cards.innerHTML += "<p>Keine Flüge verfügbar.</p>";
     }
-    fetchFlights();
-  </script>
+  }
+  fetchAmadeusFlights();
+</script>
   </body>
 </html>
 </body>
