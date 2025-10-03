@@ -198,12 +198,13 @@
   <h3>Live Flight Deals (Amadeus)</h3>
   <p>Loading...</p>
 </div>
+<div id="flightCards" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
+  <h3>Live Flight Deals (Amadeus)</h3>
+  <p>Loading...</p>
+</div>
 <script>
   async function fetchAmadeusFlights() {
-    const token = "REyfGoe0UVuiRmsjLQh9PfhA6hLB"; // Ersetze mit deinem Token
-    const response = await fetch("https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=FRA&destinationLocationCode=BCN&departureDate=2025-10-03", {
-      headers: { "Authorization": token }
-    });
+    const response = await fetch("https://amadeus-proxy.sebastianressler-sr.workers.dev");
     const data = await response.json();
     const cards = document.getElementById("flightCards");
     if (data.data && data.data.length > 0) {
