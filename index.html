@@ -188,5 +188,50 @@
     // Jahr
     document.getElementById('fh-y').textContent = new Date().getFullYear();
   </script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FliegHeute</title>
+</head>
+<body>
+  <!-- Dein bestehender Content hier -->
+  <div id="flightCards"></div>
+  <script>
+    async function fetchFlights() {
+      const token = "duffel_test_n3h5qEL5m4VMDOCjPaoP7vCjYL1kJ3LbrlKuixf3OS2";
+      const response = await fetch("https://test.api.duffel.com/air/offer_requests", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "slices": [{"origin": "FRA", "destination": "BCN", "departure_date": "2025-10-03"}],
+          "passengers": [{"type": "adult"}]
+        })
+      });
+      const data = await response.json();
+      const cards = document.getElementById("flightCards");
+      if (data.data && data.data.length > 0) {
+        data.data.forEach(offer => {
+          const card = document.createElement("div");
+          card.style.border = "1px solid #ccc";
+          card.style.padding = "10px";
+          card.style.margin = "10px";
+          card.innerHTML = `
+            <h3>${offer.total_amount} ${offer.total_currency}</h3>
+            <p>${offer.slices[0].segments[0].departing_at} → ${offer.slices[0].segments[0].arriving_at}</p>
+            <p>Airline: ${offer.slices[0].segments[0].operating_carrier.name}</p>
+          `;
+          cards.appendChild(card);
+        });
+      } else {
+        cards.innerHTML = "<p>No flights available.</p>";
+      }
+    }
+    fetchFlights();
+  </script>
+  </body>
+</html>
 </body>
 </html>
