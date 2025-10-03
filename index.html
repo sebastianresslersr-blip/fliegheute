@@ -194,15 +194,32 @@
   <title>FliegHeute</title>
 </head>
 <body>
-<div id="flightCards" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
-  <h3>Live Flight Deals (Amadeus)</h3>
-  <p>Loading...</p>
-</div>
-<div id="flightCards" style="margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 10px;">
-  <h3>Live Flight Deals (Amadeus)</h3>
-  <p>Loading...</p>
-</div>
-<script>
+<section class="fh-container fh-section">
+  <div class="fh-section-h">
+    <h2>Travel Tips</h2>
+  </div>
+  <div class="fh-grid">
+    <article class="fh-card">
+      <div class="fh-body">
+        <h3>Top 5 Last-Minute-Deals aus FRA</h3>
+        <p>Tipps: BCN für 49€, LON für 39€. Pack leicht!</p>
+      </div>
+    </article>
+    <article class="fh-card">
+      <div class="fh-body">
+        <h3>Warum 24h-Deals rocken</h3>
+        <p>Spontan sparen. Setze Alerts!</p>
+      </div>
+    </article>
+    <article class="fh-card">
+      <div class="fh-body">
+        <h3>Günstig buchen</h3>
+        <p>Vergleiche früh morgens – Deals warten!</p>
+      </div>
+    </article>
+  </div>
+</section>
+  <script>
   async function fetchAmadeusFlights() {
     const response = await fetch("https://amadeus-proxy.sebastianressler-sr.workers.dev");
     const data = await response.json();
