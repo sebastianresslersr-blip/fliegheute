@@ -299,26 +299,7 @@
     footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:100px}
     .fh-footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     .fh-transp{margin-top:10px;font-size:13px}
-  
-.hero-layer {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: opacity 1.5s ease-in-out;
-  opacity: 0;
-}
-.hero-layer.active {
-  opacity: 1;
-  z-index: 1;
-}
-.fh-hero-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-</style>
+  </style>
 <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
     (function () {
         var script = document.createElement("script");
@@ -327,8 +308,75 @@
         document.head.appendChild(script);
     })();
   </script>
+
+  <!-- Hero Crossfade CSS -->
+  <style id="hero-crossfade-css">
+    .hero-root {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      overflow: hidden;
+    }
+    .hero-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      will-change: opacity, background-image;
+    }
+    .hero-layer.active { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      left: clamp(16px, 6vw, 96px);
+      bottom: clamp(24px, 10vh, 120px);
+      z-index: 5;
+      color: #fff;
+      max-width: min(90vw, 900px);
+      text-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+    .hero-overlay h1 {
+      margin: 0;
+      line-height: 1.05;
+      font-weight: 800;
+      font-size: clamp(28px, 6vw, 64px);
+    }
+    .hero-buttons { margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .hero-buttons button {
+      appearance: none;
+      border: none;
+      padding: 10px 14px;
+      font: inherit;
+      font-weight: 600;
+      border-radius: 999px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      cursor: pointer;
+      transition: transform .15s ease, background .2s ease;
+      backdrop-filter: blur(6px);
+    }
+    .hero-buttons button:hover { transform: translateY(-1px); background: rgba(0,0,0,.7); }
+    .hero-buttons button.active { background: #fff; color: #000; }
+    @media (max-width: 768px) {
+      .hero-root { height: 58vh; }
+    }
+  </style>
+
 </head>
 <body>
+
+  <!-- Hero Section START (new crossfade) -->
+  <section id="hero" class="hero-root">
+    <div class="hero-layer hero-layer-a"></div>
+    <div class="hero-layer hero-layer-b"></div>
+    <div class="hero-overlay">
+      <h1 id="hero-headline"></h1>
+      <div id="hero-buttons" class="hero-buttons"></div>
+    </div>
+  </section>
+  <!-- Hero Section END -->
+
   <!-- Header -->
   <header class="fh-header">
     <div class="fh-container fh-hdr">
@@ -444,6 +492,131 @@
   </section>
 
   <!-- Footer -->
+
+
+
+<script id="hero-crossfade-js">
+(function() {
+  const CROSSFADE_MS = 1500;
+  const STAND_MS = 7000;
+
+  // If HEROES isn't defined yet, wait for it
+  function ready(fn){ 
+    if (document.readyState !== 'loading') fn(); 
+    else document.addEventListener('DOMContentLoaded', fn);
+  }
+
+  ready(function initHero(){
+    if (typeof HEROES === 'undefined' || !Array.isArray(HEROES) || !HEROES.length) return;
+
+    const layerA = document.querySelector('.hero-layer-a');
+    const layerB = document.querySelector('.hero-layer-b');
+    const headline = document.getElementById('hero-headline');
+    const btnWrap = document.getElementById('hero-buttons');
+
+    let currentIndex = 0;
+    let currentLayer = layerA;
+    let timer = null;
+
+    // Dynamic buttons from HEROES.label
+    HEROES.forEach((h, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = h.label || `#${i+1}`;
+      b.addEventListener('click', () => {
+        stopAuto();
+        show(i);
+        startAuto();
+      });
+      btnWrap.appendChild(b);
+    });
+
+    const buttons = Array.from(btnWrap.querySelectorAll('button'));
+
+    function setBtnActive(i){
+      buttons.forEach((b, idx) => b.classList.toggle('active', idx === i));
+    }
+
+    function srcFor(hero){
+      const s = hero.sources || {};
+      const isMobile = window.innerWidth < 768;
+      const isRetina = window.devicePixelRatio > 1;
+      if (isMobile) return isRetina ? (s.mobile2x || s.mobile1x || s.desktop2x || s.desktop1x) : (s.mobile1x || s.desktop1x);
+      return isRetina ? (s.desktop2x || s.desktop1x) : (s.desktop1x || s.mobile1x);
+    }
+
+    // Preload all assets
+    (function preload(){
+      HEROES.forEach(h => {
+        if (!h || !h.sources) return;
+        ['desktop1x','desktop2x','mobile1x','mobile2x'].forEach(k => {
+          const v = h.sources[k];
+          if (v) { const img = new Image(); img.src = v; }
+        });
+      });
+    })();
+
+    function show(i){
+      const hero = HEROES[i];
+      if (!hero) return;
+      const nextLayer = (currentLayer === layerA) ? layerB : layerA;
+
+      // Set next image
+      nextLayer.style.backgroundImage = `url("${srcFor(hero)}")`;
+
+      // Crossfade
+      nextLayer.classList.add('active');
+      currentLayer.classList.remove('active');
+
+      // Headline update AFTER fade-in to avoid jump
+      setTimeout(() => {
+        headline.textContent = hero.title || '';
+        setBtnActive(i);
+      }, CROSSFADE_MS);
+
+      currentLayer = nextLayer;
+      currentIndex = i;
+    }
+
+    function next(){
+      const n = (currentIndex + 1) % HEROES.length;
+      show(n);
+    }
+
+    function startAuto(){
+      stopAuto();
+      timer = setInterval(next, STAND_MS);
+    }
+    function stopAuto(){
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    // Init first frame
+    // Place first image immediately and headline after a tick
+    const first = HEROES[0];
+    if (first){
+      currentLayer.style.backgroundImage = `url("${srcFor(first)}")`;
+      currentLayer.classList.add('active');
+      setTimeout(() => {
+        headline.textContent = first.title || '';
+        setBtnActive(0);
+      }, 0);
+    }
+
+    startAuto();
+
+    // Resize support: reload current background source
+    window.addEventListener('resize', () => {
+      const hero = HEROES[currentIndex];
+      if (!hero) return;
+      // Update on the currently visible layer
+      currentLayer.style.backgroundImage = `url("${srcFor(hero)}")`;
+    });
+  });
+})();
+</script>
+
   <footer>
     <div class="fh-footer">
       <div>© <span id="fh-y"></span> fliegheute.de</div>
@@ -452,9 +625,20 @@
     <div class="fh-footer fh-transp">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
   </footer>
 
-  
+  <script>
+    // Jahr
+    document.getElementById('fh-y').textContent = new Date().getFullYear();
 
+    // Pax Counter
+    const fhMinus=document.querySelector('.fh-minus');
+    const fhPlus=document.querySelector('.fh-plus');
+    const fhCount=document.querySelector('.fh-pax-count');
+    let pax=1; const upd=()=>fhCount.textContent=pax;
+    fhMinus.addEventListener('click',()=>{if(pax>1){pax--;upd();}});
+    fhPlus.addEventListener('click',()=>{pax++;upd();});
+  </script>
 <script>
+/* ================= HERO DATA ================= */
 const HEROES = [
   {
     label: "Mallorca",
@@ -488,16 +672,21 @@ const HEROES = [
   }
 ];
 
+/* ================= ELEMENTS ================= */
 const heroEl    = document.getElementById("hero");
 const heroTitle = document.getElementById("hero-title");
 const switchEl  = document.querySelector(".fh-hero-switch");
-const layers    = heroEl.querySelectorAll(".hero-layer");
 
+/* Zwei Layer im Hero fürs Crossfading */
+const layers = heroEl.querySelectorAll(".hero-layer");
+
+/* ================= SETTINGS ================= */
 let activeLayer = 0;
 let currentHero = 0;
 const HERO_DURATION = 7000; // 7s Standzeit
 const FADE_DURATION = 1500; // 1.5s Überblendung
 
+/* ================= HELPERS ================= */
 function pickSrc(h){
   const isMobile = window.innerWidth < 800;
   if (isMobile) return (window.devicePixelRatio > 1) ? h.sources.mobile2x : h.sources.mobile1x;
@@ -510,11 +699,12 @@ function setActive(idx){
   });
 }
 
+/* ================= CORE ================= */
 function setHero(i=0){
   const h = HEROES[i] || HEROES[0];
   const src = pickSrc(h);
 
-  activeLayer = 1 - activeLayer;
+  activeLayer = 1 - activeLayer; // toggle Layer
   const newLayer = layers[activeLayer];
   const oldLayer = layers[1 - activeLayer];
 
@@ -522,14 +712,11 @@ function setHero(i=0){
   newLayer.classList.add("active");
   oldLayer.classList.remove("active");
 
-  // Headline erst setzen, wenn Bild aktiv
-  setTimeout(()=>{
-    heroTitle.textContent = h.title;
-  }, FADE_DURATION);
-
+  heroTitle.textContent = h.title;
   setActive(i);
 }
 
+/* ================= INIT ================= */
 /* Buttons dynamisch erzeugen */
 switchEl.innerHTML = "";
 HEROES.forEach((h, i) => {
@@ -575,6 +762,5 @@ window.addEventListener("resize", ()=>{
   resizeTimer = setTimeout(()=> setHero(currentHero), 150);
 });
 </script>
-
 </body>
 </html>
