@@ -114,6 +114,10 @@
   background:rgba(255,255,255,.18);
   transform:translateY(-1px);
 }
+  .fh-hero-switch button[aria-pressed="true"]{
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.55);
+}
 
 /* ===== Suche ===== */
 .fh-search {
@@ -367,11 +371,7 @@
       </form>
 
       <!-- Switch-Buttons -->
-      <div class="fh-hero-switch">
-        <button type="button" data-hero="0">Mallorca</button>
-        <button type="button" data-hero="1">London</button>
-        <button type="button" data-hero="2">Bergsee</button>
-      </div>
+     <div class="fh-hero-switch"></div>
     </div>
     <img class="fh-mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
   </div>
@@ -446,8 +446,10 @@
     fhPlus.addEventListener('click',()=>{pax++;upd();});
   </script>
 <script>
+/* Single source of truth: alle Daten hier drin */
 const HEROES = [
   {
+    label: "Mallorca",
     title: "Mallorca erleben – Sonne, Meer, Freiheit",
     sources: {
       desktop1x: "assets/hero-mallorca-desktop@1x.webp",
@@ -457,6 +459,7 @@ const HEROES = [
     }
   },
   {
+    label: "London",
     title: "Städtetrip deluxe: Kultur & Flair erleben",
     sources: {
       desktop1x: "assets/hero-london-desktop@1x.webp",
@@ -466,6 +469,7 @@ const HEROES = [
     }
   },
   {
+    label: "Bergsee",
     title: "Raus. Atmen. Discovery beginnt hier",
     sources: {
       desktop1x: "assets/hero-bergsee-desktop@1x.webp",
@@ -476,33 +480,78 @@ const HEROES = [
   }
 ];
 
-const heroEl = document.getElementById("hero");
-const heroTitle = document.getElementById("hero-title");
+const heroEl   = document.getElementById("hero");
+const heroTitle= document.getElementById("hero-title");
+const switchEl = document.querySelector(".fh-hero-switch");
 
-function setHero(i=0){
-  const h = HEROES[i];
+/* Buttons dynamisch aus HEROES erzeugen (keine Doppelpflege) */
+switchEl.innerHTML = "";
+HEROES.forEach((h, i) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.dataset.hero = i;
+  b.textContent = h.label;
+  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+  switchEl.appendChild(b);
+});
+
+/* Hilfsfunktionen */
+function pickSrc(h){
   const isMobile = window.innerWidth < 800;
-  const src = isMobile
-    ? (window.devicePixelRatio>1 ? h.sources.mobile2x : h.sources.mobile1x)
-    : (window.devicePixelRatio>1 ? h.sources.desktop2x : h.sources.desktop1x);
-  heroEl.style.backgroundImage = `url('${src}')`;
-  heroTitle.textContent = h.title;
+  if (isMobile) return (window.devicePixelRatio > 1) ? h.sources.mobile2x : h.sources.mobile1x;
+  return (window.devicePixelRatio > 1) ? h.sources.desktop2x : h.sources.desktop1x;
 }
 
-setHero(0);
+function setActive(idx){
+  switchEl.querySelectorAll("button").forEach((b,i)=>{
+    b.setAttribute("aria-pressed", i===idx ? "true" : "false");
+  });
+}
+
+/* Hero setzen */
+function setHero(i=0){
+  const h = HEROES[i] || HEROES[0];
+  const src = pickSrc(h);
+  heroEl.style.backgroundImage = `url("${src}")`;
+  heroTitle.textContent = h.title;
+  setActive(i);
+}
+
+/* Alle Hero-Assets vorladen (dynamisch, skaliert mit) */
+(function preloadAllHeroes(){
+  HEROES.forEach(h => {
+    Object.values(h.sources).forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  });
+})();
+
+/* Startbild */
 let currentHero = 0;
+setHero(currentHero);
+
+/* Manuelles Umschalten (Buttons) + Auto-Rotate syncen */
+switchEl.addEventListener("click", (e)=>{
+  const btn = e.target.closest("button[data-hero]");
+  if (!btn) return;
+  currentHero = parseInt(btn.dataset.hero, 10) || 0;
+  setHero(currentHero);
+});
+
+/* Auto-Rotation alle 5s */
+const HERO_ROTATE_MS = 5000;
 setInterval(()=>{
   currentHero = (currentHero + 1) % HEROES.length;
   setHero(currentHero);
-}, 5000); // alle 5 Sekunden
-document.querySelectorAll(".fh-hero-switch button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const i = parseInt(btn.dataset.hero,10);
-    setHero(i);
-  });
-});
+}, HERO_ROTATE_MS);
 
-window.addEventListener("resize",()=>setHero());
+/* Bei Resize passende Auflösung nachladen */
+let resizeTimer;
+window.addEventListener("resize", ()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(()=> setHero(currentHero), 150);
+});
 </script>
 </body>
 </html>
