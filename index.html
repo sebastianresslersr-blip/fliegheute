@@ -299,7 +299,26 @@
     footer{padding:20px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--border);margin-top:100px}
     .fh-footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     .fh-transp{margin-top:10px;font-size:13px}
-  </style>
+  
+.hero-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1.5s ease-in-out;
+  opacity: 0;
+}
+.hero-layer.active {
+  opacity: 1;
+  z-index: 1;
+}
+.fh-hero-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+</style>
 <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
     (function () {
         var script = document.createElement("script");
@@ -433,20 +452,9 @@
     <div class="fh-footer fh-transp">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
   </footer>
 
-  <script>
-    // Jahr
-    document.getElementById('fh-y').textContent = new Date().getFullYear();
+  
 
-    // Pax Counter
-    const fhMinus=document.querySelector('.fh-minus');
-    const fhPlus=document.querySelector('.fh-plus');
-    const fhCount=document.querySelector('.fh-pax-count');
-    let pax=1; const upd=()=>fhCount.textContent=pax;
-    fhMinus.addEventListener('click',()=>{if(pax>1){pax--;upd();}});
-    fhPlus.addEventListener('click',()=>{pax++;upd();});
-  </script>
 <script>
-/* ================= HERO DATA ================= */
 const HEROES = [
   {
     label: "Mallorca",
@@ -480,21 +488,16 @@ const HEROES = [
   }
 ];
 
-/* ================= ELEMENTS ================= */
 const heroEl    = document.getElementById("hero");
 const heroTitle = document.getElementById("hero-title");
 const switchEl  = document.querySelector(".fh-hero-switch");
+const layers    = heroEl.querySelectorAll(".hero-layer");
 
-/* Zwei Layer im Hero fürs Crossfading */
-const layers = heroEl.querySelectorAll(".hero-layer");
-
-/* ================= SETTINGS ================= */
 let activeLayer = 0;
 let currentHero = 0;
 const HERO_DURATION = 7000; // 7s Standzeit
 const FADE_DURATION = 1500; // 1.5s Überblendung
 
-/* ================= HELPERS ================= */
 function pickSrc(h){
   const isMobile = window.innerWidth < 800;
   if (isMobile) return (window.devicePixelRatio > 1) ? h.sources.mobile2x : h.sources.mobile1x;
@@ -507,12 +510,11 @@ function setActive(idx){
   });
 }
 
-/* ================= CORE ================= */
 function setHero(i=0){
   const h = HEROES[i] || HEROES[0];
   const src = pickSrc(h);
 
-  activeLayer = 1 - activeLayer; // toggle Layer
+  activeLayer = 1 - activeLayer;
   const newLayer = layers[activeLayer];
   const oldLayer = layers[1 - activeLayer];
 
@@ -520,11 +522,14 @@ function setHero(i=0){
   newLayer.classList.add("active");
   oldLayer.classList.remove("active");
 
-  heroTitle.textContent = h.title;
+  // Headline erst setzen, wenn Bild aktiv
+  setTimeout(()=>{
+    heroTitle.textContent = h.title;
+  }, FADE_DURATION);
+
   setActive(i);
 }
 
-/* ================= INIT ================= */
 /* Buttons dynamisch erzeugen */
 switchEl.innerHTML = "";
 HEROES.forEach((h, i) => {
@@ -570,5 +575,6 @@ window.addEventListener("resize", ()=>{
   resizeTimer = setTimeout(()=> setHero(currentHero), 150);
 });
 </script>
+
 </body>
 </html>
