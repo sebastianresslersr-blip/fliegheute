@@ -490,7 +490,11 @@ function setHero(i=0){
 }
 
 setHero(0);
-
+let currentHero = 0;
+setInterval(()=>{
+  currentHero = (currentHero + 1) % HEROES.length;
+  setHero(currentHero);
+}, 5000); // alle 5 Sekunden
 document.querySelectorAll(".fh-hero-switch button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     const i = parseInt(btn.dataset.hero,10);
