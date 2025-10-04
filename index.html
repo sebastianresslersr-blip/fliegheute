@@ -389,7 +389,7 @@
     const HEROES = [
       {
         label: "Mallorca",
-        title: "Endlich Strand Sonne, Meer, Freiheit",
+        title: "Endlich Strand<br>Sonne, Meer, Freiheit",
         sources: {
           desktop1x: "assets/hero-mallorca-desktop@1x.webp",
           desktop2x: "assets/hero-mallorca-desktop@2x.webp",
@@ -399,7 +399,7 @@
       },
       {
         label: "The City",
-        title: "Städtetrip deluxe: Kultur & Flair in London",
+        title: "Städtetrip deluxe:<br>Kultur & Flair in London",
         sources: {
           desktop1x: "assets/hero-london-desktop@1x.webp",
           desktop2x: "assets/hero-london-desktop@2x.webp",
@@ -409,7 +409,7 @@
       },
       {
         label: "Outdoors",
-        title: "Raus-Atmen. Discovery of yourself in nature",
+        title: "Raus-Atmen.<br>Discovery of yourself in nature",
         sources: {
           desktop1x: "assets/hero-bergsee-desktop@1x.webp",
           desktop2x: "assets/hero-bergsee-desktop@2x.webp",
@@ -474,7 +474,7 @@
       layers[nextLayer].classList.add("active");
 
       // Headline erst nach dem Fade ändern
-      setTimeout(()=>{ heroTitle.textContent = h.title; }, FADE_DURATION);
+      setTimeout(()=>{ heroTitle.innerHTML = h.title; }, FADE_DURATION);
 
       setActive(i);
       activeLayer = nextLayer;
