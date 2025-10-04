@@ -137,12 +137,65 @@
     .fh-link{color:var(--brand);font-weight:700;text-decoration:none}
 
     /* ===== Chips ===== */
-    .fh-chips{display:flex;gap:10px;padding:10px 0;justify-content:space-between}
-    .fh-chip{transition: all 0.25s ease;}
-    .fh-chip:hover{transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.08);}
-    .fh-chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
-    .fh-chip .fh-badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
+    .fh-hotchips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
 
+.fh-hotchip {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.fh-hotchip:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.fh-hotimg {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+}
+
+.fh-hotinfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fff;
+}
+
+.fh-hotroute {
+  display: flex;
+  flex-direction: column;
+  font-weight: 800;
+  color: var(--ink);
+}
+.fh-hotroute span {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.fh-hotprice {
+  background: #f571b4;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
     /* ===== Grid ===== */
     .fh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media(max-width:800px){.fh-grid{grid-template-columns:1fr 1fr}}
@@ -252,12 +305,31 @@
       <h1>24h Hotchips</h1>
       <a class="fh-link" href="#">Alle 24h-Deals</a>
     </div>
-    <div class="fh-chips">
-      <div class="fh-chip"><strong>FRA → BCN</strong><small>13:25</small><span class="fh-badge">🔥 49€</span></div>
-      <div class="fh-chip"><strong>BER → LON</strong><small>18:40</small><span class="fh-badge">⚡ 39€</span></div>
-      <div class="fh-chip"><strong>STR → ROM</strong><small>20:10</small><span class="fh-badge">🔥 59€</span></div>
-      <div class="fh-chip"><strong>MUC → LIS</strong><small>22:05</small><span class="fh-badge">⚡ 89€</span></div>
+    <div class="fh-hotchips">
+  <article class="fh-hotchip">
+    <div class="fh-hotimg" style="background-image:url('/assets/fra-bcn.jpg')"></div>
+    <div class="fh-hotinfo">
+      <div class="fh-hotroute"><strong>FRA → BCN</strong><span>13:25</span></div>
+      <div class="fh-hotprice"><span>🔥</span>49 €</div>
     </div>
+  </article>
+
+  <article class="fh-hotchip">
+    <div class="fh-hotimg" style="background-image:url('/assets/ber-lon.jpg')"></div>
+    <div class="fh-hotinfo">
+      <div class="fh-hotroute"><strong>BER → LON</strong><span>18:40</span></div>
+      <div class="fh-hotprice"><span>⚡</span>39 €</div>
+    </div>
+  </article>
+
+  <article class="fh-hotchip">
+    <div class="fh-hotimg" style="background-image:url('/assets/str-rom.jpg')"></div>
+    <div class="fh-hotinfo">
+      <div class="fh-hotroute"><strong>STR → ROM</strong><span>20:10</span></div>
+      <div class="fh-hotprice"><span>🔥</span>59 €</div>
+    </div>
+  </article>
+</div>
   </section>
 
   <!-- 48h -->
