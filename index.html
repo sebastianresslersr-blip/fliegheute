@@ -4,7 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>fliegheute.de – Flieg. Heute.</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-plany-favicon.svg">
+
+  <!-- Preload: alle Hero-Assets (Desktop/Mobile, 1x/2x) -->
+  <link rel="preload" as="image" href="/assets/hero-mallorca-desktop@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-mallorca-desktop@2x.webp">
+  <link rel="preload" as="image" href="/assets/hero-mallorca-mobile@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-mallorca-mobile@2x.webp">
+
+  <link rel="preload" as="image" href="/assets/hero-london-desktop@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-london-desktop@2x.webp">
+  <link rel="preload" as="image" href="/assets/hero-london-mobile@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-london-mobile@2x.webp">
+
+  <link rel="preload" as="image" href="/assets/hero-bergsee-desktop@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-bergsee-desktop@2x.webp">
+  <link rel="preload" as="image" href="/assets/hero-bergsee-mobile@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-bergsee-mobile@2x.webp">
+
   <style id="fh-styles">
     :root{
       --brand:#7183f5; --ink:#0b0b13; --muted:#6e7280;
@@ -18,246 +40,95 @@
     /* ===== Layout / Container ===== */
     .fh-container{max-width:1120px;margin:0 auto;padding:0 20px}
 
-   /* ===== Header ===== */
-.fh-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: #fff;
-  backdrop-filter: blur(6px);
-  border-bottom: none;
-  box-shadow: 0 6px 20px -6px rgba(113,131,245,0.25); /* var(--brand) weich */
-}
-.fh-hdr {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.fh-hdr img { height: 32px }
-.fh-nav {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-.fh-nav a {
-  font-weight: 600;
-  text-decoration: none;
-  color: inherit;
-}
-.fh-nav .fh-cta {
-  background: var(--ink);
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: var(--r-pill);
-  font-weight: 700;
-}
+    /* ===== Header ===== */
+    .fh-header {
+      position: sticky; top: 0; z-index: 50; background: #fff;
+      backdrop-filter: blur(6px); border-bottom: none;
+      box-shadow: 0 6px 20px -6px rgba(113,131,245,0.25);
+    }
+    .fh-hdr { height: 80px; display: flex; align-items: center; justify-content: space-between; }
+    .fh-hdr img { height: 32px }
+    .fh-nav { display: flex; gap: 20px; align-items: center; }
+    .fh-nav a { font-weight: 600; text-decoration: none; color: inherit; }
+    .fh-nav .fh-cta { background: var(--ink); color: #fff; padding: 8px 14px; border-radius: var(--r-pill); font-weight: 700; }
 
-/* ===== Hero ===== */
-.fh-hero-wrap {
-  background: var(--hero) url("/assets/herobild1v3.png") no-repeat center/cover;
-}
-.fh-hero {
-  display: grid;
-  grid-template-columns: 640px auto; /* linke Spalte fix */
-  align-items: start;
-  gap: 40px;
-  padding: 200px 0;
-}
-.fh-hero h1 {
-  font-size: 52px;
-  font-family: "Inter Tight", sans-serif;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-.fh-hero p {
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.fh-mascot {
-  width: 180px;
-  height: auto;
-  justify-self: self-start;
-}
-    .fh-hero-wrap {
-  position: relative;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.fh-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(11,11,19,.55));
-  pointer-events: none;
-}
-.fh-hero { position: relative; z-index: 1; }
-.fh-hero h1, .fh-hero p { color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35); }
-.fh-hero-switch {
-  display:flex;
-  gap:8px;
-  margin-top:12px;
-}
-.fh-hero-switch button {
-  height:32px;
-  padding:0 12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.4);
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-  backdrop-filter:saturate(120%) blur(2px);
-  transition:background .2s ease,transform .15s ease;
-}
-.fh-hero-switch button:hover {
-  background:rgba(255,255,255,.18);
-  transform:translateY(-1px);
-}
-  .fh-hero-switch button[aria-pressed="true"]{
-  background: rgba(255,255,255,.22);
-  border-color: rgba(255,255,255,.55);
-}
+    /* ===== Hero ===== */
+    .fh-hero-wrap { position: relative; background: var(--hero); overflow: hidden; }
+    .fh-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(11,11,19,.55));
+      pointer-events: none; z-index: 1;
+    }
+    .fh-hero-layers { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+    .hero-layer {
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.5s ease-in-out; /* 1.5s Crossfade */
+    }
+    .hero-layer.active { opacity: 1; }
 
-/* ===== Suche ===== */
-.fh-search {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 16px;
-  display: grid;
-  gap: 14px;
-  width: 100%;
-}
-.fh-controls {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.fh-seg {
-  display: inline-flex;
-  border: 1px solid var(--border);
-  border-radius: var(--r-pill);
-  overflow: hidden;
-}
-.fh-seg button {
-  height: var(--ctl-h);
-  padding: 0 14px;
-  border: 0;
-  background: #fff;
-  cursor: pointer;
-  font-weight: 700;
-  color: var(--ink);
-}
-.fh-seg button[aria-pressed="true"] {
-  background: var(--brand);
-  color: #fff;
-}
+    .fh-hero {
+      display: grid; grid-template-columns: 640px auto; align-items: start; gap: 40px;
+      padding: 200px 0; position: relative; z-index: 2;
+    }
+    .fh-hero h1 {
+      font-size: 52px; font-family: "Inter Tight", sans-serif; font-weight: 800; margin-bottom: 8px;
+      color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.35);
+    }
+    .fh-hero p { color:#fff; text-shadow:0 1px 6px rgba(0,0,0,.35); margin-bottom: 20px; }
+    .fh-mascot { width: 180px; height: auto; justify-self: self-start; }
 
-.fh-pax {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.fh-pax-btn {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: #fff;
-  font-weight: 800;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.fh-pax-count {
-  min-width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: var(--brand);
-  color: #fff;
-  font-weight: 700;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .fh-hero-switch { display:flex; gap:8px; margin-top:12px; }
+    .fh-hero-switch button{
+      height:32px; padding:0 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.4);
+      background:rgba(255,255,255,.08); color:#fff; font-weight:700; cursor:pointer;
+      backdrop-filter:saturate(120%) blur(2px);
+      transition:background .2s ease, transform .15s ease;
+    }
+    .fh-hero-switch button:hover { background:rgba(255,255,255,.18); transform:translateY(-1px); }
+    .fh-hero-switch button[aria-pressed="true"]{ background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
 
-.fh-line {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.fh-field {
-  flex: 1;
-  min-width: 0;
-  background: #f1f3ff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  height: var(--ctl-h);
-}
-.fh-field input {
-  border: 0;
-  background: transparent;
-  flex: 1;
-  min-width: 0;
-  font-size: 16px;
-}
-.fh-swap {
-  width: var(--ctl-h);
-  height: var(--ctl-h);
-  border-radius: var(--r-pill);
-  border: 1px solid var(--border);
-  background: #fff;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
+    /* ===== Suche ===== */
+    .fh-search {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow);
+      padding: 16px; display: grid; gap: 14px; width: 100%;
+    }
+    .fh-controls { display: flex; gap: 12px; flex-wrap: wrap; }
+    .fh-seg { display: inline-flex; border: 1px solid var(--border); border-radius: var(--r-pill); overflow: hidden; }
+    .fh-seg button { height: var(--ctl-h); padding: 0 14px; border: 0; background: #fff; cursor: pointer; font-weight: 700; color: var(--ink); }
+    .fh-seg button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+    .fh-pax { display: flex; align-items: center; gap: 8px; }
+    .fh-pax-btn {
+      width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: #fff;
+      font-weight: 800; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .fh-pax-count {
+      min-width: 36px; height: 36px; border-radius: 8px; background: var(--brand); color: #fff; font-weight: 700; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fh-line { display: flex; align-items: center; gap: 10px; }
+    .fh-field {
+      flex: 1; min-width: 0; background: #f1f3ff; border: 1px solid var(--border); border-radius: 10px;
+      display: flex; align-items: center; padding: 0 12px; height: var(--ctl-h);
+    }
+    .fh-field input { border: 0; background: transparent; flex: 1; min-width: 0; font-size: 16px; }
+    .fh-swap {
+      width: var(--ctl-h); height: var(--ctl-h); border-radius: var(--r-pill); border: 1px solid var(--border);
+      background: #fff; display: grid; place-items: center; cursor: pointer;
+    }
+    .fh-go {
+      flex: 0 0 auto; background: var(--brand); color: #fff; border: 0; border-radius: 10px; padding: 0 16px; height: var(--ctl-h);
+      font-weight: 700; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .fh-go img { display: block }
+    .fh-geo {
+      width: 100%; height: var(--ctl-h); margin-top: 6px; background: #fff; border: 1px solid var(--border);
+      border-radius: 10px; font-weight: 600; cursor: pointer;
+    }
+    .fh-micro { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; color: #111; font-size: 14px; }
 
-.fh-go {
-  flex: 0 0 auto;
-  background: var(--brand);
-  color: #fff;
-  border: 0;
-  border-radius: 10px;
-  padding: 0 16px;
-  height: var(--ctl-h);
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-.fh-go img { display: block }
-
-.fh-geo {
-  width: 100%;
-  height: var(--ctl-h);
-  margin-top: 6px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.fh-micro {
-  margin-top: 10px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  color: #111;
-  font-size: 14px;
-}
-    .fh-section-48h {
-  background: var(--hero);
-  padding: 60px 0;
-}
+    /* ===== 48h Band ===== */
+    .fh-section-48h { background: var(--hero); padding: 60px 0; }
 
     /* ===== Sections ===== */
     .fh-section{margin-top:100px}
@@ -267,13 +138,8 @@
 
     /* ===== Chips ===== */
     .fh-chips{display:flex;gap:10px;padding:10px 0;justify-content:space-between}
-    .fh-chip {
-  transition: all 0.25s ease;
-}
-.fh-chip:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-}
+    .fh-chip{transition: all 0.25s ease;}
+    .fh-chip:hover{transform: translateY(-4px) scale(1.02); box-shadow: 0 8px 16px rgba(0,0,0,0.08);}
     .fh-chip{flex:1 1 22%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:8px 12px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
     .fh-chip .fh-badge{background:#f571b4;color:#fff;font-weight:800;border-radius:var(--r-pill);padding:4px 8px;display:flex;align-items:center;gap:6px}
 
@@ -300,12 +166,14 @@
     .fh-footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     .fh-transp{margin-top:10px;font-size:13px}
   </style>
-<script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+
+  <!-- (Optional) vorhandenes 3rd-Party-Script aus deinem früheren Stand -->
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
     (function () {
-        var script = document.createElement("script");
-        script.async = 1;
-        script.src = 'https://emrldco.com/676139.js?t=676139';
-        document.head.appendChild(script);
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://emrldco.com/676139.js?t=676139';
+      document.head.appendChild(script);
     })();
   </script>
 </head>
@@ -325,60 +193,60 @@
   </header>
 
   <!-- Hero -->
-<div class="fh-hero-wrap" id="hero">
-  <div class="fh-hero-overlay"></div>
-  <div class="fh-container fh-hero">
-    <div>
-      <h1 id="hero-title">Mallorca erleben – Sonne, Meer, Freiheit</h1>
-      <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
-
-      <!-- Suchformular -->
-      <form class="fh-search">
-        <div class="fh-controls">
-          <div class="fh-seg">
-            <button type="button" aria-pressed="true">Hin- & Rückflug</button>
-            <button type="button" aria-pressed="false">Nur Hinflug</button>
-          </div>
-          <div class="fh-seg">
-            <button type="button" aria-pressed="true">24h</button>
-            <button type="button" aria-pressed="false">48h</button>
-            <button type="button" aria-pressed="false" disabled>Bald</button>
-          </div>
-          <div class="fh-pax">
-            <button type="button" class="fh-pax-btn fh-minus">–</button>
-            <span class="fh-pax-count">1</span>
-            <button type="button" class="fh-pax-btn fh-plus">+</button>
-          </div>
-        </div>
-
-        <div class="fh-line">
-          <div class="fh-field"><input placeholder="FRA"></div>
-          <button class="fh-swap" type="button">⇆</button>
-          <div class="fh-field"><input placeholder="BCN oder Barcelona"></div>
-          <button class="fh-go" type="button">
-            <img src="/assets/search.svg" alt="Lupe" width="18" height="18">
-            Suchen
-          </button>
-        </div>
-
-        <button type="button" class="fh-geo">Abflug: Airport in der Nähe</button>
-
-        <div class="fh-micro">
-          <span>✅ Beste Deals im Web</span>
-          <span>✅ Preise werden laufend aktualisiert</span>
-          <span>✅ Gespart & abgehoben</span>
-        </div>
-      </form>
-
-      <!-- Switch-Buttons -->
-     <div class="fh-hero-switch"></div>
+  <div class="fh-hero-wrap" id="hero">
+    <div class="fh-hero-overlay"></div>
+    <div class="fh-hero-layers">
+      <div class="hero-layer hero-layer-a active"></div>
+      <div class="hero-layer hero-layer-b"></div>
     </div>
-    <img class="fh-mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
+    <div class="fh-container fh-hero">
+      <div>
+        <h1 id="hero-title">Mallorca erleben – Sonne, Meer, Freiheit</h1>
+        <p>Deine besten Flug-Deals der nächsten 24/48 Stunden – ohne Filterstress.</p>
+
+        <!-- Suchformular -->
+        <form class="fh-search">
+          <div class="fh-controls">
+            <div class="fh-seg">
+              <button type="button" aria-pressed="true">Hin- & Rückflug</button>
+              <button type="button" aria-pressed="false">Nur Hinflug</button>
+            </div>
+            <div class="fh-seg">
+              <button type="button" aria-pressed="true">24h</button>
+              <button type="button" aria-pressed="false">48h</button>
+              <button type="button" aria-pressed="false" disabled>Bald</button>
+            </div>
+            <div class="fh-pax">
+              <button type="button" class="fh-pax-btn fh-minus">–</button>
+              <span class="fh-pax-count">1</span>
+              <button type="button" class="fh-pax-btn fh-plus">+</button>
+            </div>
+          </div>
+          <div class="fh-line">
+            <div class="fh-field"><input placeholder="FRA"></div>
+            <button class="fh-swap" type="button">⇆</button>
+            <div class="fh-field"><input placeholder="BCN oder Barcelona"></div>
+            <button class="fh-go" type="button">
+              <img src="/assets/search.svg" alt="Lupe" width="18" height="18">
+              Suchen
+            </button>
+          </div>
+          <button type="button" class="fh-geo">Abflug: Airport in der Nähe</button>
+          <div class="fh-micro">
+            <span>✅ Beste Deals im Web</span>
+            <span>✅ Preise werden laufend aktualisiert</span>
+            <span>✅ Gespart & abgehoben</span>
+          </div>
+        </form>
+
+        <!-- Dynamische Switch-Buttons -->
+        <div class="fh-hero-switch"></div>
+      </div>
+      <img class="fh-mascot" src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen">
+    </div>
   </div>
-</div>
 
-
-<!-- Heute 24h -->
+  <!-- Heute 24h -->
   <section class="fh-container fh-section">
     <div class="fh-section-h">
       <h1>24h Hotchips</h1>
@@ -393,26 +261,25 @@
   </section>
 
   <!-- 48h -->
-<section class="fh-section fh-section-48h">
-  <div class="fh-container">
-    <div class="fh-section-h">
-      <h1>48h Deals</h1>
-      <a class="fh-link" href="#">Mehr Deals</a>
+  <section class="fh-section fh-section-48h">
+    <div class="fh-container">
+      <div class="fh-section-h">
+        <h1>48h Deals</h1>
+        <a class="fh-link" href="#">Mehr Deals</a>
+      </div>
+      <div class="fh-grid">
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → BCN</div><div class="fh-meta">Heute 21:30 • 2h 10m</div></div><div class="fh-price">49 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → LON</div><div class="fh-meta">Morgen 07:15 • 1h 55m</div></div><div class="fh-price">39 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">STR → ROM</div><div class="fh-meta">Morgen 19:10 • 2h 05m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">MUC → LIS</div><div class="fh-meta">Heute 12:00 • 3h 00m</div></div><div class="fh-price">89 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">DUS → OPO</div><div class="fh-meta">Heute 14:20 • 2h 45m</div></div><div class="fh-price">69 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">HAM → VIE</div><div class="fh-meta">Morgen 09:45 • 1h 40m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">CGN → MAD</div><div class="fh-meta">Heute 16:30 • 2h 30m</div></div><div class="fh-price">79 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → IST</div><div class="fh-meta">Heute 19:00 • 3h 15m</div></div><div class="fh-price">99 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → AMS</div><div class="fh-meta">Morgen 11:20 • 1h 20m</div></div><div class="fh-price">45 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+      </div>
     </div>
-    <div class="fh-grid">
-      <!-- 9 Cards (Beispiele) -->
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → BCN</div><div class="fh-meta">Heute 21:30 • 2h 10m</div></div><div class="fh-price">49 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → LON</div><div class="fh-meta">Morgen 07:15 • 1h 55m</div></div><div class="fh-price">39 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">STR → ROM</div><div class="fh-meta">Morgen 19:10 • 2h 05m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">MUC → LIS</div><div class="fh-meta">Heute 12:00 • 3h 00m</div></div><div class="fh-price">89 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">DUS → OPO</div><div class="fh-meta">Heute 14:20 • 2h 45m</div></div><div class="fh-price">69 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">HAM → VIE</div><div class="fh-meta">Morgen 09:45 • 1h 40m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">CGN → MAD</div><div class="fh-meta">Heute 16:30 • 2h 30m</div></div><div class="fh-price">79 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → IST</div><div class="fh-meta">Heute 19:00 • 3h 15m</div></div><div class="fh-price">99 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-      <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → AMS</div><div class="fh-meta">Morgen 11:20 • 1h 20m</div></div><div class="fh-price">45 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- FAQ -->
   <section class="fh-faq">
@@ -433,11 +300,9 @@
     <div class="fh-footer fh-transp">Transparenz: Wir vergleichen Preise und leiten dich zur Buchung weiter. Kein Aufpreis durch uns.</div>
   </footer>
 
+  <!-- Jahr + Pax Counter -->
   <script>
-    // Jahr
     document.getElementById('fh-y').textContent = new Date().getFullYear();
-
-    // Pax Counter
     const fhMinus=document.querySelector('.fh-minus');
     const fhPlus=document.querySelector('.fh-plus');
     const fhCount=document.querySelector('.fh-pax-count');
@@ -445,113 +310,123 @@
     fhMinus.addEventListener('click',()=>{if(pax>1){pax--;upd();}});
     fhPlus.addEventListener('click',()=>{pax++;upd();});
   </script>
-<script>
-/* Single source of truth: alle Daten hier drin */
-const HEROES = [
-  {
-    label: "Mallorca",
-    title: "Mallorca erleben – Sonne, Meer, Freiheit",
-    sources: {
-      desktop1x: "assets/hero-mallorca-desktop@1x.webp",
-      desktop2x: "assets/hero-mallorca-desktop@2x.webp",
-      mobile1x:  "assets/hero-mallorca-mobile@1x.webp",
-      mobile2x:  "assets/hero-mallorca-mobile@2x.webp"
+
+  <!-- HERO: Daten + Crossfade + Preload + Auto-Rotation -->
+  <script>
+    /* Single source of truth: alle Hero-Daten hier */
+    const HEROES = [
+      {
+        label: "Mallorca",
+        title: "Mallorca erleben – Sonne, Meer, Freiheit",
+        sources: {
+          desktop1x: "assets/hero-mallorca-desktop@1x.webp",
+          desktop2x: "assets/hero-mallorca-desktop@2x.webp",
+          mobile1x:  "assets/hero-mallorca-mobile@1x.webp",
+          mobile2x:  "assets/hero-mallorca-mobile@2x.webp"
+        }
+      },
+      {
+        label: "London",
+        title: "Städtetrip deluxe: Kultur & Flair erleben",
+        sources: {
+          desktop1x: "assets/hero-london-desktop@1x.webp",
+          desktop2x: "assets/hero-london-desktop@2x.webp",
+          mobile1x:  "assets/hero-london-mobile@1x.webp",
+          mobile2x:  "assets/hero-london-mobile@2x.webp"
+        }
+      },
+      {
+        label: "Bergsee",
+        title: "Raus. Atmen. Discovery beginnt hier",
+        sources: {
+          desktop1x: "assets/hero-bergsee-desktop@1x.webp",
+          desktop2x: "assets/hero-bergsee-desktop@2x.webp",
+          mobile1x:  "assets/hero-bergsee-mobile@1x.webp",
+          mobile2x:  "assets/hero-bergsee-mobile@2x.webp"
+        }
+      }
+    ];
+
+    const heroEl    = document.getElementById("hero");
+    const heroTitle = document.getElementById("hero-title");
+    const switchEl  = document.querySelector(".fh-hero-switch");
+    const layers    = heroEl.querySelectorAll(".hero-layer");
+
+    let activeLayer = 0;
+    let currentHero = 0;
+    const HERO_DURATION = 7000; // 7s sichtbar
+    const FADE_DURATION = 1500; // 1.5s Übergang
+
+    function pickSrc(h){
+      const isMobile = window.innerWidth < 800;
+      if (isMobile) return (window.devicePixelRatio > 1) ? h.sources.mobile2x : h.sources.mobile1x;
+      return (window.devicePixelRatio > 1) ? h.sources.desktop2x : h.sources.desktop1x;
     }
-  },
-  {
-    label: "London",
-    title: "Städtetrip deluxe: Kultur & Flair erleben",
-    sources: {
-      desktop1x: "assets/hero-london-desktop@1x.webp",
-      desktop2x: "assets/hero-london-desktop@2x.webp",
-      mobile1x:  "assets/hero-london-mobile@1x.webp",
-      mobile2x:  "assets/hero-london-mobile@2x.webp"
+    function setActive(idx){
+      switchEl.querySelectorAll("button").forEach((b,i)=>{
+        b.setAttribute("aria-pressed", i===idx ? "true" : "false");
+      });
     }
-  },
-  {
-    label: "Bergsee",
-    title: "Raus. Atmen. Discovery beginnt hier",
-    sources: {
-      desktop1x: "assets/hero-bergsee-desktop@1x.webp",
-      desktop2x: "assets/hero-bergsee-desktop@2x.webp",
-      mobile1x:  "assets/hero-bergsee-mobile@1x.webp",
-      mobile2x:  "assets/hero-bergsee-mobile@2x.webp"
-    }
-  }
-];
 
-const heroEl   = document.getElementById("hero");
-const heroTitle= document.getElementById("hero-title");
-const switchEl = document.querySelector(".fh-hero-switch");
-
-/* Buttons dynamisch aus HEROES erzeugen (keine Doppelpflege) */
-switchEl.innerHTML = "";
-HEROES.forEach((h, i) => {
-  const b = document.createElement("button");
-  b.type = "button";
-  b.dataset.hero = i;
-  b.textContent = h.label;
-  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
-  switchEl.appendChild(b);
-});
-
-/* Hilfsfunktionen */
-function pickSrc(h){
-  const isMobile = window.innerWidth < 800;
-  if (isMobile) return (window.devicePixelRatio > 1) ? h.sources.mobile2x : h.sources.mobile1x;
-  return (window.devicePixelRatio > 1) ? h.sources.desktop2x : h.sources.desktop1x;
-}
-
-function setActive(idx){
-  switchEl.querySelectorAll("button").forEach((b,i)=>{
-    b.setAttribute("aria-pressed", i===idx ? "true" : "false");
-  });
-}
-
-/* Hero setzen */
-function setHero(i=0){
-  const h = HEROES[i] || HEROES[0];
-  const src = pickSrc(h);
-  heroEl.style.backgroundImage = `url("${src}")`;
-  heroTitle.textContent = h.title;
-  setActive(i);
-}
-
-/* Alle Hero-Assets vorladen (dynamisch, skaliert mit) */
-(function preloadAllHeroes(){
-  HEROES.forEach(h => {
-    Object.values(h.sources).forEach(src => {
-      const img = new Image();
-      img.src = src;
+    /* Buttons dynamisch erzeugen */
+    switchEl.innerHTML = "";
+    HEROES.forEach((h, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.dataset.hero = i;
+      b.textContent = h.label;
+      b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      switchEl.appendChild(b);
     });
-  });
-})();
 
-/* Startbild */
-let currentHero = 0;
-setHero(currentHero);
+    /* Preload aller Hero-Bilder (JS, damit auch künftige ergänzt werden) */
+    (function preloadAllHeroes(){
+      HEROES.forEach(h => {
+        Object.values(h.sources).forEach(src => {
+          const img = new Image();
+          img.loading = "eager";
+          img.decoding = "async";
+          img.src = src;
+        });
+      });
+    })();
 
-/* Manuelles Umschalten (Buttons) + Auto-Rotate syncen */
-switchEl.addEventListener("click", (e)=>{
-  const btn = e.target.closest("button[data-hero]");
-  if (!btn) return;
-  currentHero = parseInt(btn.dataset.hero, 10) || 0;
-  setHero(currentHero);
-});
+    /* Crossfade-Setter */
+    function setHero(i=0){
+      const h = HEROES[i] || HEROES[0];
+      const src = pickSrc(h);
+      const nextLayer = (activeLayer + 1) % 2;
 
-/* Auto-Rotation alle 5s */
-const HERO_ROTATE_MS = 7000;
-setInterval(()=>{
-  currentHero = (currentHero + 1) % HEROES.length;
-  setHero(currentHero);
-}, HERO_ROTATE_MS);
+      layers[nextLayer].style.backgroundImage = `url("${src}")`;
+      layers[activeLayer].classList.remove("active");
+      layers[nextLayer].classList.add("active");
 
-/* Bei Resize passende Auflösung nachladen */
-let resizeTimer;
-window.addEventListener("resize", ()=>{
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(()=> setHero(currentHero), 150);
-});
-</script>
+      // Headline erst nach dem Fade ändern
+      setTimeout(()=>{ heroTitle.textContent = h.title; }, FADE_DURATION);
+
+      setActive(i);
+      activeLayer = nextLayer;
+    }
+
+    /* Start + Rotation */
+    setHero(0);
+    switchEl.addEventListener("click", (e)=>{
+      const btn = e.target.closest("button[data-hero]");
+      if (!btn) return;
+      currentHero = parseInt(btn.dataset.hero, 10) || 0;
+      setHero(currentHero);
+    });
+    setInterval(()=>{
+      currentHero = (currentHero + 1) % HEROES.length;
+      setHero(currentHero);
+    }, HERO_DURATION);
+
+    /* Resize: richtige Auflösung nachladen (debounced) */
+    let resizeTimer;
+    window.addEventListener("resize", ()=>{
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(()=> setHero(currentHero), 150);
+    });
+  </script>
 </body>
 </html>
