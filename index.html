@@ -88,128 +88,44 @@
     .fh-hero-switch button:hover { background:rgba(255,255,255,.18); transform:translateY(-1px); }
     .fh-hero-switch button[aria-pressed="true"]{ background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.55); }
 
-    <!-- BEGIN: FLIEGHEUTE – Neues Suchfeld (Wo / Wann / Wer) -->
-<section id="fh-search" aria-label="FliegHeute Suche – Wo, Wann, Wer">
-  <!-- Kopf: USP + Feld1 (Datum/Uhrzeit live aus Slider) -->
-  <div class="fh-row fh-head">
-    <div class="fh-usp">
-      <span class="fh-zap" aria-hidden="true">⚡</span>
-      <span><strong>24h Last-Minute-Deals</strong> · Spare, wenn du spontan bist.</span>
-    </div>
-
-    <!-- Feld 1: Dynamisch – “Abflug am … / um … Uhr” -->
-    <div class="fh-feld1" id="fh-feld1">
-      <div class="fh-feld1-line" id="fh-feld1-date">Abflug am --.--.----</div>
-      <div class="fh-feld1-line" id="fh-feld1-time">um --:-- Uhr</div>
-    </div>
-  </div>
-
-  <form id="fh-form" class="fh-card" novalidate>
-    <div class="fh-grid">
-      <!-- WO – Abflug & Ziel -->
-      <div class="fh-field">
-        <label class="fh-label">WO – Abflug &amp; Ziel</label>
-        <div class="fh-row fh-origin-dest">
-          <input id="fh-origin" class="fh-input" type="text" placeholder="Abflugort z. B. Frankfurt, BER …" autocomplete="off" />
-          <button type="button" id="fh-swap" class="fh-swap" aria-label="Abflug und Ziel tauschen">⇄</button>
-          <input id="fh-destination" class="fh-input" type="text" placeholder="Zielort z. B. Rom, London, Mallorca …" autocomplete="off" />
-        </div>
-      </div>
-
-      <!-- WANN – Toggle + Slider/Kalender (Feld2) -->
-      <div class="fh-field">
-        <div class="fh-row fh-label-row">
-          <label class="fh-label">WANN – Zeitfenster</label>
-          <div class="fh-toggle" role="tablist" aria-label="Modus wählen">
-            <button type="button" id="fh-mode-spontan" role="tab" aria-selected="true" class="is-active">Spontan</button>
-            <button type="button" id="fh-mode-kalender" role="tab" aria-selected="false">Kalender</button>
-          </div>
-        </div>
-
-        <!-- Spontan-Modus (Slider 6–72h) -->
-        <div id="fh-spontan" class="fh-spontan">
-          <div class="fh-slider-wrap">
-            <!-- Rail -->
-            <div class="fh-rail" aria-hidden="true"></div>
-
-            <!-- Range (nimmt Events entgegen) -->
-            <input id="fh-hours" class="fh-range" type="range" min="6" max="72" step="0.5" value="24" aria-label="Stunden bis spätester Abflug" />
-
-            <!-- Badge-Thumb (25% größer, zweizeilig, Uhr-Icon, einheitliche Farbe) -->
-            <div id="fh-badge" class="fh-badge" aria-hidden="true">
-              <div class="fh-badge-line1">
-                <!-- Uhr-Icon -->
-                <svg class="fh-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                <span id="fh-badge-hours">24 h</span>
-              </div>
-              <div class="fh-badge-line2">bis Abflug</div>
-            </div>
-
-            <!-- Marker 6h / 72h -->
-            <div class="fh-marker fh-marker-left" aria-hidden="true"></div>
-            <div class="fh-marker fh-marker-right" aria-hidden="true"></div>
-          </div>
-
-          <!-- Skalenlabels -->
-          <div class="fh-scale">
-            <span>6h</span><span>24h</span><span>48h</span><span>72h</span>
-          </div>
-        </div>
-
-        <!-- Kalender-Modus (Hin/Rück) -->
-        <div id="fh-kalender" class="fh-kalender" hidden>
-          <div class="fh-grid-2">
-            <div>
-              <label class="fh-sub">Hinflug</label>
-              <input id="fh-depart-date" class="fh-input" type="date" />
-            </div>
-            <div>
-              <label class="fh-sub">Rückflug</label>
-              <input id="fh-return-date" class="fh-input" type="date" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WER – Personen -->
-      <div class="fh-field">
-        <label class="fh-label">WER – Personen</label>
-        <div class="fh-row fh-passengers">
-          <div class="fh-stepper">
-            <span class="fh-stepper-label">Erwachsene</span>
-            <div class="fh-stepper-ctrls">
-              <button type="button" data-step="adults" data-dir="-1" class="fh-btn-ghost">−</button>
-              <span id="fh-adults" class="fh-stepper-val">1</span>
-              <button type="button" data-step="adults" data-dir="1" class="fh-btn-ghost">+</button>
-            </div>
-          </div>
-          <div class="fh-stepper">
-            <span class="fh-stepper-label">Kinder</span>
-            <div class="fh-stepper-ctrls">
-              <button type="button" data-step="kids" data-dir="-1" class="fh-btn-ghost">−</button>
-              <span id="fh-kids" class="fh-stepper-val">0</span>
-              <button type="button" data-step="kids" data-dir="1" class="fh-btn-ghost">+</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Actions -->
-    <div class="fh-row fh-actions">
-      <button type="button" id="fh-preview" class="fh-btn-ghost">Vorschau</button>
-      <button type="submit" id="fh-submit" class="fh-btn-primary">Flüge finden</button>
-    </div>
-
-    <!-- Vorschau-Panel -->
-    <pre id="fh-preview-panel" class="fh-preview" hidden></pre>
-  </form>
-</section>
-<!-- END: FLIEGHEUTE – Neues Suchfeld -->
-
+    /* ===== Suche ===== */
+    .fh-search {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow);
+      padding: 16px; display: grid; gap: 14px; width: 100%;
+    }
+    .fh-controls { display: flex; gap: 12px; flex-wrap: wrap; }
+    .fh-seg { display: inline-flex; border: 1px solid var(--border); border-radius: var(--r-pill); overflow: hidden; }
+    .fh-seg button { height: var(--ctl-h); padding: 0 14px; border: 0; background: #fff; cursor: pointer; font-weight: 700; color: var(--ink); }
+    .fh-seg button[aria-pressed="true"] { background: var(--brand); color: #fff; }
+    .fh-pax { display: flex; align-items: center; gap: 8px; }
+    .fh-pax-btn {
+      width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 8px; background: #fff;
+      font-weight: 800; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .fh-pax-count {
+      min-width: 36px; height: 36px; border-radius: 8px; background: var(--brand); color: #fff; font-weight: 700; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fh-line { display: flex; align-items: center; gap: 10px; }
+    .fh-field {
+      flex: 1; min-width: 0; background: #f1f3ff; border: 1px solid var(--border); border-radius: 10px;
+      display: flex; align-items: center; padding: 0 12px; height: var(--ctl-h);
+    }
+    .fh-field input { border: 0; background: transparent; flex: 1; min-width: 0; font-size: 16px; }
+    .fh-swap {
+      width: var(--ctl-h); height: var(--ctl-h); border-radius: var(--r-pill); border: 1px solid var(--border);
+      background: #fff; display: grid; place-items: center; cursor: pointer;
+    }
+    .fh-go {
+      flex: 0 0 auto; background: var(--brand); color: #fff; border: 0; border-radius: 10px; padding: 0 16px; height: var(--ctl-h);
+      font-weight: 700; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .fh-go img { display: block }
+    .fh-geo {
+      width: 100%; height: var(--ctl-h); margin-top: 6px; background: #fff; border: 1px solid var(--border);
+      border-radius: 10px; font-weight: 600; cursor: pointer;
+    }
+    .fh-micro { margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; color: #111; font-size: 14px; }
 
     /* ===== 48h Band ===== */
     .fh-section-48h { background: var(--hero); padding: 60px 0; }
@@ -313,69 +229,6 @@
       document.head.appendChild(script);
     })();
   </script>
-  <style>
-/* —— Scope nur fürs Suchfeld —— */
-#fh-search { --fh-blue:#7183f5; --fh-pink:#ff7ac8; --fh-bg:#f1f5f9; }
-.fh-row{display:flex;align-items:center;gap:.75rem}
-.fh-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:1rem}
-.fh-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-@media (max-width: 900px){ .fh-grid{grid-template-columns:1fr} .fh-grid-2{grid-template-columns:1fr} }
-.fh-head{justify-content:space-between;margin-bottom:.75rem}
-.fh-usp{display:flex;align-items:center;gap:.5rem;color:#334155;font-size:.95rem}
-.fh-zap{color:var(--fh-blue)}
-.fh-feld1{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:.5rem .75rem;text-align:right;min-width:220px}
-.fh-feld1-line{font-size:.8rem;color:#475569}
-.fh-card{background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:1rem}
-.fh-label{font-size:.72rem;font-weight:700;color:#475569;letter-spacing:.02em}
-.fh-input{height:48px;border-radius:14px;border:1px solid #e2e8f0;padding:0 .9rem;outline:none;background:#fff;width:100%}
-.fh-input:focus{border-color:var(--fh-blue);box-shadow:0 0 0 2px #7183f533}
-.fh-swap{height:48px;aspect-ratio:1/1;border-radius:12px;border:1px solid #e2e8f0;background:#fff;color:#64748b}
-.fh-origin-dest{gap:.5rem}
-.fh-label-row{justify-content:space-between}
-.fh-toggle{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:.25rem}
-.fh-toggle>button{border:0;background:transparent;border-radius:10px;padding:.35rem .6rem;font-size:.72rem;color:#64748b;cursor:pointer}
-.fh-toggle>button.is-active{background:#f1f5f9;color:#0f172a}
-
-.fh-spontan{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:.5rem .75rem}
-.fh-slider-wrap{position:relative;height:64px}
-.fh-rail{position:absolute;left:16px;right:16px;top:50%;transform:translateY(-50%);height:8px;border-radius:999px;background:linear-gradient(90deg,var(--fh-blue),var(--fh-pink))}
-.fh-range{position:absolute;inset:0;width:100%;height:64px;appearance:none;background:transparent;cursor:pointer;z-index:10}
-.fh-range::-webkit-slider-thumb{appearance:none;height:64px;width:4px;background:transparent}
-.fh-range::-moz-range-thumb{height:64px;width:4px;background:transparent;border:0}
-
-.fh-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;min-width:92px;max-width:140px;border-radius:999px;
-  padding:.35rem .6rem;text-align:center;line-height:1.05;background:rgba(255,255,255,.65);backdrop-filter:saturate(140%) blur(6px);
-  border:1px solid var(--fh-blue); color:var(--fh-blue); box-shadow:0 0 8px #7183f533, 0 1px 3px rgba(0,0,0,.15)}
-.fh-badge-line1{display:inline-flex;align-items:center;gap:.35rem;font-weight:800;font-size:.85rem;white-space:nowrap}
-.fh-badge-line2{font-weight:700;font-size:.7rem;margin-top:.05rem}
-.fh-clock{width:14px;height:14px}
-
-.fh-marker{position:absolute;bottom:6px;height:4px;width:8px;border-radius:2px;background:#cbd5e1}
-.fh-marker-left{left:8px}
-.fh-marker-right{right:8px}
-
-.fh-scale{display:flex;justify-content:space-between;color:#64748b;font-size:.72rem;margin-top:.25rem}
-
-.fh-kalender{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:.75rem}
-
-.fh-passengers{gap:.75rem}
-.fh-stepper{display:flex;align-items:center;justify-content:space-between;gap:.75rem;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:0 .5rem;height:48px;width:100%}
-.fh-stepper-label{font-size:.9rem;color:#0f172a}
-.fh-stepper-ctrls{display:flex;align-items:center;gap:.25rem}
-.fh-stepper-val{display:inline-block;min-width:1.5rem;text-align:center;font-weight:700}
-.fh-btn-ghost{border:0;background:#f8fafc;border-radius:10px;padding:.35rem .55rem;cursor:pointer}
-.fh-btn-ghost:hover{background:#eef2f7}
-.fh-actions{justify-content:flex-end;margin-top:.75rem}
-.fh-btn-primary{border:0;background:var(--fh-blue);color:#fff;border-radius:14px;height:48px;padding:0 18px;font-weight:700;box-shadow:0 6px 16px #7183f540;cursor:pointer}
-.fh-btn-primary:hover{box-shadow:0 8px 20px #7183f555}
-.fh-preview{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:.75rem;margin-top:.5rem;color:#334155;max-height:280px;overflow:auto;white-space:pre-wrap}
-
-/* Container-Rand leicht grau wie 48h-Deal-Bereich */
-#fh-search .fh-head + .fh-card{margin-top:.25rem}
-#fh-search{padding-inline: 24px}
-@media (min-width: 1200px){ #fh-search{padding-inline: 40px} }
-</style>
-
 </head>
 <body>
   <!-- Header -->
@@ -647,171 +500,5 @@
       resizeTimer = setTimeout(()=> setHero(currentHero), 150);
     });
   </script>
-<script>
-(function(){
-  const $ = (sel, root=document) => root.querySelector(sel);
-
-  // Elements
-  const elHours = $('#fh-hours');
-  const elBadge = $('#fh-badge');
-  const elBadgeHours = $('#fh-badge-hours');
-  const elRail = $('.fh-rail');
-  const elSpontan = $('#fh-spontan');
-  const elKalender = $('#fh-kalender');
-  const btnSpontan = $('#fh-mode-spontan');
-  const btnKalender = $('#fh-mode-kalender');
-  const elFeld1Date = $('#fh-feld1-date');
-  const elFeld1Time = $('#fh-feld1-time');
-  const elPreview = $('#fh-preview');
-  const elPreviewPanel = $('#fh-preview-panel');
-  const elForm = $('#fh-form');
-  const elOrigin = $('#fh-origin');
-  const elDestination = $('#fh-destination');
-  const btnSwap = $('#fh-swap');
-  const elAdultsVal = $('#fh-adults');
-  const elKidsVal = $('#fh-kids');
-
-  let nowTs = Date.now();
-  setInterval(()=>{ nowTs = Date.now(); updateDateTime(); }, 60_000);
-
-  // Helpers
-  function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
-  function mix(a,b,t){ return Math.round(a + (b - a) * t); } // linear
-  function getRatio(){ return (parseFloat(elHours.value) - 6) / 66; } // 0..1
-
-  // Blue → Pink
-  const start = { r:113,g:131,b:245 }; // #7183f5
-  const end   = { r:255,g:122,b:200 }; // #ff7ac8
-
-  function colorAtRatio(t){
-    const r = mix(start.r, end.r, t);
-    const g = mix(start.g, end.g, t);
-    const b = mix(start.b, end.b, t);
-    return { r, g, b,
-      rail: `linear-gradient(90deg, rgb(${start.r},${start.g},${start.b}) 0%, rgb(${end.r},${end.g},${end.b}) 100%)`,
-      border: `rgb(${r},${g},${b})`,
-      text: `rgb(${r},${g},${b})`,
-      bg: `rgba(${r},${g},${b},0.08)`,
-      glow: `rgba(${r},${g},${b},0.20)`
-    };
-  }
-
-  function setBadgePosition(){
-    const t = getRatio();
-    const pct = clamp(t*100, 2, 98);
-    elBadge.style.left = `calc(${pct}% + 0px)`;
-  }
-
-  function paintByHours(){
-    const t = getRatio();
-    const c = colorAtRatio(t);
-    elRail.style.background = c.rail;
-    elBadge.style.borderColor = c.border;
-    elBadge.style.color = c.text;
-    elBadge.style.background = c.bg;
-    elBadge.style.boxShadow = `0 0 8px ${c.glow}, 0 1px 3px rgba(0,0,0,.15)`;
-    elBadgeHours.textContent = `${Math.round(parseFloat(elHours.value))} h`;
-  }
-
-  function updateDateTime(){
-    const hours = parseFloat(elHours.value);
-    const ts = new Date(nowTs + hours * 3600_000);
-    const pad = n => String(n).padStart(2,'0');
-    elFeld1Date.textContent = `Abflug am ${pad(ts.getDate())}.${pad(ts.getMonth()+1)}.${ts.getFullYear()}`;
-    elFeld1Time.textContent = `um ${pad(ts.getHours())}:${pad(ts.getMinutes())} Uhr`;
-  }
-
-  function renderAll(){
-    setBadgePosition();
-    paintByHours();
-    updateDateTime();
-  }
-
-  // Events
-  elHours.addEventListener('input', renderAll);
-  elHours.addEventListener('change', renderAll);
-
-  btnSpontan.addEventListener('click', ()=>{
-    btnSpontan.classList.add('is-active'); btnSpontan.setAttribute('aria-selected','true');
-    btnKalender.classList.remove('is-active'); btnKalender.setAttribute('aria-selected','false');
-    elSpontan.hidden = false; elKalender.hidden = true;
-  });
-  btnKalender.addEventListener('click', ()=>{
-    btnKalender.classList.add('is-active'); btnKalender.setAttribute('aria-selected','true');
-    btnSpontan.classList.remove('is-active'); btnSpontan.setAttribute('aria-selected','false');
-    elSpontan.hidden = true; elKalender.hidden = false;
-  });
-
-  btnSwap.addEventListener('click', ()=>{
-    const o = elOrigin.value; elOrigin.value = elDestination.value; elDestination.value = o;
-  });
-
-  // Passenger steppers
-  document.querySelectorAll('.fh-btn-ghost[data-step]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-step');
-      const dir = parseInt(btn.getAttribute('data-dir'),10);
-      if(key==='adults'){
-        const v = clamp(parseInt(elAdultsVal.textContent,10) + dir, 1, 9);
-        elAdultsVal.textContent = v;
-      } else {
-        const v = clamp(parseInt(elKidsVal.textContent,10) + dir, 0, 9);
-        elKidsVal.textContent = v;
-      }
-    });
-  });
-
-  // Vorschau
-  elPreview.addEventListener('click', ()=>{
-    const mode = !elSpontan.hidden ? 'spontan' : 'kalender';
-    const payload = mode === 'spontan'
-      ? {
-          origin: elOrigin.value,
-          destination: elDestination.value,
-          windowHours: Math.round(parseFloat(elHours.value)*2)/2,
-          passengers: { adults: parseInt(elAdultsVal.textContent,10), children: parseInt(elKidsVal.textContent,10) },
-          departAtISO: new Date(Date.now()).toISOString(),
-          latestAtISO: new Date(Date.now() + parseFloat(elHours.value)*3600_000).toISOString()
-        }
-      : {
-          origin: elOrigin.value,
-          destination: elDestination.value,
-          passengers: { adults: parseInt(elAdultsVal.textContent,10), children: parseInt(elKidsVal.textContent,10) },
-          departDate: $('#fh-depart-date')?.value || '',
-          returnDate: $('#fh-return-date')?.value || ''
-        };
-    elPreviewPanel.textContent = JSON.stringify(payload, null, 2);
-    elPreviewPanel.hidden = !elPreviewPanel.hidden;
-  });
-
-  // Submit
-  elForm.addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const mode = !elSpontan.hidden ? 'spontan' : 'kalender';
-    const payload = mode === 'spontan'
-      ? {
-          origin: elOrigin.value,
-          destination: elDestination.value,
-          windowHours: Math.round(parseFloat(elHours.value)*2)/2,
-          passengers: { adults: parseInt(elAdultsVal.textContent,10), children: parseInt(elKidsVal.textContent,10) },
-          dateFromISO: new Date(Date.now()).toISOString(),
-          dateToISO: new Date(Date.now() + parseFloat(elHours.value)*3600_000).toISOString(),
-        }
-      : {
-          origin: elOrigin.value,
-          destination: elDestination.value,
-          passengers: { adults: parseInt(elAdultsVal.textContent,10), children: parseInt(elKidsVal.textContent,10) },
-          departDate: $('#fh-depart-date')?.value || '',
-          returnDate: $('#fh-return-date')?.value || ''
-        };
-    // Hier später: API-Call (Amadeus/Skyscanner)
-    console.log('SEARCH PAYLOAD', payload);
-    // Optional: Weiterleitung / fetch(...)
-  });
-
-  // Initial render
-  renderAll();
-})();
-</script>
 </body>
 </html>
