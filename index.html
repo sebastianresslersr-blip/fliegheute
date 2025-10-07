@@ -388,108 +388,110 @@
 /* === Romance-Cluster === */
 <!-- Romance-Cluster: Flüge vergleichen -->
 <section class="fh-section fh-cluster-romance">
-  <div class="fh-container">
+  <div class="fh-container fh-cluster-container">
     <h2 class="fh-cluster-h">Flüge vergleichen</h2>
 
     <div class="fh-cluster-grid">
-      <!-- Bild-Spalte -->
+      <!-- Bild -->
       <figure class="fh-cluster-figure">
-        <img src="/assets/cluster-flights-romance.webp" alt="Grace und Sam, umgeben von Flugrouten und Flugzeug-Icons">
-        <figcaption>Grace & Sam – Aufbruchmomente, festgehalten zwischen Airports der Welt.</figcaption>
+        <img src="/assets/cluster-flights-romance.webp" alt="Grace und Sam – Aufbruchsmomente zwischen Airports der Welt">
+        <figcaption>Grace & Sam – Aufbruchsmomente zwischen Airports der Welt.</figcaption>
       </figure>
 
-      <!-- Text-Spalten -->
+      <!-- Text -->
       <div class="fh-cluster-text">
-        <!-- dein ganzer Text unverändert -->
+        <p>Sie hieß <strong>Grace</strong>, er <strong>Sam</strong>. Ein verregneter Freitag, zwei Tassen Kaffee – und die Idee, <em>Flüge vergleichen</em> zu wollen. Die <strong>Flugsuchmaschine</strong> öffnete die Welt: <strong>günstige Angebote</strong>, <strong>günstige Flüge</strong>, <strong>Flugangebote vergleichen</strong>, alles nur einen Klick entfernt. In der Suchmaske flüsterten <strong>Abflughafen</strong>, <strong>Zielflughafen</strong> und <strong>Reisetermin</strong> von Neubeginn.</p>
+
+        <p>Sie liebte die Leichtigkeit: <strong>günstige Flüge buchen</strong>, <strong>Restplätze</strong>, <strong>Lastminute-Kurztrip</strong>. Er war neugierig auf <strong>Linienflüge</strong> und <strong>Charterflüge</strong>; sie probierte <strong>Low Cost Airlines</strong> und <strong>Billigairlines</strong> – <strong>Billigflieger</strong> mit Herz. Namen wurden zu Gedichten: <strong>Ryanair</strong>, <strong>Germanwings</strong>, <strong>Lufthansa</strong>, <strong>Condor</strong>. Für große Träume gab’s <strong>Langstreckenflüge</strong>; für Nähe <strong>Flüge zum kleinen Preis</strong>.</p>
+
+        <p>„Vielleicht ein <strong>alternativer Flughafen</strong>?“ fragte Grace. <strong>Flexible Datumswahl</strong>, <strong>verschiedene Flughäfen vergleichen</strong>, <strong>Anfahrtskosten sparen</strong> – alles Teil ihres Spiels. Der <strong>Flugvergleich</strong> auf <strong>fliegheute.de</strong> zeigte <strong>Flüge nach Frankfurt</strong>, <strong>Flüge nach München</strong>, <strong>Flugrouten Berlin–Köln</strong> und <strong>Hamburg–München</strong>. Für Europa lockten <strong>Flug nach Paris</strong>, <strong>Billigflug Barcelona</strong>, <strong>Amsterdam–Barcelona</strong> und <strong>Barcelona–Rom</strong>.</p>
+
+        <p>„Aktuelle Reiseanalysen 2025 sagen, Europa tanzt wieder,“ meinte Sam. <em>Travel Insights</em> schwärmten von <strong>Palma de Mallorca</strong>, <strong>Paris</strong>, <strong>London</strong>, <strong>Hurghada</strong> – Kultur plus Sonne. Trendwörter schimmerten wie Versprechen: <strong>Wellness</strong>, <strong>Coolcations</strong>, Naturreisen – Orte mit Outdoor-Mehrwert statt nur Metropole.</p>
+
+        <p>Sie planten <strong>Familienreisen</strong> für später, bis dahin <strong>Städtereisen</strong>, vielleicht eine <strong>Rundreise</strong> mit <strong>Gabelflügen</strong>. Mal eine <strong>Geschäftsreise</strong>, oft ein <strong>Wochenendausflug</strong>; dazwischen <strong>Events</strong> und <strong>Festivals</strong>. Sie wollten das <strong>Reiseziel</strong> nicht nur sehen, sondern spüren: <strong>Urlaub günstig</strong>, aber mit <strong>Komfort</strong> und leisen Gesten von <strong>Inklusivservice</strong> – ihre heimliche <strong>Wunschairline</strong>.</p>
+
+        <p>Unterwegs durch <strong>Airports der Welt</strong>, über <strong>kleinere Airports</strong>, manchmal durch die <strong>schönsten Flughäfen weltweit</strong>, wurde jedes <strong>Flugticket</strong> ein Bekenntnis. Sie lernten, <strong>passende Flughäfen</strong> zu wählen, den <strong>preiswerten Flug</strong> zu finden, <strong>passende Flüge</strong> und einfach <strong>Flüge buchen</strong> – so, dass es sich anfühlt wie Ankommen.</p>
+
+        <p>Am Ende saßen sie Seite an Seite, Buchungsklasse Economy, aber Herz in Business. „Mit dir ist <strong>günstig fliegen</strong> kein Kompromiss,“ flüsterte Grace. „Es ist unser Anfang.“ Und irgendwo blinkte leise: <strong>fliegheute.de</strong> – damit man den Mut nicht vergisst.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CSS gehört in <style> -->
 <style>
 /* === Romance-Cluster === */
-.fh-cluster-h {
-  font-family: "Inter Tight", sans-serif;
-  font-size: 28px;
-  line-height: 1.25;
-  letter-spacing: -0.3px;
-  margin-bottom: 18px;
-  color: #0b0b13;
+.fh-cluster-romance {
+  background:#fff;
+  padding:80px 0;
+}
+.fh-cluster-container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.fh-cluster-h{
+  font-family:"Inter Tight",sans-serif;
+  font-size:28px;
+  line-height:1.25;
+  margin-bottom:28px;
+  color:#f571b4; /* markante Headlinefarbe */
+  text-align:left;
+}
+.fh-cluster-grid{
+  display:grid;
+  grid-template-columns: 1fr 2fr;
+  gap:32px;
+  align-items:start;
+}
+.fh-cluster-figure{
+  margin:0;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(21,25,62,.08);
+}
+.fh-cluster-figure img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:16px;
+}
+.fh-cluster-figure figcaption{
+  font-size:13px;
+  color:#6e7280;
+  padding:8px 0 0;
+  text-align:center;
 }
 
-.fh-cluster-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 2.95fr;
-  gap: 24px;
-  align-items: start;
+/* Text */
+.fh-cluster-text{
+  column-count:3;
+  column-gap:32px;
+}
+.fh-cluster-text p{
+  margin:0 0 14px 0;
+  line-height:1.75;
+  font-size:16px;
+  color:#2d2d2d;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  text-align:left;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+@supports (text-wrap:pretty){
+  .fh-cluster-text p{text-wrap:pretty;}
 }
 
-.fh-cluster-figure {
-  margin: 0;
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(21, 25, 62, 0.08);
+/* Responsive */
+@media(max-width:1024px){
+  .fh-cluster-grid{grid-template-columns:1fr;}
+  .fh-cluster-text{column-count:2;}
 }
-
-.fh-cluster-figure img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.fh-cluster-figure figcaption {
-  font-size: 13px;
-  color: #6e7280;
-  padding: 10px 12px;
-}
-
-.fh-cluster-text {
-  column-count: 3;
-  column-gap: 32px;
-}
-
-.fh-cluster-text p {
-  break-inside: avoid;
-  margin: 0 0 14px 0;
-  line-height: 1.75;
-  font-size: 16px;
-  color: #2d2d2d;
-  text-align: left;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-@supports (text-wrap: pretty) {
-  .fh-cluster-text p {
-    text-wrap: pretty;
-  }
-}
-
-@media (max-width: 1024px) {
-  .fh-cluster-text {
-    column-count: 2;
-    column-gap: 24px;
-  }
-}
-
-@media (max-width: 720px) {
-  .fh-cluster-grid {
-    grid-template-columns: 1fr;
-  }
-  .fh-cluster-text {
-    column-count: 1;
-  }
-  .fh-cluster-h {
-    font-size: 24px;
-  }
+@media(max-width:720px){
+  .fh-cluster-text{column-count:1;}
+  .fh-cluster-h{font-size:24px;}
 }
 </style>
-
 
   <!-- FAQ -->
   <section class="fh-faq">
