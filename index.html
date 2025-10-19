@@ -684,32 +684,12 @@
 
   /* Doppelpuls – „bobong, bobong“ – nur auf dem ::before */
   @keyframes heartbeat {
-  0% {
-    transform: scale(1);
-    opacity: 0.85;
-    background-size: 150% 150%;
+    0%, 100%   { transform: scale(1);     opacity: 0.85; }
+    10%        { transform: scale(1.05);  opacity: 1;    }  /* erster Schlag */
+    20%        { transform: scale(0.98);  opacity: 0.9;  }
+    30%        { transform: scale(1.06);  opacity: 1;    }  /* zweiter Schlag */
+    40%, 90%   { transform: scale(1);     opacity: 0.85; }
   }
-  20% {
-    transform: scale(1.05);
-    opacity: 1;
-    background-size: 165% 165%;
-  }
-  40% {
-    transform: scale(0.98);
-    opacity: 0.90;
-    background-size: 155% 155%;
-  }
-  60% {
-    transform: scale(1.06);
-    opacity: 1;
-    background-size: 170% 170%;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.85;
-    background-size: 150% 150%;
-  }
-}
 </style>
 
 </body>
