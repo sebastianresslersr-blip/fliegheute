@@ -617,71 +617,79 @@
   </div>
 
  <style>
- /* Container-Overlay (statisch dunkel, zentriert) */
-#fh-overlay {
-  position: fixed; inset: 0; z-index: 9999;
-  display: flex; align-items: center; justify-content: center;
-  background-color: rgba(11,11,19,0.88);
-  backdrop-filter: blur(6px);
-  overflow: hidden;
-}
+  /* === Coming-Soon Overlay === */
+  #fh-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    overflow: hidden;
 
-/* Zwei Glow-Layer als pseudo/backdrop */
-#fh-overlay::before,
-#fh-overlay::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  pointer-events: none;
-  background-position: center center;
-  background-repeat: no-repeat;
-  filter: blur(12px);
-  will-change: transform, opacity, background-size;
-}
+    /* Basis-Verdunklung (statisch, kein Opacity-Anim auf dem Container!) */
+    background-color: rgba(11,11,19,0.88);
+  }
 
-/* Layer A = S1 (Blau) */
-#fh-overlay::before {
-  background: radial-gradient(circle at center,
-    rgba(113,131,245,0.45) 0%,
-    rgba(113,131,245,0.00) 60%);
-  background-size: 150% 150%;
-  animation: hbA 0.8s ease-in-out infinite; /* ~0.8s = 75 BPM */
-}
+  /* Pulsierender, farbiger Radial-Schimmer HINTER der Box */
+  #fh-overlay::before {
+    content: "";
+    position: absolute;
+    inset: -20%;                 /* etwas größer als der Viewport für sauberes Pulsieren */
+    z-index: 0;                  /* liegt hinter der Box */
+    pointer-events: none;
 
-/* Layer B = S2 (Pink), zeitversetzt startet bei 37.5% des Zyklus */
-#fh-overlay::after {
-  background: radial-gradient(circle at center,
-    rgba(245,113,180,0.38) 0%,
-    rgba(245,113,180,0.00) 60%);
-  background-size: 150% 150%;
-  animation: hbB 0.8s ease-in-out infinite;
-  animation-delay: calc(0.8s * 0.375);  /* ~0.3s Versatz */
-}
+    background: radial-gradient(circle at center,
+      rgba(113,131,245,0.40) 0%,
+      rgba(245,113,180,0.28) 30%,
+      rgba(11,11,19,0.00) 60%);
+    filter: blur(12px);          /* weicher Glow */
+    transform: scale(1);
+    animation: heartbeat 2.8s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
 
-/* Deine Box bleibt statisch */
-.fh-overlay-box { position: relative; z-index: 1; /* ...dein restlicher Box-Style... */ }
+  .fh-overlay-box {
+    position: relative;          /* damit über dem ::before liegt */
+    z-index: 1;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    max-width: 480px;
+    width: 90%;
+    padding: 48px 32px;
+    text-align: center;
+    font-family: Inter, system-ui, sans-serif;
+    animation: fadeIn .8s ease-in-out;
+  }
 
-/* --- Sinus-Annäherung über mehrere Keyframes ---
-   Amplitude (scale) klein halten (~+/- 4%) und Größe des Radials von 150% -> 175% peaken.
-   Verläufe bleiben zentriert.
-*/
-@keyframes hbA {
-  0%   { transform: scale(1.00); opacity: .00; background-size:150% 150%; }
-  10%  { transform: scale(1.03); opacity: .85; background-size:165% 165%; } /* Peak S1 */
-  20%  { transform: scale(1.01); opacity: .45; background-size:158% 158%; }
-  30%  { transform: scale(1.00); opacity: .15; background-size:152% 152%; }
-  50%  { transform: scale(0.99); opacity: .05; background-size:150% 150%; }
-  100% { transform: scale(1.00); opacity: .00; background-size:150% 150%; }
-}
+  .fh-overlay-box h1 {
+    font-family: "Inter Tight", sans-serif;
+    font-size: 36px;
+    margin-bottom: 16px;
+    color: var(--brand);
+  }
 
-@keyframes hbB {
-  0%   { transform: scale(1.00); opacity: .00; background-size:150% 150%; }
-  10%  { transform: scale(1.035); opacity: .85; background-size:172% 172%; } /* Peak S2 */
-  20%  { transform: scale(1.01);  opacity: .45; background-size:160% 160%; }
-  35%  { transform: scale(1.00);  opacity: .12; background-size:152% 152%; }
-  60%  { transform: scale(0.99);  opacity: .05; background-size:150% 150%; }
-  100% { transform: scale(1.00);  opacity: .00; background-size:150% 150%; }
-}
+  .fh-overlay-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* Doppelpuls – „bobong, bobong“ – nur auf dem ::before */
+  @keyframes heartbeat {
+    0%, 100%   { transform: scale(1);     opacity: 0.85; }
+    10%        { transform: scale(1.05);  opacity: 1;    }  /* erster Schlag */
+    20%        { transform: scale(0.98);  opacity: 0.9;  }
+    30%        { transform: scale(1.06);  opacity: 1;    }  /* zweiter Schlag */
+    40%, 90%   { transform: scale(1);     opacity: 0.85; }
+  }
 </style>
 
 </body>
