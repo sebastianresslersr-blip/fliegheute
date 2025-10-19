@@ -616,7 +616,7 @@
     </div>
   </div>
 
-  <style>
+ <style>
   /* === Coming-Soon Overlay === */
   #fh-overlay {
     position: fixed;
@@ -625,15 +625,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
 
-    /* Aurora-Style Hintergrund */
-    background: linear-gradient(115deg,
-      rgba(11,11,19,0.9) 0%,
-      rgba(113,131,245,0.45) 45%,
-      rgba(245,113,180,0.35) 100%);
-    background-size: 200% 200%;
-    animation: auroraShift 12s ease-in-out infinite alternate;
+    /* Pulsierender Radialeffekt (Herzschlag) */
+    background:
+      radial-gradient(circle at center,
+        rgba(113,131,245,0.4) 0%,
+        rgba(245,113,180,0.3) 30%,
+        rgba(11,11,19,0.88) 100%);
+    background-size: 160% 160%;
+    animation: heartbeat 2.8s ease-in-out infinite;
   }
 
   .fh-overlay-box {
@@ -666,10 +667,31 @@
     to   {opacity: 1; transform: scale(1);}
   }
 
-  @keyframes auroraShift {
-    0%   { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
+  /* sanftes Doppelpulsieren – wie ein Herzschlag */
+  @keyframes heartbeat {
+    0%, 100% {
+      background-size: 160% 160%;
+      opacity: 1;
+    }
+    10% {
+      background-size: 165% 165%;
+      opacity: 0.9;
+    }
+    20% {
+      background-size: 155% 155%;
+      opacity: 1;
+    }
+    30% {
+      background-size: 165% 165%;
+      opacity: 0.9;
+    }
+    40%, 90% {
+      background-size: 160% 160%;
+      opacity: 1;
+    }
   }
 </style>
+</body>
+
 </body>
 </html>
