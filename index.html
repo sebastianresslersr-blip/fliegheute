@@ -294,33 +294,88 @@
     @keyframes fh-spin { to { transform:rotate(360deg); } }
 
     /* results */
-    .fh-results { display:none; background:#fff; border-radius:14px; box-shadow:var(--shadow); overflow:hidden; margin-top:12px; }
-    .fh-results-hdr { padding:12px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
-    .fh-results-hdr h3 { font-size:14px; font-weight:700; color:#fff; }
-    .fh-results-cnt { font-size:12px; color:rgba(255,255,255,.75); }
-    .fh-filters { display:flex; gap:6px; padding:10px 16px; border-bottom:1px solid var(--border); overflow-x:auto; background:#fff; }
-    .fh-fchip { flex-shrink:0; background:#f1f3ff; border:1.5px solid var(--border); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; transition:all .15s; white-space:nowrap; }
+    /* ── Filter chips ── */
+    .fh-fchip { flex-shrink:0; background:#f1f3ff; border:1.5px solid var(--border); border-radius:999px; padding:5px 14px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; transition:all .15s; white-space:nowrap; }
     .fh-fchip.active { background:var(--brand); border-color:var(--brand); color:#fff; }
-    .fh-flist { padding:4px 0; }
-    .fh-flight { display:flex; align-items:center; gap:12px; padding:12px 16px; border-bottom:1px solid rgba(0,0,0,.04); transition:background .1s; text-decoration:none; color:inherit; }
+    .fh-flist { }
+
+    /* ── Google Flights style result card ── */
+    .fh-flight {
+      display:grid;
+      grid-template-columns: 48px 1fr auto;
+      align-items:center;
+      gap:16px;
+      padding:16px 20px;
+      border-bottom:1px solid #f0f1f5;
+      text-decoration:none;
+      color:inherit;
+      transition:background .12s;
+      cursor:pointer;
+    }
     .fh-flight:last-child { border-bottom:none; }
     .fh-flight:hover { background:#fafbff; }
-    .fh-al-logo { width:34px; height:34px; border-radius:7px; background:#f1f3ff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:800; color:var(--brand); font-family:monospace; flex-shrink:0; }
-    .fh-fl-main { flex:1; min-width:0; }
-    .fh-fl-route { display:flex; align-items:center; gap:6px; margin-bottom:3px; }
-    .fh-fl-time { font-size:15px; font-weight:700; }
-    .fh-fl-line { flex:1; height:1px; background:var(--border); position:relative; }
-    .fh-fl-line::after { content:''; position:absolute; right:-1px; top:-3px; width:6px; height:6px; border-top:1.5px solid var(--muted); border-right:1.5px solid var(--muted); transform:rotate(45deg); }
-    .fh-fl-meta { font-size:11px; color:var(--muted); display:flex; gap:6px; }
-    .fh-fl-stop { background:#f1f3ff; border-radius:4px; padding:2px 5px; font-size:10px; font-weight:600; }
-    .fh-fl-stop.ns { background:#e9f8ef; color:#0f8d54; }
-    .fh-fl-stop.s1 { background:#fff3e0; color:#e65100; }
-    .fh-price-col { text-align:right; flex-shrink:0; }
-    .fh-price-big { font-size:20px; font-weight:800; }
-    .fh-price-sub { font-size:10px; color:var(--muted); margin-bottom:4px; }
-    .fh-book-btn { display:inline-flex; align-items:center; gap:3px; background:var(--brand); color:#fff; border:none; border-radius:7px; padding:6px 10px; font-size:11px; font-weight:700; cursor:pointer; text-decoration:none; font-family:Inter,sans-serif; }
-    .fh-book-btn:hover { background:#5a6de0; }
-    .fh-empty { padding:32px 16px; text-align:center; color:var(--muted); font-size:14px; }
+
+    /* Airline logo box */
+    .fh-al-logo {
+      width:44px; height:44px; border-radius:10px;
+      background:#f0f1fa; border:1px solid #e5e7eb;
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; font-weight:800; color:var(--brand);
+      font-family:monospace; flex-shrink:0;
+    }
+
+    /* Middle: times + route info */
+    .fh-fl-main { min-width:0; }
+    .fh-fl-route {
+      display:grid;
+      grid-template-columns: auto 1fr auto;
+      align-items:center;
+      gap:10px;
+      margin-bottom:6px;
+    }
+    .fh-fl-times { display:flex; flex-direction:column; }
+    .fh-fl-time { font-size:18px; font-weight:700; line-height:1.1; }
+    .fh-fl-airport { font-size:12px; color:var(--muted); }
+    .fh-fl-mid {
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+    }
+    .fh-fl-dur { font-size:12px; color:var(--muted); white-space:nowrap; }
+    .fh-fl-line-wrap { width:100%; display:flex; align-items:center; position:relative; }
+    .fh-fl-dot { width:6px; height:6px; border-radius:50%; background:var(--muted); flex-shrink:0; }
+    .fh-fl-dash { flex:1; height:1px; background:#d1d5db; }
+    .fh-fl-arrow { font-size:16px; color:var(--muted); flex-shrink:0; }
+    .fh-fl-meta { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); }
+    .fh-fl-airline-name { font-weight:500; }
+    .fh-fl-stop {
+      padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700;
+    }
+    .fh-fl-stop.ns { background:#dcfce7; color:#15803d; }
+    .fh-fl-stop.s1 { background:#fff3e0; color:#c2410c; }
+    .fh-fl-stop.s2 { background:#fee2e2; color:#b91c1c; }
+
+    /* Right: price + button */
+    .fh-price-col {
+      text-align:right; flex-shrink:0;
+      display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+    }
+    .fh-price-wrap { }
+    .fh-price-sub { font-size:11px; color:var(--muted); }
+    .fh-price-big { font-size:26px; font-weight:800; line-height:1; color:var(--ink); }
+    .fh-price-cabin { font-size:11px; color:var(--muted); }
+    .fh-book-btn {
+      display:inline-flex; align-items:center; gap:4px;
+      background:var(--brand); color:#fff; border:none; border-radius:10px;
+      padding:9px 16px; font-size:13px; font-weight:700; cursor:pointer;
+      text-decoration:none; font-family:Inter,sans-serif;
+      transition:background .15s, transform .1s;
+      white-space:nowrap;
+    }
+    .fh-book-btn:hover { background:#5a6de0; transform:translateY(-1px); }
+    .fh-empty { padding:40px 20px; text-align:center; color:var(--muted); font-size:14px; }
+
+    /* ── Live Hotchip price badge ── */
+    .fh-hotprice-live { opacity:.5; font-size:14px; }
+    .fh-hotprice-live.loaded { opacity:1; font-size:18px; transition:all .3s; }
 
   </style>
 
@@ -476,27 +531,25 @@
       <a class="fh-link" href="#">Alle 24h-Deals</a>
     </div>
     <div class="fh-hotchips">
-  <article class="fh-hotchip">
+  <article class="fh-hotchip" data-from="FRA" data-to="BCN" onclick="fhChipSearch(this)" style="cursor:pointer">
     <div class="fh-hotimg" style="background-image:url('/assets/fra-bcn.jpg')"></div>
     <div class="fh-hotinfo">
-      <div class="fh-hotroute"><strong>FRA → BCN</strong><span>13:25</span></div>
-      <div class="fh-hotprice"><span>🔥</span>49 €</div>
+      <div class="fh-hotroute"><strong>FRA → BCN</strong><span id="fh-hc-time-0">lädt…</span></div>
+      <div class="fh-hotprice"><span>🔥</span><span id="fh-hc-price-0" class="fh-hotprice-live">…</span></div>
     </div>
   </article>
-
-  <article class="fh-hotchip">
+  <article class="fh-hotchip" data-from="BER" data-to="LGW" onclick="fhChipSearch(this)" style="cursor:pointer">
     <div class="fh-hotimg" style="background-image:url('/assets/ber-lon.jpg')"></div>
     <div class="fh-hotinfo">
-      <div class="fh-hotroute"><strong>BER → LON</strong><span>18:40</span></div>
-      <div class="fh-hotprice"><span>⚡</span>39 €</div>
+      <div class="fh-hotroute"><strong>BER → LON</strong><span id="fh-hc-time-1">lädt…</span></div>
+      <div class="fh-hotprice"><span>⚡</span><span id="fh-hc-price-1" class="fh-hotprice-live">…</span></div>
     </div>
   </article>
-
-  <article class="fh-hotchip">
+  <article class="fh-hotchip" data-from="STR" data-to="FCO" onclick="fhChipSearch(this)" style="cursor:pointer">
     <div class="fh-hotimg" style="background-image:url('/assets/str-rom.jpg')"></div>
     <div class="fh-hotinfo">
-      <div class="fh-hotroute"><strong>STR → ROM</strong><span>20:10</span></div>
-      <div class="fh-hotprice"><span>🔥</span>59 €</div>
+      <div class="fh-hotroute"><strong>STR → ROM</strong><span id="fh-hc-time-2">lädt…</span></div>
+      <div class="fh-hotprice"><span>🔥</span><span id="fh-hc-price-2" class="fh-hotprice-live">…</span></div>
     </div>
   </article>
 </div>
@@ -528,15 +581,15 @@
         <a class="fh-link" href="#">Mehr Deals</a>
       </div>
       <div class="fh-grid">
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → BCN</div><div class="fh-meta">Heute 21:30 • 2h 10m</div></div><div class="fh-price">49 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → LON</div><div class="fh-meta">Morgen 07:15 • 1h 55m</div></div><div class="fh-price">39 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">STR → ROM</div><div class="fh-meta">Morgen 19:10 • 2h 05m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">MUC → LIS</div><div class="fh-meta">Heute 12:00 • 3h 00m</div></div><div class="fh-price">89 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">DUS → OPO</div><div class="fh-meta">Heute 14:20 • 2h 45m</div></div><div class="fh-price">69 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">HAM → VIE</div><div class="fh-meta">Morgen 09:45 • 1h 40m</div></div><div class="fh-price">59 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">CGN → MAD</div><div class="fh-meta">Heute 16:30 • 2h 30m</div></div><div class="fh-price">79 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → IST</div><div class="fh-meta">Heute 19:00 • 3h 15m</div></div><div class="fh-price">99 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
-        <article class="fh-card"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → AMS</div><div class="fh-meta">Morgen 11:20 • 1h 20m</div></div><div class="fh-price">45 €</div></div><a class="fh-cta" href="#">Jetzt buchen</a></div></article>
+        <article class="fh-card" id="fh-d48-0" data-from="FRA" data-to="BCN" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → BCN</div><div class="fh-meta" id="fh-d48-meta-0">lädt…</div></div><div class="fh-price" id="fh-d48-price-0">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-1" data-from="BER" data-to="LGW" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → LON</div><div class="fh-meta" id="fh-d48-meta-1">lädt…</div></div><div class="fh-price" id="fh-d48-price-1">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-2" data-from="STR" data-to="FCO" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">STR → ROM</div><div class="fh-meta" id="fh-d48-meta-2">lädt…</div></div><div class="fh-price" id="fh-d48-price-2">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-3" data-from="MUC" data-to="LIS" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">MUC → LIS</div><div class="fh-meta" id="fh-d48-meta-3">lädt…</div></div><div class="fh-price" id="fh-d48-price-3">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-4" data-from="DUS" data-to="OPO" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">DUS → OPO</div><div class="fh-meta" id="fh-d48-meta-4">lädt…</div></div><div class="fh-price" id="fh-d48-price-4">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-5" data-from="HAM" data-to="VIE" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">HAM → VIE</div><div class="fh-meta" id="fh-d48-meta-5">lädt…</div></div><div class="fh-price" id="fh-d48-price-5">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-6" data-from="CGN" data-to="MAD" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">CGN → MAD</div><div class="fh-meta" id="fh-d48-meta-6">lädt…</div></div><div class="fh-price" id="fh-d48-price-6">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-7" data-from="FRA" data-to="IST" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">FRA → IST</div><div class="fh-meta" id="fh-d48-meta-7">lädt…</div></div><div class="fh-price" id="fh-d48-price-7">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
+        <article class="fh-card" id="fh-d48-8" data-from="BER" data-to="AMS" onclick="fhChipSearch(this)" style="cursor:pointer"><div class="fh-media"></div><div class="fh-body"><div class="fh-row"><div><div class="fh-route">BER → AMS</div><div class="fh-meta" id="fh-d48-meta-8">lädt…</div></div><div class="fh-price" id="fh-d48-price-8">… €</div></div><a class="fh-cta" href="#">Auswählen</a></div></article>
       </div>
     </div>
   </section>
@@ -1077,28 +1130,75 @@
     function ft(d){return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
     function fdur(iso){if(!iso)return'';var m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?/);if(!m)return'';return(parseInt(m[1]||0))+'h '+(m[2]?m[2]+'m':'');}
 
-    // Render results
+    // ── AIRLINE NAMES ──
+    var AIRLINES={
+      'FR':'Ryanair','LH':'Lufthansa','EW':'Eurowings','VY':'Vueling',
+      'IB':'Iberia','BA':'British Airways','AF':'Air France','KL':'KLM',
+      'U2':'easyJet','W6':'Wizz Air','4U':'Germanwings','AB':'airberlin',
+      'SK':'SAS','AY':'Finnair','OS':'Austrian','LX':'SWISS',
+      'TP':'TAP','EI':'Aer Lingus','TK':'Turkish Airlines','PC':'Pegasus',
+      'HV':'Transavia','TO':'TUI fly','X3':'TUI','DE':'Condor'
+    };
+    function alName(code){ return AIRLINES[code]||code; }
+
+    // ── Render results Google Flights Style ──
     function renderR(flights){
       var list=document.getElementById('fh-flist');
-      if(!flights.length){list.innerHTML='<div class="fh-empty">Keine Flüge gefunden. Andere Daten oder Abflughafen probieren.</div>';return;}
+      if(!flights.length){
+        list.innerHTML='<div class="fh-empty">Keine Flüge gefunden.<br>Andere Daten oder Abflughafen probieren.</div>';
+        return;
+      }
       list.innerHTML=flights.map(function(f){
-        var dep=new Date(f.departureTime),arr=new Date(f.arrivalTime);
-        var sc=f.stops===0?'ns':'s1',sl=f.stops===0?'Nonstop':(f.stops===1?'1 Stopp':f.stops+' Stopps');
+        var dep=new Date(f.departureTime), arr=new Date(f.arrivalTime);
+        var sc=f.stops===0?'ns':(f.stops===1?'s1':'s2');
+        var sl=f.stops===0?'Nonstop':(f.stops===1?'1 Stopp':f.stops+' Stopps');
         return '<a class="fh-flight" href="'+f.bookingLink+'" target="_blank" rel="noopener">'
+
+          // Airline logo
           +'<div class="fh-al-logo">'+f.airline+'</div>'
+
+          // Middle
           +'<div class="fh-fl-main">'
             +'<div class="fh-fl-route">'
-              +'<span class="fh-fl-time">'+ft(dep)+'</span>'
-              +'<div class="fh-fl-line"></div>'
-              +'<span class="fh-fl-time">'+ft(arr)+'</span>'
+              // Departure
+              +'<div class="fh-fl-times">'
+                +'<span class="fh-fl-time">'+ft(dep)+'</span>'
+                +'<span class="fh-fl-airport">'+f.origin+'</span>'
+              +'</div>'
+              // Line + duration
+              +'<div class="fh-fl-mid">'
+                +'<span class="fh-fl-dur">'+fdur(f.duration)+'</span>'
+                +'<div class="fh-fl-line-wrap">'
+                  +'<div class="fh-fl-dot"></div>'
+                  +'<div class="fh-fl-dash"></div>'
+                  +'<span class="fh-fl-arrow">›</span>'
+                +'</div>'
+                +'<span class="fh-fl-stop '+sc+'">'+sl+'</span>'
+              +'</div>'
+              // Arrival
+              +'<div class="fh-fl-times" style="text-align:right">'
+                +'<span class="fh-fl-time">'+ft(arr)+'</span>'
+                +'<span class="fh-fl-airport">'+f.destination+'</span>'
+              +'</div>'
             +'</div>'
-            +'<div class="fh-fl-meta"><span>'+f.origin+' → '+f.destination+'</span><span>'+fdur(f.duration)+'</span><span class="fh-fl-stop '+sc+'">'+sl+'</span></div>'
+            +'<div class="fh-fl-meta">'
+              +'<span class="fh-fl-airline-name">'+alName(f.airline)+'</span>'
+              +'<span>·</span>'
+              +'<span>'+f.flightNumber+'</span>'
+            +'</div>'
           +'</div>'
+
+          // Price + button
           +'<div class="fh-price-col">'
-            +'<div class="fh-price-sub">ab p.P.</div>'
-            +'<div class="fh-price-big">'+f.price.toFixed(0)+' €</div>'
-            +'<a class="fh-book-btn" href="'+f.bookingLink+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Buchen ↗</a>'
-          +'</div></a>';
+            +'<div class="fh-price-wrap">'
+              +'<div class="fh-price-sub">ab p.P.</div>'
+              +'<div class="fh-price-big">'+f.price.toFixed(0)+' €</div>'
+              +'<div class="fh-price-cabin">Economy</div>'
+            +'</div>'
+            +'<a class="fh-book-btn" href="'+f.bookingLink+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Auswählen ↗</a>'
+          +'</div>'
+
+        +'</a>';
       }).join('');
     }
 
@@ -1152,6 +1252,85 @@
           document.getElementById('fh-slbl').textContent='Flüge finden';
         });
     });
+
+    // ── CHIP CLICK → trigger search ──
+    window.fhChipSearch = function(el) {
+      var from = el.dataset.from, to = el.dataset.to;
+      if(!from) return;
+      document.getElementById('fh-origin').value = from;
+      document.getElementById('fh-oi').value = from;
+      document.getElementById('fh-ob').textContent = from;
+      document.getElementById('fh-ob').style.display = 'block';
+      selO.iata = from; selO.name = from;
+      if(to) {
+        document.getElementById('fh-dest').value = to;
+        document.getElementById('fh-di').value = to;
+        document.getElementById('fh-db').textContent = to;
+        document.getElementById('fh-db').style.display = 'block';
+        selD.iata = to; selD.name = to;
+      }
+      document.getElementById('hero').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){ go.click(); }, 500);
+    };
+
+    // ── LIVE PRICES for Hotchips + 48h ──
+    (function loadDeals(){
+      var today = new Date().toISOString().slice(0,10);
+      var tom = new Date(Date.now()+86400000).toISOString().slice(0,10);
+
+      function fetchPrice(from, to, date, cb) {
+        fetch(API+'/api/search', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({origin:from,dest:to,dateFrom:date,adults:1})
+        }).then(function(r){return r.json();})
+          .then(function(d){
+            var r=(d.results||[]).sort(function(a,b){return a.price-b.price;})[0];
+            if(r) cb(r);
+          }).catch(function(){});
+      }
+
+      var hotRoutes=[
+        {from:'FRA',to:'BCN',pi:'fh-hc-price-0',ti:'fh-hc-time-0'},
+        {from:'BER',to:'LGW',pi:'fh-hc-price-1',ti:'fh-hc-time-1'},
+        {from:'STR',to:'FCO',pi:'fh-hc-price-2',ti:'fh-hc-time-2'}
+      ];
+      var dealRoutes=[
+        {from:'FRA',to:'BCN',date:today, pi:'fh-d48-price-0',mi:'fh-d48-meta-0'},
+        {from:'BER',to:'LGW',date:today, pi:'fh-d48-price-1',mi:'fh-d48-meta-1'},
+        {from:'STR',to:'FCO',date:tom,   pi:'fh-d48-price-2',mi:'fh-d48-meta-2'},
+        {from:'MUC',to:'LIS',date:today, pi:'fh-d48-price-3',mi:'fh-d48-meta-3'},
+        {from:'DUS',to:'OPO',date:today, pi:'fh-d48-price-4',mi:'fh-d48-meta-4'},
+        {from:'HAM',to:'VIE',date:tom,   pi:'fh-d48-price-5',mi:'fh-d48-meta-5'},
+        {from:'CGN',to:'MAD',date:today, pi:'fh-d48-price-6',mi:'fh-d48-meta-6'},
+        {from:'FRA',to:'IST',date:today, pi:'fh-d48-price-7',mi:'fh-d48-meta-7'},
+        {from:'BER',to:'AMS',date:tom,   pi:'fh-d48-price-8',mi:'fh-d48-meta-8'}
+      ];
+
+      hotRoutes.forEach(function(r,i){
+        setTimeout(function(){
+          fetchPrice(r.from,r.to,today,function(f){
+            var pe=document.getElementById(r.pi), te=document.getElementById(r.ti);
+            if(pe){pe.textContent=f.price.toFixed(0)+' €';pe.classList.add('loaded');}
+            if(te){te.textContent=new Date(f.departureTime).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
+          });
+        }, i*900);
+      });
+
+      dealRoutes.forEach(function(r,i){
+        setTimeout(function(){
+          fetchPrice(r.from,r.to,r.date,function(f){
+            var dep=new Date(f.departureTime);
+            var dayStr=dep.toDateString()===new Date().toDateString()?'Heute':'Morgen';
+            var pe=document.getElementById(r.pi), me=document.getElementById(r.mi);
+            if(pe) pe.textContent=f.price.toFixed(0)+' €';
+            if(me) me.textContent=dayStr+' '+dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+(f.duration?' • '+fdur(f.duration):'');
+            var card=pe&&pe.closest('.fh-card');
+            if(card){var cta=card.querySelector('.fh-cta');if(cta&&f.bookingLink)cta.href=f.bookingLink;}
+          });
+        }, 3000+i*700);
+      });
+    })();
+
   })();
   </script>
 </body>
