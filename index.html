@@ -219,125 +219,112 @@
     .fh-footer{max-width:1120px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     .fh-transp{margin-top:10px;font-size:13px}
 
-    /* ══ SEARCH WIDGET ══ */
-    .fh-search { background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:20px; display:flex; flex-direction:column; gap:14px; width:100%; }
-
-    /* Pill toggles */
-    .fh-pill-row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
-    .fh-pill-grp { display:inline-flex; background:rgba(255,255,255,.18); border-radius:999px; padding:3px; gap:2px; backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,.25); }
-    .fh-pill-grp input[type=radio] { display:none; }
-    .fh-pill-grp label { padding:6px 16px; border-radius:999px; font-size:13px; font-weight:700; color:rgba(255,255,255,.8); cursor:pointer; transition:all .2s; user-select:none; }
-    .fh-pill-grp input[type=radio]:checked + label { background:#fff; color:var(--ink); }
-
-    /* Datetime bar */
-    .fh-dt-bar { display:flex; justify-content:flex-end; }
-    .fh-dt-box { background:#f1f3ff; border:1px solid #dde1ff; border-radius:10px; padding:6px 14px; text-align:right; }
-    .fh-dt-lbl { display:block; font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
-    .fh-dt-val { font-size:13px; font-weight:700; font-family:monospace; color:var(--ink); }
-
-    /* Location fields */
-    .fh-loc-row { display:flex; gap:8px; align-items:stretch; }
-    .fh-loc-wrap { flex:1; position:relative; }
-    .fh-lfield { background:#f1f3ff; border:2px solid transparent; border-radius:10px; padding:10px 12px; transition:border-color .2s, background .2s; }
-    .fh-lfield:focus-within { border-color:var(--brand); background:#fff; }
-    .fh-lfield-lbl { display:block; font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px; }
-    .fh-lfield input { width:100%; border:none; outline:none; background:transparent; font-family:Inter,sans-serif; font-size:15px; font-weight:600; color:var(--ink); }
-    .fh-lfield input::placeholder { color:#b5bdd6; font-weight:400; }
-    .fh-iata-badge { position:absolute; top:10px; right:8px; background:var(--brand); color:#fff; font-size:10px; font-weight:800; padding:2px 7px; border-radius:6px; display:none; font-family:monospace; }
-
-    /* Autocomplete dropdown */
-    .fh-ac { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border-radius:12px; box-shadow:0 8px 28px rgba(21,25,62,.18); border:1px solid var(--border); z-index:300; display:none; overflow:hidden; }
-    .fh-ac.open { display:block; }
-    .fh-ac-item { display:flex; align-items:center; gap:10px; padding:10px 14px; cursor:pointer; transition:background .1s; }
-    .fh-ac-item:hover, .fh-ac-item.foc { background:#f1f3ff; }
-    .fh-ac-iata { font-family:monospace; font-size:13px; font-weight:800; color:var(--brand); min-width:36px; }
-    .fh-ac-name { font-size:13px; font-weight:500; color:var(--ink); }
-    .fh-ac-cty { font-size:12px; color:var(--muted); margin-left:auto; }
-
-    /* Swap button */
-    .fh-swap-btn { flex-shrink:0; align-self:center; width:38px; height:38px; background:#f1f3ff; border:2px solid var(--border); border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--brand); transition:background .15s, transform .35s; }
-    .fh-swap-btn:hover { background:#e0e4ff; transform:rotate(180deg); }
-
-    /* Slider */
-    .fh-slider-panel { background:#f1f3ff; border-radius:10px; padding:20px 16px 12px; }
-    .fh-slider-track { position:relative; margin-bottom:8px; }
-    .fh-track-fill { position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); height:5px; border-radius:99px; background:linear-gradient(to right,#7183f5,#f571b4); pointer-events:none; z-index:1; }
-    .fh-range { -webkit-appearance:none; appearance:none; width:100%; height:5px; background:transparent; outline:none; position:relative; z-index:2; cursor:pointer; }
-    .fh-range::-webkit-slider-thumb { -webkit-appearance:none; width:36px; height:20px; background:#fff; border:2.5px solid var(--brand); border-radius:999px; box-shadow:0 2px 10px rgba(113,131,245,.3); cursor:grab; }
-    .fh-range:active::-webkit-slider-thumb { cursor:grabbing; }
-    .fh-bubble { position:absolute; top:-36px; transform:translateX(-50%); background:#fff; border:1.5px solid #dde1ff; border-radius:999px; padding:3px 10px; font-size:12px; font-weight:700; white-space:nowrap; pointer-events:none; z-index:10; }
-    .fh-bubble::after { content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%) rotate(45deg); width:7px; height:7px; background:#fff; border-right:1.5px solid #dde1ff; border-bottom:1.5px solid #dde1ff; }
-    .fh-slider-lbls { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); font-weight:600; }
-
-    /* Calendar */
-    .fh-cal-panel { background:#f1f3ff; border-radius:10px; padding:16px; display:none; }
-    .fh-cal-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-    .fh-cal-navbtn { width:30px; height:30px; background:#fff; border:1.5px solid var(--border); border-radius:7px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; line-height:1; color:var(--ink); }
-    .fh-cal-navbtn:hover { background:#e0e4ff; }
-    .fh-cal-mlbl { font-size:14px; font-weight:700; }
-    .fh-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
-    .fh-cal-dow { text-align:center; font-size:10px; font-weight:700; color:var(--muted); padding:0 0 7px; text-transform:uppercase; }
-    .fh-cal-day { display:flex; align-items:center; justify-content:center; min-height:34px; border-radius:7px; font-size:13px; cursor:pointer; user-select:none; transition:background .1s; }
-    .fh-cal-day.empty, .fh-cal-day.past { pointer-events:none; }
-    .fh-cal-day.past { color:#ccc; }
-    .fh-cal-day:not(.empty):not(.past):hover { background:#dde1ff; }
-    .fh-cal-day.sel { color:#fff!important; font-weight:700; }
-    .fh-cal-day.inr { border-radius:0; }
-    .fh-cal-footer { display:flex; gap:8px; margin-top:10px; }
-    .fh-cal-chip { flex:1; background:#fff; border:1.5px solid var(--border); border-radius:8px; padding:8px 10px; text-align:center; font-size:12px; font-weight:600; color:var(--muted); }
-    .fh-cal-chip.act { border-color:var(--brand); color:var(--brand); }
-    .fh-cal-chip.filled { color:var(--ink); border-color:#c4caff; }
-
-    /* Persons + Search btn */
-    .fh-bottom-row { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
-    .fh-pax-row { display:flex; gap:10px; }
-    .fh-pax-grp { display:flex; align-items:center; gap:8px; background:#f1f3ff; border-radius:10px; padding:7px 12px; }
-    .fh-pax-lbl { font-size:13px; font-weight:500; color:var(--ink); }
-    .fh-pax-btn2 { width:26px; height:26px; border-radius:50%; border:1.5px solid var(--border); background:#fff; font-size:15px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .15s; }
-    .fh-pax-btn2:hover { border-color:var(--brand); background:#e0e4ff; }
-    .fh-pax-val { font-size:16px; font-weight:800; min-width:18px; text-align:center; }
-    .fh-go-btn { background:var(--brand); color:#fff; border:none; border-radius:10px; padding:12px 22px; font-size:15px; font-weight:700; font-family:Inter,sans-serif; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 4px 16px rgba(113,131,245,.35); transition:transform .15s, box-shadow .2s; }
-    .fh-go-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(113,131,245,.45); }
-    .fh-go-btn:disabled { opacity:.6; cursor:not-allowed; transform:none!important; }
-    .fh-spin { width:16px; height:16px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:fhspin .7s linear infinite; display:none; }
+    /* ══ SEARCH WIDGET – exact reference design ══ */
+    .card { background:#fff; border-radius:24px; box-shadow:0 8px 32px rgba(21,25,62,.10); padding:22px; width:100%; border:1px solid rgba(0,0,0,.08); }
+    .card-header { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:16px; }
+    .card-title { display:flex; align-items:flex-start; gap:10px; font-weight:700; font-size:14px; line-height:1.45; }
+    .card-icon { width:28px; height:28px; flex-shrink:0; margin-top:1px; background:linear-gradient(135deg,#7183f5,#f571b4); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; }
+    .card-dt { background:#f5f6ff; border:1px solid rgba(0,0,0,.08); border-radius:10px; padding:8px 12px; text-align:right; font-size:12px; white-space:nowrap; min-width:150px; }
+    .card-dt .lbl { color:#6e7280; display:block; font-size:11px; margin-bottom:2px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+    .card-dt .val { font-weight:700; color:#0b0b13; font-size:13px; }
+    .pill-toggle { display:flex; gap:2px; background:#f5f6ff; border-radius:999px; padding:3px; width:fit-content; }
+    .pill-toggle input { display:none; }
+    .pill-toggle label { padding:5px 16px; border-radius:999px; font-size:12px; font-weight:700; color:#6e7280; cursor:pointer; transition:all .2s; }
+    .pill-toggle input:checked + label { background:#fff; color:#0b0b13; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+    .toggles-row { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+    .sec-lbl { display:flex; align-items:center; gap:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#6e7280; margin-bottom:8px; }
+    .loc-row { display:flex; gap:8px; align-items:stretch; margin-bottom:16px; position:relative; }
+    .loc-wrap { flex:1; position:relative; }
+    .loc-field { background:#f5f6ff; border:1.5px solid transparent; border-radius:12px; padding:11px 14px; transition:border-color .2s,background .2s; cursor:text; }
+    .loc-field:focus-within { border-color:#7183f5; background:#fff; }
+    .loc-field label { display:block; font-size:10px; font-weight:700; color:#6e7280; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+    .loc-field input { width:100%; border:none; outline:none; background:transparent; font-family:Inter,sans-serif; font-size:15px; font-weight:500; color:#0b0b13; }
+    .loc-field input::placeholder { color:#b5b9d0; font-weight:400; }
+    .loc-field .iata-badge { position:absolute; top:11px; right:10px; background:#7183f5; color:#fff; font-size:10px; font-weight:800; padding:2px 6px; border-radius:6px; font-family:monospace; }
+    .autocomplete { position:absolute; top:calc(100% + 6px); left:0; right:0; background:#fff; border-radius:12px; box-shadow:0 8px 32px rgba(21,25,62,.15); border:1px solid rgba(0,0,0,.08); z-index:200; overflow:hidden; display:none; }
+    .autocomplete.open { display:block; }
+    .ac-item { display:flex; align-items:center; gap:10px; padding:10px 14px; cursor:pointer; transition:background .1s; }
+    .ac-item:hover,.ac-item.focused { background:#f5f6ff; }
+    .ac-iata { font-family:monospace; font-size:13px; font-weight:700; color:#7183f5; min-width:36px; }
+    .ac-name { font-size:13px; font-weight:500; color:#0b0b13; }
+    .ac-country { font-size:12px; color:#6e7280; margin-left:auto; }
+    .swap-btn { flex-shrink:0; align-self:center; width:38px; height:38px; background:#f5f6ff; border:1.5px solid rgba(0,0,0,.08); border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#7183f5; transition:background .15s,transform .3s; }
+    .swap-btn:hover { background:#eaecff; transform:rotate(180deg); }
+    .time-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .slider-wrap { background:#f5f6ff; border-radius:12px; padding:20px 18px 12px; margin-bottom:16px; }
+    .slider-track { position:relative; margin-bottom:8px; }
+    .track-bg { position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); height:5px; border-radius:99px; background:linear-gradient(to right,#7183f5,#f571b4); pointer-events:none; z-index:1; }
+    .slider-wrap input[type=range] { -webkit-appearance:none; appearance:none; width:100%; height:5px; background:transparent; outline:none; position:relative; z-index:2; }
+    .slider-wrap input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:36px; height:20px; background:#fff; border:2.5px solid #7183f5; border-radius:999px; box-shadow:0 2px 10px rgba(113,131,245,.35); cursor:grab; }
+    .slider-bubble { position:absolute; top:-38px; transform:translateX(-50%); background:#fff; border:1.5px solid #dde1ff; border-radius:999px; padding:4px 10px; font-size:12px; font-weight:700; color:#0b0b13; white-space:nowrap; box-shadow:0 2px 8px rgba(113,131,245,.15); pointer-events:none; display:flex; align-items:center; gap:5px; z-index:10; }
+    .slider-bubble::after { content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%) rotate(45deg); width:7px; height:7px; background:#fff; border-right:1.5px solid #dde1ff; border-bottom:1.5px solid #dde1ff; }
+    .slider-labels { display:flex; justify-content:space-between; font-size:11px; color:#6e7280; font-weight:600; }
+    #cal-panel { display:none; margin-bottom:16px; }
+    .cal-wrap { background:#f5f6ff; border-radius:12px; padding:16px; }
+    .cal-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+    .cal-nav { width:32px; height:32px; background:#fff; border:1.5px solid rgba(0,0,0,.08); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; color:#0b0b13; transition:background .15s; }
+    .cal-nav:hover { background:#eaecff; }
+    .cal-month-lbl { font-weight:700; font-size:14px; }
+    .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+    .cal-dow { text-align:center; font-size:10px; font-weight:700; color:#6e7280; padding:2px 0 8px; text-transform:uppercase; }
+    .cal-day { display:flex; align-items:center; justify-content:center; min-height:36px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; user-select:none; transition:background .1s; }
+    .cal-day.empty,.cal-day.past { pointer-events:none; }
+    .cal-day.past { color:#ccc; }
+    .cal-day.today { font-weight:800; }
+    .cal-day:not(.empty):not(.past):hover { background:#dde1ff; }
+    .cal-day.sel { color:#fff!important; font-weight:700; }
+    .cal-day.in-range { border-radius:0; }
+    .cal-day.r-l { border-radius:8px 0 0 8px; }
+    .cal-day.r-r { border-radius:0 8px 8px 0; }
+    .cal-day.r-b { border-radius:8px; }
+    .cal-footer { display:flex; gap:8px; margin-top:12px; }
+    .cal-chip { flex:1; background:#fff; border:1.5px solid rgba(0,0,0,.08); border-radius:10px; padding:9px 10px; text-align:center; font-size:13px; font-weight:600; color:#6e7280; transition:border-color .2s,color .2s; }
+    .cal-chip.active { border-color:#7183f5; color:#7183f5; }
+    .cal-chip.filled { color:#0b0b13; border-color:#ccd0ff; }
+    .persons-row { display:flex; gap:8px; margin-bottom:18px; }
+    .person-field { flex:1; background:#f5f6ff; border-radius:12px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center; }
+    .person-field label { font-size:14px; font-weight:500; }
+    .counter { display:flex; align-items:center; gap:12px; }
+    .cbtn { width:26px; height:26px; border-radius:50%; border:1.5px solid rgba(0,0,0,.08); background:#fff; font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:700; transition:background .15s,border-color .15s; }
+    .cbtn:hover { background:#eaecff; border-color:#7183f5; }
+    .cval { font-size:16px; font-weight:700; min-width:16px; text-align:center; }
+    .card-footer { display:flex; justify-content:flex-end; gap:10px; }
+    #btn-search { border:none; border-radius:12px; padding:12px 24px; font-family:Inter,sans-serif; font-size:15px; font-weight:700; color:#fff; cursor:pointer; display:flex; align-items:center; gap:8px; background:#7183f5; box-shadow:0 4px 16px rgba(113,131,245,.35); transition:transform .15s,box-shadow .2s,background .2s; }
+    #btn-search:hover { transform:translateY(-2px); }
+    #btn-search:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+    .fh-spinner { width:18px; height:18px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:fhspin .7s linear infinite; display:none; }
     @keyframes fhspin { to { transform:rotate(360deg); } }
-
-    /* ══ RESULTS – Google Flights Style ══ */
-    .fh-results-wrap { background:#fff; border-radius:16px; box-shadow:var(--shadow); overflow:hidden; }
-    .fh-results-hdr { padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
-    .fh-results-hdr h2 { font-size:16px; font-weight:700; color:#fff; margin:0; font-family:'Inter Tight',sans-serif; }
-    .fh-results-cnt { font-size:13px; color:rgba(255,255,255,.8); }
-    .fh-filter-row { display:flex; gap:6px; padding:12px 20px; border-bottom:1px solid var(--border); overflow-x:auto; }
-    .fh-fchip { flex-shrink:0; background:#f1f3ff; border:1.5px solid var(--border); border-radius:999px; padding:5px 14px; font-size:13px; font-weight:600; color:var(--muted); cursor:pointer; transition:all .15s; white-space:nowrap; }
-    .fh-fchip.on { background:var(--brand); border-color:var(--brand); color:#fff; }
-
-    /* Flight row */
-    .fh-flight { display:grid; grid-template-columns:48px 1fr auto; gap:16px; align-items:center; padding:16px 20px; border-bottom:1px solid #f0f1f5; text-decoration:none; color:inherit; transition:background .1s; }
-    .fh-flight:last-child { border-bottom:none; }
-    .fh-flight:hover { background:#fafbff; }
-    .fh-al { width:44px; height:44px; border-radius:10px; background:#f0f1fa; border:1px solid #e5e7eb; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:var(--brand); font-family:monospace; flex-shrink:0; }
-    .fh-fl-mid { min-width:0; }
-    .fh-fl-times-row { display:grid; grid-template-columns:80px 1fr 80px; align-items:center; gap:8px; margin-bottom:6px; }
-    .fh-fl-t { font-size:20px; font-weight:800; line-height:1; }
-    .fh-fl-ap { font-size:12px; color:var(--muted); margin-top:2px; }
-    .fh-fl-center { display:flex; flex-direction:column; align-items:center; gap:3px; }
-    .fh-fl-dur { font-size:12px; color:var(--muted); }
-    .fh-fl-line-row { display:flex; align-items:center; gap:2px; width:100%; }
-    .fh-fl-dot { width:5px; height:5px; border-radius:50%; background:#9ca3af; flex-shrink:0; }
-    .fh-fl-dash { flex:1; height:1px; background:#d1d5db; }
-    .fh-fl-chevron { font-size:14px; color:#9ca3af; flex-shrink:0; }
-    .fh-fl-stoplbl { font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; }
-    .fh-fl-stoplbl.ns { background:#dcfce7; color:#15803d; }
-    .fh-fl-stoplbl.s1 { background:#fff3e0; color:#c2410c; }
-    .fh-fl-stoplbl.s2 { background:#fee2e2; color:#b91c1c; }
-    .fh-fl-info { font-size:12px; color:var(--muted); display:flex; gap:8px; align-items:center; }
-    .fh-price-area { text-align:right; flex-shrink:0; display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
-    .fh-price-pp { font-size:11px; color:var(--muted); }
-    .fh-price-num { font-size:28px; font-weight:800; line-height:1; color:var(--ink); }
-    .fh-price-cabin { font-size:11px; color:var(--muted); margin-top:2px; }
-    .fh-sel-btn { background:var(--brand); color:#fff; border:none; border-radius:10px; padding:10px 16px; font-size:13px; font-weight:700; font-family:Inter,sans-serif; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:4px; transition:background .15s; white-space:nowrap; }
-    .fh-sel-btn:hover { background:#5a6de0; }
-    .fh-no-results { padding:40px 20px; text-align:center; color:var(--muted); }
+    /* Results */
+    .results-card { background:#fff; border-radius:20px; box-shadow:0 8px 32px rgba(21,25,62,.10); border:1px solid rgba(0,0,0,.08); overflow:hidden; display:none; margin-top:0; }
+    .results-header { padding:16px 20px; border-bottom:1px solid rgba(0,0,0,.08); display:flex; justify-content:space-between; align-items:center; }
+    .results-header h3 { font-size:15px; font-weight:700; }
+    .results-count { font-size:13px; color:#6e7280; }
+    .results-filters { display:flex; gap:8px; padding:12px 20px; border-bottom:1px solid rgba(0,0,0,.08); overflow-x:auto; }
+    .filter-chip { flex-shrink:0; background:#f5f6ff; border:1.5px solid rgba(0,0,0,.08); border-radius:999px; padding:5px 12px; font-size:12px; font-weight:600; color:#6e7280; cursor:pointer; transition:all .15s; white-space:nowrap; }
+    .filter-chip.active { background:#7183f5; border-color:#7183f5; color:#fff; }
+    .results-list { padding:8px 0; }
+    .flight-card { display:flex; align-items:center; gap:16px; padding:14px 20px; border-bottom:1px solid rgba(0,0,0,.04); transition:background .1s; cursor:pointer; text-decoration:none; color:inherit; }
+    .flight-card:last-child { border-bottom:none; }
+    .flight-card:hover { background:#f9f9ff; }
+    .airline-logo { width:36px; height:36px; border-radius:8px; background:#f0f1fa; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#7183f5; font-family:monospace; flex-shrink:0; }
+    .flight-main { flex:1; min-width:0; }
+    .flight-route { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+    .flight-time { font-size:16px; font-weight:700; }
+    .flight-arrow { color:#6e7280; font-size:14px; display:flex; align-items:center; gap:4px; flex:1; }
+    .flight-line { flex:1; height:1px; background:rgba(0,0,0,.08); position:relative; }
+    .flight-line::after { content:''; position:absolute; right:-1px; top:-3px; width:7px; height:7px; border-top:1.5px solid #6e7280; border-right:1.5px solid #6e7280; transform:rotate(45deg); }
+    .flight-meta { font-size:12px; color:#6e7280; display:flex; gap:8px; align-items:center; }
+    .flight-stop { background:#f5f6ff; border-radius:4px; padding:2px 6px; font-size:11px; font-weight:600; }
+    .flight-stop.nonstop { background:#e9f8ef; color:#0f8d54; }
+    .flight-stop.stop1 { background:#fff3e0; color:#e65100; }
+    .flight-price-col { text-align:right; flex-shrink:0; }
+    .flight-price { font-size:22px; font-weight:800; color:#0b0b13; }
+    .flight-price-sub { font-size:11px; color:#6e7280; margin-bottom:6px; }
+    .book-btn { display:inline-flex; align-items:center; gap:4px; background:#7183f5; color:#fff; border:none; border-radius:8px; padding:7px 12px; font-size:12px; font-weight:700; cursor:pointer; text-decoration:none; font-family:Inter,sans-serif; transition:background .15s; }
+    .book-btn:hover { background:#5a6de0; }
+    .results-empty { padding:40px 20px; text-align:center; color:#6e7280; }
+    .results-empty .icon { font-size:36px; margin-bottom:10px; }
+    .results-empty p { font-size:14px; }
 
   </style>
 
@@ -379,105 +366,127 @@
         <p>Deine besten Flug- & Reisedeals der nächsten 24/48 Stunden</p>
 
         <!-- Suchformular -->
-        <div class="fh-search" id="fh-search">
+        <div class="card">
 
-          <!-- Row 1: Toggles -->
-          <div class="fh-pill-row">
-            <div class="fh-pill-grp" id="fh-trip-grp">
-              <input type="radio" name="fh-trip" id="fh-ow" value="ow" checked>
-              <label for="fh-ow">One-Way</label>
-              <input type="radio" name="fh-trip" id="fh-rt" value="rt">
-              <label for="fh-rt">Hin &amp; Rück</label>
-            </div>
-            <div class="fh-pill-grp" id="fh-mode-grp">
-              <input type="radio" name="fh-mode" id="fh-ms" value="s" checked>
-              <label for="fh-ms">Spontan</label>
-              <input type="radio" name="fh-mode" id="fh-mc" value="c">
-              <label for="fh-mc">Kalender</label>
-            </div>
-          </div>
+  <div class="card-header">
+    <div class="card-title">
+      <div class="card-icon">⚡</div>
+      <div>24h Last-Minute-Deals<br>· Spare, wenn du spontan bist.</div>
+    </div>
+    <div class="card-dt">
+      <span class="lbl" id="dt-lbl">Abflug heute bis ~</span>
+      <span class="val" id="dt-val">–</span>
+    </div>
+  </div>
 
-          <!-- Row 2: Datetime -->
-          <div class="fh-dt-bar">
-            <div class="fh-dt-box">
-              <span class="fh-dt-lbl" id="fh-dt-lbl">Abflug heute bis ~</span>
-              <span class="fh-dt-val" id="fh-dt-val">–</span>
-            </div>
-          </div>
+  <div class="toggles-row">
+    <div class="pill-toggle">
+      <input type="radio" name="trip" id="trip-ow" value="ow" checked>
+      <label for="trip-ow">One-Way</label>
+      <input type="radio" name="trip" id="trip-rt" value="rt">
+      <label for="trip-rt">Hin &amp; Rück</label>
+    </div>
+  </div>
 
-          <!-- Row 3: Origin / Destination -->
-          <div class="fh-loc-row">
-            <div class="fh-loc-wrap">
-              <div class="fh-lfield">
-                <span class="fh-lfield-lbl">Von</span>
-                <input type="text" id="fh-origin" placeholder="Frankfurt, Baden-Baden…" autocomplete="off">
-                <span class="fh-iata-badge" id="fh-ob"></span>
-              </div>
-              <div class="fh-ac" id="fh-oac"></div>
-              <input type="hidden" id="fh-oi">
-            </div>
-            <button class="fh-swap-btn" id="fh-swap" type="button">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
-            </button>
-            <div class="fh-loc-wrap">
-              <div class="fh-lfield">
-                <span class="fh-lfield-lbl">Nach</span>
-                <input type="text" id="fh-dest" placeholder="Barcelona, London… (opt.)" autocomplete="off">
-                <span class="fh-iata-badge" id="fh-db"></span>
-              </div>
-              <div class="fh-ac" id="fh-dac"></div>
-              <input type="hidden" id="fh-di">
-            </div>
-          </div>
+  <div class="sec-lbl">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+    WO – Abflug &amp; Ziel
+  </div>
+  <div class="loc-row">
+    <div class="loc-wrap">
+      <div class="loc-field">
+        <label>Von</label>
+        <input type="text" id="origin-input" placeholder="z. B. Frankfurt, Baden-Baden…" autocomplete="off">
+        <span class="iata-badge" id="origin-badge" style="display:none"></span>
+      </div>
+      <div class="autocomplete" id="origin-ac"></div>
+      <input type="hidden" id="origin-iata">
+    </div>
+    <button class="swap-btn" id="swap-btn" type="button">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+    </button>
+    <div class="loc-wrap">
+      <div class="loc-field">
+        <label>Nach</label>
+        <input type="text" id="dest-input" placeholder="z. B. Barcelona, London… (opt.)" autocomplete="off">
+        <span class="iata-badge" id="dest-badge" style="display:none"></span>
+      </div>
+      <div class="autocomplete" id="dest-ac"></div>
+      <input type="hidden" id="dest-iata">
+    </div>
+  </div>
 
-          <!-- Row 4a: Slider (Spontan) -->
-          <div class="fh-slider-panel" id="fh-slpanel">
-            <div class="fh-slider-track">
-              <div class="fh-bubble" id="fh-bubble">24h bis Abflug</div>
-              <div class="fh-track-fill"></div>
-              <input type="range" class="fh-range" id="fh-slider" min="1" max="72" value="24">
-            </div>
-            <div class="fh-slider-lbls"><span>1h</span><span>24h</span><span>48h</span><span>72h</span></div>
-          </div>
+  <div class="time-hdr">
+    <div class="sec-lbl" style="margin:0">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      WANN – Zeitfenster
+    </div>
+    <div class="pill-toggle">
+      <input type="radio" name="mode" id="mode-s" value="s" checked>
+      <label for="mode-s">Spontan</label>
+      <input type="radio" name="mode" id="mode-c" value="c">
+      <label for="mode-c">Kalender</label>
+    </div>
+  </div>
 
-          <!-- Row 4b: Calendar (Kalender) -->
-          <div class="fh-cal-panel" id="fh-calpanel">
-            <div class="fh-cal-hdr">
-              <button class="fh-cal-navbtn" id="fh-cprev" type="button">&#8249;</button>
-              <span class="fh-cal-mlbl" id="fh-cmlbl"></span>
-              <button class="fh-cal-navbtn" id="fh-cnext" type="button">&#8250;</button>
-            </div>
-            <div class="fh-cal-grid" id="fh-cgrid"></div>
-            <div class="fh-cal-footer">
-              <div class="fh-cal-chip act" id="fh-chip-from">Abflug wählen</div>
-              <div class="fh-cal-chip" id="fh-chip-to" style="display:none">Rückkehr wählen</div>
-            </div>
-          </div>
+  <div class="slider-wrap" id="slider-panel">
+    <div class="slider-track">
+      <div class="slider-bubble" id="bubble">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span id="bubble-txt">24h bis Abflug</span>
+      </div>
+      <div class="track-bg"></div>
+      <input type="range" id="slider" min="1" max="72" value="24" step="1">
+    </div>
+    <div class="slider-labels"><span>1h</span><span>24h</span><span>48h</span><span>72h</span></div>
+  </div>
 
-          <!-- Row 5: Persons + Search -->
-          <div class="fh-bottom-row">
-            <div class="fh-pax-row">
-              <div class="fh-pax-grp">
-                <span class="fh-pax-lbl">Erw.</span>
-                <button class="fh-pax-btn2" data-t="a" data-o="-" type="button">−</button>
-                <span class="fh-pax-val" id="fh-av">1</span>
-                <button class="fh-pax-btn2" data-t="a" data-o="+" type="button">+</button>
-              </div>
-              <div class="fh-pax-grp">
-                <span class="fh-pax-lbl">Kinder</span>
-                <button class="fh-pax-btn2" data-t="k" data-o="-" type="button">−</button>
-                <span class="fh-pax-val" id="fh-kv">0</span>
-                <button class="fh-pax-btn2" data-t="k" data-o="+" type="button">+</button>
-              </div>
-            </div>
-            <button class="fh-go-btn" id="fh-go" type="button">
-              <div class="fh-spin" id="fh-spin"></div>
-              <svg id="fh-sico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <span id="fh-slbl">Flüge finden</span>
-            </button>
-          </div>
+  <div id="cal-panel">
+    <div class="cal-wrap">
+      <div class="cal-hdr">
+        <button class="cal-nav" id="cal-prev" type="button">&#8249;</button>
+        <span class="cal-month-lbl" id="cal-month-lbl"></span>
+        <button class="cal-nav" id="cal-next" type="button">&#8250;</button>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+      <div class="cal-footer">
+        <div class="cal-chip active" id="chip-from">Abflug wählen</div>
+        <div class="cal-chip" id="chip-to" style="display:none">Rückkehr wählen</div>
+      </div>
+    </div>
+  </div>
 
-        </div>
+  <div class="sec-lbl">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    WER – Personen
+  </div>
+  <div class="persons-row">
+    <div class="person-field">
+      <label>Erwachsene</label>
+      <div class="counter">
+        <button class="cbtn" data-t="a" data-o="-" type="button">−</button>
+        <span class="cval" id="a-val">1</span>
+        <button class="cbtn" data-t="a" data-o="+" type="button">+</button>
+      </div>
+    </div>
+    <div class="person-field">
+      <label>Kinder</label>
+      <div class="counter">
+        <button class="cbtn" data-t="k" data-o="-" type="button">−</button>
+        <span class="cval" id="k-val">0</span>
+        <button class="cbtn" data-t="k" data-o="+" type="button">+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button id="btn-search" type="button">
+      <div class="fh-spinner" id="spinner"></div>
+      <svg id="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span id="btn-label">Flüge finden</span>
+    </button>
+  </div>
+</div>
 
         <!-- Dynamische Switch-Buttons -->
         <div class="fh-hero-switch"></div>
@@ -521,19 +530,19 @@
 
 
   <!-- ══ SUCHERGEBNISSE ══ -->
-  <section class="fh-container" id="fh-results-section" style="display:none; margin-top:40px;">
-    <div class="fh-results-wrap">
-      <div class="fh-results-hdr" id="fh-rhdr" style="background:var(--brand)">
-        <h2 id="fh-rtitle">Suchergebnisse</h2>
-        <span class="fh-results-cnt" id="fh-rcnt"></span>
+  <section class="fh-container" id="fh-results-section" style="display:none; margin-top:32px; margin-bottom:32px;">
+    <div class="results-card" id="results-card" style="display:block;">
+      <div class="results-header">
+        <h3 id="results-title">Ergebnisse</h3>
+        <span class="results-count" id="results-count"></span>
       </div>
-      <div class="fh-filter-row" id="fh-filters">
-        <div class="fh-fchip on" data-f="all">Alle</div>
-        <div class="fh-fchip" data-f="nonstop">Nonstop</div>
-        <div class="fh-fchip" data-f="cheap">Günstigste</div>
-        <div class="fh-fchip" data-f="fast">Schnellste</div>
+      <div class="results-filters" id="results-filters">
+        <div class="filter-chip active" data-filter="all">Alle</div>
+        <div class="filter-chip" data-filter="nonstop">Nonstop</div>
+        <div class="filter-chip" data-filter="cheap">Günstigste</div>
+        <div class="filter-chip" data-filter="fast">Schnellste</div>
       </div>
-      <div id="fh-flist"></div>
+      <div class="results-list" id="results-list"></div>
     </div>
   </section>
 
@@ -898,341 +907,329 @@
 </style>
 
 
-  <!-- ══ FliegHeute Search Engine ══ -->
   <script>
   (function() {
-    'use strict';
-    var API = 'https://amadeus-proxy.sebastianressler-sr.workers.dev';
-    var MARKER = '676139';
+    const API = 'https://amadeus-proxy.sebastianressler-sr.workers.dev';
+    const MARKER = '676139';
 
-    var AIRLINES = {'FR': 'Ryanair', 'LH': 'Lufthansa', 'EW': 'Eurowings', 'VY': 'Vueling', 'IB': 'Iberia', 'BA': 'British Airways', 'AF': 'Air France', 'KL': 'KLM', 'U2': 'easyJet', 'W6': 'Wizz Air', '4U': 'Germanwings', 'DE': 'Condor', 'SK': 'SAS', 'AY': 'Finnair', 'OS': 'Austrian', 'LX': 'SWISS', 'TP': 'TAP', 'EI': 'Aer Lingus', 'TK': 'Turkish Airlines', 'PC': 'Pegasus', 'HV': 'Transavia', 'TO': 'TUI fly', 'X3': 'TUI fly', 'YY': 'Vueling', 'BT': 'Air Baltic', 'FB': 'Bulgaria Air', 'RO': 'TAROM', 'SN': 'Brussels Airlines'};
-    function alName(c) { return AIRLINES[c] || c; }
-
-    // ── Color interpolation ──
     function lerp(a, b, t) {
-      function p(s) { return [parseInt(s.slice(1,3),16), parseInt(s.slice(3,5),16), parseInt(s.slice(5,7),16)]; }
-      var A=p(a), B=p(b), h=function(n){return Math.round(n).toString(16).padStart(2,'0');};
+      function p(s){ return [parseInt(s.slice(1,3),16),parseInt(s.slice(3,5),16),parseInt(s.slice(5,7),16)]; }
+      var A=p(a),B=p(b),h=function(n){return Math.round(n).toString(16).padStart(2,'0');};
       return '#'+h(A[0]+(B[0]-A[0])*t)+h(A[1]+(B[1]-A[1])*t)+h(A[2]+(B[2]-A[2])*t);
     }
-    function getCol() { return lerp('#7183f5','#f571b4',(+sl.value-1)/71); }
+    function getColor(){ return lerp('#7183f5','#f571b4',(+slider.value-1)/71); }
 
-    // ── Elements ──
-    var sl = document.getElementById('fh-slider');
-    var go = document.getElementById('fh-go');
-    var allR = [];
-    var selO = {iata:'', name:''};
-    var selD = {iata:'', name:''};
-    var calY, calM, calStart=null, calEnd=null, calPickEnd=false;
-    var tst = document.createElement('style'); document.head.appendChild(tst);
+    var slider = document.getElementById('slider');
+    var btnSearch = document.getElementById('btn-search');
+    var bubble = document.getElementById('bubble');
+    var bubbleTxt = document.getElementById('bubble-txt');
+    var thumbSt = document.createElement('style'); document.head.appendChild(thumbSt);
 
-    // ── Slider + datetime ──
-    function updSlider() {
-      var pct = (+sl.value-1)/71;
-      var tw = sl.offsetWidth;
-      var bub = document.getElementById('fh-bubble');
-      if (bub) { bub.style.left = (18+pct*(tw-36))+'px'; bub.textContent = sl.value+'h bis Abflug'; }
-      var c = getCol();
-      tst.textContent = '.fh-range::-webkit-slider-thumb{border-color:'+c+'!important;box-shadow:0 2px 8px '+c+'44!important;}';
-      if (go) { go.style.background = c; go.style.boxShadow = '0 4px 16px '+c+'55'; }
-      updDt();
+    function applyColor(){
+      var c = getColor();
+      btnSearch.style.background = c;
+      btnSearch.style.boxShadow = '0 4px 16px '+c+'55';
+      thumbSt.textContent = '.slider-wrap input[type=range]::-webkit-slider-thumb{border-color:'+c+'!important;box-shadow:0 2px 10px '+c+'55!important;}';
+      bubble.style.boxShadow = '0 0 10px 3px '+c+'33';
+      bubble.style.borderColor = c+'88';
     }
-    function updDt() {
-      var h = +sl.value;
-      var fut = new Date(Date.now() + h*3600000);
-      var now = new Date(); var tom = new Date(); tom.setDate(now.getDate()+1);
-      var lbl, val;
-      var tf = function(d){ return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}); };
-      if(fut.toDateString()===now.toDateString()){lbl='Abflug heute bis ~';val=tf(fut)+' Uhr';}
-      else if(fut.toDateString()===tom.toDateString()){lbl='Abflug morgen bis ~';val=tf(fut)+' Uhr';}
-      else{lbl='Abflug bis ~';val=fut.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})+' · '+tf(fut)+' Uhr';}
-      var le=document.getElementById('fh-dt-lbl'), ve=document.getElementById('fh-dt-val');
-      if(le) le.textContent=lbl; if(ve) ve.textContent=val;
+
+    function fmtTime(d){ return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}); }
+    function fmtDate(d){ return d.toLocaleDateString('de-DE',{weekday:'short',day:'2-digit',month:'short'}); }
+
+    function updateDt(){
+      var now=new Date(), h=+slider.value;
+      var fut=new Date(now.getTime()+h*3600000);
+      var tom=new Date(now); tom.setDate(now.getDate()+1);
+      var lbl,val;
+      if(fut.toDateString()===now.toDateString()){lbl='Abflug heute bis ~';val=fmtTime(fut)+' Uhr';}
+      else if(fut.toDateString()===tom.toDateString()){lbl='Abflug morgen bis ~';val=fmtTime(fut)+' Uhr';}
+      else{lbl='Abflug bis ~';val=fut.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})+' · '+fmtTime(fut)+' Uhr';}
+      document.getElementById('dt-lbl').textContent=lbl;
+      document.getElementById('dt-val').textContent=val;
     }
-    if(sl) { sl.addEventListener('input',updSlider); window.addEventListener('resize',updSlider); setTimeout(updSlider,50); setInterval(updDt,60000); }
 
-    // ── Mode toggle ──
-    document.querySelectorAll('input[name="fh-mode"]').forEach(function(r){
-      r.addEventListener('change', function(){
-        var isCal = r.value==='c';
-        var sp = document.getElementById('fh-slpanel'), cp = document.getElementById('fh-calpanel');
-        if(sp) sp.style.display = isCal?'none':'block';
-        if(cp) cp.style.display = isCal?'block':'none';
-        var dtb = document.getElementById('fh-dt-bar-wrap');
-        if(dtb) dtb.style.display = isCal?'none':'flex';
-        if(isCal) { initCal(); renderCal(); }
-      });
-    });
+    function updateSlider(){
+      var pct=(+slider.value-1)/71;
+      var tw=slider.offsetWidth;
+      bubble.style.left=(18+pct*(tw-36))+'px';
+      bubbleTxt.textContent=slider.value+'h bis Abflug';
+      applyColor(); updateDt();
+    }
+    slider.addEventListener('input',updateSlider);
+    window.addEventListener('resize',updateSlider);
+    setTimeout(updateSlider,100);
+    setInterval(updateDt,60000);
 
-    // ── Trip toggle ──
-    document.querySelectorAll('input[name="fh-trip"]').forEach(function(r){
-      r.addEventListener('change', function(){
-        var rt = r.value==='rt';
-        var ct = document.getElementById('fh-chip-to');
-        if(ct) ct.style.display = rt?'block':'none';
-        if(!rt) { calEnd=null; calPickEnd=false; }
-        renderCal(); updChips();
-      });
-    });
+    var acTimers={};
+    var selectedOrigin={iata:'',name:''};
+    var selectedDest={iata:'',name:''};
 
-    // ── Autocomplete ──
-    var acT = {};
-    function setupAC(iid, acid, bid, hid, store) {
-      var inp=document.getElementById(iid), ac=document.getElementById(acid);
-      var badge=document.getElementById(bid), hidden=document.getElementById(hid);
-      var fi=-1;
-      if(!inp) return;
-      inp.addEventListener('input', function(){
-        var q=inp.value.trim();
-        store.iata=''; store.name='';
-        if(badge) badge.style.display='none';
-        if(hidden) hidden.value='';
+    function setupAutocomplete(inputId,acId,badgeId,iataId,store){
+      var input=document.getElementById(inputId);
+      var ac=document.getElementById(acId);
+      var badge=document.getElementById(badgeId);
+      var iataField=document.getElementById(iataId);
+      var focusIdx=-1;
+      input.addEventListener('input',function(){
+        var q=input.value.trim();
+        store.iata=''; store.name=''; badge.style.display='none'; iataField.value='';
         if(q.length<2){ac.classList.remove('open');return;}
-        clearTimeout(acT[iid]);
-        acT[iid]=setTimeout(function(){
+        clearTimeout(acTimers[inputId]);
+        acTimers[inputId]=setTimeout(function(){
           fetch(API+'/api/airports?q='+encodeURIComponent(q))
             .then(function(r){return r.json();})
-            .then(function(d){
-              var items=d.results||[];
+            .then(function(data){
+              var items=data.results||[];
               if(!items.length){ac.classList.remove('open');return;}
               ac.innerHTML=items.map(function(a){
-                return '<div class="fh-ac-item" data-iata="'+a.iata+'" data-name="'+(a.city||a.name)+'">'
-                  +'<span class="fh-ac-iata">'+a.iata+'</span>'
-                  +'<span class="fh-ac-name">'+(a.city||a.name)+'</span>'
-                  +'<span class="fh-ac-cty">'+a.country+'</span></div>';
+                return '<div class="ac-item" data-iata="'+a.iata+'" data-name="'+(a.city||a.name)+'">'
+                  +'<span class="ac-iata">'+a.iata+'</span>'
+                  +'<span class="ac-name">'+(a.city||a.name)+'</span>'
+                  +'<span class="ac-country">'+a.country+'</span>'
+                  +'</div>';
               }).join('');
-              ac.classList.add('open'); fi=-1;
-              ac.querySelectorAll('.fh-ac-item').forEach(function(el){
-                el.addEventListener('click',function(){sel(el.dataset.iata,el.dataset.name);});
+              ac.classList.add('open'); focusIdx=-1;
+              ac.querySelectorAll('.ac-item').forEach(function(el){
+                el.addEventListener('click',function(){selectAirport(el.dataset.iata,el.dataset.name);});
               });
             }).catch(function(){});
-        },280);
+        },300);
       });
-      function sel(iata,name){
+      function selectAirport(iata,name){
         store.iata=iata; store.name=name;
-        inp.value=name+' ('+iata+')';
-        if(hidden) hidden.value=iata;
-        if(badge){badge.textContent=iata;badge.style.display='block';}
+        input.value=name+' ('+iata+')';
+        iataField.value=iata;
+        badge.textContent=iata; badge.style.display='block';
         ac.classList.remove('open');
       }
-      inp.addEventListener('keydown',function(e){
-        var its=ac.querySelectorAll('.fh-ac-item');
-        if(!its.length) return;
-        if(e.key==='ArrowDown'){fi=Math.min(fi+1,its.length-1);its.forEach(function(x){x.classList.remove('foc');});its[fi].classList.add('foc');e.preventDefault();}
-        else if(e.key==='ArrowUp'){fi=Math.max(fi-1,0);its.forEach(function(x){x.classList.remove('foc');});its[fi].classList.add('foc');e.preventDefault();}
-        else if(e.key==='Enter'&&fi>=0){var el=its[fi];sel(el.dataset.iata,el.dataset.name);}
+      input.addEventListener('keydown',function(e){
+        var items=ac.querySelectorAll('.ac-item');
+        if(!items.length) return;
+        if(e.key==='ArrowDown'){focusIdx=Math.min(focusIdx+1,items.length-1);items.forEach(function(x){x.classList.remove('focused');});items[focusIdx].classList.add('focused');e.preventDefault();}
+        else if(e.key==='ArrowUp'){focusIdx=Math.max(focusIdx-1,0);items.forEach(function(x){x.classList.remove('focused');});items[focusIdx].classList.add('focused');e.preventDefault();}
+        else if(e.key==='Enter'&&focusIdx>=0){var el=items[focusIdx];selectAirport(el.dataset.iata,el.dataset.name);}
         else if(e.key==='Escape'){ac.classList.remove('open');}
       });
-      document.addEventListener('click',function(e){if(!ac.contains(e.target)&&e.target!==inp)ac.classList.remove('open');});
+      document.addEventListener('click',function(e){if(!ac.contains(e.target)&&e.target!==input)ac.classList.remove('open');});
     }
-    setupAC('fh-origin','fh-oac','fh-ob','fh-oi',selO);
-    setupAC('fh-dest','fh-dac','fh-db','fh-di',selD);
+    setupAutocomplete('origin-input','origin-ac','origin-badge','origin-iata',selectedOrigin);
+    setupAutocomplete('dest-input','dest-ac','dest-badge','dest-iata',selectedDest);
 
-    // ── Swap ──
-    var swapBtn = document.getElementById('fh-swap');
-    if(swapBtn) swapBtn.addEventListener('click',function(){
-      var oi=document.getElementById('fh-origin'), di=document.getElementById('fh-dest');
-      var ob=document.getElementById('fh-ob'), db=document.getElementById('fh-db');
-      var t=oi.value; oi.value=di.value; di.value=t;
-      t=ob.textContent; ob.textContent=db.textContent; db.textContent=t;
-      t=ob.style.display; ob.style.display=db.style.display; db.style.display=t;
-      var tmp={iata:selO.iata,name:selO.name};
-      selO.iata=selD.iata; selO.name=selD.name;
-      selD.iata=tmp.iata; selD.name=tmp.name;
-      document.getElementById('fh-oi').value=selO.iata;
-      document.getElementById('fh-di').value=selD.iata;
+    document.getElementById('swap-btn').addEventListener('click',function(){
+      var oi=document.getElementById('origin-input'),di=document.getElementById('dest-input');
+      var ob=document.getElementById('origin-badge'),db=document.getElementById('dest-badge');
+      var tmpV=oi.value; oi.value=di.value; di.value=tmpV;
+      var tmpT=ob.textContent; ob.textContent=db.textContent; db.textContent=tmpT;
+      var tmpD=ob.style.display; ob.style.display=db.style.display; db.style.display=tmpD;
+      var tmp={iata:selectedOrigin.iata,name:selectedOrigin.name};
+      selectedOrigin.iata=selectedDest.iata; selectedOrigin.name=selectedDest.name;
+      selectedDest.iata=tmp.iata; selectedDest.name=tmp.name;
+      document.getElementById('origin-iata').value=selectedOrigin.iata;
+      document.getElementById('dest-iata').value=selectedDest.iata;
     });
 
-    // ── Counters ──
-    var pax={a:1,k:0};
-    document.querySelectorAll('.fh-pax-btn2').forEach(function(b){
-      b.addEventListener('click',function(){
-        var t=b.dataset.t, o=b.dataset.o;
-        if(o==='+') pax[t]=Math.min(pax[t]+1,9);
-        else pax[t]=Math.max(pax[t]-1,t==='a'?1:0);
-        document.getElementById('fh-'+t+'v').textContent=pax[t];
+    var counts={a:1,k:0};
+    document.querySelectorAll('.cbtn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var t=btn.dataset.t,o=btn.dataset.o;
+        if(o==='+') counts[t]=Math.min(counts[t]+1,9);
+        else counts[t]=Math.max(counts[t]-1,t==='a'?1:0);
+        document.getElementById(t+'-val').textContent=counts[t];
       });
     });
 
-    // ── Calendar ──
+    document.querySelectorAll('input[name="mode"]').forEach(function(r){
+      r.addEventListener('change',function(){
+        var isCal=r.value==='c';
+        document.getElementById('slider-panel').style.display=isCal?'none':'block';
+        document.getElementById('cal-panel').style.display=isCal?'block':'none';
+        if(isCal) renderCal();
+      });
+    });
+
+    document.querySelectorAll('input[name="trip"]').forEach(function(r){
+      r.addEventListener('change',function(){
+        var isRT=r.value==='rt';
+        document.getElementById('chip-to').style.display=isRT?'block':'none';
+        if(!isRT){selEnd=null;pickEnd=false;}
+        else if(selStart){pickEnd=true;}
+        if(document.getElementById('cal-panel').style.display==='block') renderCal();
+        updateChips();
+      });
+    });
+
+    var cy,cm,selStart=null,selEnd=null,pickEnd=false;
     var MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
     var DOWS=['Mo','Di','Mi','Do','Fr','Sa','So'];
-    function initCal(){ var n=new Date(); calY=n.getFullYear(); calM=n.getMonth(); }
+    function initCal(){var n=new Date();cy=n.getFullYear();cm=n.getMonth();}
     initCal();
-    function fmtShort(d){ return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'}); }
+
     function renderCal(){
-      var mlbl=document.getElementById('fh-cmlbl');
-      if(mlbl) mlbl.textContent=MONTHS[calM]+' '+calY;
-      var first=new Date(calY,calM,1).getDay(), dim=new Date(calY,calM+1,0).getDate();
+      document.getElementById('cal-month-lbl').textContent=MONTHS[cm]+' '+cy;
+      var first=new Date(cy,cm,1).getDay(),dim=new Date(cy,cm+1,0).getDate();
       var today=new Date(); today.setHours(0,0,0,0);
-      var offset=first===0?6:first-1, c=getCol();
-      var h=DOWS.map(function(d){return '<div class="fh-cal-dow">'+d+'</div>';}).join('');
-      for(var i=0;i<offset;i++) h+='<div class="fh-cal-day empty"></div>';
-      for(var dd=1;dd<=dim;dd++){
-        var dt=new Date(calY,calM,dd); dt.setHours(0,0,0,0);
-        var ts=dt.getTime(), isPast=dt<today;
-        var isS=calStart&&ts===calStart.getTime(), isE=calEnd&&ts===calEnd.getTime();
-        var inR=calStart&&calEnd&&dt>calStart&&dt<calEnd;
-        var cls='fh-cal-day', sty='';
-        if(isPast) cls+=' past';
-        if(isS&&isE){cls+=' sel';sty='background:'+c+';border-radius:7px';}
-        else if(isS){cls+=' sel';sty='background:'+c+';border-radius:7px 0 0 7px';}
-        else if(isE){cls+=' sel';sty='background:'+c+';border-radius:0 7px 7px 0';}
-        else if(inR){cls+=' inr';sty='background:'+c+'22;border-radius:0';}
-        else if(!isPast&&ts===today.getTime()){sty='color:'+c+';font-weight:800';}
-        h+='<div class="'+cls+'" style="'+sty+'" data-ts="'+ts+'">'+dd+'</div>';
+      var offset=first===0?6:first-1, color=getColor();
+      var html=DOWS.map(function(d){return '<div class="cal-dow">'+d+'</div>';}).join('');
+      for(var i=0;i<offset;i++) html+='<div class="cal-day empty"></div>';
+      for(var d=1;d<=dim;d++){
+        var dt=new Date(cy,cm,d); dt.setHours(0,0,0,0);
+        var ts=dt.getTime(),isPast=dt<today,isToday=ts===today.getTime();
+        var isS=selStart&&ts===selStart.getTime(),isE=selEnd&&ts===selEnd.getTime();
+        var inRange=selStart&&selEnd&&dt>selStart&&dt<selEnd;
+        var cls='cal-day',sty='';
+        if(isPast)cls+=' past'; if(isToday&&!isS&&!isE){cls+=' today';sty='color:'+color;}
+        if(isS&&isE){cls+=' sel r-b';sty='background:'+color;}
+        else if(isS){cls+=' sel r-l';sty='background:'+color;}
+        else if(isE){cls+=' sel r-r';sty='background:'+color;}
+        else if(inRange){cls+=' in-range';sty='background:'+color+'25';}
+        html+='<div class="'+cls+'" style="'+sty+'" data-ts="'+ts+'">'+d+'</div>';
       }
-      var grid=document.getElementById('fh-cgrid');
-      if(!grid) return;
-      grid.innerHTML=h;
-      grid.querySelectorAll('.fh-cal-day:not(.past):not(.empty)').forEach(function(el){
+      var grid=document.getElementById('cal-grid');
+      grid.innerHTML=html;
+      grid.querySelectorAll('.cal-day:not(.past):not(.empty)').forEach(function(el){
         el.addEventListener('click',function(){
           var dt=new Date(+el.dataset.ts);
-          var rt=document.getElementById('fh-rt').checked;
-          if(!rt){calStart=dt;calEnd=null;}
-          else if(!calStart||!calPickEnd){calStart=dt;calEnd=null;calPickEnd=true;}
-          else{if(dt<=calStart){calEnd=calStart;calStart=dt;}else calEnd=dt;calPickEnd=false;}
-          renderCal(); updChips();
+          var isRT=document.getElementById('trip-rt').checked;
+          if(!isRT){selStart=dt;selEnd=null;pickEnd=false;}
+          else if(!selStart||!pickEnd){selStart=dt;selEnd=null;pickEnd=true;}
+          else{if(dt.getTime()<=selStart.getTime()){selEnd=selStart;selStart=dt;}else{selEnd=dt;}pickEnd=false;}
+          renderCal(); updateChips();
         });
       });
     }
-    function updChips(){
-      var cf=document.getElementById('fh-chip-from'), ct=document.getElementById('fh-chip-to');
-      var c=getCol();
-      if(cf){cf.textContent=calStart?'✈ '+fmtShort(calStart):'Abflug wählen';cf.className='fh-cal-chip'+(calStart?' filled':' act');if(!calStart){cf.style.borderColor=c;cf.style.color=c;}else{cf.style.borderColor='';cf.style.color='';}}
-      if(ct&&document.getElementById('fh-rt').checked){ct.textContent=calEnd?'↩ '+fmtShort(calEnd):'Rückkehr wählen';ct.className='fh-cal-chip'+(calEnd?' filled':(calPickEnd?' act':''));}
+
+    function updateChips(){
+      var cf=document.getElementById('chip-from'),ct=document.getElementById('chip-to');
+      var color=getColor();
+      if(selStart){cf.textContent='✈ '+fmtDate(selStart);cf.className='cal-chip filled';cf.style.borderColor='';cf.style.color='';}
+      else{cf.textContent='Abflug wählen';cf.className='cal-chip active';cf.style.borderColor=color;cf.style.color=color;}
+      if(document.getElementById('trip-rt').checked){
+        if(selEnd){ct.textContent='↩ '+fmtDate(selEnd);ct.className='cal-chip filled';}
+        else{ct.textContent='Rückkehr wählen';ct.className='cal-chip'+(pickEnd?' active':'');if(pickEnd){ct.style.borderColor=color;ct.style.color=color;}else{ct.style.borderColor='';ct.style.color='';}}
+      }
     }
-    var cprev=document.getElementById('fh-cprev'), cnext=document.getElementById('fh-cnext');
-    if(cprev) cprev.addEventListener('click',function(){calM--;if(calM<0){calM=11;calY--;}renderCal();});
-    if(cnext) cnext.addEventListener('click',function(){calM++;if(calM>11){calM=0;calY++;}renderCal();});
+    document.getElementById('cal-prev').addEventListener('click',function(){cm--;if(cm<0){cm=11;cy--;}renderCal();});
+    document.getElementById('cal-next').addEventListener('click',function(){cm++;if(cm>11){cm=0;cy++;}renderCal();});
 
-    // ── Helpers ──
-    function ft(d){ return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}); }
-    function fdur(iso){if(!iso)return'';var m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?/);if(!m)return'';return parseInt(m[1]||0)+'h'+(m[2]?' '+m[2]+'m':'');}
+    function fmtDuration(iso){
+      if(!iso) return '';
+      var m=iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?/);
+      if(!m) return iso;
+      var h=parseInt(m[1]||0),min=parseInt(m[2]||0);
+      return h+'h '+(min?min+'m':'');
+    }
 
-    // ── Build Jetradar deep-link (Travelpayouts, marker 676139) ──
-    function bookingLink(f) {
-      var dep = f.departureTime ? f.departureTime.slice(0,10) : '';
-      var url = 'https://www.jetradar.de/flights/'
-        +'?origin='+f.origin
+    function buildLink(f){
+      var dep=f.departureTime?f.departureTime.slice(0,10):'';
+      return 'https://www.jetradar.de/flights/?origin='+f.origin
         +'&destination='+f.destination
         +'&depart_date='+dep
-        +'&adults='+pax.a
-        +(pax.k>0?'&children='+pax.k:'')
+        +'&adults='+counts.a
+        +(counts.k>0?'&children='+counts.k:'')
         +'&marker='+MARKER
-        +'&utm_source=fliegheute.de'
-        +'&utm_medium=affiliate'
-        +'&utm_campaign=search'
-        +'&utm_content='+f.origin+'-'+f.destination;
-      return url;
+        +'&utm_source=fliegheute.de&utm_medium=affiliate&utm_campaign=search';
     }
 
-    // ── Render results ──
-    function renderR(flights){
-      var list=document.getElementById('fh-flist');
-      if(!list) return;
+    var allResults=[];
+
+    function renderResults(flights){
+      var list=document.getElementById('results-list');
       if(!flights.length){
-        list.innerHTML='<div class="fh-no-results">Keine Flüge gefunden.<br>Anderen Abflughafen oder Datum probieren.</div>';
+        list.innerHTML='<div class="results-empty"><div class="icon">✈️</div><p>Keine Flüge gefunden. Andere Daten oder Abflughafen probieren.</p></div>';
         return;
       }
       list.innerHTML=flights.map(function(f){
-        var dep=new Date(f.departureTime), arr=new Date(f.arrivalTime);
-        var sc=f.stops===0?'ns':(f.stops===1?'s1':'s2');
-        var sl2=f.stops===0?'Nonstop':(f.stops===1?'1 Stopp':f.stops+' Stopps');
-        var link=bookingLink(f);
-        return '<a class="fh-flight" href="'+link+'" target="_blank" rel="noopener noreferrer">'
-          +'<div class="fh-al">'+f.airline+'</div>'
-          +'<div class="fh-fl-mid">'
-            +'<div class="fh-fl-times-row">'
-              +'<div><div class="fh-fl-t">'+ft(dep)+'</div><div class="fh-fl-ap">'+f.origin+'</div></div>'
-              +'<div class="fh-fl-center">'
-                +'<span class="fh-fl-dur">'+fdur(f.duration)+'</span>'
-                +'<div class="fh-fl-line-row"><div class="fh-fl-dot"></div><div class="fh-fl-dash"></div><span class="fh-fl-chevron">›</span></div>'
-                +'<span class="fh-fl-stoplbl '+sc+'">'+sl2+'</span>'
-              +'</div>'
-              +'<div style="text-align:right"><div class="fh-fl-t">'+ft(arr)+'</div><div class="fh-fl-ap">'+f.destination+'</div></div>'
+        var dep=new Date(f.departureTime),arr=new Date(f.arrivalTime);
+        var stopCls=f.stops===0?'nonstop':'stop1';
+        var stopLbl=f.stops===0?'Nonstop':(f.stops===1?'1 Stopp':f.stops+' Stopps');
+        var link=buildLink(f);
+        return '<a class="flight-card" href="'+link+'" target="_blank" rel="noopener">'
+          +'<div class="airline-logo">'+f.airline+'</div>'
+          +'<div class="flight-main">'
+            +'<div class="flight-route">'
+              +'<span class="flight-time">'+fmtTime(dep)+'</span>'
+              +'<div class="flight-arrow"><div class="flight-line"></div></div>'
+              +'<span class="flight-time">'+fmtTime(arr)+'</span>'
             +'</div>'
-            +'<div class="fh-fl-info"><span>'+alName(f.airline)+'</span><span>·</span><span>'+f.flightNumber+'</span></div>'
+            +'<div class="flight-meta">'
+              +'<span>'+f.origin+' → '+f.destination+'</span>'
+              +'<span>'+fmtDuration(f.duration)+'</span>'
+              +'<span class="flight-stop '+stopCls+'">'+stopLbl+'</span>'
+            +'</div>'
           +'</div>'
-          +'<div class="fh-price-area">'
-            +'<div><div class="fh-price-pp">ab p.P.</div><div class="fh-price-num">'+f.price.toFixed(0)+' €</div><div class="fh-price-cabin">Economy</div></div>'
-            +'<a class="fh-sel-btn" href="'+link+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Auswählen ↗</a>'
+          +'<div class="flight-price-col">'
+            +'<div class="flight-price-sub">ab p.P.</div>'
+            +'<div class="flight-price">'+f.price.toFixed(0)+' €</div>'
+            +'<a class="book-btn" href="'+link+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">Buchen ↗</a>'
           +'</div>'
           +'</a>';
       }).join('');
     }
 
-    // ── Filters ──
-    var filtersEl=document.getElementById('fh-filters');
-    if(filtersEl) filtersEl.addEventListener('click',function(e){
-      var chip=e.target.closest('.fh-fchip'); if(!chip) return;
-      filtersEl.querySelectorAll('.fh-fchip').forEach(function(c){c.classList.remove('on');});
-      chip.classList.add('on');
-      var f=chip.dataset.f, filtered=allR.slice();
-      if(f==='nonstop') filtered=filtered.filter(function(x){return x.stops===0;});
-      else if(f==='cheap') filtered.sort(function(a,b){return a.price-b.price;});
-      else if(f==='fast') filtered.sort(function(a,b){
-        return (new Date(a.arrivalTime)-new Date(a.departureTime))-(new Date(b.arrivalTime)-new Date(b.departureTime));
+    document.querySelectorAll('.filter-chip').forEach(function(chip){
+      chip.addEventListener('click',function(){
+        document.querySelectorAll('.filter-chip').forEach(function(c){c.classList.remove('active');});
+        chip.classList.add('active');
+        var f=chip.dataset.filter,filtered=allResults.slice();
+        if(f==='nonstop') filtered=filtered.filter(function(x){return x.stops===0;});
+        else if(f==='cheap') filtered.sort(function(a,b){return a.price-b.price;});
+        else if(f==='fast') filtered.sort(function(a,b){
+          return (new Date(a.arrivalTime)-new Date(a.departureTime))-(new Date(b.arrivalTime)-new Date(b.departureTime));
+        });
+        renderResults(filtered);
       });
-      renderR(filtered);
     });
 
-    // ── MAIN SEARCH ──
-    if(go) go.addEventListener('click',function(){
-      var origin=document.getElementById('fh-oi').value||selO.iata;
+    btnSearch.addEventListener('click',function(){
+      var origin=document.getElementById('origin-iata').value||selectedOrigin.iata;
+      var dest=document.getElementById('dest-iata').value||selectedDest.iata;
+      var mode=document.querySelector('input[name="mode"]:checked').value;
       if(!origin){
-        var oinp=document.getElementById('fh-origin');
-        if(oinp){oinp.focus();oinp.style.outline='2px solid #f571b4';}
-        setTimeout(function(){if(oinp)oinp.style.outline='';},2000);
+        document.getElementById('origin-input').focus();
+        document.getElementById('origin-input').style.outline='2px solid #f571b4';
+        setTimeout(function(){document.getElementById('origin-input').style.outline='';},2000);
         return;
       }
-      var mode=document.querySelector('input[name="fh-mode"]:checked').value;
-      var depDate;
-      if(mode==='s'){ depDate=new Date(Date.now()+(+sl.value)*3600000).toISOString().slice(0,10); }
-      else{ depDate=calStart?calStart.toISOString().slice(0,10):new Date().toISOString().slice(0,10); }
+      var departureDate;
+      if(mode==='s'){
+        departureDate=new Date(Date.now()+(+slider.value)*3600000).toISOString().slice(0,10);
+      } else {
+        departureDate=selStart?selStart.toISOString().slice(0,10):new Date().toISOString().slice(0,10);
+      }
+      var payload={origin:origin,dest:dest,hours:mode==='s'?slider.value:null,dateFrom:departureDate,adults:counts.a,children:counts.k};
 
-      var dest=document.getElementById('fh-di').value||selD.iata;
-      var payload={origin:origin,dest:dest,dateFrom:depDate,adults:pax.a,children:pax.k};
-
-      go.disabled=true;
-      document.getElementById('fh-spin').style.display='block';
-      document.getElementById('fh-sico').style.display='none';
-      document.getElementById('fh-slbl').textContent='Suche läuft…';
+      btnSearch.disabled=true;
+      document.getElementById('spinner').style.display='block';
+      document.getElementById('search-icon').style.display='none';
+      document.getElementById('btn-label').textContent='Suche läuft…';
 
       var sec=document.getElementById('fh-results-section');
-      var flist=document.getElementById('fh-flist');
-      if(sec){sec.style.display='block';}
-      if(flist){flist.innerHTML='<div class="fh-no-results" style="padding:40px;text-align:center;color:#6e7280;">⏳ Suche '+origin+(dest?' → '+dest:'')+'…</div>';}
-      if(sec){sec.scrollIntoView({behavior:'smooth',block:'start'});}
+      sec.style.display='block';
+      document.getElementById('results-list').innerHTML='<div class="results-empty"><p>⏳ Durchsuche '+origin+(dest?' → '+dest:'')+'…</p></div>';
+      sec.scrollIntoView({behavior:'smooth',block:'start'});
 
-      fetch(API+'/api/search',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(payload)
-      })
-      .then(function(r){return r.json();})
-      .then(function(d){
-        allR=(d.results||[]).sort(function(a,b){return a.price-b.price;});
-        var c=getCol();
-        var rhdr=document.getElementById('fh-rhdr');
-        if(rhdr) rhdr.style.background=c;
-        var rtitle=document.getElementById('fh-rtitle');
-        if(rtitle) rtitle.textContent=(selO.name||origin)+(dest?' → '+(selD.name||dest):' · Alle Ziele');
-        var rcnt=document.getElementById('fh-rcnt');
-        if(rcnt) rcnt.textContent=allR.length+' Flüge gefunden';
-        renderR(allR);
-      })
-      .catch(function(e){
-        if(flist) flist.innerHTML='<div class="fh-no-results" style="padding:40px;text-align:center;color:#6e7280;">⚠️ Fehler: '+e.message+'</div>';
-      })
-      .finally(function(){
-        go.disabled=false;
-        document.getElementById('fh-spin').style.display='none';
-        document.getElementById('fh-sico').style.display='block';
-        document.getElementById('fh-slbl').textContent='Flüge finden';
-      });
+      fetch(API+'/api/search',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){return r.json();})
+        .then(function(data){
+          allResults=(data.results||[]).sort(function(a,b){return a.price-b.price;});
+          document.getElementById('results-title').textContent=(selectedOrigin.name||origin)+(dest?' → '+(selectedDest.name||dest):' · Alle Ziele');
+          document.getElementById('results-count').textContent=allResults.length+' Flüge gefunden';
+          renderResults(allResults);
+        })
+        .catch(function(err){
+          document.getElementById('results-list').innerHTML='<div class="results-empty"><div class="icon">⚠️</div><p>Fehler: '+err.message+'</p></div>';
+        })
+        .finally(function(){
+          btnSearch.disabled=false;
+          document.getElementById('spinner').style.display='none';
+          document.getElementById('search-icon').style.display='block';
+          document.getElementById('btn-label').textContent='Flüge finden';
+        });
     });
 
   })();
   </script>
+
 </body>
 </html>
