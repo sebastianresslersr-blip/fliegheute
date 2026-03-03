@@ -820,6 +820,91 @@
       resizeTimer = setTimeout(()=> setHero(currentHero), 150);
     });
   </script>
+        <!-- Simple Coming-Soon Overlay -->
+  <div id="fh-overlay">
+    <div class="fh-overlay-box">
+      <h1>✈️ Jeyy!<br><br>Flüge, Billigflüge, <br>Flüge supergünstig!</h1><br>
+      <p>Die <strong>geilsten und billigsten Flüge innerhalb <br> 24-Stunden </strong> und danach gibt’s schon bald hier<br><br>Komm´ bald wieder!</p>
+      <img src="/assets/logo-plany-mascot.svg" alt="Plany Maskottchen" width="250" style="margin-top:36px;">
+      <img src="/assets/logo-plany-header.svg" alt="fliegheute.de" width="250" style="margin-top:36px;">
+    </div>
+  </div>
+
+ <style>
+  /* === Coming-Soon Overlay === */
+  #fh-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+
+    /* Basis-Verdunklung (statisch, kein Opacity-Anim auf dem Container!) */
+    background-color: rgba(11,11,19,0.88);
+  }
+
+  /* Pulsierender, farbiger Radial-Schimmer HINTER der Box */
+  #fh-overlay::before {
+    content: "";
+    position: absolute;
+    inset: -20%;                 /* etwas größer als der Viewport für sauberes Pulsieren */
+    z-index: 0;                  /* liegt hinter der Box */
+    pointer-events: none;
+
+    background: radial-gradient(circle at center,
+      rgba(113,131,245,0.40) 0%,
+      rgba(245,113,180,0.28) 30%,
+      rgba(11,11,19,0.00) 60%);
+    filter: blur(12px);          /* weicher Glow */
+    transform: scale(1);
+    animation: heartbeat 2.8s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  .fh-overlay-box {
+    position: relative;          /* damit über dem ::before liegt */
+    z-index: 1;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    max-width: 480px;
+    width: 90%;
+    padding: 48px 32px;
+    text-align: center;
+    font-family: Inter, system-ui, sans-serif;
+    animation: fadeIn .8s ease-in-out;
+  }
+
+  .fh-overlay-box h1 {
+    font-family: "Inter Tight", sans-serif;
+    font-size: 36px;
+    margin-bottom: 16px;
+    color: var(--brand);
+  }
+
+  .fh-overlay-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* Doppelpuls – „bobong, bobong“ – nur auf dem ::before */
+  @keyframes heartbeat {
+    0%, 100%   { transform: scale(1);     opacity: 0.85; }
+    10%        { transform: scale(1.05);  opacity: 1;    }  /* erster Schlag */
+    20%        { transform: scale(0.98);  opacity: 0.9;  }
+    30%        { transform: scale(1.06);  opacity: 1;    }  /* zweiter Schlag */
+    40%, 90%   { transform: scale(1);     opacity: 0.85; }
+  }
+</style>
 
 
   <script>
