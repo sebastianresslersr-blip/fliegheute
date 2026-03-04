@@ -156,7 +156,7 @@
       position: relative; z-index: 2;
       max-width: 1160px; margin: 0 auto; padding: 88px 20px 56px;
       width: 100%;
-      display: grid; grid-template-columns: 1fr 440px; gap: 48px; align-items: center;
+      display: grid; grid-template-columns: 1fr 400px; gap: 48px; align-items: start;
     }
 
     /* Live badge */
@@ -187,23 +187,28 @@
       text-shadow: 0 1px 10px rgba(0,0,0,.2);
     }
 
-    /* ══ PLANY MASCOT (Hero, animated) ══ */
-    .fh-plany-hero {
-      display: flex; justify-content: flex-start;
-      margin-bottom: 18px;
+    /* ══ PLANY MASCOT (floating between columns) ══ */
+    .fh-plany-float {
+      position: absolute; right: 340px; top: 50%; transform: translateY(-60%);
+      z-index: 5; pointer-events: none;
     }
-    .fh-plany-hero img {
-      height: 110px; width: auto;
+    .fh-plany-float img {
+      height: 130px; width: auto;
       filter: drop-shadow(0 8px 28px rgba(113,131,245,.4));
       animation: planyFloat 3.5s ease-in-out infinite;
     }
+
+    /* Hero columns */
+    .fh-hero-left { display: flex; flex-direction: column; gap: 0; }
+    .fh-hero-right { display: flex; align-items: flex-start; padding-top: 40px; }
 
     /* ══ DEPARTURE BOARD ══ */
     .fh-board {
       background: rgba(11,11,19,.72);
       border: 1px solid rgba(255,255,255,.08);
       border-radius: var(--r); padding: 14px 16px;
-      margin-bottom: 22px; backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      width: 100%;
     }
     .fh-board-hdr {
       display: flex; justify-content: space-between; align-items: center;
@@ -239,7 +244,7 @@
     }
 
     /* ══ DESTINATION PILLS ══ */
-    .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
     .fh-dpill {
       display: flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.15);
@@ -261,6 +266,7 @@
     .fh-widget-card {
       background: #fff; border-radius: var(--r);
       box-shadow: var(--shadow-l); overflow: hidden; min-height: 80px;
+      margin-top: 14px;
     }
     .fh-widget-trust {
       text-align: center; font-size: 11px; color: rgba(255,255,255,.45);
@@ -435,11 +441,13 @@
     @media(max-width:900px) {
       .fh-hero-inner { grid-template-columns: 1fr; padding: 100px 16px 40px; gap: 28px; }
       .fh-hero-wrap { min-height: auto; }
+      .fh-hero-right { padding-top: 0; }
       .fh-board { display: none; }
+      .fh-plany-float { position: static; transform: none; margin-bottom: 12px; }
+      .fh-plany-float img { height: 80px; }
       .fh-romance-inner { grid-template-columns: 1fr; gap: 28px; }
       .fh-romance-fig { position: static; }
       .fh-trust-item:nth-child(n+4) { display: none; }
-      .fh-plany-hero img { height: 80px; }
     }
     @media(max-width:480px) {
       .fh-section { padding: 44px 0; }
@@ -482,13 +490,13 @@
 
   <div class="fh-hero-inner">
 
-    <!-- Links: Text + Plany + Board + Pills -->
-    <div>
-      <!-- Plany animated -->
-      <div class="fh-plany-hero">
-        <img src="/assets/logo-plany-mascot.svg" alt="Plany – das fliegheute.de Maskottchen" loading="eager">
-      </div>
+    <!-- Plany floating between columns -->
+    <div class="fh-plany-float" aria-hidden="true">
+      <img src="/assets/logo-plany-mascot.svg" alt="Plany – das fliegheute.de Maskottchen" loading="eager">
+    </div>
 
+    <!-- Links: Text + Search Widget + Pills -->
+    <div class="fh-hero-left">
       <div class="fh-live-badge">
         <span class="fh-live-dot" aria-hidden="true"></span>
         Live Deals – gerade verfügbar
@@ -497,14 +505,11 @@
       <h1 class="fh-hero-h1" id="hero-title">Flieg.<br><em>Heute.</em></h1>
       <p class="fh-hero-sub" id="hero-sub">Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.</p>
 
-      <!-- Departure Board -->
-      <div class="fh-board" role="region" aria-label="Abflugtafel heute">
-        <div class="fh-board-hdr">
-          <span class="fh-board-lbl">🛫 Abflüge heute</span>
-          <span class="fh-board-clock" id="fh-clock" aria-live="polite"></span>
-        </div>
-        <div class="fh-board-rows" id="fh-board-rows"></div>
+      <!-- Search Widget (Travelpayouts) -->
+      <div class="fh-widget-card" aria-label="Flugsuche Formular">
+        <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&show_hotels=true&powered_by=false&locale=de&searchUrl=www.aviasales.at%2Fsearch&primary_override=%237183f5&color_button=%237183f5&color_icons=%237183f5&dark=%23262626&light=%23FFFFFF&secondary=%23EDEDEd&special=%23FFFFFF&color_focused=%237183f5&border_radius=18&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
       </div>
+      <p class="fh-widget-trust">✅ Kein Aufpreis &nbsp;·&nbsp; ✅ Direktbuchung &nbsp;·&nbsp; ✅ Gratis</p>
 
       <!-- Destination Pills -->
       <div class="fh-dest-pills" role="group" aria-label="Reisestimmung wählen">
@@ -520,12 +525,15 @@
       </div>
     </div>
 
-    <!-- Rechts: Search Widget (Travelpayouts) -->
-    <div>
-      <div class="fh-widget-card" aria-label="Flugsuche Formular">
-        <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&show_hotels=true&powered_by=false&locale=de&searchUrl=www.aviasales.com%2Fsearch&primary_override=%237183f5&color_button=%237183f5&color_icons=%237183f5&dark=%23262626&light=%23FFFFFF&secondary=%23EDEDEd&special=%23FFFFFF&color_focused=%237183f5&border_radius=18&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
+    <!-- Rechts: Departure Board -->
+    <div class="fh-hero-right">
+      <div class="fh-board" role="region" aria-label="Abflugtafel heute">
+        <div class="fh-board-hdr">
+          <span class="fh-board-lbl">🛫 Abflüge heute</span>
+          <span class="fh-board-clock" id="fh-clock" aria-live="polite"></span>
+        </div>
+        <div class="fh-board-rows" id="fh-board-rows"></div>
       </div>
-      <p class="fh-widget-trust">✅ Kein Aufpreis &nbsp;·&nbsp; ✅ Direktbuchung &nbsp;·&nbsp; ✅ Gratis</p>
     </div>
 
   </div>
@@ -569,7 +577,7 @@
       <p class="fh-section-sub">Sieh auf einen Blick die besten Preise direkt im Kalender.</p>
     </div>
     <div class="fh-widget-wrap fh-reveal">
-      <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&searchUrl=www.aviasales.com%2Fsearch&locale=de&powered_by=false&origin=FKB&destination=PXO&one_way=false&only_direct=true&period=year&range=7%2C14&primary=%237183f5&color_background=%23EDEDEd&dark=%23000000&light=%23FFFFFF&achieve=%2345AD35&border_radius=18&promo_id=4041&campaign_id=100" charset="utf-8"></script>
+      <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&searchUrl=www.aviasales.at%2Fsearch&locale=de&powered_by=false&origin=FKB&destination=PXO&one_way=false&only_direct=true&period=year&range=7%2C14&primary=%237183f5&color_background=%23EDEDEd&dark=%23000000&light=%23FFFFFF&achieve=%2345AD35&border_radius=18&promo_id=4041&campaign_id=100" charset="utf-8"></script>
     </div>
   </div>
 </section>
