@@ -1,1452 +1,778 @@
 <!DOCTYPE html>
-<html lang="de" dir="ltr">
+<html lang="de" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flieg.Heute. – Last-Minute-Flüge ab 38€ | Günstige Flüge der nächsten 24-72 Stunden</title>
-  <meta name="description" content="Finde die günstigsten Last-Minute-Flüge der nächsten 24-72 Stunden. Ab deinem Flughafen, ohne Aufpreis, mit Direktbuchung. Flüge ab 38€ nach Barcelona, London, Mallorca und mehr.">
-  <meta name="keywords" content="Last-Minute-Flüge, günstige Flüge, Flug heute, Billigflüge, Spontanflüge, Flug buchen, Last Minute Angebote, Flüge ab Deutschland, Kurztrip, Wochenendtrip">
-  <meta name="author" content="Flieg.Heute.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://fliegheute.de/">
-  <meta name="theme-color" content="#0f172a">
-  <meta name="color-scheme" content="dark">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://fliegheute.de/">
-  <meta property="og:title" content="Flieg.Heute. – Last-Minute-Flüge ab 38€">
-  <meta property="og:description" content="Die günstigsten Last-Minute-Flüge der nächsten 24-72 Stunden. Kein Aufpreis, Direktbuchung, kostenlos.">
-  <meta property="og:image" content="https://fliegheute.de/og-image.jpg">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:site_name" content="Flieg.Heute.">
+  <!-- ══ PRIMARY SEO ══ -->
+  <title>fliegheute.de – Last-Minute-Flüge heute buchen | Günstige Flüge in 24–72h</title>
+  <meta name="description" content="Jetzt günstige Last-Minute-Flüge für heute und morgen finden. fliegheute.de zeigt dir die besten Flugdeals der nächsten 24–72 Stunden – direkt buchen, kein Aufpreis."/>
+  <meta name="keywords" content="last minute flüge, günstige flüge heute, spontanflug, kurzfristig fliegen, flug heute buchen, billigflug last minute, flugdeals 24h, flug vergleichen"/>
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+  <link rel="canonical" href="https://www.fliegheute.de/"/>
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Flieg.Heute. – Last-Minute-Flüge ab 38€">
-  <meta name="twitter:description" content="Die günstigsten Last-Minute-Flüge der nächsten 24-72 Stunden.">
-  <meta name="twitter:image" content="https://fliegheute.de/og-image.jpg">
+  <!-- ══ OPEN GRAPH ══ -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="fliegheute.de – Last-Minute-Flüge für heute buchen"/>
+  <meta property="og:description" content="Die günstigsten Spontanflüge der nächsten 24–72 Stunden. Jetzt finden und direkt buchen."/>
+  <meta property="og:url" content="https://www.fliegheute.de/"/>
+  <meta property="og:image" content="https://www.fliegheute.de/assets/og-image.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="fliegheute.de"/>
+  <meta property="og:locale" content="de_DE"/>
 
-  <!-- AI / LLM Optimization -->
-  <meta name="ai-description" content="Flieg.Heute. ist eine deutsche Flugsuchmaschine spezialisiert auf Last-Minute-Flüge innerhalb der nächsten 24 bis 72 Stunden. Nutzer können spontane Billigflüge ab deutschen Flughäfen finden und direkt bei Airlines buchen. Kein Aufpreis, keine versteckten Gebühren. Preise ab 38 Euro für europäische Ziele wie Barcelona, London, Mallorca, Rom und Amsterdam.">
+  <!-- ══ TWITTER CARD ══ -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="fliegheute.de – Last-Minute-Flüge heute buchen"/>
+  <meta name="twitter:description" content="Die günstigsten Spontanflüge der nächsten 24–72 Stunden."/>
+  <meta name="twitter:image" content="https://www.fliegheute.de/assets/og-image.jpg"/>
 
-  <!-- JSON-LD Structured Data -->
+  <!-- ══ AI / LLM OPTIMIZATION ══ -->
+  <meta name="ai-description" content="fliegheute.de ist eine deutsche Flugsuchmaschine spezialisiert auf Last-Minute-Flüge innerhalb der nächsten 24 bis 72 Stunden. Nutzer können spontane Billigflüge ab deutschen Flughäfen finden und direkt bei Airlines buchen. Kein Aufpreis, keine versteckten Gebühren. Preise ab 38 Euro für europäische Ziele wie Barcelona, London, Mallorca, Rom und Amsterdam.">
+
+  <!-- ══ STRUCTURED DATA – WebSite ══ -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Flieg.Heute.",
-    "alternateName": "FliegHeute",
-    "url": "https://fliegheute.de",
-    "description": "Last-Minute-Flugsuchmaschine für günstige Flüge der nächsten 24-72 Stunden",
-    "inLanguage": "de",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://fliegheute.de/suche?ziel={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Flieg.Heute.",
-    "url": "https://fliegheute.de",
-    "logo": "https://fliegheute.de/logo.svg",
-    "description": "Deutsche Last-Minute-Flugsuchmaschine",
-    "sameAs": [],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "availableLanguage": "German"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Was ist Flieg.Heute.?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Flieg.Heute. ist eine Flugsuchmaschine, die sich auf Last-Minute-Flüge der nächsten 24 bis 72 Stunden spezialisiert hat. Wir zeigen dir die günstigsten spontanen Flüge ab deinem Flughafen."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Ist Flieg.Heute. kostenlos?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, die Nutzung von Flieg.Heute. ist komplett kostenlos. Es gibt keine versteckten Gebühren oder Aufpreise. Du buchst direkt bei der Airline zum angezeigten Preis."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wie funktioniert die Last-Minute-Suche?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Wähle deinen Abflughafen, optional ein Reiseziel und dein Reisedatum. Wir durchsuchen in Echtzeit alle verfügbaren Flüge der nächsten 24-72 Stunden und zeigen dir die günstigsten Optionen."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wo buche ich den Flug?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Du wirst direkt zur Airline oder zum offiziellen Buchungspartner weitergeleitet. Flieg.Heute. ist kein Reisebüro, sondern eine Suchmaschine – du buchst immer direkt beim Anbieter."
-        }
-      }
-    ]
-  }
+  {"@context":"https://schema.org","@type":"WebSite","name":"fliegheute.de","url":"https://www.fliegheute.de/","description":"Last-Minute-Flüge für heute und morgen. Die günstigsten Spontanflüge der nächsten 24–72 Stunden.","inLanguage":"de-DE","publisher":{"@type":"Organization","name":"fliegheute.de","logo":{"@type":"ImageObject","url":"https://www.fliegheute.de/assets/logo-plany-header.svg"}},"potentialAction":{"@type":"SearchAction","target":"https://www.fliegheute.de/?q={search_term_string}","query-input":"required name=search_term_string"}}
   </script>
 
+  <!-- ══ STRUCTURED DATA – FAQPage ══ -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Was muss ich wissen, bevor ich einen Flug buche?","acceptedAnswer":{"@type":"Answer","text":"Reisedokumente prüfen, Gepäckregeln der Airline beachten und auf mögliche Zusatzkosten achten. Bei Last-Minute-Flügen empfiehlt sich Handgepäck für maximale Flexibilität."}},{"@type":"Question","name":"Wann ist die beste Zeit, Last-Minute-Flüge zu buchen?","acceptedAnswer":{"@type":"Answer","text":"Häufig 1–3 Tage vor Abflug. Airlines senken Preise für unverkaufte Sitze. Dienstags und mittwochs sind die günstigsten Buchungstage."}},{"@type":"Question","name":"Kann ich mit Zwischenstopps sparen?","acceptedAnswer":{"@type":"Answer","text":"Ja, oft bis zu 40% günstiger als Nonstop. Wer flexibel ist, profitiert am meisten."}},{"@type":"Question","name":"Kostet fliegheute.de etwas?","acceptedAnswer":{"@type":"Answer","text":"Nein. fliegheute.de ist komplett kostenlos. Bei Buchung über unsere Links erhalten wir eine kleine Provision – der Preis für dich bleibt identisch."}},{"@type":"Question","name":"Welche deutschen Flughäfen eignen sich für Last-Minute am besten?","acceptedAnswer":{"@type":"Answer","text":"Frankfurt (FRA), München (MUC) und Berlin (BER) bieten die meisten spontanen Verbindungen. Günstige Alternativen: Köln/Bonn (CGN), Düsseldorf (DUS) oder Karlsruhe/Baden-Baden (FKB)."}}]}
+  </script>
+
+  <!-- ══ FONTS ══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-plany-favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+  <!-- ══ HERO IMAGE PRELOADS ══ -->
+  <link rel="preload" as="image" href="/assets/hero-mallorca-desktop@1x.webp">
+  <link rel="preload" as="image" href="/assets/hero-mallorca-desktop@2x.webp">
+
+  <!-- Travelpayouts tracking -->
+  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
+    (function(){var s=document.createElement("script");s.async=1;s.src='https://emrldco.com/676139.js?t=676139';document.head.appendChild(s);})();
+  </script>
 
   <style>
-    /* ======================================================
-       RESET & VARIABLES
-       ====================================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --indigo: #6366f1;
-      --indigo-light: #a5b4fc;
-      --indigo-dark: #4338ca;
-      --purple: #8b5cf6;
-      --pink: #f472b6;
-      --pink-hot: #ec4899;
-      --green: #34d399;
-      --green-dark: #059669;
-      --orange: #fb923c;
-      --yellow: #fbbf24;
-      --dark: #0f172a;
-      --dark-mid: #1e1b4b;
-      --dark-card: rgba(15,23,42,0.85);
-      --text-primary: #1e293b;
-      --text-muted: #64748b;
-      --text-light: rgba(255,255,255,0.6);
-      --border: #e2e8f0;
-      --bg-input: #f8fafc;
-      --bg-section-dark: #0c1222;
-      --bg-section-alt: #111833;
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 20px;
-      --radius-xl: 28px;
-      --shadow-card: 0 20px 60px rgba(0,0,0,0.3);
+      --brand: #7183f5;
+      --pink:  #f571b4;
+      --green: #4ade80;
+      --ink:   #0b0b13;
+      --muted: #8a8d9b;
+      --bg:    #0c0f1a;
+      --bg-alt:#111528;
+      --bg-card:rgba(255,255,255,.04);
+      --card:  #ffffff;
+      --border:rgba(255,255,255,.08);
+      --border-light:#e8eaf0;
+      --r:     18px;
+      --shadow:0 8px 40px rgba(0,0,0,.25);
+      --shadow-l:0 20px 60px rgba(0,0,0,.4);
       --font-display: 'Baloo 2', cursive;
-      --font-body: 'Nunito', sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); background: var(--bg); color: #fff; overflow-x: hidden; line-height: 1.5; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--dark);
-      color: #fff;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { font-family: var(--font-body); }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Screen reader only */
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0,0,0,0); border: 0;
-    }
-
-    /* ======================================================
+    /* ══════════════════════════════
        ANIMATIONS
-       ====================================================== */
-    @keyframes planyFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-14px) rotate(3deg); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 6px rgba(52,211,153,0.3); }
-      50% { box-shadow: 0 0 14px rgba(52,211,153,0.7); }
-    }
-    @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0); }
-      50% { box-shadow: 0 0 0 6px rgba(99,102,241,0.3); }
-    }
-    @keyframes bubbleIn {
-      from { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.9); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-    @keyframes scrollReveal {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+       ══════════════════════════════ */
+    @keyframes livepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
+    @keyframes planyFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-14px) rotate(3deg)} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fh-reveal { opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+    .fh-reveal.visible { opacity:1; transform:none; }
 
-    /* ======================================================
-       BACKGROUND EFFECTS (used across sections)
-       ====================================================== */
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(145deg, #0f172a 0%, #1a1547 35%, #2d1b69 55%, #1e1b4b 80%, #0f172a 100%);
-      z-index: 0;
-    }
-    .hero-bg::before {
-      content: '';
-      position: absolute; top: -120px; right: -80px;
-      width: 550px; height: 550px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(244,114,182,0.12), transparent 70%);
-    }
-    .hero-bg::after {
-      content: '';
-      position: absolute; bottom: -200px; left: -120px;
-      width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(99,102,241,0.1), transparent 65%);
-    }
-    .grid-pattern {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-
-    /* ======================================================
-       NAV
-       ====================================================== */
-    .nav {
+    /* ══════════════════════════════
+       HEADER
+       ══════════════════════════════ */
+    .fh-header {
       position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 40px;
-      background: rgba(15,23,42,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(12,15,26,.88);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-left { display: flex; align-items: center; gap: 10px; }
-    .nav-logo-text {
+    .fh-hdr {
+      max-width: 1160px; margin: 0 auto; padding: 0 20px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .fh-brand { display:flex; align-items:center; gap:10px; }
+    .fh-brand img { height: 28px; }
+    .fh-nav { display: flex; align-items: center; gap: 22px; }
+    .fh-nav a {
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,.5); transition: color .2s; white-space: nowrap;
+    }
+    .fh-nav a:hover { color: #fff; }
+    .fh-nav-cta {
+      background: linear-gradient(135deg, var(--brand), var(--pink));
+      color: #fff !important; padding: 8px 18px; border-radius: 999px;
+      font-weight: 700 !important; transition: transform .15s, box-shadow .2s !important;
+      box-shadow: 0 4px 16px rgba(113,131,245,.3);
+    }
+    .fh-nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(113,131,245,.4); }
+    .fh-nav-toggle { display:none; background:none; border:none; color:#fff; font-size:22px; cursor:pointer; padding:4px; }
+    @media(max-width:640px){
+      .fh-nav a:not(.fh-nav-cta){ display:none; }
+      .fh-nav-toggle { display:block; }
+      .fh-hdr { padding:0 16px; }
+    }
+
+    /* ══════════════════════════════
+       HERO
+       ══════════════════════════════ */
+    .fh-hero-wrap {
+      position: relative; overflow: hidden;
+      min-height: 100svh; display: flex; align-items: center;
+    }
+    .hero-layer {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0; transition: opacity 1.4s ease-in-out; z-index: 0;
+    }
+    .hero-layer.active { opacity: 1; }
+    .fh-hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(160deg, rgba(11,11,19,.78) 0%, rgba(12,15,26,.55) 50%, rgba(113,131,245,.12) 100%);
+    }
+    .fh-hero-inner {
+      position: relative; z-index: 2;
+      max-width: 1160px; margin: 0 auto; padding: 88px 20px 56px;
+      width: 100%;
+      display: grid; grid-template-columns: 1fr 440px; gap: 48px; align-items: center;
+    }
+
+    /* Live badge */
+    .fh-live-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px; padding: 5px 14px;
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.85);
+      letter-spacing: .05em; text-transform: uppercase;
+      margin-bottom: 16px; backdrop-filter: blur(6px);
+    }
+    .fh-live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); animation: livepulse 2s ease-in-out infinite;
+    }
+
+    /* Hero headline */
+    .fh-hero-h1 {
       font-family: var(--font-display);
-      font-weight: 800; font-size: 24px; letter-spacing: -0.5px;
+      font-size: clamp(42px, 6vw, 72px); font-weight: 800;
+      line-height: 1.0; color: #fff; margin-bottom: 12px;
+      text-shadow: 0 2px 24px rgba(0,0,0,.3); letter-spacing: -.02em;
     }
-    .nav-logo-text .pink { color: var(--pink); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a {
-      font-size: 14px; font-weight: 700;
-      color: var(--text-light);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: #fff; }
-    .nav-live {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 13px; color: var(--text-light);
-    }
-    .live-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--green);
-      animation: pulseGlow 2s infinite;
-    }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(99,102,241,0.15);
-      border: 1px solid rgba(99,102,241,0.3);
-      padding: 8px 18px; border-radius: 50px;
-      font-size: 13px; font-weight: 700; color: var(--indigo-light);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .nav-cta:hover {
-      background: rgba(99,102,241,0.25);
-      border-color: rgba(99,102,241,0.5);
+    .fh-hero-h1 em { font-style: normal; color: var(--pink); }
+    .fh-hero-sub {
+      font-size: 16px; color: rgba(255,255,255,.75);
+      margin-bottom: 20px; line-height: 1.55;
+      text-shadow: 0 1px 10px rgba(0,0,0,.2);
     }
 
-    /* Mobile nav toggle */
-    .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 4px; }
-
-    /* ======================================================
-       PLANY SVG (reusable)
-       ====================================================== */
-    .plany-svg {
-      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.25));
-    }
-
-    /* Speech bubble */
-    .plany-wrap { position: relative; }
-    .speech-bubble {
-      position: absolute; bottom: calc(100% + 10px); left: 50%;
-      transform: translateX(-50%); white-space: nowrap; z-index: 5;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    .speech-bubble-inner {
-      background: #fff; color: var(--text-primary);
-      padding: 9px 16px; border-radius: 18px;
-      font-size: 14px; font-weight: 800;
-      font-family: var(--font-display);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-      position: relative;
-    }
-    .speech-bubble-inner::after {
-      content: ''; position: absolute; bottom: -8px; left: 50%;
-      transform: translateX(-50%);
-      border-left: 9px solid transparent;
-      border-right: 9px solid transparent;
-      border-top: 9px solid #fff;
-    }
-
-    /* ======================================================
-       SECTION 1: HERO
-       ====================================================== */
-    .hero {
-      position: relative;
-      padding: 50px 0 70px;
-      overflow: hidden;
-      min-height: 90vh;
-    }
-
-    .hero-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 28px;
-    }
-    .hero-text { animation: fadeInUp 0.6s ease-out both; max-width: 500px; }
-    .live-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(52,211,153,0.1);
-      border: 1px solid rgba(52,211,153,0.25);
-      border-radius: 50px; padding: 6px 16px; margin-bottom: 20px;
-    }
-    .live-badge-text {
-      color: var(--green); font-size: 12px; font-weight: 700;
-      letter-spacing: 0.5px; text-transform: uppercase;
-    }
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: 62px; font-weight: 800; line-height: 1.0; letter-spacing: -1px;
-    }
-    .hero-title .gradient {
-      background: linear-gradient(135deg, var(--pink), #c084fc, var(--orange));
-      background-size: 200% 200%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero-subtitle {
-      color: var(--text-light); font-size: 18px;
-      margin-top: 16px; font-weight: 600; line-height: 1.6;
-    }
-
-    .plany-hero {
-      animation: fadeIn 0.8s ease-out 0.3s both;
-      flex-shrink: 0;
-    }
-    .plany-hero .plany-svg {
-      animation: planyFloat 3s ease-in-out infinite;
-    }
-
-    /* Category badges */
-    .badges { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 10px 20px; border-radius: 50px;
-      border: 2px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
-      color: rgba(255,255,255,0.7);
-      cursor: pointer; font-weight: 700; font-size: 14px;
-      transition: all 0.25s ease;
-      backdrop-filter: blur(10px);
-    }
-    .badge:hover {
-      border-color: rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-    }
-    .badge.active {
-      border-color: var(--pink);
-      background: linear-gradient(135deg, rgba(244,114,182,0.2), rgba(139,92,246,0.2));
-      color: #fff; transform: scale(1.05);
-      box-shadow: 0 4px 20px rgba(244,114,182,0.2);
-    }
-    .badge .emoji { font-size: 18px; line-height: 1; }
-
-    /* Content grid */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 24px; align-items: start;
-    }
-
-    /* Search card */
-    .search-card {
-      background: #fff;
-      border-radius: var(--radius-lg); padding: 28px;
-      box-shadow: var(--shadow-card);
-      animation: fadeInUp 0.5s ease-out 0.15s both;
-    }
-    .field-group { margin-bottom: 14px; }
-    .field-label {
-      display: block; font-size: 11px; font-weight: 800;
-      color: var(--text-muted); margin-bottom: 5px;
-      text-transform: uppercase; letter-spacing: 0.8px;
-    }
-    .field-wrap {
-      display: flex; align-items: center;
-      background: var(--bg-input); border-radius: var(--radius-sm);
-      border: 2px solid var(--border); padding: 11px 14px;
-      transition: all 0.25s ease;
-    }
-    .field-wrap:focus-within {
-      border-color: var(--indigo);
-      box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
-    }
-    .field-wrap.glow {
-      animation: glowPulse 0.8s ease-out;
-      border-color: var(--pink) !important;
-    }
-    .field-wrap .icon { font-size: 17px; margin-right: 10px; flex-shrink: 0; }
-    .field-wrap input[type="text"] {
-      flex: 1; border: none; background: transparent;
-      font-size: 15px; font-weight: 600; color: var(--text-primary);
-      outline: none; font-family: var(--font-body);
-      min-width: 0;
-    }
-    .field-wrap input::placeholder { color: #a0aec0; font-weight: 500; }
-    .field-wrap .code {
-      color: #94a3b8; font-size: 12px; font-weight: 700;
-      font-family: var(--font-mono); flex-shrink: 0;
-    }
-
-    .swap-row { display: flex; justify-content: center; margin: -6px 0; position: relative; z-index: 2; }
-    .swap-btn {
-      width: 34px; height: 34px; border-radius: 50%;
-      border: 2px solid var(--border); background: #fff;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      font-size: 15px; transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      color: var(--text-muted);
-    }
-    .swap-btn:hover { background: var(--indigo); border-color: var(--indigo); color: #fff; }
-
-    .date-row {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      gap: 10px; margin-bottom: 18px;
-    }
-    .date-row input, .date-row select {
-      width: 100%; padding: 10px 12px; border-radius: var(--radius-sm);
-      border: 2px solid var(--border); background: var(--bg-input);
-      font-size: 14px; font-weight: 600; color: var(--text-primary);
-      font-family: var(--font-body); outline: none; transition: border-color 0.2s;
-    }
-    .date-row input:focus, .date-row select:focus { border-color: var(--indigo); }
-    .date-row select { appearance: none; cursor: pointer; }
-    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.4); cursor: pointer; }
-
-    .search-btn {
-      width: 100%; padding: 15px; border-radius: 14px; border: none;
-      background: linear-gradient(135deg, var(--pink-hot), var(--purple));
-      color: #fff; font-size: 17px; font-weight: 800; cursor: pointer;
-      font-family: var(--font-display);
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 24px rgba(236,72,153,0.35);
-      letter-spacing: 0.3px;
-    }
-    .search-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(236,72,153,0.45);
-    }
-
-    .search-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-top: 14px; flex-wrap: wrap; gap: 8px;
-    }
-    .hotels-toggle {
-      display: flex; align-items: center; gap: 8px;
-      cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-muted);
-    }
-    .hotels-toggle input { accent-color: var(--indigo); width: 15px; height: 15px; }
-    .trust-badges { display: flex; gap: 10px; font-size: 11px; font-weight: 700; color: var(--green-dark); }
-
-    /* Departures card */
-    .departures-card {
-      background: var(--dark-card);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius-lg); padding: 20px 16px;
-      border: 1px solid rgba(255,255,255,0.07);
-      box-shadow: var(--shadow-card);
-      animation: fadeInUp 0.5s ease-out 0.35s both;
-    }
-    .dep-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 12px; padding: 0 6px;
-    }
-    .dep-header-left { display: flex; align-items: center; gap: 8px; }
-    .dep-header-label {
-      color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-    .dep-header-time {
-      color: var(--green); font-size: 13px; font-weight: 700;
-      font-family: var(--font-mono);
-    }
-    .dep-divider {
-      height: 1px; margin-bottom: 6px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    }
-    .dep-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 9px 8px; border-radius: 10px;
-      transition: background 0.2s; cursor: pointer;
-    }
-    .dep-row:hover { background: rgba(255,255,255,0.05); }
-    .dep-row-left { display: flex; align-items: center; gap: 12px; }
-    .dep-time {
-      color: var(--indigo-light);
-      font-family: var(--font-mono);
-      font-size: 14px; font-weight: 700; min-width: 46px;
-    }
-    .dep-city { color: #fff; font-weight: 600; font-size: 14px; }
-    .dep-code { color: rgba(255,255,255,0.35); font-size: 11px; margin-left: 3px; }
-    .dep-row-right { display: flex; align-items: center; gap: 10px; }
-    .dep-airline { color: rgba(255,255,255,0.3); font-size: 11px; }
-    .dep-price { color: var(--green); font-weight: 800; font-size: 15px; }
-    .dep-cta {
-      margin-top: 12px; padding: 10px;
-      background: rgba(99,102,241,0.08);
-      border-radius: 12px; border: 1px solid rgba(99,102,241,0.15);
-      text-align: center;
-    }
-    .dep-cta a { color: var(--indigo-light); font-size: 13px; font-weight: 700; }
-    .dep-cta a:hover { text-decoration: underline; }
-
-    /* ======================================================
-       SECTION 2: SO FUNKTIONIERT'S
-       ====================================================== */
-    .how-section {
-      position: relative;
-      padding: 90px 0;
-      background: var(--bg-section-dark);
-    }
-    .how-section::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-    }
-    .section-label {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; font-weight: 800; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--pink);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: 38px; font-weight: 800; line-height: 1.15;
-      margin-bottom: 14px;
-    }
-    .section-subtitle {
-      color: var(--text-light); font-size: 17px; font-weight: 500;
-      max-width: 550px; line-height: 1.6; margin-bottom: 50px;
-    }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .step-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-lg);
-      padding: 32px 28px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    .step-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.12);
-      transform: translateY(-4px);
-    }
-    .step-number {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 44px; height: 44px; border-radius: 14px;
-      font-family: var(--font-display);
-      font-size: 20px; font-weight: 800;
+    /* ══ PLANY MASCOT (Hero, animated) ══ */
+    .fh-plany-hero {
+      display: flex; justify-content: flex-start;
       margin-bottom: 18px;
     }
-    .step-card:nth-child(1) .step-number { background: rgba(244,114,182,0.15); color: var(--pink); }
-    .step-card:nth-child(2) .step-number { background: rgba(99,102,241,0.15); color: var(--indigo-light); }
-    .step-card:nth-child(3) .step-number { background: rgba(52,211,153,0.15); color: var(--green); }
-    .step-title {
-      font-family: var(--font-display);
-      font-size: 20px; font-weight: 700; margin-bottom: 10px;
-    }
-    .step-desc {
-      color: var(--text-light); font-size: 15px; line-height: 1.6;
-    }
-    .step-icon {
-      font-size: 32px; margin-bottom: 14px; display: block;
+    .fh-plany-hero img {
+      height: 110px; width: auto;
+      filter: drop-shadow(0 8px 28px rgba(113,131,245,.4));
+      animation: planyFloat 3.5s ease-in-out infinite;
     }
 
-    /* ======================================================
-       SECTION 3: TOP DEALS / BELIEBTE ZIELE
-       ====================================================== */
-    .deals-section {
-      position: relative;
-      padding: 90px 0;
-      background: var(--bg-section-alt);
+    /* ══ DEPARTURE BOARD ══ */
+    .fh-board {
+      background: rgba(11,11,19,.72);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px; padding: 14px 16px;
+      margin-bottom: 22px; backdrop-filter: blur(10px);
     }
-    .deals-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+    .fh-board-hdr {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 10px;
     }
-    .deal-card {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: all 0.35s ease;
-      cursor: pointer;
+    .fh-board-lbl {
+      font-size: 10px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: rgba(255,255,255,.4);
     }
-    .deal-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255,255,255,0.15);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    .fh-board-clock {
+      font-family: var(--font-mono); font-size: 13px; font-weight: 700;
+      color: var(--pink); letter-spacing: .06em;
     }
-    .deal-img {
-      width: 100%; height: 180px; object-fit: cover;
-      /* Placeholder gradient images since we can't load real images */
-      display: flex; align-items: flex-end; padding: 16px;
-      font-size: 40px;
-      position: relative;
+    .fh-board-rows { display: flex; flex-direction: column; gap: 1px; }
+    .fh-board-sep { height: 1px; background: rgba(255,255,255,.05); margin: 2px 0; }
+    .fh-board-row {
+      display: grid; grid-template-columns: 50px 1fr 36px 56px;
+      align-items: center; gap: 8px; padding: 6px 6px; border-radius: 8px;
+      transition: background .15s; cursor: pointer;
     }
-    .deal-img-1 { background: linear-gradient(135deg, #f97316, #ec4899); }
-    .deal-img-2 { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
-    .deal-img-3 { background: linear-gradient(135deg, #10b981, #06b6d4); }
-    .deal-img-4 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
-    .deal-body { padding: 18px; }
-    .deal-route {
-      font-family: var(--font-display);
-      font-size: 17px; font-weight: 700; margin-bottom: 4px;
+    .fh-board-row:hover { background: rgba(255,255,255,.06); }
+    .fh-board-time {
+      font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--brand);
     }
-    .deal-meta { color: var(--text-light); font-size: 13px; margin-bottom: 12px; }
-    .deal-bottom {
-      display: flex; align-items: center; justify-content: space-between;
+    .fh-board-dest {
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-    .deal-price {
-      font-family: var(--font-display);
-      font-size: 26px; font-weight: 800; color: var(--green);
-    }
-    .deal-price small { font-size: 13px; color: var(--text-light); font-weight: 500; }
-    .deal-book {
-      padding: 8px 18px; border-radius: 50px; border: none;
-      background: rgba(236,72,153,0.15);
-      color: var(--pink); font-weight: 700; font-size: 13px;
-      cursor: pointer; transition: all 0.2s;
-    }
-    .deal-book:hover {
-      background: var(--pink-hot); color: #fff;
+    .fh-board-al { font-size: 10px; color: rgba(255,255,255,.35); font-family: var(--font-mono); }
+    .fh-board-price {
+      font-family: var(--font-display); font-size: 14px; font-weight: 800;
+      color: var(--green); text-align: right; white-space: nowrap;
     }
 
-    /* ======================================================
-       SECTION 4: WARUM FLIEG.HEUTE.
-       ====================================================== */
-    .why-section {
-      position: relative;
-      padding: 90px 0;
-      background: var(--bg-section-dark);
+    /* ══ DESTINATION PILLS ══ */
+    .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .fh-dpill {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.15);
+      border-radius: 999px; padding: 8px 16px;
+      font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8);
+      cursor: pointer; transition: all .25s;
+      backdrop-filter: blur(4px); user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+    .fh-dpill:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; }
+    .fh-dpill.active {
+      background: linear-gradient(135deg, rgba(244,113,180,.2), rgba(113,131,245,.2));
+      border-color: var(--pink); color: #fff;
+      box-shadow: 0 4px 18px rgba(244,113,180,.2);
     }
-    .why-card {
-      display: flex; gap: 18px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      transition: all 0.3s ease;
+    .fh-dpill .pi { font-size: 16px; }
+
+    /* ══ WIDGET CARD – Travelpayouts ══ */
+    .fh-widget-card {
+      background: #fff; border-radius: var(--r);
+      box-shadow: var(--shadow-l); overflow: hidden; min-height: 80px;
     }
-    .why-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.1);
+    .fh-widget-trust {
+      text-align: center; font-size: 11px; color: rgba(255,255,255,.45);
+      margin-top: 10px; letter-spacing: .02em;
     }
-    .why-icon {
-      font-size: 36px; flex-shrink: 0;
-      width: 60px; height: 60px;
+
+    /* ══ TRUST BAR ══ */
+    .fh-trust {
+      background: linear-gradient(90deg, var(--brand) 0%, var(--pink) 100%);
+      padding: 14px 20px; position: relative; z-index: 5;
+    }
+    .fh-trust-inner {
+      max-width: 1160px; margin: 0 auto;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.04);
-      border-radius: 16px;
+      gap: 28px; flex-wrap: wrap;
     }
-    .why-title {
-      font-family: var(--font-display);
-      font-size: 18px; font-weight: 700; margin-bottom: 6px;
-    }
-    .why-desc { color: var(--text-light); font-size: 14px; line-height: 1.6; }
-
-    /* ======================================================
-       SECTION 5: FAQ
-       ====================================================== */
-    .faq-section {
-      position: relative;
-      padding: 90px 0;
-      background: var(--bg-section-alt);
-    }
-    .faq-list { max-width: 750px; margin: 0 auto; }
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .faq-question {
-      width: 100%; text-align: left;
-      background: none; border: none; color: #fff;
-      padding: 22px 0; font-size: 17px; font-weight: 700;
-      font-family: var(--font-display);
-      cursor: pointer; display: flex; align-items: center; justify-content: space-between;
-      transition: color 0.2s;
-    }
-    .faq-question:hover { color: var(--pink); }
-    .faq-question .arrow {
-      font-size: 20px; transition: transform 0.3s;
-      color: var(--text-light);
-    }
-    .faq-question.open .arrow { transform: rotate(180deg); color: var(--pink); }
-    .faq-answer {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      padding: 0 0;
-    }
-    .faq-answer.open {
-      max-height: 300px;
-      padding: 0 0 22px 0;
-    }
-    .faq-answer p {
-      color: var(--text-light); font-size: 15px; line-height: 1.7;
+    .fh-trust-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap;
     }
 
-    /* ======================================================
-       SECTION 6: CTA / NEWSLETTER
-       ====================================================== */
-    .cta-section {
-      position: relative;
-      padding: 80px 0;
-      background: linear-gradient(135deg, #1e1b4b, #312e81);
-      text-align: center;
-      overflow: hidden;
+    /* ══ SECTIONS (dark) ══ */
+    .fh-section { padding: 64px 0; }
+    .fh-section-inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .fh-section-hdr { margin-bottom: 28px; }
+    .fh-kicker {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--pink); margin-bottom: 6px;
     }
-    .cta-section::before {
+    .fh-section-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 32px); font-weight: 800;
+      line-height: 1.15; letter-spacing: -.02em; color: #fff;
+    }
+    .fh-section-title span { color: var(--brand); }
+    .fh-section-sub { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+    /* Widget wrapper (dark surrounding) */
+    .fh-widget-wrap {
+      background: var(--bg-card); border-radius: var(--r);
+      overflow: hidden; border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 4px;
+    }
+    /* Override widget inner bg so it fits dark theme better */
+    .fh-widget-wrap iframe { border-radius: 14px !important; }
+
+    /* ══ PLANY DIVIDER ══ */
+    .fh-plany-divider {
+      display: flex; justify-content: center;
+      margin: -24px 0; position: relative; z-index: 10;
+    }
+    .fh-plany-divider img {
+      height: 72px;
+      filter: drop-shadow(0 8px 24px rgba(113,131,245,.35));
+      animation: planyFloat 4s ease-in-out infinite;
+    }
+
+    /* ══ GRACE & SAM – DARK THEME ══ */
+    .fh-romance {
+      background: var(--bg-alt); padding: 72px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .fh-romance-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 20px;
+      display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start;
+    }
+    .fh-romance-fig {
+      position: sticky; top: 80px; border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow-l); margin: 0;
+    }
+    .fh-romance-fig img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+    .fh-romance-fig figcaption {
+      padding: 12px 16px; font-size: 12px; color: var(--muted);
+      background: rgba(17,21,40,.95); border-top: 1px solid var(--border);
+    }
+    .fh-romance-h {
+      font-family: var(--font-display); font-size: 24px; font-weight: 800;
+      color: var(--pink); margin-bottom: 20px; letter-spacing: -.02em;
+    }
+    .fh-romance-text p {
+      font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.55);
+      margin-bottom: 16px;
+    }
+    .fh-romance-text em { font-style: italic; color: var(--brand); }
+
+    /* ══ FAQ – DARK ══ */
+    .fh-faq { background: var(--bg); padding: 64px 0; }
+    .fh-faq-inner { max-width: 740px; margin: 0 auto; padding: 0 20px; }
+    .fh-faq-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 30px); font-weight: 800;
+      text-align: center; margin-bottom: 28px; letter-spacing: -.02em; color: #fff;
+    }
+    details {
+      background: var(--bg-alt); border: 1px solid var(--border);
+      border-radius: 14px; margin-bottom: 8px; overflow: hidden;
+    }
+    summary {
+      padding: 16px 20px; font-size: 15px; font-weight: 600; color: #fff;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      transition: background .15s; -webkit-tap-highlight-color: transparent;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--brand); flex-shrink: 0; }
+    details[open] summary::after { content: '−'; }
+    summary:hover { background: rgba(255,255,255,.03); }
+    details p { padding: 0 20px 16px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+    /* ══ NEWSLETTER CTA ══ */
+    .fh-cta-section {
+      position: relative; padding: 72px 0; text-align: center; overflow: hidden;
+      background: linear-gradient(135deg, #111528 0%, #1a1040 50%, #111528 100%);
+    }
+    .fh-cta-section::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(244,114,182,0.08), transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(244,113,180,.08), transparent 70%);
     }
-    .cta-content { position: relative; z-index: 2; }
-    .cta-title {
-      font-family: var(--font-display);
-      font-size: 36px; font-weight: 800; margin-bottom: 12px;
+    .fh-cta-content { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; padding: 0 20px; }
+    .fh-cta-title {
+      font-family: var(--font-display); font-size: 30px; font-weight: 800;
+      margin-bottom: 10px; color: #fff;
     }
-    .cta-subtitle {
-      color: var(--text-light); font-size: 17px; margin-bottom: 32px;
-      max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    .fh-cta-sub {
+      color: rgba(255,255,255,.55); font-size: 15px; margin-bottom: 28px; line-height: 1.6;
     }
-    .cta-form {
-      display: flex; gap: 12px;
-      max-width: 460px; margin: 0 auto;
+    .fh-cta-form { display: flex; gap: 10px; }
+    .fh-cta-form input {
+      flex: 1; padding: 13px 18px; border-radius: 14px;
+      border: 1.5px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06);
+      color: #fff; font-size: 14px; font-weight: 500; font-family: var(--font-body);
+      outline: none; backdrop-filter: blur(8px);
     }
-    .cta-form input {
-      flex: 1; padding: 14px 20px;
-      border-radius: 14px; border: 2px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.08);
-      color: #fff; font-size: 15px; font-weight: 600;
-      font-family: var(--font-body);
-      outline: none; backdrop-filter: blur(10px);
-    }
-    .cta-form input::placeholder { color: rgba(255,255,255,0.4); }
-    .cta-form input:focus { border-color: var(--pink); }
-    .cta-form button {
-      padding: 14px 28px; border-radius: 14px; border: none;
-      background: linear-gradient(135deg, var(--pink-hot), var(--purple));
-      color: #fff; font-size: 15px; font-weight: 800;
+    .fh-cta-form input::placeholder { color: rgba(255,255,255,.35); }
+    .fh-cta-form input:focus { border-color: var(--pink); }
+    .fh-cta-form button {
+      padding: 13px 24px; border-radius: 14px; border: none;
+      background: linear-gradient(135deg, var(--pink), var(--brand));
+      color: #fff; font-size: 14px; font-weight: 800;
       font-family: var(--font-display); cursor: pointer;
-      transition: all 0.25s;
-      box-shadow: 0 4px 20px rgba(236,72,153,0.35);
+      transition: all .25s; box-shadow: 0 4px 18px rgba(244,113,180,.3);
       white-space: nowrap;
     }
-    .cta-form button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(236,72,153,0.45);
-    }
-    .cta-note {
-      color: rgba(255,255,255,0.35); font-size: 12px; margin-top: 14px;
-    }
+    .fh-cta-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,113,180,.4); }
+    .fh-cta-note { color: rgba(255,255,255,.3); font-size: 11px; margin-top: 14px; }
 
-    /* ======================================================
-       FOOTER
-       ====================================================== */
-    .footer {
-      background: var(--bg-section-dark);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 60px 0 30px;
+    /* ══ FOOTER – DARK ══ */
+    footer {
+      background: #080a12; color: rgba(255,255,255,.45);
+      padding: 48px 20px; border-top: 1px solid var(--border);
     }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 50px;
+    .fh-footer-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: flex-start;
     }
-    .footer-brand-text {
-      color: var(--text-light); font-size: 14px; line-height: 1.7; margin-top: 14px;
-      max-width: 280px;
+    .fh-footer-brand { display: flex; flex-direction: column; gap: 10px; }
+    .fh-footer-brand img { height: 24px; opacity: .6; }
+    .fh-footer-brand p { font-size: 13px; max-width: 260px; line-height: 1.5; }
+    .fh-footer-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+    .fh-footer-links a { color: rgba(255,255,255,.4); transition: color .2s; }
+    .fh-footer-links a:hover { color: #fff; }
+    .fh-footer-bottom {
+      width: 100%; border-top: 1px solid rgba(255,255,255,.06); padding-top: 20px; margin-top: 8px;
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: 12px;
     }
-    .footer-heading {
-      font-family: var(--font-display);
-      font-size: 15px; font-weight: 700; margin-bottom: 18px;
-      color: rgba(255,255,255,0.8);
+    .fh-footer-transp { color: rgba(255,255,255,.25); }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+       ══════════════════════════════ */
+    @media(max-width:900px) {
+      .fh-hero-inner { grid-template-columns: 1fr; padding: 100px 16px 40px; gap: 28px; }
+      .fh-hero-wrap { min-height: auto; }
+      .fh-board { display: none; }
+      .fh-romance-inner { grid-template-columns: 1fr; gap: 28px; }
+      .fh-romance-fig { position: static; }
+      .fh-trust-item:nth-child(n+4) { display: none; }
+      .fh-plany-hero img { height: 80px; }
     }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 10px; }
-    .footer-links a {
-      color: var(--text-light); font-size: 14px;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: #fff; }
-    .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 28px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      flex-wrap: wrap; gap: 12px;
-    }
-    .footer-copy {
-      color: rgba(255,255,255,0.3); font-size: 13px;
-    }
-    .footer-legal { display: flex; gap: 20px; }
-    .footer-legal a { color: rgba(255,255,255,0.3); font-size: 13px; }
-    .footer-legal a:hover { color: rgba(255,255,255,0.6); }
-
-    /* ======================================================
-       RESPONSIVE – TABLET
-       ====================================================== */
-    @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .deals-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-    }
-
-    /* ======================================================
-       RESPONSIVE – MOBILE
-       ====================================================== */
-    @media (max-width: 768px) {
-      .nav { padding: 12px 16px; }
-      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
-        background: rgba(15,23,42,0.97); backdrop-filter: blur(20px);
-        flex-direction: column; padding: 20px; gap: 16px;
-        border-bottom: 1px solid rgba(255,255,255,0.06);
-      }
-      .nav-links.open { display: flex; }
-      .nav-toggle { display: block; }
-      .nav-cta { display: none; }
-
-      .hero { padding: 30px 0 50px; min-height: auto; }
-      .hero-top { flex-direction: column; gap: 20px; }
-      .hero-title { font-size: 42px; }
-      .hero-subtitle { font-size: 16px; }
-      .plany-hero { align-self: center; }
-
-      .hero-grid { grid-template-columns: 1fr; }
-      .badges { gap: 8px; }
-      .badge { padding: 8px 14px; font-size: 13px; }
-
-      .date-row { grid-template-columns: 1fr; }
-
-      .section-title { font-size: 28px; }
-      .steps-grid { grid-template-columns: 1fr; gap: 16px; }
-      .deals-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-
-      .cta-form { flex-direction: column; }
-      .cta-title { font-size: 28px; }
-
-      .how-section, .deals-section, .why-section, .faq-section { padding: 60px 0; }
-    }
-
-    @media (max-width: 400px) {
-      .hero-title { font-size: 34px; }
-      .container { padding: 0 16px; }
+    @media(max-width:480px) {
+      .fh-section { padding: 44px 0; }
+      .fh-hero-h1 { font-size: 38px; }
+      .fh-dpill { padding: 6px 12px; font-size: 12px; }
+      .fh-widget-card { border-radius: 14px; }
+      footer { padding: 36px 16px; }
+      .fh-cta-form { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ====== NAV ====== -->
-  <nav class="nav" role="navigation" aria-label="Hauptnavigation">
-    <div class="nav-left">
-      <svg width="38" height="38" viewBox="0 0 120 120" class="plany-svg" aria-hidden="true">
-        <g transform="translate(10, 20)"><polygon points="50,0 100,45 50,38 0,75" fill="url(#pg1)" stroke="#fff" stroke-width="2"/><polygon points="50,38 100,45 50,70 20,55" fill="#818cf8" opacity="0.5"/><circle cx="45" cy="28" r="16" fill="white" opacity="0.95"/><circle cx="40" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="50" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="41.2" cy="23.5" r="1.2" fill="white"/><circle cx="51.2" cy="23.5" r="1.2" fill="white"/><path d="M39,31 Q45,37 51,31" fill="none" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></g>
-        <defs><linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a5b4fc"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
-      </svg>
-      <div class="nav-logo-text">Flieg.<span class="pink">Heute.</span></div>
-    </div>
-    <div class="nav-links" id="navLinks">
-      <a href="#how">So geht's</a>
-      <a href="#deals">Top Deals</a>
-      <a href="#faq">FAQ</a>
-      <div class="nav-live"><span class="live-dot"></span> Live Deals</div>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">☰</button>
-  </nav>
+<!-- ══════════════════════════════════════════
+     HEADER
+     ══════════════════════════════════════════ -->
+<header class="fh-header">
+  <div class="fh-hdr">
+    <a href="/" class="fh-brand" aria-label="fliegheute.de – Startseite">
+      <img src="/assets/logo-plany-header.svg" alt="fliegheute.de" width="120" height="28">
+    </a>
+    <nav class="fh-nav" aria-label="Hauptnavigation">
+      <a href="#deals">Live Deals</a>
+      <a href="#kalender">Kalender</a>
+      <a href="#faq">Hilfe</a>
+      <a href="#newsletter" class="fh-nav-cta">Alerts ✈</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- ====== HERO ====== -->
-  <section class="hero" id="hero" aria-label="Flugsuche">
-    <div class="hero-bg"></div>
-    <div class="grid-pattern"></div>
-    <div class="container" style="position:relative; z-index:5;">
+<main>
 
-      <!-- Top: Text + Plany -->
-      <div class="hero-top">
-        <div class="hero-text">
-          <div class="live-badge">
-            <div class="live-dot"></div>
-            <span class="live-badge-text">Live Deals – Gerade Verfügbar</span>
-          </div>
-          <h1 class="hero-title">
-            Flieg.<br>
-            <span class="gradient">Heute.</span>
-          </h1>
-          <p class="hero-subtitle">
-            Die günstigsten Last-Minute-Flüge<br>
-            der nächsten 24–72 Stunden.
-          </p>
-        </div>
-        <div class="plany-hero plany-wrap">
-          <div class="speech-bubble" id="speechBubble">
-            <div class="speech-bubble-inner" id="speechText">Wohin soll's gehen? ✈️</div>
-          </div>
-          <svg class="plany-svg" viewBox="0 0 120 120" width="150" height="150" aria-label="Plany, das FliegHeute Maskottchen">
-            <g transform="translate(10, 20)">
-              <polygon points="50,0 100,45 50,38 0,75" fill="url(#pg2)" stroke="#fff" stroke-width="2"/>
-              <line x1="50" y1="0" x2="50" y2="38" stroke="#e0e7ff" stroke-width="1.5" opacity="0.6"/>
-              <polygon points="50,38 100,45 50,70 20,55" fill="#818cf8" opacity="0.5"/>
-              <circle cx="45" cy="28" r="16" fill="white" opacity="0.95"/>
-              <circle cx="40" cy="25" r="3.5" fill="#1a1a2e"/>
-              <circle cx="50" cy="25" r="3.5" fill="#1a1a2e"/>
-              <circle cx="41.2" cy="23.5" r="1.2" fill="white"/>
-              <circle cx="51.2" cy="23.5" r="1.2" fill="white"/>
-              <path d="M39,31 Q45,37 51,31" fill="none" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="36" cy="31" r="3" fill="#fca5a5" opacity="0.5"/>
-              <circle cx="54" cy="31" r="3" fill="#fca5a5" opacity="0.5"/>
-              <path d="M0,75 Q-15,80 -25,78 Q-35,76 -45,80" fill="none" stroke="white" stroke-width="2.5" opacity="0.35" stroke-linecap="round" stroke-dasharray="4 6"/>
-            </g>
-            <defs><linearGradient id="pg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a5b4fc"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
-          </svg>
-        </div>
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
+<section class="fh-hero-wrap" id="hero" aria-label="Flugsuche Last-Minute">
+  <div class="hero-layer active" id="hero-layer-a" role="img" aria-label="Hero Hintergrundbild"></div>
+  <div class="hero-layer" id="hero-layer-b"></div>
+  <div class="fh-hero-overlay" aria-hidden="true"></div>
+
+  <div class="fh-hero-inner">
+
+    <!-- Links: Text + Plany + Board + Pills -->
+    <div>
+      <!-- Plany animated -->
+      <div class="fh-plany-hero">
+        <img src="/assets/logo-plany-mascot.svg" alt="Plany – das fliegheute.de Maskottchen" loading="eager">
       </div>
 
-      <!-- Badges -->
-      <div class="badges" role="group" aria-label="Schnellauswahl Reiseziel">
-        <button class="badge" data-dest="Palma de Mallorca" data-code="PMI">
-          <span class="emoji">🏖️</span> Mallorca
+      <div class="fh-live-badge">
+        <span class="fh-live-dot" aria-hidden="true"></span>
+        Live Deals – gerade verfügbar
+      </div>
+
+      <h1 class="fh-hero-h1" id="hero-title">Flieg.<br><em>Heute.</em></h1>
+      <p class="fh-hero-sub" id="hero-sub">Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.</p>
+
+      <!-- Departure Board -->
+      <div class="fh-board" role="region" aria-label="Abflugtafel heute">
+        <div class="fh-board-hdr">
+          <span class="fh-board-lbl">🛫 Abflüge heute</span>
+          <span class="fh-board-clock" id="fh-clock" aria-live="polite"></span>
+        </div>
+        <div class="fh-board-rows" id="fh-board-rows"></div>
+      </div>
+
+      <!-- Destination Pills -->
+      <div class="fh-dest-pills" role="group" aria-label="Reisestimmung wählen">
+        <button class="fh-dpill active" data-hero="0" type="button" aria-pressed="true">
+          <span class="pi">🌊</span> Mallorca
         </button>
-        <button class="badge" data-dest="London" data-code="LGW">
-          <span class="emoji">🏙️</span> The City
+        <button class="fh-dpill" data-hero="1" type="button" aria-pressed="false">
+          <span class="pi">🏙️</span> The City
         </button>
-        <button class="badge" data-dest="Innsbruck" data-code="INN">
-          <span class="emoji">⛰️</span> Outdoors
-        </button>
-        <button class="badge" data-dest="Barcelona" data-code="BCN">
-          <span class="emoji">☀️</span> Strandurlaub
+        <button class="fh-dpill" data-hero="2" type="button" aria-pressed="false">
+          <span class="pi">🏔️</span> Outdoors
         </button>
       </div>
-
-      <!-- Grid: Search + Departures -->
-      <div class="hero-grid">
-
-        <!-- SEARCH CARD -->
-        <div class="search-card" role="search" aria-label="Flugsuche">
-          <div class="field-group">
-            <label class="field-label" for="originInput">Herkunft</label>
-            <div class="field-wrap">
-              <span class="icon" aria-hidden="true">🛫</span>
-              <input type="text" id="originInput" value="Karlsruhe/Baden Baden" autocomplete="off">
-              <span class="code" id="originCode">FKB</span>
-            </div>
-          </div>
-          <div class="swap-row">
-            <button class="swap-btn" id="swapBtn" title="Herkunft & Ziel tauschen" aria-label="Herkunft und Reiseziel tauschen">⇅</button>
-          </div>
-          <div class="field-group">
-            <label class="field-label" for="destInput">Reiseziel</label>
-            <div class="field-wrap" id="destWrap">
-              <span class="icon" aria-hidden="true">🛬</span>
-              <input type="text" id="destInput" placeholder="Wohin möchtest du fliegen?" autocomplete="off">
-            </div>
-          </div>
-          <div class="date-row">
-            <div>
-              <label class="field-label" for="departDate">Hinflug</label>
-              <input type="date" id="departDate" value="2026-03-10">
-            </div>
-            <div>
-              <label class="field-label" for="returnDate">Rückflug</label>
-              <input type="date" id="returnDate" value="2026-03-17">
-            </div>
-            <div>
-              <label class="field-label" for="passengers">Passagiere</label>
-              <select id="passengers">
-                <option value="1">1 Passagier</option>
-                <option value="2">2 Passagiere</option>
-                <option value="3">3 Passagiere</option>
-                <option value="4">4 Passagiere</option>
-                <option value="5">5 Passagiere</option>
-                <option value="6">6 Passagiere</option>
-              </select>
-            </div>
-          </div>
-          <button class="search-btn" id="searchBtn" type="button">
-            ✈️ Tickets suchen
-          </button>
-          <div class="search-footer">
-            <label class="hotels-toggle">
-              <input type="checkbox" checked> Hotels anzeigen
-            </label>
-            <div class="trust-badges" aria-label="Vorteile">
-              <span>✓ Kein Aufpreis</span>
-              <span>✓ Direktbuchung</span>
-              <span>✓ Gratis</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DEPARTURES -->
-        <div class="departures-card" aria-label="Heutige Abflüge">
-          <div class="dep-header">
-            <div class="dep-header-left">
-              <span aria-hidden="true">✈️</span>
-              <span class="dep-header-label">Abflüge Heute</span>
-            </div>
-            <span class="dep-header-time" id="liveClock">--:--:--</span>
-          </div>
-          <div class="dep-divider"></div>
-          <div class="dep-row"><div class="dep-row-left"><span class="dep-time">08:25</span><span class="dep-city">Barcelona <span class="dep-code">BCN</span></span></div><div class="dep-row-right"><span class="dep-airline">VY</span><span class="dep-price">38 €</span></div></div>
-          <div class="dep-row"><div class="dep-row-left"><span class="dep-time">09:10</span><span class="dep-city">London <span class="dep-code">LGW</span></span></div><div class="dep-row-right"><span class="dep-airline">FR</span><span class="dep-price">49 €</span></div></div>
-          <div class="dep-row"><div class="dep-row-left"><span class="dep-time">10:45</span><span class="dep-city">Palma <span class="dep-code">PMI</span></span></div><div class="dep-row-right"><span class="dep-airline">EW</span><span class="dep-price">55 €</span></div></div>
-          <div class="dep-row"><div class="dep-row-left"><span class="dep-time">11:30</span><span class="dep-city">Rom <span class="dep-code">FCO</span></span></div><div class="dep-row-right"><span class="dep-airline">FR</span><span class="dep-price">42 €</span></div></div>
-          <div class="dep-row"><div class="dep-row-left"><span class="dep-time">13:15</span><span class="dep-city">Amsterdam <span class="dep-code">AMS</span></span></div><div class="dep-row-right"><span class="dep-airline">KL</span><span class="dep-price">61 €</span></div></div>
-          <div class="dep-cta"><a href="#deals">Alle Abflüge anzeigen →</a></div>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- ====== SO FUNKTIONIERT'S ====== -->
-  <section class="how-section" id="how" aria-labelledby="howTitle">
-    <div class="container">
-      <div class="section-label">✨ In 3 Schritten</div>
-      <h2 class="section-title" id="howTitle">So funktioniert's</h2>
-      <p class="section-subtitle">Keine Registrierung, keine versteckten Kosten. In unter 30 Sekunden zum günstigsten Flug.</p>
-      <div class="steps-grid">
-        <article class="step-card reveal">
-          <span class="step-icon">🔍</span>
-          <div class="step-number">1</div>
-          <h3 class="step-title">Suche starten</h3>
-          <p class="step-desc">Wähle deinen Abflughafen und optional ein Reiseziel. Oder lass dich überraschen – wir zeigen dir alle günstigen Optionen.</p>
-        </article>
-        <article class="step-card reveal">
-          <span class="step-icon">⚡</span>
-          <div class="step-number">2</div>
-          <h3 class="step-title">Deals vergleichen</h3>
-          <p class="step-desc">Wir durchsuchen in Echtzeit alle verfügbaren Flüge der nächsten 24–72 Stunden und sortieren nach dem besten Preis.</p>
-        </article>
-        <article class="step-card reveal">
-          <span class="step-icon">🎉</span>
-          <div class="step-number">3</div>
-          <h3 class="step-title">Direkt buchen</h3>
-          <p class="step-desc">Klicke auf dein Wunschangebot und buche direkt bei der Airline – ohne Umwege, ohne Aufpreis, ohne Haken.</p>
-        </article>
+    <!-- Rechts: Search Widget (Travelpayouts) -->
+    <div>
+      <div class="fh-widget-card" aria-label="Flugsuche Formular">
+        <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&show_hotels=true&powered_by=false&locale=de&searchUrl=www.aviasales.com%2Fsearch&primary_override=%237183f5&color_button=%237183f5&color_icons=%237183f5&dark=%23262626&light=%23FFFFFF&secondary=%23EDEDEd&special=%23FFFFFF&color_focused=%237183f5&border_radius=16&no_labels=&plain=true&promo_id=7879&campaign_id=100" charset="utf-8"></script>
       </div>
+      <p class="fh-widget-trust">✅ Kein Aufpreis &nbsp;·&nbsp; ✅ Direktbuchung &nbsp;·&nbsp; ✅ Gratis</p>
     </div>
-  </section>
 
-  <!-- ====== TOP DEALS ====== -->
-  <section class="deals-section" id="deals" aria-labelledby="dealsTitle">
-    <div class="container">
-      <div class="section-label">🔥 Beliebt gerade</div>
-      <h2 class="section-title" id="dealsTitle">Top Deals diese Woche</h2>
-      <p class="section-subtitle">Spontan verreisen war noch nie so günstig. Hier sind die beliebtesten Last-Minute-Ziele.</p>
-      <div class="deals-grid">
-        <article class="deal-card reveal">
-          <div class="deal-img deal-img-1" aria-label="Barcelona">🏖️</div>
-          <div class="deal-body">
-            <div class="deal-route">FKB → Barcelona</div>
-            <div class="deal-meta">Morgen · Direktflug · Vueling</div>
-            <div class="deal-bottom">
-              <div class="deal-price">38 € <small>p.P.</small></div>
-              <button class="deal-book">Buchen</button>
-            </div>
-          </div>
-        </article>
-        <article class="deal-card reveal">
-          <div class="deal-img deal-img-2" aria-label="London">🏙️</div>
-          <div class="deal-body">
-            <div class="deal-route">FKB → London</div>
-            <div class="deal-meta">Übermorgen · Ryanair</div>
-            <div class="deal-bottom">
-              <div class="deal-price">49 € <small>p.P.</small></div>
-              <button class="deal-book">Buchen</button>
-            </div>
-          </div>
-        </article>
-        <article class="deal-card reveal">
-          <div class="deal-img deal-img-3" aria-label="Palma de Mallorca">🌴</div>
-          <div class="deal-body">
-            <div class="deal-route">FKB → Mallorca</div>
-            <div class="deal-meta">Morgen · Eurowings</div>
-            <div class="deal-bottom">
-              <div class="deal-price">55 € <small>p.P.</small></div>
-              <button class="deal-book">Buchen</button>
-            </div>
-          </div>
-        </article>
-        <article class="deal-card reveal">
-          <div class="deal-img deal-img-4" aria-label="Rom">🏛️</div>
-          <div class="deal-body">
-            <div class="deal-route">FKB → Rom</div>
-            <div class="deal-meta">Übermorgen · Ryanair</div>
-            <div class="deal-bottom">
-              <div class="deal-price">42 € <small>p.P.</small></div>
-              <button class="deal-book">Buchen</button>
-            </div>
-          </div>
-        </article>
-      </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ══ -->
+<div class="fh-trust" role="complementary">
+  <div class="fh-trust-inner">
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Echte Preise, live</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Aufpreis</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Direkt zur Buchung</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kostenlos</div>
+  </div>
+</div>
+
+<!-- ══ SCHEDULE WIDGET ══ -->
+<section class="fh-section" id="deals" aria-labelledby="deals-title">
+  <div class="fh-section-inner">
+    <div class="fh-section-hdr fh-reveal">
+      <div class="fh-kicker">🔴 Jetzt abfliegen</div>
+      <h2 class="fh-section-title" id="deals-title">Live-Abflüge <span>von Frankfurt</span></h2>
+      <p class="fh-section-sub">Echte Verbindungen der nächsten Stunden – klick und buch direkt.</p>
     </div>
-  </section>
-
-  <!-- ====== WARUM FLIEG.HEUTE. ====== -->
-  <section class="why-section" aria-labelledby="whyTitle">
-    <div class="container">
-      <div class="section-label">💎 Dein Vorteil</div>
-      <h2 class="section-title" id="whyTitle">Warum Flieg.Heute.?</h2>
-      <p class="section-subtitle">Wir machen Last-Minute-Fliegen einfach, transparent und günstig.</p>
-      <div class="why-grid">
-        <div class="why-card reveal">
-          <div class="why-icon">💰</div>
-          <div>
-            <h3 class="why-title">Kein Aufpreis</h3>
-            <p class="why-desc">Du zahlst genau den Preis, den du siehst. Keine versteckten Gebühren, keine bösen Überraschungen. Versprochen.</p>
-          </div>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-icon">⏱️</div>
-          <div>
-            <h3 class="why-title">24–72 Stunden Fokus</h3>
-            <p class="why-desc">Wir zeigen nur Flüge der nächsten Tage. Kein Scrollen durch Wochen – nur sofort buchbare Deals.</p>
-          </div>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-icon">🔗</div>
-          <div>
-            <h3 class="why-title">Direktbuchung</h3>
-            <p class="why-desc">Du buchst immer direkt bei der Airline oder dem offiziellen Partner. Wir sind kein Zwischenhändler.</p>
-          </div>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-icon">🇩🇪</div>
-          <div>
-            <h3 class="why-title">Made in Germany</h3>
-            <p class="why-desc">Komplett auf Deutsch, optimiert für deutsche Flughäfen und Reisende. Von Reisefans für Reisefans.</p>
-          </div>
-        </div>
-      </div>
+    <div class="fh-widget-wrap fh-reveal">
+      <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&color_button=%237183f5&target_host=www.aviasales.at%2Fsearch&locale=de&powered_by=false&origin=FRA&destination=LON&with_fallback=true&non_direct_flights=true&min_lines=5&border_radius=16&color_background=%23EDEDEd&color_text=%23000000&color_border=%23FFFFFF&promo_id=2811&campaign_id=100" charset="utf-8"></script>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====== FAQ ====== -->
-  <section class="faq-section" id="faq" aria-labelledby="faqTitle">
-    <div class="container">
-      <div style="text-align: center;">
-        <div class="section-label">❓ Fragen & Antworten</div>
-        <h2 class="section-title" id="faqTitle">Häufige Fragen</h2>
-        <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Alles was du über Flieg.Heute. wissen musst.</p>
-      </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Was ist Flieg.Heute.?
-            <span class="arrow">▾</span>
-          </button>
-          <div class="faq-answer">
-            <p>Flieg.Heute. ist eine Flugsuchmaschine, die sich auf Last-Minute-Flüge der nächsten 24 bis 72 Stunden spezialisiert hat. Wir durchsuchen in Echtzeit alle verfügbaren Flüge ab deinem Flughafen und zeigen dir die günstigsten Optionen – ohne Aufpreis und ohne versteckte Kosten.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Ist die Nutzung wirklich kostenlos?
-            <span class="arrow">▾</span>
-          </button>
-          <div class="faq-answer">
-            <p>Ja, die Nutzung von Flieg.Heute. ist komplett kostenlos. Du bezahlst nur den Flugpreis direkt bei der Airline. Wir verdienen über Partnerprogramme mit den Airlines – für dich ändert sich am Preis nichts.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Wo buche ich den Flug?
-            <span class="arrow">▾</span>
-          </button>
-          <div class="faq-answer">
-            <p>Du wirst direkt zur Airline oder zum offiziellen Buchungspartner weitergeleitet. Flieg.Heute. ist kein Reisebüro, sondern eine Suchmaschine. Du buchst immer beim Anbieter – transparent und sicher.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Welche Flughäfen werden unterstützt?
-            <span class="arrow">▾</span>
-          </button>
-          <div class="faq-answer">
-            <p>Aktuell fokussieren wir uns auf die wichtigsten deutschen Flughäfen. Du kannst deinen Abflughafen direkt im Suchfeld eingeben. Wir arbeiten daran, unser Netzwerk stetig zu erweitern.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Kann ich auch Hin- und Rückflug buchen?
-            <span class="arrow">▾</span>
-          </button>
-          <div class="faq-answer">
-            <p>Ja! Du kannst sowohl nur einen Hinflug als auch Hin- und Rückflug suchen. Wähle einfach dein Rückflugdatum im Suchformular aus. Für maximale Flexibilität kannst du das Rückflugdatum auch weglassen.</p>
-          </div>
-        </div>
-      </div>
+<!-- Plany Divider -->
+<div class="fh-plany-divider" aria-hidden="true">
+  <img src="/assets/logo-plany-mascot.svg" alt="" height="72" loading="lazy">
+</div>
+
+<!-- ══ CALENDAR WIDGET ══ -->
+<section class="fh-section" id="kalender" style="background:var(--bg-alt);" aria-labelledby="cal-title">
+  <div class="fh-section-inner">
+    <div class="fh-section-hdr fh-reveal">
+      <div class="fh-kicker">📅 Flexibel planen</div>
+      <h2 class="fh-section-title" id="cal-title">Wann fliegst du am <span>günstigsten?</span></h2>
+      <p class="fh-section-sub">Sieh auf einen Blick die besten Preise direkt im Kalender.</p>
     </div>
-  </section>
-
-  <!-- ====== CTA / NEWSLETTER ====== -->
-  <section class="cta-section" aria-labelledby="ctaTitle">
-    <div class="container cta-content">
-      <svg width="80" height="80" viewBox="0 0 120 120" class="plany-svg" style="margin: 0 auto 20px; animation: planyFloat 3s ease-in-out infinite;" aria-hidden="true">
-        <g transform="translate(10, 20)"><polygon points="50,0 100,45 50,38 0,75" fill="url(#pg3)" stroke="#fff" stroke-width="2"/><polygon points="50,38 100,45 50,70 20,55" fill="#818cf8" opacity="0.5"/><circle cx="45" cy="28" r="16" fill="white" opacity="0.95"/><circle cx="40" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="50" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="41.2" cy="23.5" r="1.2" fill="white"/><circle cx="51.2" cy="23.5" r="1.2" fill="white"/><path d="M39,31 Q45,37 51,31" fill="none" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/><circle cx="36" cy="31" r="3" fill="#fca5a5" opacity="0.5"/><circle cx="54" cy="31" r="3" fill="#fca5a5" opacity="0.5"/></g>
-        <defs><linearGradient id="pg3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a5b4fc"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
-      </svg>
-      <h2 class="cta-title" id="ctaTitle">Deals direkt ins Postfach?</h2>
-      <p class="cta-subtitle">Erhalte die besten Last-Minute-Angebote bevor sie weg sind. Kein Spam – nur Deals.</p>
-      <div class="cta-form" role="form" aria-label="Newsletter Anmeldung">
-        <input type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse">
-        <button type="button">Anmelden ✈️</button>
-      </div>
-      <p class="cta-note">Kein Spam. Jederzeit abmeldbar. Deine Daten bleiben bei uns.</p>
+    <div class="fh-widget-wrap fh-reveal">
+      <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&searchUrl=www.aviasales.com%2Fsearch&locale=de&powered_by=false&origin=FKB&destination=PXO&one_way=false&only_direct=true&period=year&range=7%2C14&primary=%237183f5&color_background=%23EDEDEd&dark=%23000000&light=%23FFFFFF&achieve=%2345AD35&promo_id=4041&campaign_id=100" charset="utf-8"></script>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
-            <svg width="32" height="32" viewBox="0 0 120 120" aria-hidden="true">
-              <g transform="translate(10, 20)"><polygon points="50,0 100,45 50,38 0,75" fill="url(#pg4)" stroke="#fff" stroke-width="2"/><polygon points="50,38 100,45 50,70 20,55" fill="#818cf8" opacity="0.5"/><circle cx="45" cy="28" r="16" fill="white" opacity="0.95"/><circle cx="40" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="50" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="41.2" cy="23.5" r="1.2" fill="white"/><circle cx="51.2" cy="23.5" r="1.2" fill="white"/><path d="M39,31 Q45,37 51,31" fill="none" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/></g>
-              <defs><linearGradient id="pg4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#a5b4fc"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
-            </svg>
-            <span style="font-family:var(--font-display); font-size:20px; font-weight:800;">Flieg.<span style="color:var(--pink);">Heute.</span></span>
-          </div>
-          <p class="footer-brand-text">Die günstigsten Last-Minute-Flüge der nächsten 24–72 Stunden. Spontan fliegen, clever buchen.</p>
-        </div>
-        <div>
-          <h3 class="footer-heading">Flieg.Heute.</h3>
-          <ul class="footer-links">
-            <li><a href="#how">So funktioniert's</a></li>
-            <li><a href="#deals">Top Deals</a></li>
-            <li><a href="#faq">Häufige Fragen</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-heading">Beliebte Ziele</h3>
-          <ul class="footer-links">
-            <li><a href="#">Mallorca</a></li>
-            <li><a href="#">Barcelona</a></li>
-            <li><a href="#">London</a></li>
-            <li><a href="#">Rom</a></li>
-            <li><a href="#">Amsterdam</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="footer-heading">Rechtliches</h3>
-          <ul class="footer-links">
-            <li><a href="#">Impressum</a></li>
-            <li><a href="#">Datenschutz</a></li>
-            <li><a href="#">AGB</a></li>
-            <li><a href="#">Kontakt</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span class="footer-copy">© 2025 Flieg.Heute. – Alle Rechte vorbehalten.</span>
-        <div class="footer-legal">
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
-          <a href="#">AGB</a>
-        </div>
-      </div>
+<!-- ══ GRACE & SAM – SEO TEXT (Dark) ══ -->
+<section class="fh-romance" aria-labelledby="romance-title">
+  <div class="fh-romance-inner">
+    <figure class="fh-romance-fig fh-reveal">
+      <img src="/assets/cluster-flights-romance.webp" alt="Grace und Sam am Flughafen – Last-Minute-Reise" width="320" height="400" loading="lazy">
+      <figcaption>Grace &amp; Sam – Aufbruchsmomente zwischen Airports der Welt.</figcaption>
+    </figure>
+    <div class="fh-romance-text fh-reveal">
+      <h2 class="fh-romance-h" id="romance-title">Flüge vergleichen – und einfach fliegen.</h2>
+      <p>Sie hieß Grace, er Sam. Ein verregneter Freitag, zwei Tassen Kaffee – und die Idee, <em>Flüge vergleichen</em> zu wollen. Die Flugsuchmaschine öffnete die Welt: günstige Angebote, günstige Flüge, Flugangebote vergleichen, alles nur einen Klick entfernt. In der Suchmaske flüsterten Abflughafen, Zielflughafen und Reisetermin von Neubeginn.</p>
+      <p>Sie liebte die Leichtigkeit: günstige Flüge buchen, Restplätze, Lastminute-Kurztrip. Er war neugierig auf Linienflüge und Charterflüge; sie probierte Low Cost Airlines und Billigairlines – Billigflieger mit Herz. Namen wurden zu Gedichten: Ryanair, Germanwings, Lufthansa, Condor. Für große Träume gab's Langstreckenflüge; für Nähe Flüge zum kleinen Preis.</p>
+      <p>„Vielleicht ein alternativer Flughafen?" fragte Grace. Flexible Datumswahl, verschiedene Flughäfen vergleichen, Anfahrtskosten sparen – alles Teil ihres Spiels. Der Flugvergleich auf fliegheute.de zeigte Flüge nach Frankfurt, Flüge nach München, Flugrouten Berlin–Köln und Hamburg–München. Für Europa lockten Flug nach Paris, Billigflug Barcelona, Amsterdam–Barcelona und Barcelona–Rom.</p>
+      <p>„Aktuelle Reiseanalysen 2025 sagen, Europa tanzt wieder," meinte Sam. <em>Travel Insights</em> schwärmten von Palma de Mallorca, Paris, London, Hurghada – Kultur plus Sonne. Trendwörter schimmerten wie Versprechen: Wellness, Coolcations, Naturreisen – Orte mit Outdoor-Mehrwert statt nur Metropole.</p>
+      <p>Am Ende saßen sie Seite an Seite, Buchungsklasse Economy, aber Herz in Business. „Mit dir ist günstig fliegen kein Kompromiss," flüsterte Grace. „Es ist unser Anfang." Und irgendwo blinkte leise: <em>fliegheute.de</em> – damit man den Mut nicht vergisst.</p>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- ====== JAVASCRIPT ====== -->
-  <script>
-    // ---- Live Clock ----
-    function updateClock() {
-      document.getElementById('liveClock').textContent =
-        new Date().toLocaleTimeString('de-DE', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
+<!-- ══ FAQ ══ -->
+<section class="fh-faq" id="faq" aria-labelledby="faq-title">
+  <div class="fh-faq-inner">
+    <h2 class="fh-faq-title" id="faq-title">Häufige Fragen</h2>
+    <details>
+      <summary>Was muss ich wissen, bevor ich einen Flug buche?</summary>
+      <p>Reisedokumente prüfen, Gepäckregeln der Airline beachten und auf mögliche Zusatzkosten (Gebühren, Transfers) achten. Bei Last-Minute-Flügen empfiehlt sich Handgepäck für maximale Flexibilität.</p>
+    </details>
+    <details>
+      <summary>Wann ist die beste Zeit, Last-Minute-Flüge zu buchen?</summary>
+      <p>Häufig 1–3 Tage vor Abflug. Airlines senken Preise für unverkaufte Sitze. Dienstags und mittwochs sind die günstigsten Buchungstage. Frühmorgens oder spät abends gibt es oft Sonderpreise.</p>
+    </details>
+    <details>
+      <summary>Kann ich mit Zwischenstopps sparen?</summary>
+      <p>Oft deutlich günstiger als Nonstop – bis zu 40% Ersparnis. Wer Zeit hat und flexibel ist, profitiert am meisten. Für Kurztrips empfehlen wir Direktflüge.</p>
+    </details>
+    <details>
+      <summary>Kostet fliegheute.de etwas?</summary>
+      <p>Nein. fliegheute.de ist komplett kostenlos. Wir vergleichen Preise und leiten zur Buchung weiter. Bei Buchung über unsere Links erhalten wir eine kleine Provision – der Preis für dich bleibt identisch.</p>
+    </details>
+    <details>
+      <summary>Welche deutschen Flughäfen eignen sich für Last-Minute am besten?</summary>
+      <p>Frankfurt (FRA), München (MUC) und Berlin (BER) bieten die meisten spontanen Verbindungen. Günstige Alternativen: Köln/Bonn (CGN), Düsseldorf (DUS) oder Karlsruhe/Baden-Baden (FKB).</p>
+    </details>
+  </div>
+</section>
 
-    // ---- Plany Speech Bubble ----
-    const planyMessages = [
-      'Wohin soll\'s gehen? ✈️',
-      'Flüge ab 38€ – heute noch!',
-      'Last-Minute? Ich find\'s! 🔍',
-      'Mallorca ab 55€! 🌴',
-      'Spontan nach London? 🇬🇧',
-    ];
-    let msgIdx = 0;
-    const bubble = document.getElementById('speechBubble');
-    const bubbleText = document.getElementById('speechText');
+<!-- ══ NEWSLETTER CTA ══ -->
+<section class="fh-cta-section" id="newsletter">
+  <div class="fh-cta-content">
+    <img src="/assets/logo-plany-mascot.svg" alt="" height="70" loading="lazy" style="margin:0 auto 18px; animation:planyFloat 3.5s ease-in-out infinite; filter:drop-shadow(0 6px 20px rgba(113,131,245,.35));" aria-hidden="true">
+    <h2 class="fh-cta-title">Deals direkt ins Postfach?</h2>
+    <p class="fh-cta-sub">Die besten Last-Minute-Angebote bevor sie weg sind. Kein Spam – nur Deals.</p>
+    <div class="fh-cta-form" role="form" aria-label="Newsletter Anmeldung">
+      <input type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse">
+      <button type="button">Anmelden ✈</button>
+    </div>
+    <p class="fh-cta-note">Kein Spam. Jederzeit abmeldbar. Deine Daten bleiben bei uns.</p>
+  </div>
+</section>
 
-    function setPlanyMsg(msg) {
-      bubble.style.opacity = '0';
-      bubble.style.transform = 'translateX(-50%) translateY(8px) scale(0.9)';
-      setTimeout(() => {
-        bubbleText.textContent = msg;
-        bubble.style.opacity = '1';
-        bubble.style.transform = 'translateX(-50%) translateY(0) scale(1)';
-      }, 250);
-    }
-    bubble.style.transition = 'opacity 0.3s, transform 0.3s';
-    setInterval(() => {
-      msgIdx = (msgIdx + 1) % planyMessages.length;
-      setPlanyMsg(planyMessages[msgIdx]);
-    }, 4500);
+</main>
 
-    // ---- Category Badges ----
-    const badges = document.querySelectorAll('.badge');
-    const destInput = document.getElementById('destInput');
-    const destWrap = document.getElementById('destWrap');
-    let activeBadge = null;
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="fh-footer-inner">
+    <div class="fh-footer-brand">
+      <img src="/assets/logo-plany-header.svg" alt="fliegheute.de" width="110" height="24">
+      <p>Die günstigsten Last-Minute-Flüge der nächsten 24–72 Stunden. Spontan. Günstig. Heute.</p>
+    </div>
+    <nav class="fh-footer-links" aria-label="Footer Navigation">
+      <a href="/impressum.html">Impressum</a>
+      <a href="/datenschutz.html">Datenschutz</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <a href="#">Kontakt</a>
+    </nav>
+    <div class="fh-footer-bottom">
+      <span>© <span id="fh-year"></span> fliegheute.de – Alle Rechte vorbehalten</span>
+      <span class="fh-footer-transp">Transparenz: Wir vergleichen Preise und leiten zur Buchung weiter. Kein Aufpreis. Bei Buchung über unsere Links erhalten wir eine Provision vom Anbieter.</span>
+    </div>
+  </div>
+</footer>
 
-    badges.forEach(badge => {
-      badge.addEventListener('click', () => {
-        if (badge === activeBadge) {
-          badge.classList.remove('active');
-          activeBadge = null;
-          destInput.value = '';
-          setPlanyMsg('Wohin soll\'s gehen? ✈️');
-        } else {
-          badges.forEach(b => b.classList.remove('active'));
-          badge.classList.add('active');
-          activeBadge = badge;
-          destInput.value = badge.dataset.dest;
-          destWrap.classList.add('glow');
-          setTimeout(() => destWrap.classList.remove('glow'), 900);
-          setPlanyMsg(badge.dataset.dest + '! Gute Wahl! 🎉');
-        }
-      });
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+
+  // Jahr
+  document.getElementById('fh-year').textContent = new Date().getFullYear();
+
+  // Uhr
+  function tick(){
+    var el=document.getElementById('fh-clock');
+    if(el) el.textContent=new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  }
+  tick(); setInterval(tick,1000);
+
+  // Departure Board – Wochentag + Datum + Uhrzeit
+  var now=new Date();
+  var WDAYS=['So','Mo','Di','Mi','Do','Fr','Sa'];
+  var todayLabel = WDAYS[now.getDay()] + ', ' + now.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
+
+  function tf(h,m){var d=new Date(now);d.setHours(h,m,0,0);return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
+  var FLIGHTS=[
+    {time:tf(8,25), dest:'Barcelona BCN', al:'VY', price:'38 €'},
+    {time:tf(9,10), dest:'London LGW',    al:'FR', price:'49 €'},
+    {time:tf(10,45),dest:'Palma PMI',     al:'EW', price:'55 €'},
+    {time:tf(11,30),dest:'Rom FCO',       al:'FR', price:'42 €'},
+    {time:tf(13,15),dest:'Amsterdam AMS', al:'KL', price:'61 €'},
+  ];
+  var boardLbl = document.querySelector('.fh-board-lbl');
+  if(boardLbl) boardLbl.innerHTML = '🛫 Abflüge ' + todayLabel;
+  var br=document.getElementById('fh-board-rows');
+  if(br){
+    br.innerHTML=FLIGHTS.map(function(f,i){
+      return (i>0?'<div class="fh-board-sep"></div>':'')
+        +'<div class="fh-board-row">'
+        +'<span class="fh-board-time">'+f.time+'</span>'
+        +'<span class="fh-board-dest">'+f.dest+'</span>'
+        +'<span class="fh-board-al">'+f.al+'</span>'
+        +'<span class="fh-board-price">'+f.price+'</span>'
+        +'</div>';
+    }).join('');
+  }
+
+  // Hero data + Crossfade
+  var HEROES=[
+    {title:'Flieg.<br><em>Heute.</em>',         sub:'Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.',
+     d1x:'assets/hero-mallorca-desktop@1x.webp', d2x:'assets/hero-mallorca-desktop@2x.webp',
+     m1x:'assets/hero-mallorca-mobile@1x.webp',  m2x:'assets/hero-mallorca-mobile@2x.webp'},
+    {title:'Raus-Atmen.<br><em>The City.</em>',  sub:'Kultur, Flair und günstige Flüge nach London.',
+     d1x:'assets/hero-london-desktop@1x.webp',   d2x:'assets/hero-london-desktop@2x.webp',
+     m1x:'assets/hero-london-mobile@1x.webp',    m2x:'assets/hero-london-mobile@2x.webp'},
+    {title:'Raus-Atmen.<br><em>Discovery beginnt hier.</em>', sub:'Berge, Natur und spontane Freiheit – heute noch weg.',
+     d1x:'assets/hero-bergsee-desktop@1x.webp',  d2x:'assets/hero-bergsee-desktop@2x.webp',
+     m1x:'assets/hero-bergsee-mobile@1x.webp',   m2x:'assets/hero-bergsee-mobile@2x.webp'},
+  ];
+
+  var lyrA=document.getElementById('hero-layer-a');
+  var lyrB=document.getElementById('hero-layer-b');
+  var h1El=document.getElementById('hero-title');
+  var subEl=document.getElementById('hero-sub');
+  var activeLyr=0, cur=0;
+
+  function getSrc(h){
+    var mob=window.innerWidth<800, hi=window.devicePixelRatio>1;
+    return mob?(hi?h.m2x:h.m1x):(hi?h.d2x:h.d1x);
+  }
+  // Preload all hero images
+  HEROES.forEach(function(h){[h.d1x,h.d2x,h.m1x,h.m2x].forEach(function(s){var i=new Image();i.src=s;});});
+
+  function setHero(idx){
+    var h=HEROES[idx];
+    var next=(activeLyr+1)%2;
+    var lyrs=[lyrA,lyrB];
+    lyrs[next].style.backgroundImage='url("'+getSrc(h)+'")';
+    lyrs[activeLyr].classList.remove('active');
+    lyrs[next].classList.add('active');
+    activeLyr=next;
+    setTimeout(function(){if(h1El)h1El.innerHTML=h.title;if(subEl)subEl.innerHTML=h.sub;},700);
+    cur=idx;
+    document.querySelectorAll('.fh-dpill').forEach(function(p){
+      var a=parseInt(p.dataset.hero)===idx;
+      p.classList.toggle('active',a);
+      p.setAttribute('aria-pressed',a?'true':'false');
     });
-    destInput.addEventListener('input', () => {
-      if (activeBadge) {
-        badges.forEach(b => b.classList.remove('active'));
-        activeBadge = null;
-      }
+  }
+
+  document.querySelectorAll('.fh-dpill').forEach(function(pill){
+    pill.addEventListener('click',function(){
+      setHero(parseInt(pill.dataset.hero));
+      clearInterval(timer);
+      timer=setInterval(function(){setHero((cur+1)%HEROES.length);},9000);
     });
+  });
 
-    // ---- Swap ----
-    document.getElementById('swapBtn').addEventListener('click', () => {
-      const o = document.getElementById('originInput');
-      const tmp = o.value;
-      o.value = destInput.value;
-      destInput.value = tmp;
-    });
+  setHero(0);
+  var timer=setInterval(function(){setHero((cur+1)%HEROES.length);},9000);
 
-    // ---- Mobile nav ----
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
+  // Resize: correct resolution
+  var resizeTimer;
+  window.addEventListener('resize',function(){
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(function(){setHero(cur);},150);
+  });
 
-    // ---- FAQ Accordion ----
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const answer = btn.nextElementSibling;
-        const isOpen = answer.classList.contains('open');
-        // Close all
-        document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
-        document.querySelectorAll('.faq-question').forEach(q => { q.classList.remove('open'); q.setAttribute('aria-expanded', 'false'); });
-        if (!isOpen) {
-          answer.classList.add('open');
-          btn.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
+  // Scroll reveal
+  var els=document.querySelectorAll('.fh-reveal');
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+    },{threshold:0.1});
+    els.forEach(function(el){obs.observe(el);});
+  } else {
+    els.forEach(function(el){el.classList.add('visible');});
+  }
 
-    // ---- Scroll Reveal ----
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(el => revealObserver.observe(el));
-
-    // ---- Set dates dynamically ----
-    (function() {
-      const today = new Date();
-      const tomorrow = new Date(today);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const nextWeek = new Date(today);
-      nextWeek.setDate(nextWeek.getDate() + 7);
-      const fmt = d => d.toISOString().split('T')[0];
-      document.getElementById('departDate').value = fmt(tomorrow);
-      document.getElementById('returnDate').value = fmt(nextWeek);
-    })();
-  </script>
-
+})();
+</script>
 </body>
 </html>
