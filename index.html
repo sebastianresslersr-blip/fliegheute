@@ -210,11 +210,9 @@
     .fh-hero-top-text { flex: 1; }
 
     .fh-hero-cols {
-      display: grid; grid-template-columns: 1fr 400px; gap: 32px;
-      align-items: stretch;
+      display: grid; grid-template-columns: 1fr; gap: 0;
     }
     .fh-hero-col-left { display: flex; flex-direction: column; }
-    .fh-hero-col-right { display: flex; flex-direction: column; }
 
     .fh-plany-float { flex-shrink: 0; align-self: center; }
     .fh-plany-float img {
@@ -224,31 +222,6 @@
     }
 
     /* Departure board */
-    .fh-board {
-      background: rgba(255,255,255,.97);
-      border: 1.5px solid rgba(113,131,245,.15);
-      border-radius: var(--r); padding: 14px 16px;
-      box-shadow: 0 8px 40px rgba(11,11,19,.18);
-      width: 100%; flex: 1;
-    }
-    .fh-board-hdr {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 10px;
-    }
-    .fh-board-lbl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-    .fh-board-clock { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--pink); letter-spacing: .06em; }
-    .fh-board-rows { display: flex; flex-direction: column; gap: 1px; }
-    .fh-board-sep { height: 1px; background: var(--border); margin: 2px 0; }
-    .fh-board-row {
-      display: grid; grid-template-columns: 50px 1fr 36px 56px;
-      align-items: center; gap: 8px; padding: 6px 6px; border-radius: 8px;
-      transition: background .15s; cursor: pointer;
-    }
-    .fh-board-row:hover { background: var(--bg-alt); }
-    .fh-board-time { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--brand); }
-    .fh-board-dest { font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .fh-board-al { font-size: 10px; color: var(--muted); font-family: var(--font-mono); }
-    .fh-board-price { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #0f8d54; text-align: right; white-space: nowrap; }
 
     /* Destination pills */
     .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -544,8 +517,7 @@
     @media(max-width:900px) {
       .fh-hero-inner { padding: 100px 16px 40px; gap: 16px; }
       .fh-hero-wrap { min-height: auto; }
-      .fh-hero-cols { grid-template-columns: 1fr; gap: 16px; }
-      .fh-hero-col-right { display: none; }
+      .fh-hero-cols { grid-template-columns: 1fr; }
       .fh-plany-float img { height: 80px; }
       .fh-hero-h1 { min-height: auto; }
       .fh-romance-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -608,7 +580,7 @@
     </div>
 
     <div class="fh-hero-cols">
-      <div class="fh-hero-col-left">
+      <div class="fh-hero-col-left" style="max-width:560px">
         <div class="fh-search" aria-label="Flugsuche Formular">
           <!-- Kopfzeile: Label + Live-Zeitanzeige -->
           <div class="fh-search-hdr">
@@ -700,15 +672,6 @@
           </div>
         </div>
         <!-- trust proofs jetzt in der Banderole unter dem Hero -->
-      </div>
-      <div class="fh-hero-col-right">
-        <div class="fh-board" role="region" aria-label="Abflugtafel heute">
-          <div class="fh-board-hdr">
-            <span class="fh-board-lbl">🛫 Abflüge heute</span>
-            <span class="fh-board-clock" id="fh-clock" aria-live="polite"></span>
-          </div>
-          <div class="fh-board-rows" id="fh-board-rows"></div>
-        </div>
       </div>
     </div>
 
@@ -824,48 +787,7 @@
 
   document.getElementById('fh-year').textContent = new Date().getFullYear();
 
-  function tick(){
-    var el=document.getElementById('fh-clock');
-    if(el) el.textContent=new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  }
-  tick(); setInterval(tick,1000);
-
   var now=new Date();
-  var WDAYS=['So','Mo','Di','Mi','Do','Fr','Sa'];
-  var todayLabel = WDAYS[now.getDay()] + ', ' + now.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
-
-  function tf(h,m){var d=new Date(now);d.setHours(h,m,0,0);return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
-  var FLIGHTS=[
-    {time:tf(8,25), dest:'Barcelona BCN', iata:'BCN', name:'Barcelona (BCN)', al:'VY', price:'38 €'},
-    {time:tf(9,10), dest:'London LGW',    iata:'LGW', name:'London Gatwick (LGW)', al:'FR', price:'49 €'},
-    {time:tf(10,45),dest:'Palma PMI',     iata:'PMI', name:'Palma de Mallorca (PMI)', al:'EW', price:'55 €'},
-    {time:tf(11,30),dest:'Rom FCO',       iata:'FCO', name:'Rom Fiumicino (FCO)', al:'FR', price:'42 €'},
-    {time:tf(13,15),dest:'Amsterdam AMS', iata:'AMS', name:'Amsterdam (AMS)', al:'KL', price:'61 €'},
-  ];
-  var boardLbl = document.querySelector('.fh-board-lbl');
-  if(boardLbl) boardLbl.innerHTML = '🛫 Abflüge ' + todayLabel;
-  var br=document.getElementById('fh-board-rows');
-  if(br){
-    br.innerHTML=FLIGHTS.map(function(f,i){
-      return (i>0?'<div class="fh-board-sep"></div>':'')
-        +'<div class="fh-board-row" data-iata="'+f.iata+'" data-name="'+f.name+'" style="cursor:pointer">'
-        +'<span class="fh-board-time">'+f.time+'</span>'
-        +'<span class="fh-board-dest">'+f.dest+'</span>'
-        +'<span class="fh-board-al">'+f.al+'</span>'
-        +'<span class="fh-board-price">'+f.price+'</span>'
-        +'</div>';
-    }).join('');
-    // Klick → Ziel ins Suchfeld + scroll
-    br.querySelectorAll('.fh-board-row').forEach(function(row){
-      row.addEventListener('click', function(){
-        var di=document.getElementById('fh-dest');
-        var dib=document.getElementById('fh-db');
-        var dih=document.getElementById('fh-di');
-        if(di){ di.value=row.dataset.name; dib.textContent=row.dataset.iata; dib.style.display='block'; dih.value=row.dataset.iata; }
-        document.querySelector('.fh-search').scrollIntoView({behavior:'smooth',block:'center'});
-      });
-    });
-  }
 
   var HEROES=[
     {title:'Flieg.<br><em>Heute.</em>',
