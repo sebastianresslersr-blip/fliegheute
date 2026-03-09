@@ -45,7 +45,7 @@
   <!-- ══ FONTS ══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <link rel="icon" type="image/svg+xml" href="/assets/logo-plany-favicon.svg">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -62,28 +62,34 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ══════════════════════════════
+       DESIGN TOKENS – Light Theme
+       ══════════════════════════════ */
     :root {
-      --brand: #7183f5;
-      --pink:  #f571b4;
-      --green: #4ade80;
-      --ink:   #0b0b13;
-      --muted: #8a8d9b;
-      --bg:    #0c0f1a;
-      --bg-alt:#111528;
-      --bg-card:rgba(255,255,255,.04);
-      --card:  #ffffff;
-      --border:rgba(255,255,255,.08);
-      --border-light:#e8eaf0;
-      --r:     18px;
-      --shadow:0 8px 40px rgba(0,0,0,.25);
-      --shadow-l:0 20px 60px rgba(0,0,0,.4);
+      --brand:      #7183f5;
+      --pink:       #f571b4;
+      --green:      #22c55e;
+      --ink:        #0b0b13;
+      --ink-mid:    #2d2f3a;
+      --muted:      #6b6f82;
+      --bg:         #fafaf8;      /* warm off-white */
+      --bg-alt:     #f3f4fb;      /* very light lavender */
+      --bg-warm:    #fdf8f1;      /* warm cream */
+      --bg-hero:    #0c0f1a;      /* hero dark stays */
+      --bg-card:    #ffffff;
+      --border:     #e4e6f0;
+      --border-mid: #d0d3e8;
+      --r:          18px;
+      --shadow:     0 2px 16px rgba(11,11,19,.07);
+      --shadow-l:   0 12px 48px rgba(11,11,19,.12);
+      --shadow-brand: 0 8px 32px rgba(113,131,245,.22);
       --font-display: 'Baloo 2', cursive;
-      --font-body: 'DM Sans', system-ui, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
     }
 
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body { font-family: var(--font-body); background: var(--bg); color: #fff; overflow-x: hidden; line-height: 1.5; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.5; }
     a { text-decoration: none; color: inherit; }
     img { display: block; max-width: 100%; }
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
@@ -94,20 +100,23 @@
     @keyframes livepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
     @keyframes planyFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-14px) rotate(3deg)} }
     @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
     @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
 
     .fh-reveal { opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
     .fh-reveal.visible { opacity:1; transform:none; }
 
     /* ══════════════════════════════
-       HEADER
+       HEADER – Light
        ══════════════════════════════ */
     .fh-header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(12,15,26,.88);
+      background: rgba(250,250,248,.96);
       backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
+      box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(11,11,19,.04);
+      /* Eigene Compositing-Ebene → verhindert Ruckeln beim Hero-Motivwechsel */
+      transform: translateZ(0);
+      will-change: transform;
     }
     .fh-hdr {
       max-width: 1160px; margin: 0 auto; padding: 0 20px;
@@ -118,17 +127,17 @@
     .fh-nav { display: flex; align-items: center; gap: 22px; }
     .fh-nav a {
       font-size: 14px; font-weight: 600;
-      color: rgba(255,255,255,.5); transition: color .2s; white-space: nowrap;
+      color: var(--muted); transition: color .2s; white-space: nowrap;
     }
-    .fh-nav a:hover { color: #fff; }
+    .fh-nav a:hover { color: var(--ink); }
     .fh-nav-cta {
       background: linear-gradient(135deg, var(--brand), var(--pink));
       color: #fff !important; padding: 8px 18px; border-radius: 999px;
       font-weight: 700 !important; transition: transform .15s, box-shadow .2s !important;
-      box-shadow: 0 4px 16px rgba(113,131,245,.3);
+      box-shadow: var(--shadow-brand);
     }
-    .fh-nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(113,131,245,.4); }
-    .fh-nav-toggle { display:none; background:none; border:none; color:#fff; font-size:22px; cursor:pointer; padding:4px; }
+    .fh-nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(113,131,245,.35); }
+    .fh-nav-toggle { display:none; background:none; border:none; color:var(--ink); font-size:22px; cursor:pointer; padding:4px; }
     @media(max-width:640px){
       .fh-nav a:not(.fh-nav-cta){ display:none; }
       .fh-nav-toggle { display:block; }
@@ -136,11 +145,12 @@
     }
 
     /* ══════════════════════════════
-       HERO
+       HERO – stays dark (photo bg)
        ══════════════════════════════ */
     .fh-hero-wrap {
       position: relative; overflow: hidden;
       min-height: 100svh; display: flex; align-items: center;
+      background: var(--bg-hero);
     }
     .hero-layer {
       position: absolute; inset: 0;
@@ -151,10 +161,17 @@
     .hero-layer.active { opacity: 1; }
     .fh-hero-overlay {
       position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(160deg, rgba(11,11,19,.78) 0%, rgba(12,15,26,.55) 50%, rgba(113,131,245,.12) 100%);
+      background: linear-gradient(160deg, rgba(11,11,19,.82) 0%, rgba(12,15,26,.55) 50%, rgba(113,131,245,.1) 100%);
+    }
+    /* Soft fade at the bottom of hero → light content below */
+    .fh-hero-wrap::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 120px; z-index: 2;
+      background: linear-gradient(to bottom, transparent 0%, rgba(250,250,248,.15) 100%);
+      pointer-events: none;
     }
     .fh-hero-inner {
-      position: relative; z-index: 2;
+      position: relative; z-index: 3;
       max-width: 1160px; margin: 0 auto; padding: 88px 20px 56px;
       width: 100%;
       display: flex; flex-direction: column; gap: 20px;
@@ -163,9 +180,9 @@
     /* Live badge */
     .fh-live-badge {
       display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
       border-radius: 999px; padding: 5px 14px; width: fit-content;
-      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.85);
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.9);
       letter-spacing: .05em; text-transform: uppercase;
       margin-bottom: 8px; backdrop-filter: blur(6px);
     }
@@ -174,28 +191,24 @@
       background: var(--green); animation: livepulse 2s ease-in-out infinite;
     }
 
-    /* Hero headline */
     .fh-hero-h1 {
       font-family: var(--font-display);
       font-size: clamp(42px, 6vw, 72px); font-weight: 800;
       line-height: 1.0; color: #fff; margin-bottom: 8px;
       text-shadow: 0 2px 24px rgba(0,0,0,.3); letter-spacing: -.02em;
-      /* Fixed height prevents layout jump on text change */
-      min-height: 3.1em;
+      /* Feste Höhe für 3 Zeilen (schlimmster Fall) → kein Layoutsprung */
+      height: 3.1em; overflow: hidden;
     }
     .fh-hero-h1 em { font-style: normal; color: var(--pink); }
     .fh-hero-sub {
-      font-size: 16px; color: rgba(255,255,255,.75);
+      font-size: 16px; color: rgba(255,255,255,.8);
       line-height: 1.55; text-shadow: 0 1px 10px rgba(0,0,0,.2);
-      min-height: 1.6em;
+      height: 3.2em; overflow: hidden;
     }
 
-    .fh-hero-top {
-      display: flex; align-items: flex-start; gap: 24px;
-    }
+    .fh-hero-top { display: flex; align-items: flex-start; gap: 24px; }
     .fh-hero-top-text { flex: 1; }
 
-    /* ══ Two-column row: search + board ══ */
     .fh-hero-cols {
       display: grid; grid-template-columns: 1fr 400px; gap: 32px;
       align-items: stretch;
@@ -203,7 +216,6 @@
     .fh-hero-col-left { display: flex; flex-direction: column; }
     .fh-hero-col-right { display: flex; flex-direction: column; }
 
-    /* ══ PLANY MASCOT (in hero-top, next to headline) ══ */
     .fh-plany-float { flex-shrink: 0; align-self: center; }
     .fh-plany-float img {
       height: 130px; width: auto;
@@ -211,7 +223,7 @@
       animation: planyFloat 3.5s ease-in-out infinite;
     }
 
-    /* ══ DEPARTURE BOARD ══ */
+    /* Departure board */
     .fh-board {
       background: rgba(11,11,19,.72);
       border: 1px solid rgba(255,255,255,.08);
@@ -223,14 +235,8 @@
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 10px;
     }
-    .fh-board-lbl {
-      font-size: 10px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: rgba(255,255,255,.4);
-    }
-    .fh-board-clock {
-      font-family: var(--font-mono); font-size: 13px; font-weight: 700;
-      color: var(--pink); letter-spacing: .06em;
-    }
+    .fh-board-lbl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .fh-board-clock { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--pink); letter-spacing: .06em; }
     .fh-board-rows { display: flex; flex-direction: column; gap: 1px; }
     .fh-board-sep { height: 1px; background: rgba(255,255,255,.05); margin: 2px 0; }
     .fh-board-row {
@@ -239,24 +245,16 @@
       transition: background .15s; cursor: pointer;
     }
     .fh-board-row:hover { background: rgba(255,255,255,.06); }
-    .fh-board-time {
-      font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--brand);
-    }
-    .fh-board-dest {
-      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
+    .fh-board-time { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--brand); }
+    .fh-board-dest { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .fh-board-al { font-size: 10px; color: rgba(255,255,255,.35); font-family: var(--font-mono); }
-    .fh-board-price {
-      font-family: var(--font-display); font-size: 14px; font-weight: 800;
-      color: var(--green); text-align: right; white-space: nowrap;
-    }
+    .fh-board-price { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--green); text-align: right; white-space: nowrap; }
 
-    /* ══ DESTINATION PILLS ══ */
+    /* Destination pills */
     .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; }
     .fh-dpill {
       display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.15);
       border-radius: 999px; padding: 8px 16px;
       font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8);
       cursor: pointer; transition: all .25s;
@@ -271,12 +269,29 @@
     }
     .fh-dpill .pi { font-size: 16px; }
 
-    /* ══ CUSTOM SEARCH FORM (Dark) ══ */
+    /* ══ SEARCH FORM (dark glass, inside dark hero) ══ */
     .fh-search {
       background: rgba(11,11,19,.72); border: 1px solid rgba(255,255,255,.08);
       border-radius: var(--r); padding: 16px; display: grid; gap: 12px;
       backdrop-filter: blur(10px); width: 100%;
     }
+    /* Kopfzeile Suchfeld: Titel links, Zeitanzeige rechts */
+    .fh-search-hdr {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .fh-search-title {
+      font-size: 12px; font-weight: 700; color: rgba(255,255,255,.55);
+      text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; gap: 6px;
+    }
+    .fh-search-title svg { opacity: .6; }
+    .fh-zeitanzeige {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,.4); background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
+      padding: 4px 10px; white-space: nowrap; text-align: right; line-height: 1.4;
+      transition: color .3s;
+    }
+    .fh-zeitanzeige strong { color: var(--pink); display: block; font-size: 13px; }
     .fh-pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
     .fh-pill { display:flex; gap:2px; background:rgba(255,255,255,.08); border-radius:999px; padding:3px; }
     .fh-pill input { display:none; }
@@ -298,58 +313,79 @@
     .fh-ac-item:hover,.fh-ac-item.focused { background:rgba(113,131,245,.15); }
     .fh-ac-iata { font-family:var(--font-mono); font-size:13px; font-weight:800; color:var(--brand); min-width:34px; }
     .fh-ac-name { font-size:13px; font-weight:500; color:rgba(255,255,255,.85); }
-    .fh-ac-cty { font-size:12px; color:rgba(255,255,255,.4); margin-left:auto; }
+    .fh-ac-cty { font-size:11px; color:rgba(255,255,255,.3); margin-left:auto; }
 
-    .fh-swap-btn { flex-shrink:0; align-self:center; width:38px; height:38px; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.1); border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--brand); transition:background .15s, transform .3s; }
-    .fh-swap-btn:hover { background:rgba(113,131,245,.15); transform:rotate(180deg); }
+    .fh-swap-btn {
+      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12); border-radius: 10px;
+      color: rgba(255,255,255,.5); width: 38px; flex-shrink: 0; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s; align-self: stretch;
+    }
+    .fh-swap-btn:hover { background: rgba(255,255,255,.14); color: #fff; }
 
-    .fh-slider-wrap { background:rgba(255,255,255,.06); border-radius:10px; padding:18px 16px 10px; }
-    .fh-slider-track { position:relative; margin-bottom:6px; }
-    .fh-track-bg { position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); height:5px; border-radius:99px; background:linear-gradient(to right,#7183f5,#f571b4); pointer-events:none; z-index:1; }
-    .fh-range { -webkit-appearance:none; appearance:none; width:100%; height:5px; background:transparent; outline:none; position:relative; z-index:2; }
-    .fh-range::-webkit-slider-thumb { -webkit-appearance:none; width:34px; height:18px; background:#fff; border:2.5px solid var(--brand); border-radius:999px; box-shadow:0 2px 8px rgba(113,131,245,.3); cursor:grab; }
-    .fh-bubble { position:absolute; top:-34px; transform:translateX(-50%); background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.15); border-radius:999px; padding:3px 10px; font-size:11px; font-weight:700; color:#fff; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,.2); pointer-events:none; z-index:10; backdrop-filter:blur(6px); }
-    .fh-bubble::after { content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%) rotate(45deg); width:7px; height:7px; background:rgba(255,255,255,.12); border-right:1.5px solid rgba(255,255,255,.15); border-bottom:1.5px solid rgba(255,255,255,.15); }
-    .fh-slider-lbls { display:flex; justify-content:space-between; font-size:11px; color:rgba(255,255,255,.35); font-weight:600; }
+    .fh-slider-wrap { padding: 6px 2px 0; }
+    .fh-slider-track { position:relative; height:36px; }
+    .fh-bubble {
+      position:absolute; top:0; transform:translateX(-50%);
+      background:var(--brand); color:#fff; font-size:11px; font-weight:700;
+      padding:3px 10px; border-radius:999px; white-space:nowrap; pointer-events:none;
+      transition:left .05s linear;
+    }
+    .fh-track-bg { position:absolute; bottom:4px; left:17px; right:17px; height:4px; background:rgba(255,255,255,.12); border-radius:2px; }
+    .fh-range {
+      position:absolute; bottom:0; left:0; right:0; width:100%;
+      -webkit-appearance:none; appearance:none; height:24px; background:transparent; cursor:pointer;
+    }
+    .fh-range::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:#fff; border:3px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.3); transition:border-color .2s; }
+    .fh-range::-moz-range-thumb { width:22px; height:22px; border-radius:50%; background:#fff; border:3px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.3); }
+    .fh-slider-lbls { display:flex; justify-content:space-between; font-size:10px; color:rgba(255,255,255,.3); font-weight:700; letter-spacing:.04em; margin-top:4px; padding:0 14px; }
 
-    .fh-cal { display:none; background:rgba(255,255,255,.06); border-radius:10px; padding:14px; }
-    .fh-cal-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-    .fh-cal-nav { width:30px; height:30px; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.1); border-radius:7px; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px; color:#fff; }
-    .fh-cal-nav:hover { background:rgba(113,131,245,.15); }
+    /* Calendar */
+    .fh-cal { display:none; }
+    .fh-cal-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+    .fh-cal-nav { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:8px; color:#fff; width:28px; height:28px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; line-height:1; }
+    .fh-cal-nav:hover { background:rgba(255,255,255,.15); }
     .fh-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
-    .fh-cal-dow { text-align:center; font-size:10px; font-weight:700; color:rgba(255,255,255,.35); padding:0 0 6px; text-transform:uppercase; }
-    .fh-cal-day { text-align:center; font-size:13px; padding:8px 0; border-radius:0; cursor:pointer; color:rgba(255,255,255,.75); transition:background .15s; }
-    .fh-cal-day:hover:not(.past):not(.empty) { background:rgba(113,131,245,.15); }
-    .fh-cal-day.past { color:rgba(255,255,255,.2); pointer-events:none; }
+    .fh-cal-dow { text-align:center; font-size:10px; font-weight:700; color:rgba(255,255,255,.3); padding:4px 0; }
+    .fh-cal-day { text-align:center; font-size:12px; font-weight:600; padding:5px 2px; border-radius:7px; cursor:pointer; color:rgba(255,255,255,.75); transition:background .12s; }
+    .fh-cal-day:hover:not(.past):not(.empty) { background:rgba(255,255,255,.12); }
+    .fh-cal-day.past { color:rgba(255,255,255,.2); cursor:default; }
     .fh-cal-day.empty { pointer-events:none; }
-    .fh-cal-day.sel { color:#fff; font-weight:700; }
-    .fh-cal-day.in-range { color:#fff; }
-    .fh-cal-footer { display:flex; gap:8px; margin-top:10px; }
-    .fh-cal-chip { padding:5px 12px; border-radius:999px; font-size:12px; font-weight:700; border:1.5px solid rgba(255,255,255,.15); color:rgba(255,255,255,.5); transition:all .2s; }
+    .fh-cal-day.sel { color:#fff; }
+    .fh-cal-footer { display:flex; gap:8px; margin-top:8px; }
+    .fh-cal-chip { flex:1; text-align:center; padding:7px 10px; border-radius:8px; font-size:12px; font-weight:700; border:1.5px solid rgba(255,255,255,.12); color:rgba(255,255,255,.45); cursor:pointer; transition:all .2s; }
     .fh-cal-chip.active { border-color:var(--brand); color:var(--brand); }
-    .fh-cal-chip.filled { background:var(--brand); border-color:var(--brand); color:#fff; }
+    .fh-cal-chip.filled { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); color:#fff; }
 
-    .fh-bottom-row { display:flex; gap:10px; align-items:center; }
-    .fh-pax-new { display:flex; gap:14px; }
-    .fh-pax-grp { display:flex; align-items:center; gap:4px; }
-    .fh-pax-grp label { font-size:11px; font-weight:700; color:rgba(255,255,255,.4); text-transform:uppercase; margin-right:2px; }
-    .fh-cbtn { width:28px; height:28px; border-radius:7px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.06); color:#fff; font-size:16px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s; }
-    .fh-cbtn:hover { background:rgba(113,131,245,.2); }
-    .fh-cval { min-width:22px; text-align:center; font-size:15px; font-weight:700; color:#fff; }
-    .fh-go-new { margin-left:auto; background:var(--brand); color:#fff; border:0; border-radius:10px; padding:0 20px; height:44px; font-weight:700; font-size:15px; display:flex; align-items:center; gap:8px; white-space:nowrap; cursor:pointer; transition:box-shadow .2s, transform .15s; }
-    .fh-go-new:hover { transform:translateY(-1px); }
-    .fh-go-new:disabled { opacity:.7; cursor:wait; }
-    .fh-spinner { display:none; width:16px; height:16px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .6s linear infinite; }
+    .fh-bottom-row { display:flex; align-items:center; gap:12px; }
+    .fh-pax-new { display:flex; gap:16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:8px 14px; flex:1; }
+    .fh-pax-grp { display:flex; align-items:center; gap:6px; }
+    .fh-pax-grp label { font-size:11px; font-weight:700; color:rgba(255,255,255,.4); text-transform:uppercase; letter-spacing:.05em; min-width:30px; }
+    .fh-cbtn { background:rgba(255,255,255,.1); border:none; color:#fff; width:22px; height:22px; border-radius:6px; cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; line-height:1; transition:background .15s; }
+    .fh-cbtn:hover { background:rgba(255,255,255,.18); }
+    .fh-cval { font-family:var(--font-mono); font-size:14px; font-weight:700; color:#fff; min-width:18px; text-align:center; }
+    .fh-go-new {
+      background: var(--brand); color: #fff; border: none; border-radius: 12px;
+      padding: 0 24px; height: 48px; font-family: var(--font-body);
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; gap: 8px;
+      transition: transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(113,131,245,.4); white-space: nowrap; flex-shrink: 0;
+    }
+    .fh-go-new:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(113,131,245,.5); }
+    .fh-spinner { width:16px; height:16px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none; }
     @keyframes spin { to { transform:rotate(360deg); } }
     .fh-widget-trust {
-      text-align: center; font-size: 11px; color: rgba(255,255,255,.45);
-      margin-top: 10px; letter-spacing: .02em;
+      text-align: center; font-size: 11px; color: rgba(255,255,255,.35);
+      font-weight: 600; margin-top: 8px; letter-spacing: .02em;
     }
 
-    /* ══ TRUST BAR ══ */
+    /* ══════════════════════════════
+       TRUST BAR – gradient bridge
+       ══════════════════════════════ */
     .fh-trust {
       background: linear-gradient(90deg, var(--brand) 0%, var(--pink) 100%);
-      padding: 14px 20px; position: relative; z-index: 5;
+      padding: 14px 20px;
     }
     .fh-trust-inner {
       max-width: 1160px; margin: 0 auto;
@@ -361,51 +397,18 @@
       font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap;
     }
 
-    /* ══ SECTIONS (dark) ══ */
-    .fh-section { padding: 64px 0; }
-    .fh-section-inner { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
-    .fh-section-hdr { margin-bottom: 28px; }
-    .fh-kicker {
-      font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .1em; color: var(--pink); margin-bottom: 6px;
-    }
-    .fh-section-title {
-      font-family: var(--font-display);
-      font-size: clamp(24px, 3vw, 32px); font-weight: 800;
-      line-height: 1.15; letter-spacing: -.02em; color: #fff;
-    }
-    .fh-section-title span { color: var(--brand); }
-    .fh-section-sub { font-size: 14px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
-
-    /* Widget wrapper (dark surrounding) */
-    .fh-widget-wrap {
-      background: var(--bg-card); border-radius: var(--r);
-      overflow: hidden; border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      padding: 4px;
-    }
-    /* Override widget inner bg so it fits dark theme better */
-    .fh-widget-wrap iframe { border-radius: calc(var(--r) - 4px) !important; }
-
-    /* ══ PLANY DIVIDER ══ */
-    .fh-plany-divider {
-      display: flex; justify-content: center;
-      margin: -24px 0; position: relative; z-index: 10;
-    }
-    .fh-plany-divider img {
-      height: 72px;
-      filter: drop-shadow(0 8px 24px rgba(113,131,245,.35));
-      animation: planyFloat 4s ease-in-out infinite;
-    }
-
-    /* ══ GRACE & SAM – DARK THEME ══ */
+    /* ══════════════════════════════
+       GRACE & SAM – Light Warm
+       ══════════════════════════════ */
     .fh-romance {
-      background: var(--bg-alt); padding: 72px 0;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--bg-warm);
+      padding: 80px 0;
+      border-top: 1.5px solid var(--border);
+      border-bottom: 1.5px solid var(--border);
     }
     .fh-romance-inner {
       max-width: 1160px; margin: 0 auto; padding: 0 20px;
-      display: grid; grid-template-columns: 320px 1fr; gap: 56px; align-items: start;
+      display: grid; grid-template-columns: 300px 1fr; gap: 60px; align-items: start;
     }
     .fh-romance-fig {
       position: sticky; top: 80px; border-radius: var(--r); overflow: hidden;
@@ -414,99 +417,116 @@
     .fh-romance-fig img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
     .fh-romance-fig figcaption {
       padding: 12px 16px; font-size: 12px; color: var(--muted);
-      background: rgba(17,21,40,.95); border-top: 1px solid var(--border);
+      background: #fff; border-top: 1.5px solid var(--border);
     }
     .fh-romance-h {
-      font-family: var(--font-display); font-size: 24px; font-weight: 800;
-      color: var(--pink); margin-bottom: 20px; letter-spacing: -.02em;
+      font-family: var(--font-display); font-size: 26px; font-weight: 800;
+      color: var(--brand); margin-bottom: 20px; letter-spacing: -.02em;
+      line-height: 1.2;
     }
     .fh-romance-text p {
-      font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.55);
+      font-size: 15px; line-height: 1.8; color: var(--ink-mid);
       margin-bottom: 16px;
     }
-    .fh-romance-text em { font-style: italic; color: var(--brand); }
+    .fh-romance-text em { font-style: italic; color: var(--brand); font-weight: 600; }
 
-    /* ══ FAQ – DARK ══ */
-    .fh-faq { background: var(--bg); padding: 64px 0; }
+    /* ══════════════════════════════
+       FAQ – Light Clean
+       ══════════════════════════════ */
+    .fh-faq { background: var(--bg); padding: 80px 0; }
     .fh-faq-inner { max-width: 740px; margin: 0 auto; padding: 0 20px; }
     .fh-faq-title {
       font-family: var(--font-display);
       font-size: clamp(24px, 3vw, 30px); font-weight: 800;
-      text-align: center; margin-bottom: 28px; letter-spacing: -.02em; color: #fff;
+      text-align: center; margin-bottom: 32px;
+      letter-spacing: -.02em; color: var(--ink);
     }
+    .fh-faq-title span { color: var(--brand); }
     details {
-      background: var(--bg-alt); border: 1px solid var(--border);
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
       border-radius: var(--r); margin-bottom: 8px; overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow .2s;
     }
+    details[open] { box-shadow: 0 4px 24px rgba(113,131,245,.1); border-color: var(--brand); }
     summary {
-      padding: 16px 20px; font-size: 15px; font-weight: 600; color: #fff;
+      padding: 18px 22px; font-size: 15px; font-weight: 600; color: var(--ink);
       cursor: pointer; list-style: none;
       display: flex; justify-content: space-between; align-items: center; gap: 12px;
       transition: background .15s; -webkit-tap-highlight-color: transparent;
     }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--brand); flex-shrink: 0; }
+    summary::after {
+      content: '+'; font-size: 22px; font-weight: 300;
+      color: var(--brand); flex-shrink: 0; transition: transform .2s;
+    }
     details[open] summary::after { content: '−'; }
-    summary:hover { background: rgba(255,255,255,.03); }
-    details p { padding: 0 20px 16px; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    summary:hover { background: var(--bg-alt); }
+    details p { padding: 0 22px 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 
-    /* ══ NEWSLETTER CTA ══ */
+    /* ══════════════════════════════
+       NEWSLETTER CTA – Light Brand
+       ══════════════════════════════ */
     .fh-cta-section {
-      position: relative; padding: 72px 0; text-align: center; overflow: hidden;
-      background: linear-gradient(135deg, #111528 0%, #1a1040 50%, #111528 100%);
+      position: relative; padding: 80px 0; text-align: center; overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-alt) 0%, #EEEFFE 40%, #FDE8F5 100%);
+      border-top: 1.5px solid var(--border);
     }
     .fh-cta-section::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at center, rgba(244,113,180,.08), transparent 70%);
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(113,131,245,.08), transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(245,113,180,.06), transparent 60%);
+      pointer-events: none;
     }
     .fh-cta-content { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; padding: 0 20px; }
     .fh-cta-title {
-      font-family: var(--font-display); font-size: 30px; font-weight: 800;
-      margin-bottom: 10px; color: #fff;
+      font-family: var(--font-display); font-size: clamp(26px, 4vw, 34px); font-weight: 800;
+      letter-spacing: -.02em; margin-bottom: 10px; color: var(--ink);
     }
     .fh-cta-sub {
-      color: rgba(255,255,255,.55); font-size: 15px; margin-bottom: 28px; line-height: 1.6;
+      font-size: 15px; color: var(--muted); margin-bottom: 28px; line-height: 1.6;
     }
     .fh-cta-form { display: flex; gap: 10px; }
     .fh-cta-form input {
-      flex: 1; padding: 13px 18px; border-radius: var(--r);
-      border: 1.5px solid rgba(255,255,255,.12); background: rgba(255,255,255,.06);
-      color: #fff; font-size: 14px; font-weight: 500; font-family: var(--font-body);
-      outline: none; backdrop-filter: blur(8px);
+      flex: 1; background: #fff; border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 12px 16px; font-family: var(--font-body);
+      font-size: 14px; color: var(--ink); outline: none;
+      transition: border-color .2s, box-shadow .2s;
     }
-    .fh-cta-form input::placeholder { color: rgba(255,255,255,.35); }
-    .fh-cta-form input:focus { border-color: var(--pink); }
+    .fh-cta-form input::placeholder { color: var(--muted); }
+    .fh-cta-form input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(113,131,245,.15); }
     .fh-cta-form button {
-      padding: 13px 24px; border-radius: var(--r); border: none;
-      background: linear-gradient(135deg, var(--pink), var(--brand));
-      color: #fff; font-size: 14px; font-weight: 800;
-      font-family: var(--font-display); cursor: pointer;
-      transition: all .25s; box-shadow: 0 4px 18px rgba(244,113,180,.3);
-      white-space: nowrap;
+      background: linear-gradient(135deg, var(--brand), var(--pink));
+      color: #fff; border: none; border-radius: 12px; padding: 12px 22px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: transform .15s, box-shadow .2s;
+      box-shadow: var(--shadow-brand);
     }
-    .fh-cta-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,113,180,.4); }
-    .fh-cta-note { color: rgba(255,255,255,.3); font-size: 11px; margin-top: 14px; }
+    .fh-cta-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,113,180,.3); }
+    .fh-cta-note { color: var(--muted); font-size: 11px; margin-top: 14px; }
 
-    /* ══ FOOTER – DARK ══ */
-    footer {
-      background: #080a12; color: rgba(255,255,255,.45);
-      padding: 48px 20px; border-top: 1px solid var(--border);
-    }
+    /* ══════════════════════════════
+       FOOTER – stays dark
+       ══════════════════════════════ */
+    footer { background: var(--bg-hero); padding: 56px 20px; }
     .fh-footer-inner {
       max-width: 1160px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: flex-start;
+      display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;
     }
-    .fh-footer-brand { display: flex; flex-direction: column; gap: 10px; }
-    .fh-footer-brand img { height: 24px; opacity: .6; }
-    .fh-footer-brand p { font-size: 13px; max-width: 260px; line-height: 1.5; }
+    .fh-footer-brand { display:flex; align-items:center; gap:14px; }
+    .fh-footer-brand img { height: 24px; opacity: .7; }
+    .fh-footer-brand p { font-size: 13px; max-width: 260px; line-height: 1.5; color: rgba(255,255,255,.4); }
     .fh-footer-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; font-size: 13px; }
     .fh-footer-links a { color: rgba(255,255,255,.4); transition: color .2s; }
     .fh-footer-links a:hover { color: #fff; }
     .fh-footer-bottom {
       width: 100%; border-top: 1px solid rgba(255,255,255,.06); padding-top: 20px; margin-top: 8px;
       display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: 12px;
+      color: rgba(255,255,255,.3);
     }
-    .fh-footer-transp { color: rgba(255,255,255,.25); }
+    .fh-footer-transp { color: rgba(255,255,255,.22); }
 
     /* ══════════════════════════════
        RESPONSIVE
@@ -518,12 +538,11 @@
       .fh-hero-col-right { display: none; }
       .fh-plany-float img { height: 80px; }
       .fh-hero-h1 { min-height: auto; }
-      .fh-romance-inner { grid-template-columns: 1fr; gap: 28px; }
+      .fh-romance-inner { grid-template-columns: 1fr; gap: 32px; }
       .fh-romance-fig { position: static; }
       .fh-trust-item:nth-child(n+4) { display: none; }
     }
     @media(max-width:480px) {
-      .fh-section { padding: 44px 0; }
       .fh-hero-h1 { font-size: 38px; }
       .fh-dpill { padding: 6px 12px; font-size: 12px; }
       .fh-loc-row { flex-direction: column; }
@@ -534,41 +553,36 @@
       .fh-plany-float img { height: 60px; }
       footer { padding: 36px 16px; }
       .fh-cta-form { flex-direction: column; }
+      .fh-faq { padding: 56px 0; }
+      .fh-romance { padding: 56px 0; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     HEADER
-     ══════════════════════════════════════════ -->
+<!-- ══ HEADER ══ -->
 <header class="fh-header">
   <div class="fh-hdr">
     <a href="/" class="fh-brand" aria-label="fliegheute.de – Startseite">
       <img src="/assets/logo-plany-header.svg" alt="fliegheute.de" width="120" height="28">
     </a>
     <nav class="fh-nav" aria-label="Hauptnavigation">
-      <a href="#deals">Live Deals</a>
-      <a href="#kalender">Kalender</a>
-      <a href="#faq">Hilfe</a>
-      <a href="#newsletter" class="fh-nav-cta">Alerts ✈</a>
+      <a href="#story">Unsere Story</a>
+      <a href="#faq">FAQ</a>
+      <a href="#newsletter" class="fh-nav-cta">Deal-Alerts ✈</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- ══════════════════════════════════════════
-     HERO
-     ══════════════════════════════════════════ -->
+<!-- ══ HERO ══ -->
 <section class="fh-hero-wrap" id="hero" aria-label="Flugsuche Last-Minute">
   <div class="hero-layer active" id="hero-layer-a" role="img" aria-label="Hero Hintergrundbild"></div>
   <div class="hero-layer" id="hero-layer-b"></div>
   <div class="fh-hero-overlay" aria-hidden="true"></div>
 
   <div class="fh-hero-inner">
-
-    <!-- Full-width top: Text + Plany side by side -->
     <div class="fh-hero-top">
       <div class="fh-hero-top-text">
         <div class="fh-live-badge">
@@ -583,11 +597,19 @@
       </div>
     </div>
 
-    <!-- Two-column row: Search left, Board right -->
     <div class="fh-hero-cols">
       <div class="fh-hero-col-left">
         <div class="fh-search" aria-label="Flugsuche Formular">
-          <!-- Row 1: Toggles -->
+          <!-- Kopfzeile: Label + Live-Zeitanzeige -->
+          <div class="fh-search-hdr">
+            <span class="fh-search-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Last-Minute-Deals
+            </span>
+            <div class="fh-zeitanzeige" id="fh-zeitanzeige">
+              Abflug bis ~<strong id="fh-zeit-val">—</strong>
+            </div>
+          </div>
           <div class="fh-pill-row">
             <div class="fh-pill">
               <input type="radio" name="fh-trip" id="fh-ow" value="ow" checked>
@@ -602,7 +624,6 @@
               <label for="fh-mc">Kalender</label>
             </div>
           </div>
-          <!-- Row 2: Origin / Dest -->
           <div class="fh-loc-row">
             <div class="fh-loc-wrap">
               <div class="fh-lfield">
@@ -626,7 +647,6 @@
               <input type="hidden" id="fh-di">
             </div>
           </div>
-          <!-- Row 3: Slider (Spontan mode) -->
           <div class="fh-slider-wrap" id="fh-slider-panel">
             <div class="fh-slider-track">
               <div class="fh-bubble" id="fh-bubble">24h bis Abflug</div>
@@ -635,7 +655,6 @@
             </div>
             <div class="fh-slider-lbls"><span>1h</span><span>24h</span><span>48h</span><span>72h</span></div>
           </div>
-          <!-- Row 3b: Calendar (Kalender mode) -->
           <div class="fh-cal" id="fh-cal">
             <div class="fh-cal-hdr">
               <button class="fh-cal-nav" id="fh-cprev" type="button">&#8249;</button>
@@ -648,7 +667,6 @@
               <div class="fh-cal-chip" id="fh-chip-to" style="display:none">Rückkehr wählen</div>
             </div>
           </div>
-          <!-- Row 4: Pax + Search -->
           <div class="fh-bottom-row">
             <div class="fh-pax-new">
               <div class="fh-pax-grp">
@@ -671,7 +689,7 @@
             </button>
           </div>
         </div>
-        <p class="fh-widget-trust">✅ Kein Aufpreis &nbsp;·&nbsp; ✅ Direktbuchung &nbsp;·&nbsp; ✅ Gratis</p>
+        <!-- trust proofs jetzt in der Banderole unter dem Hero -->
       </div>
       <div class="fh-hero-col-right">
         <div class="fh-board" role="region" aria-label="Abflugtafel heute">
@@ -684,7 +702,6 @@
       </div>
     </div>
 
-    <!-- Destination Pills below both -->
     <div class="fh-dest-pills" role="group" aria-label="Reisestimmung wählen">
       <button class="fh-dpill active" data-hero="0" type="button" aria-pressed="true">
         <span class="pi">🌊</span> Mallorca
@@ -696,55 +713,21 @@
         <span class="pi">🏔️</span> Outdoors
       </button>
     </div>
-
   </div>
 </section>
 
 <!-- ══ TRUST BAR ══ -->
 <div class="fh-trust" role="complementary">
   <div class="fh-trust-inner">
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Echte Preise, live</div>
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Aufpreis</div>
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Direkt zur Buchung</div>
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kostenlos</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Aufpreis – nie</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Direkt beim Anbieter buchen</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Account nötig</div>
+    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Last-Minute-Spezialist</div>
   </div>
 </div>
 
-<!-- ══ SCHEDULE WIDGET ══ -->
-<section class="fh-section" id="deals" aria-labelledby="deals-title">
-  <div class="fh-section-inner">
-    <div class="fh-section-hdr fh-reveal">
-      <div class="fh-kicker">🔴 Jetzt abfliegen</div>
-      <h2 class="fh-section-title" id="deals-title">Live-Abflüge <span>von Frankfurt</span></h2>
-      <p class="fh-section-sub">Echte Verbindungen der nächsten Stunden – klick und buch direkt.</p>
-    </div>
-    <div class="fh-widget-wrap fh-reveal">
-      <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&color_button=%237183f5&target_host=www.aviasales.at%2Fsearch&locale=de&powered_by=false&origin=FRA&destination=LON&with_fallback=true&non_direct_flights=true&min_lines=5&border_radius=18&color_background=%23EDEDEd&color_text=%23000000&color_border=%23FFFFFF&promo_id=2811&campaign_id=100" charset="utf-8"></script>
-    </div>
-  </div>
-</section>
-
-<!-- Plany Divider -->
-<div class="fh-plany-divider" aria-hidden="true">
-  <img src="/assets/logo-plany-mascot.svg" alt="" height="72" loading="lazy">
-</div>
-
-<!-- ══ CALENDAR WIDGET ══ -->
-<section class="fh-section" id="kalender" style="background:var(--bg-alt);" aria-labelledby="cal-title">
-  <div class="fh-section-inner">
-    <div class="fh-section-hdr fh-reveal">
-      <div class="fh-kicker">📅 Flexibel planen</div>
-      <h2 class="fh-section-title" id="cal-title">Wann fliegst du am <span>günstigsten?</span></h2>
-      <p class="fh-section-sub">Sieh auf einen Blick die besten Preise direkt im Kalender.</p>
-    </div>
-    <div class="fh-widget-wrap fh-reveal">
-      <script async src="https://tpwgt.com/content?currency=eur&trs=463063&shmarker=676139&searchUrl=www.aviasales.at%2Fsearch&locale=de&powered_by=false&origin=FKB&destination=PXO&one_way=false&only_direct=true&period=year&range=7%2C14&primary=%237183f5&color_background=%23EDEDEd&dark=%23000000&light=%23FFFFFF&achieve=%2345AD35&border_radius=18&promo_id=4041&campaign_id=100" charset="utf-8"></script>
-    </div>
-  </div>
-</section>
-
-<!-- ══ GRACE & SAM – SEO TEXT (Dark) ══ -->
-<section class="fh-romance" aria-labelledby="romance-title">
+<!-- ══ GRACE & SAM – SEO TEXT ══ -->
+<section class="fh-romance" id="story" aria-labelledby="romance-title">
   <div class="fh-romance-inner">
     <figure class="fh-romance-fig fh-reveal">
       <img src="/assets/cluster-flights-romance.webp" alt="Grace und Sam am Flughafen – Last-Minute-Reise" width="320" height="400" loading="lazy">
@@ -764,7 +747,7 @@
 <!-- ══ FAQ ══ -->
 <section class="fh-faq" id="faq" aria-labelledby="faq-title">
   <div class="fh-faq-inner">
-    <h2 class="fh-faq-title" id="faq-title">Häufige Fragen</h2>
+    <h2 class="fh-faq-title" id="faq-title">Häufige <span>Fragen</span></h2>
     <details>
       <summary>Was muss ich wissen, bevor ich einen Flug buche?</summary>
       <p>Reisedokumente prüfen, Gepäckregeln der Airline beachten und auf mögliche Zusatzkosten (Gebühren, Transfers) achten. Bei Last-Minute-Flügen empfiehlt sich Handgepäck für maximale Flexibilität.</p>
@@ -791,7 +774,7 @@
 <!-- ══ NEWSLETTER CTA ══ -->
 <section class="fh-cta-section" id="newsletter">
   <div class="fh-cta-content">
-    <img src="/assets/logo-plany-mascot.svg" alt="" height="70" loading="lazy" style="margin:0 auto 18px; animation:planyFloat 3.5s ease-in-out infinite; filter:drop-shadow(0 6px 20px rgba(113,131,245,.35));" aria-hidden="true">
+    <img src="/assets/logo-plany-mascot.svg" alt="" height="70" loading="lazy" style="margin:0 auto 18px; animation:planyFloat 3.5s ease-in-out infinite; filter:drop-shadow(0 6px 20px rgba(113,131,245,.3));" aria-hidden="true">
     <h2 class="fh-cta-title">Deals direkt ins Postfach?</h2>
     <p class="fh-cta-sub">Die besten Last-Minute-Angebote bevor sie weg sind. Kein Spam – nur Deals.</p>
     <div class="fh-cta-form" role="form" aria-label="Newsletter Anmeldung">
@@ -815,7 +798,7 @@
       <a href="/impressum.html">Impressum</a>
       <a href="/datenschutz.html">Datenschutz</a>
       <a href="/disclaimer.html">Disclaimer</a>
-      <a href="#">Kontakt</a>
+      <a href="#newsletter">Kontakt</a>
     </nav>
     <div class="fh-footer-bottom">
       <span>© <span id="fh-year"></span> fliegheute.de – Alle Rechte vorbehalten</span>
@@ -824,24 +807,19 @@
   </div>
 </footer>
 
-<!-- ══════════════════════════════════════════
-     JAVASCRIPT
-     ══════════════════════════════════════════ -->
+<!-- ══ JAVASCRIPT (unverändert) ══ -->
 <script>
 (function(){
   'use strict';
 
-  // Jahr
   document.getElementById('fh-year').textContent = new Date().getFullYear();
 
-  // Uhr
   function tick(){
     var el=document.getElementById('fh-clock');
     if(el) el.textContent=new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
   }
   tick(); setInterval(tick,1000);
 
-  // Departure Board – Wochentag + Datum + Uhrzeit
   var now=new Date();
   var WDAYS=['So','Mo','Di','Mi','Do','Fr','Sa'];
   var todayLabel = WDAYS[now.getDay()] + ', ' + now.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});
@@ -869,15 +847,23 @@
     }).join('');
   }
 
-  // Hero data + Crossfade
   var HEROES=[
-    {title:'Flieg.<br><em>Heute.</em>',         sub:'Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.',
+    {title:'Flieg.<br><em>Heute.</em>',
+     sub:'Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.',
+     origin:{iata:'FRA', name:'Frankfurt am Main (FRA)'},
+     dest:{iata:'PMI', name:'Palma de Mallorca (PMI)'},
      d1x:'assets/hero-mallorca-desktop@1x.webp', d2x:'assets/hero-mallorca-desktop@2x.webp',
      m1x:'assets/hero-mallorca-mobile@1x.webp',  m2x:'assets/hero-mallorca-mobile@2x.webp'},
-    {title:'Raus-Atmen.<br><em>The City.</em>',  sub:'Kultur, Flair und günstige Flüge nach London.',
+    {title:'Raus-Atmen.<br><em>The City.</em>',
+     sub:'Kultur, Flair und günstige Flüge nach London.',
+     origin:{iata:'FRA', name:'Frankfurt am Main (FRA)'},
+     dest:{iata:'LON', name:'London (LON)'},
      d1x:'assets/hero-london-desktop@1x.webp',   d2x:'assets/hero-london-desktop@2x.webp',
      m1x:'assets/hero-london-mobile@1x.webp',    m2x:'assets/hero-london-mobile@2x.webp'},
-    {title:'Raus-Atmen.<br><em>Discovery beginnt hier.</em>', sub:'Berge, Natur und spontane Freiheit – heute noch weg.',
+    {title:'Raus-Atmen.<br><em>Discovery beginnt hier.</em>',
+     sub:'Berge, Natur und spontane Freiheit – heute noch weg.',
+     origin:{iata:'MUC', name:'München (MUC)'},
+     dest:{iata:'INN', name:'Innsbruck (INN)'},
      d1x:'assets/hero-bergsee-desktop@1x.webp',  d2x:'assets/hero-bergsee-desktop@2x.webp',
      m1x:'assets/hero-bergsee-mobile@1x.webp',   m2x:'assets/hero-bergsee-mobile@2x.webp'},
   ];
@@ -892,7 +878,6 @@
     var mob=window.innerWidth<800, hi=window.devicePixelRatio>1;
     return mob?(hi?h.m2x:h.m1x):(hi?h.d2x:h.d1x);
   }
-  // Preload all hero images
   HEROES.forEach(function(h){[h.d1x,h.d2x,h.m1x,h.m2x].forEach(function(s){var i=new Image();i.src=s;});});
 
   var switching=false;
@@ -903,25 +888,29 @@
     var h=HEROES[idx];
     var next=(activeLyr+1)%2;
     var lyrs=[lyrA,lyrB];
-
-    // Set image + crossfade (works even if image 404s – just shows overlay)
     lyrs[next].style.backgroundImage='url("'+getSrc(h)+'")';
     lyrs[next].classList.add('active');
     lyrs[activeLyr].classList.remove('active');
     activeLyr=next;
-
-    // Update text immediately (fixed-height container prevents jump)
     if(h1El) h1El.innerHTML=h.title;
     if(subEl) subEl.innerHTML=h.sub;
     cur=idx;
-
+    // Pills → Suchfeld vorausfüllen
+    if(h.origin && h.dest){
+      var oi=document.getElementById('fh-origin');
+      var di=document.getElementById('fh-dest');
+      var oib=document.getElementById('fh-ob');
+      var dib=document.getElementById('fh-db');
+      var oih=document.getElementById('fh-oi');
+      var dih=document.getElementById('fh-di');
+      if(oi){ oi.value=h.origin.name; oib.textContent=h.origin.iata; oib.style.display='block'; oih.value=h.origin.iata; selO.iata=h.origin.iata; selO.name=h.origin.name; }
+      if(di){ di.value=h.dest.name;   dib.textContent=h.dest.iata;   dib.style.display='block'; dih.value=h.dest.iata;   selD.iata=h.dest.iata;   selD.name=h.dest.name;   }
+    }
     document.querySelectorAll('.fh-dpill').forEach(function(p){
       var a=parseInt(p.dataset.hero)===idx;
       p.classList.toggle('active',a);
       p.setAttribute('aria-pressed',a?'true':'false');
     });
-
-    // Unlock after CSS transition completes
     setTimeout(function(){ switching=false; }, 1500);
   }
 
@@ -936,7 +925,6 @@
   setHero(0);
   var timer=setInterval(function(){setHero((cur+1)%HEROES.length);},9000);
 
-  // Resize: correct resolution
   var resizeTimer;
   window.addEventListener('resize',function(){
     clearTimeout(resizeTimer);
@@ -954,9 +942,7 @@
     els.forEach(function(el){el.classList.add('visible');});
   }
 
-  // ══════════════════════════════════════════
-  // SEARCH FORM – Brücke zu White Label
-  // ══════════════════════════════════════════
+  // Search Form
   var WHITE_LABEL = 'https://suche.fliegheute.de';
   var AC_API = 'https://autocomplete.travelpayouts.com/places2';
 
@@ -971,6 +957,15 @@
   }
   function col(){return lerp('#7183f5','#f571b4',(+sl.value-1)/71);}
 
+  function updZeitanzeige(stunden){
+    var ziel=new Date(Date.now()+stunden*3600000);
+    var heute=new Date();
+    var tag=ziel.getDate()===heute.getDate()?'heute':(ziel.getDate()===heute.getDate()+1?'morgen':'übermorgen');
+    var uhr=ziel.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr';
+    var lbl=document.getElementById('fh-zeitanzeige');
+    if(lbl) lbl.innerHTML='Abflug '+tag+' bis ~<strong>'+uhr+'</strong>';
+  }
+
   function updSlider(){
     var pct=(+sl.value-1)/71, tw=sl.offsetWidth;
     var bub=document.getElementById('fh-bubble');
@@ -978,6 +973,7 @@
     var c=col();
     tst2.textContent='.fh-range::-webkit-slider-thumb{border-color:'+c+'!important;}';
     if(go){go.style.background=c; go.style.boxShadow='0 4px 14px '+c+'55';}
+    updZeitanzeige(+sl.value);
   }
   if(sl){
     sl.addEventListener('input',updSlider);
@@ -985,7 +981,6 @@
     setTimeout(updSlider,50);
   }
 
-  // Mode toggle (Spontan ↔ Kalender)
   document.querySelectorAll('input[name="fh-mode"]').forEach(function(r){
     r.addEventListener('change',function(){
       var isCal=r.value==='c';
@@ -995,7 +990,6 @@
     });
   });
 
-  // Trip toggle (One-Way ↔ Hin & Rück)
   document.querySelectorAll('input[name="fh-trip"]').forEach(function(r){
     r.addEventListener('change',function(){
       var rt=r.value==='rt';
@@ -1005,7 +999,6 @@
     });
   });
 
-  // Autocomplete (Travelpayouts API)
   var acTimers={}, selO={iata:'',name:''}, selD={iata:'',name:''};
   function setupAC(iid,acid,bid,hid,store){
     var inp=document.getElementById(iid), ac=document.getElementById(acid);
@@ -1048,12 +1041,20 @@
       else if(e.key==='Enter'&&fi>=0){var el=its[fi];pickAC(el.dataset.iata,el.dataset.name);e.preventDefault();}
       else if(e.key==='Escape'){ac.classList.remove('open');}
     });
+    inp.addEventListener('blur',function(){
+      setTimeout(function(){
+        if(!store.iata){
+          var first=ac.querySelector('.fh-ac-item');
+          if(first) pickAC(first.dataset.iata,first.dataset.name);
+        }
+        ac.classList.remove('open');
+      },200);
+    });
     document.addEventListener('click',function(e){if(!ac.contains(e.target)&&e.target!==inp)ac.classList.remove('open');});
   }
   setupAC('fh-origin','fh-oac','fh-ob','fh-oi',selO);
   setupAC('fh-dest','fh-dac','fh-db','fh-di',selD);
 
-  // Swap
   document.getElementById('fh-swap').addEventListener('click',function(){
     var oi=document.getElementById('fh-origin'),di=document.getElementById('fh-dest');
     var ob=document.getElementById('fh-ob'),db=document.getElementById('fh-db');
@@ -1065,7 +1066,6 @@
     document.getElementById('fh-di').value=selD.iata;
   });
 
-  // Pax Counters
   var pax={a:1,k:0};
   document.querySelectorAll('.fh-cbtn').forEach(function(b){
     b.addEventListener('click',function(){
@@ -1076,7 +1076,6 @@
     });
   });
 
-  // Calendar
   var cy,cm,selStart=null,selEnd=null,pickEnd=false;
   var MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
   var DOWS=['Mo','Di','Mi','Do','Fr','Sa','So'];
@@ -1131,42 +1130,31 @@
   document.getElementById('fh-cprev').addEventListener('click',function(){cm--;if(cm<0){cm=11;cy--;}renderCal();});
   document.getElementById('fh-cnext').addEventListener('click',function(){cm++;if(cm>11){cm=0;cy++;}renderCal();});
 
-  // ═══ SEARCH → Deep-Link zu White Label ═══
   go.addEventListener('click',function(){
     var origin=document.getElementById('fh-oi').value||selO.iata;
     if(!origin){document.getElementById('fh-origin').focus();return;}
-    var dest=document.getElementById('fh-di').value||selD.iata;
-    if(!dest){document.getElementById('fh-dest').focus();return;}
-
+    var dest=document.getElementById("fh-di").value||selD.iata||"";
     var mode=document.querySelector('input[name="fh-mode"]:checked').value;
     var depDate, retDate=null;
-
     if(mode==='s'){
       depDate=new Date(Date.now()+(+sl.value)*3600000).toISOString().slice(0,10);
     } else {
       depDate=selStart?selStart.toISOString().slice(0,10):new Date().toISOString().slice(0,10);
       if(selEnd) retDate=selEnd.toISOString().slice(0,10);
     }
-
-    // UI feedback
     go.disabled=true;
     document.getElementById('fh-spin').style.display='block';
     document.getElementById('fh-sico').style.display='none';
     document.getElementById('fh-slbl').textContent='Leite weiter…';
-
-    // Build Travelpayouts White Label deep-link
     var url=WHITE_LABEL+'/flights/?origin_iata='+origin
-      +'&destination_iata='+dest
+      +(dest?'&destination_iata='+dest:'')
       +'&depart_date='+depDate
       +'&adults='+pax.a
       +'&children='+pax.k
       +'&infants=0'
       +'&trip_class=0';
     if(retDate) url+='&return_date='+retDate;
-
     window.location.href=url;
-
-    // Fallback reset
     setTimeout(function(){
       go.disabled=false;
       document.getElementById('fh-spin').style.display='none';
