@@ -225,30 +225,30 @@
 
     /* Departure board */
     .fh-board {
-      background: rgba(11,11,19,.72);
-      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.97);
+      border: 1.5px solid rgba(113,131,245,.15);
       border-radius: var(--r); padding: 14px 16px;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 40px rgba(11,11,19,.18);
       width: 100%; flex: 1;
     }
     .fh-board-hdr {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 10px;
     }
-    .fh-board-lbl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .fh-board-lbl { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
     .fh-board-clock { font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--pink); letter-spacing: .06em; }
     .fh-board-rows { display: flex; flex-direction: column; gap: 1px; }
-    .fh-board-sep { height: 1px; background: rgba(255,255,255,.05); margin: 2px 0; }
+    .fh-board-sep { height: 1px; background: var(--border); margin: 2px 0; }
     .fh-board-row {
       display: grid; grid-template-columns: 50px 1fr 36px 56px;
       align-items: center; gap: 8px; padding: 6px 6px; border-radius: 8px;
       transition: background .15s; cursor: pointer;
     }
-    .fh-board-row:hover { background: rgba(255,255,255,.06); }
+    .fh-board-row:hover { background: var(--bg-alt); }
     .fh-board-time { font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--brand); }
-    .fh-board-dest { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .fh-board-al { font-size: 10px; color: rgba(255,255,255,.35); font-family: var(--font-mono); }
-    .fh-board-price { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: var(--green); text-align: right; white-space: nowrap; }
+    .fh-board-dest { font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fh-board-al { font-size: 10px; color: var(--muted); font-family: var(--font-mono); }
+    .fh-board-price { font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #0f8d54; text-align: right; white-space: nowrap; }
 
     /* Destination pills */
     .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -269,76 +269,86 @@
     }
     .fh-dpill .pi { font-size: 16px; }
 
-    /* ══ SEARCH FORM (dark glass, inside dark hero) ══ */
+    /* ══ SEARCH FORM – light card ══ */
     .fh-search {
-      background: rgba(11,11,19,.72); border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.97); border: 1.5px solid rgba(113,131,245,.15);
       border-radius: var(--r); padding: 16px; display: grid; gap: 12px;
-      backdrop-filter: blur(10px); width: 100%;
+      box-shadow: 0 8px 40px rgba(11,11,19,.18); width: 100%;
     }
     /* Kopfzeile Suchfeld: Titel links, Zeitanzeige rechts */
     .fh-search-hdr {
       display: flex; align-items: center; justify-content: space-between; gap: 8px;
     }
     .fh-search-title {
-      font-size: 12px; font-weight: 700; color: rgba(255,255,255,.55);
+      font-size: 12px; font-weight: 700; color: var(--muted);
       text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; gap: 6px;
     }
-    .fh-search-title svg { opacity: .6; }
+    .fh-search-title svg { opacity: .5; }
     .fh-zeitanzeige {
       font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-      color: rgba(255,255,255,.4); background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
+      color: var(--muted); background: var(--bg-alt);
+      border: 1.5px solid var(--border); border-radius: 8px;
       padding: 4px 10px; white-space: nowrap; text-align: right; line-height: 1.4;
       transition: color .3s;
     }
-    .fh-zeitanzeige strong { color: var(--pink); display: block; font-size: 13px; }
+    .fh-zeitanzeige strong { color: var(--brand); display: block; font-size: 13px; }
     .fh-pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .fh-pill { display:flex; gap:2px; background:rgba(255,255,255,.08); border-radius:999px; padding:3px; }
+    .fh-pill { display:flex; gap:2px; background:var(--bg-alt); border-radius:999px; padding:3px; border:1.5px solid var(--border); }
     .fh-pill input { display:none; }
-    .fh-pill label { padding:5px 14px; border-radius:999px; font-size:12px; font-weight:700; color:rgba(255,255,255,.55); cursor:pointer; transition:all .2s; }
-    .fh-pill input:checked + label { background:rgba(255,255,255,.15); color:#fff; }
+    .fh-pill label { padding:5px 14px; border-radius:999px; font-size:12px; font-weight:700; color:var(--muted); cursor:pointer; transition:all .2s; }
+    .fh-pill input:checked + label { background:#fff; color:var(--ink); box-shadow:0 1px 6px rgba(11,11,19,.1); }
 
     .fh-loc-row { display:flex; gap:8px; align-items:stretch; position:relative; }
     .fh-loc-wrap { flex:1; position:relative; }
-    .fh-lfield { background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.1); border-radius:10px; padding:10px 12px; cursor:text; transition:border-color .2s, background .2s; }
-    .fh-lfield:focus-within { border-color:var(--brand); background:rgba(113,131,245,.08); }
-    .fh-lfield label { display:block; font-size:10px; font-weight:700; color:rgba(255,255,255,.4); text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
-    .fh-lfield input { width:100%; border:none; outline:none; background:transparent; font-family:var(--font-body); font-size:15px; font-weight:500; color:#fff; }
-    .fh-lfield input::placeholder { color:rgba(255,255,255,.3); font-weight:400; }
+    .fh-lfield { background:var(--bg-alt); border:1.5px solid var(--border); border-radius:10px; padding:10px 12px; cursor:text; transition:border-color .2s, background .2s; }
+    .fh-lfield:focus-within { border-color:var(--brand); background:#fff; box-shadow:0 0 0 3px rgba(113,131,245,.1); }
+    .fh-lfield label { display:block; font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+    .fh-lfield input { width:100%; border:none; outline:none; background:transparent; font-family:var(--font-body); font-size:15px; font-weight:500; color:var(--ink); }
+    .fh-lfield input::placeholder { color:#b5b9d0; font-weight:400; }
     .fh-iata { position:absolute; top:10px; right:8px; background:var(--brand); color:#fff; font-size:10px; font-weight:800; padding:2px 6px; border-radius:6px; display:none; }
 
-    .fh-ac { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#1a1d2e; border-radius:10px; box-shadow:0 8px 32px rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.1); z-index:200; display:none; overflow:hidden; }
+    .fh-ac { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border-radius:10px; box-shadow:0 8px 32px rgba(11,11,19,.14); border:1.5px solid var(--border); z-index:200; display:none; overflow:hidden; }
     .fh-ac.open { display:block; }
     .fh-ac-item { display:flex; align-items:center; gap:10px; padding:9px 12px; cursor:pointer; transition:background .1s; }
-    .fh-ac-item:hover,.fh-ac-item.focused { background:rgba(113,131,245,.15); }
+    .fh-ac-item:hover,.fh-ac-item.focused { background:var(--bg-alt); }
     .fh-ac-iata { font-family:var(--font-mono); font-size:13px; font-weight:800; color:var(--brand); min-width:34px; }
-    .fh-ac-name { font-size:13px; font-weight:500; color:rgba(255,255,255,.85); }
-    .fh-ac-cty { font-size:11px; color:rgba(255,255,255,.3); margin-left:auto; }
+    .fh-ac-name { font-size:13px; font-weight:500; color:var(--ink); }
+    .fh-ac-cty { font-size:11px; color:var(--muted); margin-left:auto; }
 
     .fh-swap-btn {
-      background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.12); border-radius: 10px;
-      color: rgba(255,255,255,.5); width: 38px; flex-shrink: 0; cursor: pointer;
+      background: var(--bg-alt); border: 1.5px solid var(--border); border-radius: 10px;
+      color: var(--muted); width: 38px; flex-shrink: 0; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: all .2s; align-self: stretch;
     }
-    .fh-swap-btn:hover { background: rgba(255,255,255,.14); color: #fff; }
+    .fh-swap-btn:hover { background: var(--brand); border-color:var(--brand); color: #fff; }
 
     .fh-slider-wrap { padding: 6px 2px 0; }
-    .fh-slider-track { position:relative; height:36px; }
+    .fh-slider-track { position:relative; height:56px; }
     .fh-bubble {
       position:absolute; top:0; transform:translateX(-50%);
       background:var(--brand); color:#fff; font-size:11px; font-weight:700;
-      padding:3px 10px; border-radius:999px; white-space:nowrap; pointer-events:none;
-      transition:left .05s linear;
+      padding:5px 12px; border-radius:999px; white-space:nowrap; pointer-events:none;
+      transition:left .05s linear, background .2s;
+      box-shadow: 0 0 12px 3px rgba(113,131,245,.4);
+      display:flex; align-items:center; gap:5px;
     }
-    .fh-track-bg { position:absolute; bottom:4px; left:17px; right:17px; height:4px; background:rgba(255,255,255,.12); border-radius:2px; }
+    .fh-bubble::after {
+      content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%) rotate(45deg);
+      width:7px; height:7px; background:inherit;
+      border-right:1.5px solid rgba(255,255,255,.1); border-bottom:1.5px solid rgba(255,255,255,.1);
+    }
+    .fh-track-bg {
+      position:absolute; bottom:16px; left:11px; right:11px; height:5px;
+      background:linear-gradient(to right,#7183f5,#f571b4); border-radius:99px;
+    }
     .fh-range {
-      position:absolute; bottom:0; left:0; right:0; width:100%;
-      -webkit-appearance:none; appearance:none; height:24px; background:transparent; cursor:pointer;
+      position:absolute; bottom:6px; left:0; right:0; width:100%;
+      -webkit-appearance:none; appearance:none; height:20px; background:transparent; cursor:pointer;
     }
-    .fh-range::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:#fff; border:3px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.3); transition:border-color .2s; }
-    .fh-range::-moz-range-thumb { width:22px; height:22px; border-radius:50%; background:#fff; border:3px solid var(--brand); box-shadow:0 2px 8px rgba(0,0,0,.3); }
-    .fh-slider-lbls { display:flex; justify-content:space-between; font-size:10px; color:rgba(255,255,255,.3); font-weight:700; letter-spacing:.04em; margin-top:4px; padding:0 14px; }
+    .fh-range::-webkit-slider-thumb { -webkit-appearance:none; width:26px; height:16px; border-radius:999px; background:#fff; border:2.5px solid var(--brand); box-shadow:0 2px 10px rgba(113,131,245,.45); transition:border-color .2s; cursor:grab; }
+    .fh-range::-moz-range-thumb { width:26px; height:16px; border-radius:999px; background:#fff; border:2.5px solid var(--brand); box-shadow:0 2px 10px rgba(113,131,245,.45); }
+    .fh-slider-lbls { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.04em; margin-top:2px; padding:0 11px; }
 
     /* Calendar */
     .fh-cal { display:none; }
@@ -358,12 +368,12 @@
     .fh-cal-chip.filled { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); color:#fff; }
 
     .fh-bottom-row { display:flex; align-items:center; gap:12px; }
-    .fh-pax-new { display:flex; gap:16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:8px 14px; flex:1; }
+    .fh-pax-new { display:flex; gap:16px; background:var(--bg-alt); border:1.5px solid var(--border); border-radius:10px; padding:8px 14px; flex:1; }
     .fh-pax-grp { display:flex; align-items:center; gap:6px; }
-    .fh-pax-grp label { font-size:11px; font-weight:700; color:rgba(255,255,255,.4); text-transform:uppercase; letter-spacing:.05em; min-width:30px; }
-    .fh-cbtn { background:rgba(255,255,255,.1); border:none; color:#fff; width:22px; height:22px; border-radius:6px; cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; line-height:1; transition:background .15s; }
-    .fh-cbtn:hover { background:rgba(255,255,255,.18); }
-    .fh-cval { font-family:var(--font-mono); font-size:14px; font-weight:700; color:#fff; min-width:18px; text-align:center; }
+    .fh-pax-grp label { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; min-width:30px; }
+    .fh-cbtn { background:#fff; border:1.5px solid var(--border); color:var(--ink); width:22px; height:22px; border-radius:6px; cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; line-height:1; transition:background .15s; }
+    .fh-cbtn:hover { background:var(--brand); border-color:var(--brand); color:#fff; }
+    .fh-cval { font-family:var(--font-mono); font-size:14px; font-weight:700; color:var(--ink); min-width:18px; text-align:center; }
     .fh-go-new {
       background: var(--brand); color: #fff; border: none; border-radius: 12px;
       padding: 0 24px; height: 48px; font-family: var(--font-body);
@@ -826,11 +836,11 @@
 
   function tf(h,m){var d=new Date(now);d.setHours(h,m,0,0);return d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});}
   var FLIGHTS=[
-    {time:tf(8,25), dest:'Barcelona BCN', al:'VY', price:'38 €'},
-    {time:tf(9,10), dest:'London LGW',    al:'FR', price:'49 €'},
-    {time:tf(10,45),dest:'Palma PMI',     al:'EW', price:'55 €'},
-    {time:tf(11,30),dest:'Rom FCO',       al:'FR', price:'42 €'},
-    {time:tf(13,15),dest:'Amsterdam AMS', al:'KL', price:'61 €'},
+    {time:tf(8,25), dest:'Barcelona BCN', iata:'BCN', name:'Barcelona (BCN)', al:'VY', price:'38 €'},
+    {time:tf(9,10), dest:'London LGW',    iata:'LGW', name:'London Gatwick (LGW)', al:'FR', price:'49 €'},
+    {time:tf(10,45),dest:'Palma PMI',     iata:'PMI', name:'Palma de Mallorca (PMI)', al:'EW', price:'55 €'},
+    {time:tf(11,30),dest:'Rom FCO',       iata:'FCO', name:'Rom Fiumicino (FCO)', al:'FR', price:'42 €'},
+    {time:tf(13,15),dest:'Amsterdam AMS', iata:'AMS', name:'Amsterdam (AMS)', al:'KL', price:'61 €'},
   ];
   var boardLbl = document.querySelector('.fh-board-lbl');
   if(boardLbl) boardLbl.innerHTML = '🛫 Abflüge ' + todayLabel;
@@ -838,13 +848,23 @@
   if(br){
     br.innerHTML=FLIGHTS.map(function(f,i){
       return (i>0?'<div class="fh-board-sep"></div>':'')
-        +'<div class="fh-board-row">'
+        +'<div class="fh-board-row" data-iata="'+f.iata+'" data-name="'+f.name+'" style="cursor:pointer">'
         +'<span class="fh-board-time">'+f.time+'</span>'
         +'<span class="fh-board-dest">'+f.dest+'</span>'
         +'<span class="fh-board-al">'+f.al+'</span>'
         +'<span class="fh-board-price">'+f.price+'</span>'
         +'</div>';
     }).join('');
+    // Klick → Ziel ins Suchfeld + scroll
+    br.querySelectorAll('.fh-board-row').forEach(function(row){
+      row.addEventListener('click', function(){
+        var di=document.getElementById('fh-dest');
+        var dib=document.getElementById('fh-db');
+        var dih=document.getElementById('fh-di');
+        if(di){ di.value=row.dataset.name; dib.textContent=row.dataset.iata; dib.style.display='block'; dih.value=row.dataset.iata; }
+        document.querySelector('.fh-search').scrollIntoView({behavior:'smooth',block:'center'});
+      });
+    });
   }
 
   var HEROES=[
@@ -881,9 +901,11 @@
   HEROES.forEach(function(h){[h.d1x,h.d2x,h.m1x,h.m2x].forEach(function(s){var i=new Image();i.src=s;});});
 
   var switching=false;
-  function setHero(idx){
+  // fromPill=true: expliziter Klick → prefill wenn Feld leer
+  // fromPill=false: Auto-Rotation → kein prefill (User tippt evtl. gerade)
+  function setHero(idx, fromPill){
     if(switching) return;
-    if(idx===cur && lyrA.style.backgroundImage) return;
+    if(idx===cur && lyrA.style.backgroundImage && !fromPill) return;
     switching=true;
     var h=HEROES[idx];
     var next=(activeLyr+1)%2;
@@ -895,16 +917,22 @@
     if(h1El) h1El.innerHTML=h.title;
     if(subEl) subEl.innerHTML=h.sub;
     cur=idx;
-    // Pills → Suchfeld vorausfüllen
-    if(h.origin && h.dest){
+    // Nur bei explizitem Pill-Klick UND nur wenn Feld leer
+    if(fromPill && h.origin && h.dest){
       var oi=document.getElementById('fh-origin');
       var di=document.getElementById('fh-dest');
       var oib=document.getElementById('fh-ob');
       var dib=document.getElementById('fh-db');
       var oih=document.getElementById('fh-oi');
       var dih=document.getElementById('fh-di');
-      if(oi){ oi.value=h.origin.name; oib.textContent=h.origin.iata; oib.style.display='block'; oih.value=h.origin.iata; selO.iata=h.origin.iata; selO.name=h.origin.name; }
-      if(di){ di.value=h.dest.name;   dib.textContent=h.dest.iata;   dib.style.display='block'; dih.value=h.dest.iata;   selD.iata=h.dest.iata;   selD.name=h.dest.name;   }
+      if(oi && oi.value===''){
+        oi.value=h.origin.name; oib.textContent=h.origin.iata; oib.style.display='block';
+        oih.value=h.origin.iata; selO.iata=h.origin.iata; selO.name=h.origin.name;
+      }
+      if(di && di.value===''){
+        di.value=h.dest.name; dib.textContent=h.dest.iata; dib.style.display='block';
+        dih.value=h.dest.iata; selD.iata=h.dest.iata; selD.name=h.dest.name;
+      }
     }
     document.querySelectorAll('.fh-dpill').forEach(function(p){
       var a=parseInt(p.dataset.hero)===idx;
@@ -916,17 +944,17 @@
 
   document.querySelectorAll('.fh-dpill').forEach(function(pill){
     pill.addEventListener('click',function(){
-      setHero(parseInt(pill.dataset.hero));
+      setHero(parseInt(pill.dataset.hero), true);
       clearInterval(timer);
-      timer=setInterval(function(){setHero((cur+1)%HEROES.length);},9000);
+      timer=setInterval(function(){setHero((cur+1)%HEROES.length, false);},9000);
     });
   });
 
   // selO/selD müssen VOR setHero(0) existieren (Prefill braucht sie)
   var acTimers={}, selO={iata:'',name:''}, selD={iata:'',name:''};
 
-  setHero(0);
-  var timer=setInterval(function(){setHero((cur+1)%HEROES.length);},9000);
+  setHero(0, true);
+  var timer=setInterval(function(){setHero((cur+1)%HEROES.length, false);},9000);
 
   var resizeTimer;
   window.addEventListener('resize',function(){
@@ -963,18 +991,27 @@
   function updZeitanzeige(stunden){
     var ziel=new Date(Date.now()+stunden*3600000);
     var heute=new Date();
-    var tag=ziel.getDate()===heute.getDate()?'heute':(ziel.getDate()===heute.getDate()+1?'morgen':'übermorgen');
-    var uhr=ziel.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr';
+    var morgen=new Date(heute); morgen.setDate(heute.getDate()+1);
+    var ubermorgen=new Date(heute); ubermorgen.setDate(heute.getDate()+2);
+    var tag;
+    if(ziel.toDateString()===heute.toDateString()) tag='heute';
+    else if(ziel.toDateString()===morgen.toDateString()) tag='morgen';
+    else tag='übermorgen';
+    var datStr=ziel.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+    var uhrStr=ziel.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr';
     var lbl=document.getElementById('fh-zeitanzeige');
-    if(lbl) lbl.innerHTML='Abflug '+tag+' bis ~<strong>'+uhr+'</strong>';
+    if(lbl) lbl.innerHTML='Abflug '+tag+' '+datStr+'<strong> bis '+uhrStr+'</strong>';
   }
 
   function updSlider(){
     var pct=(+sl.value-1)/71, tw=sl.offsetWidth;
     var bub=document.getElementById('fh-bubble');
-    if(bub){bub.style.left=(17+pct*(tw-34))+'px'; bub.textContent=sl.value+'h bis Abflug';}
+    if(bub){
+      bub.style.left=(11+pct*(tw-22))+'px';
+      bub.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'+sl.value+'h bis Abflug';
+    }
     var c=col();
-    tst2.textContent='.fh-range::-webkit-slider-thumb{border-color:'+c+'!important;}';
+    tst2.textContent='.fh-range::-webkit-slider-thumb{border-color:'+c+'!important;} .fh-bubble{background:'+c+'!important;box-shadow:0 0 14px 4px '+c+'55!important;}';
     if(go){go.style.background=c; go.style.boxShadow='0 4px 14px '+c+'55';}
     updZeitanzeige(+sl.value);
   }
