@@ -1110,15 +1110,20 @@
     resizeTimer=setTimeout(function(){setHero(cur);},150);
   });
 
-  // Scroll reveal
-  var els=document.querySelectorAll('.fh-reveal');
-  if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-    },{threshold:0.1});
-    els.forEach(function(el){obs.observe(el);});
-  } else {
-    els.forEach(function(el){el.classList.add('visible');});
+  // Scroll reveal – nach Shuffle, mit Fallback
+  function setupReveal(){
+    var els=document.querySelectorAll('.fh-reveal');
+    if('IntersectionObserver' in window){
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+      },{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+      els.forEach(function(el){obs.observe(el);});
+    } else {
+      els.forEach(function(el){el.classList.add('visible');});
+    }
+    setTimeout(function(){
+      document.querySelectorAll('.fh-reveal:not(.visible)').forEach(function(el){el.classList.add('visible');});
+    },800);
   }
 
   // Search Form
@@ -1370,6 +1375,8 @@
     }
   })();
 
+  setupReveal();
+
   // ── Fetch flights from Worker ────────────────────────────
   function fetchFlights(){
     fetch(WORKER_URL)
@@ -1593,5 +1600,6 @@
   fetchFlights();
 
 })();
+</script>
 </body>
 </html>
