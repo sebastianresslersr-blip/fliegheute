@@ -538,6 +538,167 @@
       .fh-faq { padding: 56px 0; }
       .fh-romance { padding: 56px 0; }
     }
+
+    /* ══════════════════════════════
+       SHUFFLE CONTAINER
+       ══════════════════════════════ */
+    .fh-shuffle {
+      max-width: 1160px; margin: 0 auto;
+      padding: 52px 20px 60px;
+      display: flex; flex-direction: column; gap: 56px;
+    }
+    .fh-sec-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--brand);
+      margin-bottom: 10px;
+    }
+    .fh-sec-title {
+      font-family: var(--font-display); font-size: 28px; font-weight: 800;
+      color: var(--ink); margin-bottom: 6px;
+    }
+    .fh-sec-sub { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+
+    /* ══ SKELETON ══ */
+    .fh-skeleton {
+      background: linear-gradient(90deg,var(--bg-alt) 25%,var(--border) 50%,var(--bg-alt) 75%);
+      background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 10px;
+    }
+    .fh-no-data { text-align:center; padding:40px 20px; color:var(--muted); font-size:14px; }
+    .fh-no-data-icon { font-size:32px; margin-bottom:8px; }
+
+    /* ══ COUNTDOWN CARDS ══ */
+    .fh-countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .fh-ccard {
+      background: var(--bg-card); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 20px; cursor: pointer;
+      transition: transform .2s, box-shadow .2s; position: relative;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .fh-ccard:hover { transform: translateY(-3px); box-shadow: var(--shadow-l); }
+    .fh-ccard-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; }
+    .fh-ccard-route { font-family:var(--font-mono); font-size:20px; font-weight:700; letter-spacing:.04em; }
+    .fh-ccard-price { font-family:var(--font-display); font-size:22px; font-weight:800; color:var(--brand); }
+    .fh-ccard-meta { font-size:12px; color:var(--muted); margin-bottom:14px; }
+    .fh-cbar-wrap { height:5px; background:var(--bg-alt); border-radius:99px; overflow:hidden; margin-bottom:7px; }
+    .fh-cbar { height:100%; border-radius:99px; transition:width 1s linear, background .5s; }
+    .fh-ccard-timer { font-family:var(--font-mono); font-size:12px; font-weight:700; color:var(--muted); margin-bottom:12px; }
+    .fh-ccard-go {
+      display:block; text-align:center; background:var(--brand); color:#fff;
+      padding:9px 16px; border-radius:99px; font-size:13px; font-weight:700;
+      transition: background .2s, transform .15s;
+    }
+    .fh-ccard-go:hover { background:var(--pink); transform:scale(1.02); }
+    .fh-ccard.cc-gone { opacity:.5; }
+    .fh-ccard.cc-gone .fh-ccard-go { background:var(--muted); pointer-events:none; }
+    .fh-ccard.cc-urgent .fh-ccard-route { color:#ef4444; }
+
+    /* ══ IMPULS KNOPF ══ */
+    .fh-impuls-inner {
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+      padding: 52px 24px;
+      background: linear-gradient(135deg,var(--bg-alt) 0%,var(--bg-warm) 100%);
+      border-radius: 24px; border: 1.5px solid var(--border);
+    }
+    @keyframes dice-spin { 0%{transform:rotate(0) scale(1)} 50%{transform:rotate(360deg) scale(1.3)} 100%{transform:rotate(720deg) scale(1)} }
+    .fh-impuls-btn {
+      background: linear-gradient(135deg, var(--brand), var(--pink));
+      color: #fff; border: none; cursor: pointer;
+      font-family: var(--font-display); font-size: 22px; font-weight: 800;
+      padding: 20px 52px; border-radius: 999px;
+      box-shadow: 0 8px 40px rgba(113,131,245,.38);
+      transition: transform .15s, box-shadow .2s;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .fh-impuls-btn:hover { transform: scale(1.05); box-shadow: 0 12px 56px rgba(113,131,245,.5); }
+    .fh-impuls-btn:active { transform: scale(.97); }
+    .fh-impuls-btn.spinning .fh-dice { animation: dice-spin .7s ease; display:inline-block; }
+    .fh-impuls-result {
+      margin-top: 32px; background: var(--bg-card);
+      border: 1.5px solid var(--border); border-radius: var(--r);
+      padding: 24px 32px; display: none; min-width: 300px;
+      box-shadow: var(--shadow-l);
+    }
+    .fh-impuls-result.show { display: block; animation: fadeInUp .4s ease; }
+    .fh-imp-route { font-family:var(--font-mono); font-size:26px; font-weight:700; margin-bottom:4px; }
+    .fh-imp-price { font-family:var(--font-display); font-size:34px; font-weight:800; color:var(--brand); margin-bottom:4px; }
+    .fh-imp-info { font-size:13px; color:var(--muted); margin-bottom:16px; }
+    .fh-imp-go {
+      display:inline-block; background:var(--brand); color:#fff;
+      padding:12px 28px; border-radius:99px; font-weight:700; font-size:15px;
+      transition: background .2s;
+    }
+    .fh-imp-go:hover { background: var(--pink); }
+
+    /* ══ TAGES-RADAR ══ */
+    .fh-radar-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+    .fh-radar-filter {
+      padding:6px 14px; border-radius:99px; border:1.5px solid var(--border);
+      font-size:12px; font-weight:600; background:var(--bg-card);
+      cursor:pointer; transition:border-color .2s, color .2s, background .2s;
+      color:var(--muted);
+    }
+    .fh-radar-filter.active { border-color:var(--brand); color:var(--brand); background:rgba(113,131,245,.07); }
+    .fh-radar-wrap {
+      background:var(--bg-card); border:1.5px solid var(--border);
+      border-radius:var(--r); padding:24px; position:relative; overflow:visible;
+    }
+    .fh-radar-axis {
+      display:flex; justify-content:space-between;
+      font-family:var(--font-mono); font-size:10px; color:var(--muted);
+      margin-bottom:10px;
+    }
+    .fh-radar-track {
+      position:relative; height:48px;
+      background:var(--bg-alt); border-radius:99px; overflow:visible;
+    }
+    .fh-radar-now {
+      position:absolute; top:-10px; bottom:-10px; width:2px;
+      background:var(--pink); border-radius:99px; z-index:3; pointer-events:none;
+    }
+    .fh-radar-now::before {
+      content:'JETZT'; position:absolute; top:-18px; left:50%;
+      transform:translateX(-50%); font-family:var(--font-mono);
+      font-size:8px; font-weight:700; color:var(--pink); white-space:nowrap;
+    }
+    .fh-radar-dot {
+      position:absolute; top:50%; transform:translate(-50%,-50%);
+      width:14px; height:14px; border-radius:50%; cursor:pointer;
+      z-index:2; border:2px solid #fff; transition:transform .2s;
+    }
+    .fh-radar-dot:hover { transform:translate(-50%,-50%) scale(1.7); z-index:10; }
+    .fh-radar-dot.rd-gone   { background:var(--muted) !important; opacity:.4; }
+    .fh-radar-dot.rd-imminent { background:#f59e0b !important; }
+    @keyframes radar-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.6)} 60%{box-shadow:0 0 0 8px rgba(245,158,11,0)} }
+    .fh-radar-dot.rd-imminent { animation:radar-pulse 1.5s infinite; }
+    .fh-radar-dot.rd-soon   { background:var(--brand) !important; }
+    .fh-radar-dot.rd-later  { background:rgba(113,131,245,.35) !important; }
+    .fh-radar-tooltip {
+      position:absolute; bottom:calc(100% + 14px);
+      background:var(--ink); color:#fff; padding:10px 14px;
+      border-radius:10px; font-size:12px; line-height:1.5;
+      white-space:nowrap; z-index:20; pointer-events:none;
+      opacity:0; transition:opacity .15s; box-shadow:var(--shadow-l);
+      transform:translateX(-50%); left:50%;
+    }
+    .fh-radar-tooltip.show { opacity:1; }
+    .fh-radar-tooltip::after {
+      content:''; position:absolute; top:100%; left:50%;
+      transform:translateX(-50%); border:5px solid transparent;
+      border-top-color:var(--ink);
+    }
+    @media(max-width:640px){
+      .fh-shuffle { padding:32px 16px 40px; gap:40px; }
+      .fh-sec-title { font-size:22px; }
+      .fh-impuls-btn { font-size:18px; padding:16px 36px; }
+      .fh-imp-route { font-size:20px; }
+      .fh-imp-price { font-size:26px; }
+    }
+
   </style>
 </head>
 <body>
@@ -697,6 +858,71 @@
     <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Account nötig</div>
     <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Last-Minute-Spezialist</div>
   </div>
+</div>
+
+<!-- ══ SHUFFLE CONTAINER – 3 Elemente, Reihenfolge täglich zufällig ══ -->
+<div class="fh-shuffle" id="fh-shuffle">
+
+  <!-- COUNTDOWN CARDS -->
+  <section id="sec-countdown" class="fh-reveal">
+    <div class="fh-sec-label">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Jetzt buchen — bald weg
+    </div>
+    <h2 class="fh-sec-title">Countdown-Deals</h2>
+    <p class="fh-sec-sub">Diese Flüge starten heute. Jede Minute zählt.</p>
+    <div class="fh-countdown-grid" id="fh-countdown-grid">
+      <div class="fh-ccard"><div class="fh-skeleton" style="height:130px"></div></div>
+      <div class="fh-ccard"><div class="fh-skeleton" style="height:130px"></div></div>
+      <div class="fh-ccard"><div class="fh-skeleton" style="height:130px"></div></div>
+    </div>
+  </section>
+
+  <!-- IMPULS KNOPF -->
+  <section id="sec-impuls" class="fh-reveal">
+    <div class="fh-impuls-inner">
+      <div class="fh-sec-label">✨ Spontan-Modus</div>
+      <h2 class="fh-sec-title">Wohin soll's gehen?<br>Egal — einfach fliegen.</h2>
+      <p class="fh-sec-sub" style="margin-bottom:36px">Kein Ziel? Kein Problem. Plany entscheidet für dich.</p>
+      <button class="fh-impuls-btn" id="fh-impuls-btn" type="button">
+        <span class="fh-dice">🎲</span>
+        Überrasch mich!
+      </button>
+      <div class="fh-impuls-result" id="fh-impuls-result">
+        <div class="fh-imp-route" id="fh-imp-route">—</div>
+        <div class="fh-imp-price" id="fh-imp-price">—</div>
+        <div class="fh-imp-info" id="fh-imp-info">—</div>
+        <a class="fh-imp-go" id="fh-imp-go" href="#" target="_blank" rel="noopener">Jetzt buchen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGES-RADAR -->
+  <section id="sec-radar" class="fh-reveal">
+    <div class="fh-sec-label">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      Tages-Radar
+    </div>
+    <h2 class="fh-sec-title">Alle Flüge heute im Blick</h2>
+    <p class="fh-sec-sub">Sieh auf einen Blick wann heute noch Maschinen abheben. Klick auf einen Punkt für Details.</p>
+    <div class="fh-radar-filters" id="fh-radar-filters">
+      <button class="fh-radar-filter active" data-filter="all" type="button">Alle</button>
+      <button class="fh-radar-filter" data-filter="FRA" type="button">✈ Frankfurt</button>
+      <button class="fh-radar-filter" data-filter="MUC" type="button">✈ München</button>
+      <button class="fh-radar-filter" data-filter="BER" type="button">✈ Berlin</button>
+      <button class="fh-radar-filter" data-filter="HAM" type="button">✈ Hamburg</button>
+      <button class="fh-radar-filter" data-filter="DUS" type="button">✈ Düsseldorf</button>
+    </div>
+    <div class="fh-radar-wrap" id="fh-radar-wrap">
+      <div class="fh-radar-axis">
+        <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:59</span>
+      </div>
+      <div class="fh-radar-track" id="fh-radar-track">
+        <div class="fh-radar-now" id="fh-radar-now"></div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <!-- ══ GRACE & SAM – SEO TEXT ══ -->
@@ -1120,7 +1346,252 @@
     },3000);
   });
 
+
+  // ══════════════════════════════════════════════════════
+  // WORKER DATA + SECTION RENDERING + SHUFFLE
+  // ══════════════════════════════════════════════════════
+
+  var WORKER_URL = 'https://lingering-fire-629f.sebastianressler-sr.workers.dev/flights';
+  var WHITE_LABEL_BASE = 'https://suche.fliegheute.de';
+  var workerFlights = [];
+  var radarFilter = 'all';
+
+  // ── Shuffle sections on each page load ──────────────────
+  (function shuffleSections(){
+    var container = document.getElementById('fh-shuffle');
+    if(!container) return;
+    var sections = Array.from(container.children);
+    // Fisher-Yates shuffle
+    for(var i=sections.length-1; i>0; i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var tmp = sections[i].nextSibling;
+      container.insertBefore(sections[j], sections[i]);
+      container.insertBefore(sections[i], tmp);
+    }
+  })();
+
+  // ── Fetch flights from Worker ────────────────────────────
+  function fetchFlights(){
+    fetch(WORKER_URL)
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        workerFlights = (data.flights || []);
+        renderCountdown(workerFlights);
+        renderRadar(workerFlights);
+        setupImpuls(workerFlights);
+      })
+      .catch(function(){
+        renderCountdown([]); renderRadar([]); setupImpuls([]);
+      });
+  }
+
+  // ── Deep link builder ────────────────────────────────────
+  function buildLink(f){
+    var date = f.departureAt ? f.departureAt.split('T')[0] : new Date().toISOString().split('T')[0];
+    return WHITE_LABEL_BASE+'/flights/?origin_iata='+f.origin+'&destination_iata='+f.destination
+      +'&depart_date='+date+'&adults=1&children=0&infants=0&trip_class=0';
+  }
+
+  // ── Airport names ────────────────────────────────────────
+  var AIRPORT_NAMES = {
+    FRA:'Frankfurt',MUC:'München',BER:'Berlin',HAM:'Hamburg',DUS:'Düsseldorf',
+    STR:'Stuttgart',CGN:'Köln',PMI:'Mallorca',BCN:'Barcelona',MAD:'Madrid',
+    FCO:'Rom',AMS:'Amsterdam',LIS:'Lissabon',ATH:'Athen',DUB:'Dublin',
+    VIE:'Wien',PRG:'Prag',IBZ:'Ibiza',LON:'London',PAR:'Paris',NYC:'New York'
+  };
+  function airportName(code){ return AIRPORT_NAMES[code] || code; }
+
+  // ── COUNTDOWN CARDS ──────────────────────────────────────
+  function renderCountdown(flights){
+    var grid = document.getElementById('fh-countdown-grid');
+    if(!grid) return;
+    if(!flights.length){
+      grid.innerHTML = '<div class="fh-no-data"><div class="fh-no-data-icon">✈️</div>Heute noch keine Flüge geladen – täglich ab 05:00 Uhr aktuell.</div>';
+      return;
+    }
+    var top = flights.slice(0,5);
+    grid.innerHTML = top.map(function(f){ return buildCard(f); }).join('');
+    // Start timers
+    top.forEach(function(f){ startCardTimer(f); });
+  }
+
+  function buildCard(f){
+    var dep = f.departureAt ? new Date(f.departureAt) : null;
+    var depStr = dep ? dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr' : '—';
+    return '<a class="fh-ccard" id="cc-'+f.id+'" href="'+buildLink(f)+'" target="_blank" rel="noopener">'
+      +'<div class="fh-ccard-top">'
+      +'<span class="fh-ccard-route">'+f.origin+' → '+f.destination+'</span>'
+      +'<span class="fh-ccard-price">ab '+f.price+' €</span>'
+      +'</div>'
+      +'<div class="fh-ccard-meta">'+airportName(f.origin)+' → '+airportName(f.destination)
+      +' · Abflug '+depStr+'</div>'
+      +'<div class="fh-cbar-wrap"><div class="fh-cbar" id="cbar-'+f.id+'" style="width:100%;background:var(--green)"></div></div>'
+      +'<div class="fh-ccard-timer" id="ctimer-'+f.id+'">wird berechnet…</div>'
+      +'<span class="fh-ccard-go">Jetzt buchen →</span>'
+      +'</a>';
+  }
+
+  function startCardTimer(f){
+    if(!f.departureAt) return;
+    var boarding = new Date(f.departureAt).getTime() - 45*60*1000; // boarding 45min before
+    var created = new Date().getTime();
+    var totalMs = boarding - created;
+
+    function tick(){
+      var card = document.getElementById('cc-'+f.id);
+      var bar  = document.getElementById('cbar-'+f.id);
+      var timer= document.getElementById('ctimer-'+f.id);
+      if(!card) return;
+      var now  = Date.now();
+      var left = boarding - now;
+      if(left <= 0){
+        card.classList.add('cc-gone');
+        if(bar) bar.style.width = '0%';
+        if(timer) timer.textContent = 'Boarding geschlossen';
+        return;
+      }
+      var pct = Math.max(0, Math.min(100, (left/totalMs)*100));
+      var hrs = Math.floor(left/3600000);
+      var min = Math.floor((left%3600000)/60000);
+      var sec = Math.floor((left%60000)/1000);
+      var col = pct>60 ? '#22c55e' : pct>25 ? '#f59e0b' : '#ef4444';
+      if(bar){ bar.style.width = pct+'%'; bar.style.background = col; }
+      if(timer) timer.textContent = (hrs>0?hrs+'h ':'')+min+'min '+sec+'s bis Boarding';
+      if(pct < 25) card.classList.add('cc-urgent');
+      setTimeout(tick, 1000);
+    }
+    tick();
+  }
+
+  // ── IMPULS KNOPF ─────────────────────────────────────────
+  function setupImpuls(flights){
+    var btn    = document.getElementById('fh-impuls-btn');
+    var result = document.getElementById('fh-impuls-result');
+    if(!btn) return;
+
+    btn.addEventListener('click', function(){
+      btn.classList.add('spinning');
+      setTimeout(function(){ btn.classList.remove('spinning'); }, 700);
+
+      var pool = flights.length ? flights : getFallbackFlights();
+      var f = pool[Math.floor(Math.random()*pool.length)];
+
+      var dep = f.departureAt ? new Date(f.departureAt) : null;
+      var depStr = dep ? dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr' : 'Heute';
+
+      document.getElementById('fh-imp-route').textContent  = f.origin+' → '+f.destination;
+      document.getElementById('fh-imp-price').textContent  = 'ab '+f.price+' €';
+      document.getElementById('fh-imp-info').textContent   = depStr+' · '+f.airline+' · '+airportName(f.origin)+' → '+airportName(f.destination);
+      document.getElementById('fh-imp-go').href = buildLink(f);
+
+      result.classList.add('show');
+    });
+  }
+
+  function getFallbackFlights(){
+    var today = new Date().toISOString().split('T')[0];
+    return [
+      {id:'fallback-1',origin:'FRA',destination:'PMI',airline:'Lufthansa',price:89,departureAt:today+'T07:30:00',deepLink:''},
+      {id:'fallback-2',origin:'MUC',destination:'BCN',airline:'Vueling',price:65,departureAt:today+'T10:15:00',deepLink:''},
+      {id:'fallback-3',origin:'BER',destination:'AMS',airline:'easyJet',price:49,departureAt:today+'T14:00:00',deepLink:''},
+      {id:'fallback-4',origin:'HAM',destination:'LIS',airline:'Ryanair',price:72,departureAt:today+'T06:45:00',deepLink:''},
+      {id:'fallback-5',origin:'DUS',destination:'FCO',airline:'Eurowings',price:95,departureAt:today+'T16:30:00',deepLink:''},
+    ];
+  }
+
+  // ── TAGES-RADAR ──────────────────────────────────────────
+  var radarTooltip = null;
+
+  function renderRadar(flights){
+    var track = document.getElementById('fh-radar-track');
+    if(!track) return;
+
+    // Remove old dots (keep now-line)
+    var nowLine = document.getElementById('fh-radar-now');
+    track.innerHTML = '';
+    if(nowLine) track.appendChild(nowLine);
+
+    if(!radarTooltip){
+      radarTooltip = document.createElement('div');
+      radarTooltip.className = 'fh-radar-tooltip';
+      track.appendChild(radarTooltip);
+    } else {
+      track.appendChild(radarTooltip);
+    }
+
+    var pool = flights.length ? flights : getFallbackFlights();
+    var filtered = radarFilter==='all' ? pool : pool.filter(function(f){ return f.origin===radarFilter; });
+
+    if(!filtered.length){
+      var msg = document.createElement('div');
+      msg.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:12px;color:var(--muted)';
+      msg.textContent = 'Keine Flüge für diesen Filter';
+      track.appendChild(msg);
+    }
+
+    filtered.forEach(function(f){
+      if(!f.departureAt) return;
+      var dep   = new Date(f.departureAt);
+      var now   = new Date();
+      var minSinceMidnight = dep.getHours()*60 + dep.getMinutes();
+      var pct   = minSinceMidnight / (24*60);
+      var diffMs= dep.getTime() - now.getTime();
+      var diffMin= diffMs/60000;
+
+      var dot = document.createElement('div');
+      dot.className = 'fh-radar-dot';
+      dot.style.left = (pct*100)+'%';
+
+      if(diffMs < 0)                   dot.classList.add('rd-gone');
+      else if(diffMin <= 60)           dot.classList.add('rd-imminent');
+      else if(diffMin <= 180)          dot.classList.add('rd-soon');
+      else                             dot.classList.add('rd-later');
+
+      var depStr = dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+
+      dot.addEventListener('mouseenter', function(){
+        radarTooltip.innerHTML = '<strong>'+f.origin+' → '+f.destination+'</strong><br>'
+          +airportName(f.origin)+' → '+airportName(f.destination)+'<br>'
+          +'Ab '+depStr+' Uhr · <strong>ab '+f.price+' €</strong><br>'
+          +'<span style="color:var(--brand)">Klicken zum Buchen →</span>';
+        radarTooltip.style.left = (pct*100)+'%';
+        radarTooltip.classList.add('show');
+      });
+      dot.addEventListener('mouseleave', function(){
+        radarTooltip.classList.remove('show');
+      });
+      dot.addEventListener('click', function(){
+        window.open(buildLink(f), '_blank', 'noopener');
+      });
+
+      track.appendChild(dot);
+    });
+
+    updateNowLine();
+  }
+
+  function updateNowLine(){
+    var nowLine = document.getElementById('fh-radar-now');
+    if(!nowLine) return;
+    var now = new Date();
+    var pct = (now.getHours()*60+now.getMinutes()) / (24*60);
+    nowLine.style.left = (pct*100)+'%';
+  }
+  setInterval(updateNowLine, 60000);
+
+  // Radar filter buttons
+  document.querySelectorAll('.fh-radar-filter').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      radarFilter = btn.dataset.filter;
+      document.querySelectorAll('.fh-radar-filter').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderRadar(workerFlights);
+    });
+  });
+
+  // Start fetching
+  fetchFlights();
+
 })();
-</script>
 </body>
 </html>
