@@ -1,1669 +1,858 @@
 <!DOCTYPE html>
 <html lang="de" prefix="og: https://ogp.me/ns#">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>fliegheute.de – Last-Minute-Flüge heute buchen</title>
+<meta name="description" content="Jetzt günstige Last-Minute-Flüge für heute und morgen finden. Direkt buchen, kein Aufpreis."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://www.fliegheute.de/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="fliegheute.de – Last-Minute-Flüge für heute buchen"/>
+<meta property="og:url" content="https://www.fliegheute.de/"/>
+<link rel="icon" type="image/svg+xml" href="/assets/logo-plany-favicon.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kostet fliegheute.de etwas?","acceptedAnswer":{"@type":"Answer","text":"Nein, komplett kostenlos."}},{"@type":"Question","name":"Wann sind Last-Minute-Flüge am günstigsten?","acceptedAnswer":{"@type":"Answer","text":"Häufig 1–3 Tage vor Abflug."}}]}</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script data-noptimize="1" data-cfasync="false">(function(){var s=document.createElement("script");s.async=1;s.src='https://emrldco.com/676139.js?t=676139';document.head.appendChild(s);})();</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#0c0f1a;color:#fff;overflow-x:hidden;min-height:100svh}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+:root{
+  --brand:#7183f5;--pink:#f571b4;--green:#22c55e;--orange:#f59e0b;--red:#ef4444;
+  --bg:#0c0f1a;--card:rgba(255,255,255,.04);--border:rgba(255,255,255,.09);
+  --mono:'JetBrains Mono',monospace;--r:26px;
+}
+/* ANIMATIONS */
+@keyframes radar-wave{0%{transform:scale(1);opacity:.5}100%{transform:scale(3);opacity:0}}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.6)}}
+@keyframes planyFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+@keyframes bigpulse{0%,100%{box-shadow:0 0 0 0 rgba(113,131,245,.45),0 12px 40px rgba(113,131,245,.3)}50%{box-shadow:0 0 0 14px rgba(113,131,245,0),0 20px 56px rgba(245,113,180,.35)}}
+@keyframes urgentpulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes nowpulse{0%,100%{box-shadow:0 0 0 4px rgba(245,158,11,.25),0 0 0 10px rgba(245,158,11,.07)}50%{box-shadow:0 0 0 9px rgba(245,158,11,.2),0 0 0 18px rgba(245,158,11,.06)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+/* BACKGROUND */
+.bg-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bg-layer img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);filter:blur(72px);opacity:.3}
+.radar-waves{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px}
+.radar-circle{position:absolute;inset:0;border:1px solid rgba(113,131,245,.15);border-radius:50%;animation:radar-wave 4s linear infinite}
+/* GLASS */
+.glass{background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:var(--r)}
+.glass:hover{border-color:rgba(255,255,255,.14)}
+/* HEADER */
+header{position:sticky;top:0;z-index:100;background:rgba(12,15,26,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.hdr{max-width:1160px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.hdr-logo{display:flex;align-items:center;gap:10px}
+.hdr-icon{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--pink));display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px rgba(113,131,245,.4);animation:planyFloat 5s ease-in-out infinite}
+.hdr-name{font-size:19px;font-weight:800;letter-spacing:-.03em}
+.hdr-name span{color:var(--brand)}
+.hdr-nav{display:flex;align-items:center;gap:22px}
+.hdr-nav a{font-size:13px;font-weight:600;color:rgba(255,255,255,.45);transition:color .2s}
+.hdr-nav a:hover{color:#fff}
+.hdr-cta{padding:7px 16px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--pink));color:#fff!important;font-weight:700!important;box-shadow:0 4px 18px rgba(113,131,245,.35);transition:transform .15s,box-shadow .2s}
+.hdr-cta:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(113,131,245,.45)}
+@media(max-width:600px){.hdr-nav a:not(.hdr-cta){display:none}}
+/* MAIN */
+main{position:relative;z-index:10;max-width:1160px;margin:0 auto;padding:44px 20px 72px;display:flex;flex-direction:column;gap:44px}
+/* BENTO GRID */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:10px}
+/* Status tile */
+.b-status{grid-column:span 4;padding:22px;min-height:130px;display:flex;flex-direction:column;justify-content:space-between}
+.live-row{display:flex;align-items:center;gap:7px}
+.live-dot{position:relative;width:9px;height:9px}
+.live-ping{position:absolute;inset:0;border-radius:50%;background:var(--green);opacity:.65;animation:pulse-dot 2s ease-in-out infinite}
+.live-core{position:absolute;inset:0;border-radius:50%;background:var(--green)}
+.live-lbl{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.live-title{font-family:var(--mono);font-size:26px;font-weight:700;letter-spacing:-.04em;margin-top:6px}
+.live-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:3px}
+.live-sub b{color:var(--pink);font-family:var(--mono)}
+/* Search tile */
+.b-search{grid-column:span 8;padding:26px 30px;display:flex;flex-direction:column;gap:18px}
+.srow{display:flex;align-items:flex-end;gap:14px}
+.sfield{flex:1}
+.sfield label{display:block;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.sfield label.from{color:var(--brand)}
+.sfield label.to{color:var(--pink)}
+.sinput{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:13px;padding:11px 15px;font-size:20px;font-weight:800;letter-spacing:-.02em;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;transition:border-color .2s,background .2s;outline:none}
+.sinput::placeholder{color:rgba(255,255,255,.12)}
+.sinput:focus{border-color:var(--brand);background:rgba(113,131,245,.08)}
+.swap-btn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;color:rgba(255,255,255,.35);flex-shrink:0;margin-bottom:2px}
+.swap-btn:hover{background:rgba(255,255,255,.12);color:#fff}
+.sbottom{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.trip-tog{display:flex;background:rgba(255,255,255,.06);border-radius:999px;padding:3px}
+.trip-tog button{padding:5px 13px;border-radius:999px;border:none;font-size:10px;font-weight:700;cursor:pointer;background:transparent;color:rgba(255,255,255,.38);transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
+.trip-tog button.act{background:rgba(255,255,255,.12);color:#fff}
+/* Time tile */
+.b-time{grid-column:span 5;padding:22px 26px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.b-time-hdr{display:flex;justify-content:space-between;align-items:center}
+.b-time-hdr span:first-child{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.tw-val{font-family:var(--mono);color:var(--brand);font-weight:700}
+input[type=range].rng{width:100%;-webkit-appearance:none;height:4px;background:rgba(255,255,255,.1);border-radius:99px;cursor:pointer;outline:none}
+input[type=range].rng::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 0 10px rgba(113,131,245,.55)}
+.rng-lbls{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.22);text-transform:uppercase}
+/* Pax tile */
+.b-pax{grid-column:span 4;padding:22px 26px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.pax-row{display:flex;align-items:center;justify-content:space-between}
+.pax-lbl{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.pax-ctrl{display:flex;align-items:center;gap:12px}
+.pax-btn{width:30px;height:30px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:#fff;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1}
+.pax-btn:hover{background:rgba(255,255,255,.14)}
+.pax-val{font-family:var(--mono);font-size:20px;font-weight:700;min-width:26px;text-align:center}
+/* CTA tile */
+.b-cta{grid-column:span 3;border:none!important;padding:0;overflow:hidden;min-height:120px;background:linear-gradient(135deg,var(--brand),var(--pink));cursor:pointer;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:transform .15s;box-shadow:0 0 28px rgba(113,131,245,.3)}
+.b-cta::before{content:'';position:absolute;inset:0;background:#fff;opacity:0;transition:opacity .2s}
+.b-cta:hover::before{opacity:.1}
+.b-cta:active{transform:scale(.97)}
+.cta-sub{font-size:8px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;opacity:.65}
+.cta-main{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.cta-arr{width:18px;height:18px;transition:transform .2s}
+.b-cta:hover .cta-arr{transform:translateX(4px)}
+/* Destination pills */
+.dpills{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:14px}
+.dpill{padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);font-size:12px;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:all .2s;color:rgba(255,255,255,.6)}
+.dpill:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22);color:#fff}
+.dpill.act{background:rgba(113,131,245,.18);border-color:var(--brand);color:var(--brand)}
+/* TRUST BAR */
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 26px;padding:18px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:18px}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,.45)}
+.trust-item::before{content:'✓';color:var(--green);font-weight:800}
+/* SECTION LABELS */
+.sec-lbl{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.sec-title{font-size:clamp(20px,2.8vw,30px);font-weight:800;letter-spacing:-.03em;margin-bottom:7px;line-height:1.15}
+.sec-sub{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:20px}
+/* COUNTDOWN CARDS */
+.ccards{display:flex;flex-direction:column;gap:9px}
+.ccard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:15px;overflow:hidden;display:grid;grid-template-columns:1fr auto;transition:border-color .2s;text-decoration:none;color:inherit}
+.ccard:hover{border-color:rgba(113,131,245,.4)}
+.ccard-l{padding:13px 17px}
+.ccard-route{font-size:16px;font-weight:800;letter-spacing:-.02em;margin-bottom:2px}
+.ccard-meta{font-size:10px;color:rgba(255,255,255,.32);margin-bottom:9px}
+.cbar-w{height:3px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;margin-bottom:5px}
+.cbar{height:100%;border-radius:99px;transition:width 1s linear}
+.cbar.g{background:var(--green)}
+.cbar.o{background:var(--orange)}
+.cbar.r{background:var(--red);animation:urgentpulse 1s ease-in-out infinite}
+.ctmr{font-family:var(--mono);font-size:10px;font-weight:700}
+.ctmr.g{color:var(--green)}.ctmr.o{color:var(--orange)}.ctmr.r{color:var(--red)}.ctmr.gone{color:rgba(255,255,255,.2)}
+.ccard-r{padding:13px 17px;border-left:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between}
+.ccard-price{font-family:var(--mono);font-size:21px;font-weight:700}
+.ccard-btn{background:linear-gradient(135deg,var(--brand),var(--pink));color:#fff;border:none;border-radius:8px;padding:5px 11px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'Plus Jakarta Sans',sans-serif}
+.ccard.gone{opacity:.3;pointer-events:none}
+/* BOTTOM 2-COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+/* RADAR */
+.radar-card{padding:24px}
+.radar-axis{display:flex;justify-content:space-between;font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.2);margin-bottom:7px}
+.radar-track{position:relative;height:64px;background:rgba(255,255,255,.03);border-radius:10px}
+.now-line{position:absolute;top:-5px;bottom:-5px;width:2px;background:rgba(255,255,255,.22);border-radius:1px;z-index:10}
+.now-line::before{content:'JETZT';position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:7px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.06em;white-space:nowrap}
+.fdot{position:absolute;top:50%;transform:translate(-50%,-50%);cursor:pointer;transition:transform .2s}
+.fdot:hover{transform:translate(-50%,-50%) scale(1.55);z-index:20}
+.fdot-i{border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;position:relative}
+.fdot-i::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);background:rgba(8,10,20,.97);border:1px solid rgba(255,255,255,.12);border-radius:9px;padding:6px 10px;font-size:10px;font-weight:600;color:#fff;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s;font-family:'Plus Jakarta Sans',sans-serif;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.fdot:hover .fdot-i::after{opacity:1}
+.fdot.gone .fdot-i{width:19px;height:19px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.22)}
+.fdot.soon .fdot-i{width:25px;height:25px;background:var(--brand);color:#fff;box-shadow:0 4px 12px rgba(113,131,245,.45)}
+.fdot.later .fdot-i{width:19px;height:19px;background:rgba(113,131,245,.3);color:rgba(255,255,255,.45)}
+.fdot.now  .fdot-i{width:29px;height:29px;background:var(--orange);color:#fff;animation:nowpulse 2s infinite}
+.radar-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.rleg{display:flex;align-items:center;gap:4px;font-size:9px;color:rgba(255,255,255,.32)}
+.rleg-d{width:6px;height:6px;border-radius:50%}
+.rleg-d.gone{background:rgba(255,255,255,.2)}.rleg-d.now{background:var(--orange)}.rleg-d.soon{background:var(--brand)}.rleg-d.later{background:rgba(113,131,245,.3)}
+.rfilters{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}
+.rfbtn{padding:3px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.08);font-size:9px;font-weight:600;background:transparent;cursor:pointer;color:rgba(255,255,255,.32);transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}
+.rfbtn.act{border-color:var(--brand);color:var(--brand);background:rgba(113,131,245,.1)}
+/* IMPULSE */
+.imp-card{padding:28px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.big-btn{display:inline-flex;flex-direction:column;align-items:center;gap:4px;background:linear-gradient(135deg,var(--brand),var(--pink));color:#fff;border:none;border-radius:18px;padding:22px 44px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;animation:bigpulse 3s ease-in-out infinite;transition:transform .2s;margin-bottom:20px}
+.big-btn:hover{transform:scale(1.04)}
+.bi{font-size:30px;line-height:1}
+.bl{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.bs{font-size:11px;color:rgba(255,255,255,.7)}
+.slot-res{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:12px 18px;margin-bottom:8px;animation:fadeUp .3s ease}
+.sl-route{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.sl-dest{font-size:11px;color:rgba(255,255,255,.4);text-align:left}
+.sl-price{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--green)}
+.sl-book{background:var(--green);color:#fff;border:none;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.reroll{font-size:11px;color:rgba(255,255,255,.28);margin-top:3px}
+.reroll span{color:var(--brand);cursor:pointer;font-weight:700}
+.imp-stats{display:flex;gap:7px;margin-top:18px;width:100%}
+.istat{flex:1;background:rgba(255,255,255,.04);border-radius:11px;padding:10px 6px;text-align:center;font-size:10px;color:rgba(255,255,255,.32);line-height:1.5}
+.istat strong{display:block;font-size:16px;color:#fff;margin-bottom:1px}
+/* FAQ */
+.faq-title{font-size:24px;font-weight:800;margin-bottom:18px;letter-spacing:-.02em}
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.faq-item{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:15px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:#fff;text-align:left;padding:15px 18px;font-size:13px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Plus Jakarta Sans',sans-serif;gap:10px}
+.faq-q span{color:rgba(255,255,255,.3);font-size:18px;transition:transform .25s}
+.faq-q.open span{transform:rotate(45deg)}
+.faq-a{font-size:13px;color:rgba(255,255,255,.45);line-height:1.75;padding:0 18px;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a.open{max-height:200px;padding:0 18px 15px}
+/* FOOTER */
+footer{position:relative;z-index:10;border-top:1px solid var(--border);padding:28px 20px}
+.footer-in{max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.footer-copy{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:.1em}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:10px;font-weight:600;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.75)}
+/* PLANY CORNER */
+#plany-c{position:fixed;bottom:24px;right:24px;z-index:999;pointer-events:none;width:100px}
+#plany-c img{width:100%;height:auto;filter:drop-shadow(0 8px 24px rgba(113,131,245,.4)) drop-shadow(0 3px 10px rgba(245,113,180,.2));animation:planyFloat 3.8s ease-in-out infinite}
+#plany-bub{position:absolute;bottom:calc(100% + 5px);right:0;background:#fff;color:#0c0f1a;border-radius:13px 13px 3px 13px;padding:8px 12px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.35);transform:scale(0);transform-origin:bottom right;transition:transform .3s cubic-bezier(.34,1.56,.64,1),opacity .3s;opacity:0;font-family:'Plus Jakarta Sans',sans-serif}
+#plany-bub.show{transform:scale(1);opacity:1}
 
-  <!-- ══ PRIMARY SEO ══ -->
-  <title>fliegheute.de – Last-Minute-Flüge heute buchen | Günstige Flüge in 24–72h</title>
-  <meta name="description" content="Jetzt günstige Last-Minute-Flüge für heute und morgen finden. fliegheute.de zeigt dir die besten Flugdeals der nächsten 24–72 Stunden – direkt buchen, kein Aufpreis."/>
-  <meta name="keywords" content="last minute flüge, günstige flüge heute, spontanflug, kurzfristig fliegen, flug heute buchen, billigflug last minute, flugdeals 24h, flug vergleichen"/>
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
-  <link rel="canonical" href="https://www.fliegheute.de/"/>
+/* ── MONETIZATION SECTIONS ── */
+.mono-section { margin-bottom: 0; }
 
-  <!-- ══ OPEN GRAPH ══ -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="fliegheute.de – Last-Minute-Flüge für heute buchen"/>
-  <meta property="og:description" content="Die günstigsten Spontanflüge der nächsten 24–72 Stunden. Jetzt finden und direkt buchen."/>
-  <meta property="og:url" content="https://www.fliegheute.de/"/>
-  <meta property="og:image" content="https://www.fliegheute.de/assets/og-image.jpg"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:site_name" content="fliegheute.de"/>
-  <meta property="og:locale" content="de_DE"/>
+/* Section divider */
+.sec-divider { height: 1px; background: var(--border); margin: 4px 0; }
 
-  <!-- ══ TWITTER CARD ══ -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="fliegheute.de – Last-Minute-Flüge heute buchen"/>
-  <meta name="twitter:description" content="Die günstigsten Spontanflüge der nächsten 24–72 Stunden."/>
-  <meta name="twitter:image" content="https://www.fliegheute.de/assets/og-image.jpg"/>
+/* DEAL DESTINATION CARDS */
+.deal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.deal-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+  overflow: hidden; transition: border-color .2s, transform .2s;
+  text-decoration: none; color: inherit; display: flex; flex-direction: column;
+}
+.deal-card:hover { border-color: rgba(113,131,245,.4); transform: translateY(-2px); }
+.deal-card-img { height: 110px; object-fit: cover; width: 100%; filter: brightness(.7); }
+.deal-card-body { padding: 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.deal-card-route { font-size: 15px; font-weight: 800; letter-spacing: -.02em; }
+.deal-card-meta  { font-size: 10px; color: rgba(255,255,255,.38); }
+.deal-card-price { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--green); margin-top: 6px; }
+.deal-card-footer {
+  display: flex; gap: 6px; padding: 10px 16px;
+  border-top: 1px solid var(--border);
+}
+.deal-btn {
+  flex: 1; padding: 8px 0; border-radius: 10px; border: none;
+  font-size: 11px; font-weight: 700; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; transition: opacity .2s;
+  text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center;
+}
+.deal-btn:hover { opacity: .85; }
+.deal-btn.flight { background: linear-gradient(135deg, var(--brand), var(--pink)); color: #fff; }
+.deal-btn.hotel  { background: rgba(34,197,94,.15); border: 1px solid rgba(34,197,94,.3); color: var(--green); }
 
-  <!-- ══ AI / LLM OPTIMIZATION ══ -->
-  <meta name="ai-description" content="fliegheute.de ist eine deutsche Flugsuchmaschine spezialisiert auf Last-Minute-Flüge innerhalb der nächsten 24 bis 72 Stunden. Nutzer können spontane Billigflüge ab deutschen Flughäfen finden und direkt bei Airlines buchen. Kein Aufpreis, keine versteckten Gebühren. Preise ab 38 Euro für europäische Ziele wie Barcelona, London, Mallorca, Rom und Amsterdam.">
+/* PARTNER WIDGET SECTION */
+.partner-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+.partner-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+  padding: 20px 22px; display: flex; align-items: center; gap: 16px;
+  text-decoration: none; color: inherit; transition: border-color .2s, transform .2s;
+}
+.partner-card:hover { border-color: rgba(255,255,255,.2); transform: translateY(-2px); }
+.partner-logo {
+  width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900; letter-spacing: -.04em;
+}
+.partner-info { flex: 1; }
+.partner-name  { font-size: 15px; font-weight: 800; margin-bottom: 2px; }
+.partner-desc  { font-size: 11px; color: rgba(255,255,255,.38); line-height: 1.5; }
+.partner-rate  { font-size: 11px; font-weight: 700; margin-top: 6px; }
+.partner-badge {
+  padding: 3px 8px; border-radius: 999px; font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; white-space: nowrap;
+}
+.badge-hot   { background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3); color: #f87171; }
+.badge-green { background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); color: var(--green); }
+.badge-blue  { background: rgba(113,131,245,.15); border: 1px solid rgba(113,131,245,.3); color: var(--brand); }
 
-  <!-- ══ STRUCTURED DATA – WebSite ══ -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"fliegheute.de","url":"https://www.fliegheute.de/","description":"Last-Minute-Flüge für heute und morgen. Die günstigsten Spontanflüge der nächsten 24–72 Stunden.","inLanguage":"de-DE","publisher":{"@type":"Organization","name":"fliegheute.de","logo":{"@type":"ImageObject","url":"https://www.fliegheute.de/assets/logo-plany-header.svg"}},"potentialAction":{"@type":"SearchAction","target":"https://www.fliegheute.de/?q={search_term_string}","query-input":"required name=search_term_string"}}
-  </script>
+/* TP SEARCH WIDGET CONTAINER */
+.tp-widget-wrap {
+  background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+  padding: 24px; overflow: hidden;
+}
+.tp-widget-wrap iframe, .tp-widget-wrap > div { width: 100% !important; }
 
-  <!-- ══ STRUCTURED DATA – FAQPage ══ -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Was muss ich wissen, bevor ich einen Flug buche?","acceptedAnswer":{"@type":"Answer","text":"Reisedokumente prüfen, Gepäckregeln der Airline beachten und auf mögliche Zusatzkosten achten. Bei Last-Minute-Flügen empfiehlt sich Handgepäck für maximale Flexibilität."}},{"@type":"Question","name":"Wann ist die beste Zeit, Last-Minute-Flüge zu buchen?","acceptedAnswer":{"@type":"Answer","text":"Häufig 1–3 Tage vor Abflug. Airlines senken Preise für unverkaufte Sitze. Dienstags und mittwochs sind die günstigsten Buchungstage."}},{"@type":"Question","name":"Kann ich mit Zwischenstopps sparen?","acceptedAnswer":{"@type":"Answer","text":"Ja, oft bis zu 40% günstiger als Nonstop. Wer flexibel ist, profitiert am meisten."}},{"@type":"Question","name":"Kostet fliegheute.de etwas?","acceptedAnswer":{"@type":"Answer","text":"Nein. fliegheute.de ist komplett kostenlos. Bei Buchung über unsere Links erhalten wir eine kleine Provision – der Preis für dich bleibt identisch."}},{"@type":"Question","name":"Welche deutschen Flughäfen eignen sich für Last-Minute am besten?","acceptedAnswer":{"@type":"Answer","text":"Frankfurt (FRA), München (MUC) und Berlin (BER) bieten die meisten spontanen Verbindungen. Günstige Alternativen: Köln/Bonn (CGN), Düsseldorf (DUS) oder Karlsruhe/Baden-Baden (FKB)."}}]}
-  </script>
+/* HOTEL CROSS-SELL */
+.hotel-strip {
+  background: linear-gradient(135deg, rgba(34,197,94,.08) 0%, rgba(113,131,245,.08) 100%);
+  border: 1px solid rgba(34,197,94,.2); border-radius: 18px;
+  padding: 22px 26px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.hotel-strip-text { flex: 1; min-width: 200px; }
+.hotel-strip-title { font-size: 17px; font-weight: 800; margin-bottom: 4px; }
+.hotel-strip-sub   { font-size: 12px; color: rgba(255,255,255,.45); }
+.hotel-strip-btns  { display: flex; gap: 8px; flex-wrap: wrap; }
+.hotel-btn {
+  padding: 10px 18px; border-radius: 12px; border: none;
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif; transition: all .2s;
+  text-decoration: none; display: inline-block;
+}
+.hotel-btn.primary  { background: var(--green); color: #fff; }
+.hotel-btn.secondary { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.8); }
+.hotel-btn:hover { opacity: .85; transform: translateY(-1px); }
 
-  <!-- ══ FONTS ══ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+/* REVENUE TICKER */
+.rev-ticker {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.rev-stat {
+  flex: 1; min-width: 130px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 18px;
+}
+.rev-stat-val  { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--brand); }
+.rev-stat-lbl  { font-size: 10px; color: rgba(255,255,255,.38); margin-top: 3px; text-transform: uppercase; letter-spacing: .08em; }
 
-  <link rel="icon" type="image/svg+xml" href="/assets/logo-plany-favicon.svg">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+@media(max-width:900px){
+  .deal-grid    { grid-template-columns: repeat(2,1fr); }
+  .partner-grid { grid-template-columns: 1fr; }
+}
+@media(max-width:600px){
+  .deal-grid { grid-template-columns: 1fr; }
+}
 
-  <!-- ══ HERO IMAGE PRELOADS ══ -->
-  <link rel="preload" as="image" href="/assets/hero-mallorca-desktop@1x.webp">
-  <link rel="preload" as="image" href="/assets/hero-mallorca-desktop@2x.webp">
-
-  <!-- Travelpayouts tracking -->
-  <script data-noptimize="1" data-cfasync="false" data-wpfc-render="false">
-    (function(){var s=document.createElement("script");s.async=1;s.src='https://emrldco.com/676139.js?t=676139';document.head.appendChild(s);})();
-  </script>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ══════════════════════════════
-       DESIGN TOKENS – Light Theme
-       ══════════════════════════════ */
-    :root {
-      --brand:      #7183f5;
-      --pink:       #f571b4;
-      --green:      #22c55e;
-      --ink:        #0b0b13;
-      --ink-mid:    #2d2f3a;
-      --muted:      #6b6f82;
-      --bg:         #fafaf8;      /* warm off-white */
-      --bg-alt:     #f3f4fb;      /* very light lavender */
-      --bg-warm:    #fdf8f1;      /* warm cream */
-      --bg-hero:    #0c0f1a;      /* hero dark stays */
-      --bg-card:    #ffffff;
-      --border:     #e4e6f0;
-      --border-mid: #d0d3e8;
-      --r:          18px;
-      --shadow:     0 2px 16px rgba(11,11,19,.07);
-      --shadow-l:   0 12px 48px rgba(11,11,19,.12);
-      --shadow-brand: 0 8px 32px rgba(113,131,245,.22);
-      --font-display: 'Baloo 2', cursive;
-      --font-body:    'DM Sans', system-ui, sans-serif;
-      --font-mono:    'JetBrains Mono', monospace;
-    }
-
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.5; }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-
-    /* ══════════════════════════════
-       ANIMATIONS
-       ══════════════════════════════ */
-    @keyframes livepulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.6)} }
-    @keyframes planyFloat { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-14px) rotate(3deg)} }
-    @keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-
-    .fh-reveal { opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
-    .fh-reveal.visible { opacity:1; transform:none; }
-
-    /* ══════════════════════════════
-       HEADER – Light
-       ══════════════════════════════ */
-    .fh-header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(250,250,248,.96);
-      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1.5px solid var(--border);
-      box-shadow: 0 1px 0 var(--border), 0 4px 24px rgba(11,11,19,.04);
-      /* Eigene Compositing-Ebene → verhindert Ruckeln beim Hero-Motivwechsel */
-      transform: translateZ(0);
-      will-change: transform;
-    }
-    .fh-hdr {
-      max-width: 1160px; margin: 0 auto; padding: 0 20px;
-      height: 64px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .fh-brand { display:flex; align-items:center; gap:10px; }
-    .fh-brand img { height: 28px; }
-    .fh-nav { display: flex; align-items: center; gap: 22px; }
-    .fh-nav a {
-      font-size: 14px; font-weight: 600;
-      color: var(--muted); transition: color .2s; white-space: nowrap;
-    }
-    .fh-nav a:hover { color: var(--ink); }
-    .fh-nav-cta {
-      background: linear-gradient(135deg, var(--brand), var(--pink));
-      color: #fff !important; padding: 8px 18px; border-radius: 999px;
-      font-weight: 700 !important; transition: transform .15s, box-shadow .2s !important;
-      box-shadow: var(--shadow-brand);
-    }
-    .fh-nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(113,131,245,.35); }
-    .fh-nav-toggle { display:none; background:none; border:none; color:var(--ink); font-size:22px; cursor:pointer; padding:4px; }
-    @media(max-width:640px){
-      .fh-nav a:not(.fh-nav-cta){ display:none; }
-      .fh-nav-toggle { display:block; }
-      .fh-hdr { padding:0 16px; }
-    }
-
-    /* ══════════════════════════════
-       HERO – stays dark (photo bg)
-       ══════════════════════════════ */
-    .fh-hero-wrap {
-      position: relative; overflow: hidden;
-      min-height: 100svh; display: flex; align-items: center;
-      background: var(--bg-hero);
-    }
-    .hero-layer {
-      position: absolute; inset: 0;
-      background-size: cover; background-position: center;
-      opacity: 0; transition: opacity 1.4s ease-in-out;
-      will-change: opacity;
-    }
-    .hero-layer.active { opacity: 1; }
-    .fh-hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(160deg, rgba(11,11,19,.82) 0%, rgba(12,15,26,.55) 50%, rgba(113,131,245,.1) 100%);
-    }
-    /* Soft fade at the bottom of hero → light content below */
-    .fh-hero-wrap::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 120px; z-index: 2;
-      background: linear-gradient(to bottom, transparent 0%, rgba(250,250,248,.15) 100%);
-      pointer-events: none;
-    }
-    .fh-hero-inner {
-      position: relative; z-index: 3;
-      max-width: 1160px; margin: 0 auto; padding: 88px 20px 56px;
-      width: 100%;
-      display: flex; flex-direction: column; gap: 20px;
-    }
-
-    /* Live badge */
-    .fh-live-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
-      border-radius: 999px; padding: 5px 14px; width: fit-content;
-      font-size: 11px; font-weight: 700; color: rgba(255,255,255,.9);
-      letter-spacing: .05em; text-transform: uppercase;
-      margin-bottom: 8px; backdrop-filter: blur(6px);
-    }
-    .fh-live-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--green); animation: livepulse 2s ease-in-out infinite;
-    }
-
-    .fh-hero-h1 {
-      font-family: var(--font-display);
-      font-size: clamp(42px, 6vw, 72px); font-weight: 800;
-      line-height: 1.0; color: #fff; margin-bottom: 8px;
-      text-shadow: 0 2px 24px rgba(0,0,0,.3); letter-spacing: -.02em;
-      /* Feste Höhe für 3 Zeilen (schlimmster Fall) → kein Layoutsprung */
-      height: 3.1em; overflow: hidden;
-    }
-    .fh-hero-h1 em { font-style: normal; color: var(--pink); }
-    .fh-hero-sub {
-      font-size: 16px; color: rgba(255,255,255,.8);
-      line-height: 1.55; text-shadow: 0 1px 10px rgba(0,0,0,.2);
-      height: 3.2em; overflow: hidden;
-    }
-
-    .fh-hero-top { display: flex; align-items: flex-start; gap: 24px; }
-    .fh-hero-top-text { flex: 1; }
-
-    .fh-hero-cols {
-      display: grid; grid-template-columns: 1fr; gap: 0;
-    }
-    .fh-hero-col-left { display: flex; flex-direction: column; }
-
-    .fh-plany-float { flex-shrink: 0; align-self: center; }
-    .fh-plany-float img {
-      height: 130px; width: auto;
-      filter: drop-shadow(0 8px 28px rgba(113,131,245,.4));
-      animation: planyFloat 3.5s ease-in-out infinite;
-    }
-
-    /* Departure board */
-
-    /* Destination pills */
-    .fh-dest-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .fh-dpill {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.15);
-      border-radius: 999px; padding: 8px 16px;
-      font-size: 13px; font-weight: 700; color: rgba(255,255,255,.8);
-      cursor: pointer; transition: all .25s;
-      backdrop-filter: blur(4px); user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .fh-dpill:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; }
-    .fh-dpill.active {
-      background: linear-gradient(135deg, rgba(244,113,180,.2), rgba(113,131,245,.2));
-      border-color: var(--pink); color: #fff;
-      box-shadow: 0 4px 18px rgba(244,113,180,.2);
-    }
-    .fh-dpill .pi { font-size: 16px; }
-
-    /* ══ SEARCH FORM – light card ══ */
-    .fh-search {
-      background: rgba(255,255,255,.97); border: 1.5px solid rgba(113,131,245,.15);
-      border-radius: var(--r); padding: 16px; display: grid; gap: 12px;
-      box-shadow: 0 8px 40px rgba(11,11,19,.18); width: 100%;
-    }
-    /* Kopfzeile Suchfeld: Titel links, Zeitanzeige rechts */
-    .fh-search-hdr {
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    }
-    .fh-search-title {
-      font-size: 12px; font-weight: 700; color: var(--muted);
-      text-transform: uppercase; letter-spacing: .06em; display: flex; align-items: center; gap: 6px;
-    }
-    .fh-search-title svg { opacity: .5; }
-    .fh-zeitanzeige {
-      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
-      color: var(--muted); background: var(--bg-alt);
-      border: 1.5px solid var(--border); border-radius: 8px;
-      padding: 4px 10px; white-space: nowrap; text-align: right; line-height: 1.4;
-      transition: color .3s;
-    }
-    .fh-zeitanzeige strong { color: var(--brand); display: block; font-size: 13px; }
-    .fh-pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .fh-pill { display:flex; gap:2px; background:var(--bg-alt); border-radius:999px; padding:3px; border:1.5px solid var(--border); }
-    .fh-pill input { display:none; }
-    .fh-pill label { padding:5px 14px; border-radius:999px; font-size:12px; font-weight:700; color:var(--muted); cursor:pointer; transition:all .2s; }
-    .fh-pill input:checked + label { background:#fff; color:var(--ink); box-shadow:0 1px 6px rgba(11,11,19,.1); }
-
-    .fh-loc-row { display:flex; gap:8px; align-items:stretch; position:relative; }
-    .fh-loc-wrap { flex:1; position:relative; }
-    .fh-lfield { background:var(--bg-alt); border:1.5px solid var(--border); border-radius:10px; padding:10px 12px; cursor:text; transition:border-color .2s, background .2s; }
-    .fh-lfield:focus-within { border-color:var(--brand); background:#fff; box-shadow:0 0 0 3px rgba(113,131,245,.1); }
-    .fh-lfield label { display:block; font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
-    .fh-lfield input { width:100%; border:none; outline:none; background:transparent; font-family:var(--font-body); font-size:15px; font-weight:500; color:var(--ink); }
-    .fh-lfield input::placeholder { color:#b5b9d0; font-weight:400; }
-    .fh-iata { position:absolute; top:10px; right:8px; background:var(--brand); color:#fff; font-size:10px; font-weight:800; padding:2px 6px; border-radius:6px; display:none; }
-
-    .fh-ac { position:absolute; top:calc(100% + 4px); left:0; right:0; background:#fff; border-radius:10px; box-shadow:0 8px 32px rgba(11,11,19,.14); border:1.5px solid var(--border); z-index:200; display:none; overflow:hidden; }
-    .fh-ac.open { display:block; }
-    .fh-ac-item { display:flex; align-items:center; gap:10px; padding:9px 12px; cursor:pointer; transition:background .1s; }
-    .fh-ac-item:hover,.fh-ac-item.focused { background:var(--bg-alt); }
-    .fh-ac-iata { font-family:var(--font-mono); font-size:13px; font-weight:800; color:var(--brand); min-width:34px; }
-    .fh-ac-name { font-size:13px; font-weight:500; color:var(--ink); }
-    .fh-ac-cty { font-size:11px; color:var(--muted); margin-left:auto; }
-
-    .fh-swap-btn {
-      background: var(--bg-alt); border: 1.5px solid var(--border); border-radius: 10px;
-      color: var(--muted); width: 38px; flex-shrink: 0; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all .2s; align-self: stretch;
-    }
-    .fh-swap-btn:hover { background: var(--brand); border-color:var(--brand); color: #fff; }
-
-    .fh-slider-wrap { padding: 6px 2px 0; }
-    .fh-slider-track { position:relative; height:56px; }
-    .fh-bubble {
-      position:absolute; top:0; transform:translateX(-50%);
-      background:var(--brand); color:#fff; font-size:11px; font-weight:700;
-      padding:5px 12px; border-radius:999px; white-space:nowrap; pointer-events:none;
-      transition:left .05s linear, background .2s;
-      box-shadow: 0 0 12px 3px rgba(113,131,245,.4);
-      display:flex; align-items:center; gap:5px;
-    }
-    .fh-bubble::after {
-      content:''; position:absolute; bottom:-5px; left:50%; transform:translateX(-50%) rotate(45deg);
-      width:7px; height:7px; background:inherit;
-      border-right:1.5px solid rgba(255,255,255,.1); border-bottom:1.5px solid rgba(255,255,255,.1);
-    }
-    .fh-track-bg {
-      position:absolute; bottom:16px; left:11px; right:11px; height:5px;
-      background:linear-gradient(to right,#7183f5,#f571b4); border-radius:99px;
-    }
-    .fh-range {
-      position:absolute; bottom:6px; left:0; right:0; width:100%;
-      -webkit-appearance:none; appearance:none; height:20px; background:transparent; cursor:pointer;
-    }
-    .fh-range::-webkit-slider-thumb { -webkit-appearance:none; width:26px; height:16px; border-radius:999px; background:#fff; border:2.5px solid var(--brand); box-shadow:0 2px 10px rgba(113,131,245,.45); transition:border-color .2s; cursor:grab; }
-    .fh-range::-moz-range-thumb { width:26px; height:16px; border-radius:999px; background:#fff; border:2.5px solid var(--brand); box-shadow:0 2px 10px rgba(113,131,245,.45); }
-    .fh-slider-lbls { display:flex; justify-content:space-between; font-size:10px; color:var(--muted); font-weight:700; letter-spacing:.04em; margin-top:2px; padding:0 11px; }
-
-    /* Calendar */
-    .fh-cal { display:none; }
-    .fh-cal-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
-    .fh-cal-nav { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:8px; color:#fff; width:28px; height:28px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center; line-height:1; }
-    .fh-cal-nav:hover { background:rgba(255,255,255,.15); }
-    .fh-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
-    .fh-cal-dow { text-align:center; font-size:10px; font-weight:700; color:rgba(255,255,255,.3); padding:4px 0; }
-    .fh-cal-day { text-align:center; font-size:12px; font-weight:600; padding:5px 2px; border-radius:7px; cursor:pointer; color:rgba(255,255,255,.75); transition:background .12s; }
-    .fh-cal-day:hover:not(.past):not(.empty) { background:rgba(255,255,255,.12); }
-    .fh-cal-day.past { color:rgba(255,255,255,.2); cursor:default; }
-    .fh-cal-day.empty { pointer-events:none; }
-    .fh-cal-day.sel { color:#fff; }
-    .fh-cal-footer { display:flex; gap:8px; margin-top:8px; }
-    .fh-cal-chip { flex:1; text-align:center; padding:7px 10px; border-radius:8px; font-size:12px; font-weight:700; border:1.5px solid rgba(255,255,255,.12); color:rgba(255,255,255,.45); cursor:pointer; transition:all .2s; }
-    .fh-cal-chip.active { border-color:var(--brand); color:var(--brand); }
-    .fh-cal-chip.filled { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); color:#fff; }
-
-    .fh-bottom-row { display:flex; align-items:center; gap:12px; }
-    .fh-pax-new { display:flex; gap:16px; background:var(--bg-alt); border:1.5px solid var(--border); border-radius:10px; padding:8px 14px; flex:1; }
-    .fh-pax-grp { display:flex; align-items:center; gap:6px; }
-    .fh-pax-grp label { font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; min-width:30px; }
-    .fh-cbtn { background:#fff; border:1.5px solid var(--border); color:var(--ink); width:22px; height:22px; border-radius:6px; cursor:pointer; font-size:15px; display:flex; align-items:center; justify-content:center; line-height:1; transition:background .15s; }
-    .fh-cbtn:hover { background:var(--brand); border-color:var(--brand); color:#fff; }
-    .fh-cval { font-family:var(--font-mono); font-size:14px; font-weight:700; color:var(--ink); min-width:18px; text-align:center; }
-    .fh-go-new {
-      background: var(--brand); color: #fff; border: none; border-radius: 12px;
-      padding: 0 24px; height: 48px; font-family: var(--font-body);
-      font-size: 15px; font-weight: 700; cursor: pointer;
-      display: flex; align-items: center; gap: 8px;
-      transition: transform .15s, box-shadow .2s;
-      box-shadow: 0 4px 14px rgba(113,131,245,.4); white-space: nowrap; flex-shrink: 0;
-    }
-    .fh-go-new:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(113,131,245,.5); }
-    .fh-spinner { width:16px; height:16px; border:2.5px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; display:none; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .fh-widget-trust {
-      text-align: center; font-size: 11px; color: rgba(255,255,255,.35);
-      font-weight: 600; margin-top: 8px; letter-spacing: .02em;
-    }
-
-    /* ══════════════════════════════
-       TRUST BAR – gradient bridge
-       ══════════════════════════════ */
-    .fh-trust {
-      background: linear-gradient(90deg, var(--brand) 0%, var(--pink) 100%);
-      padding: 14px 20px;
-    }
-    .fh-trust-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      gap: 28px; flex-wrap: wrap;
-    }
-    .fh-trust-item {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 13px; font-weight: 600; color: #fff; white-space: nowrap;
-    }
-
-    /* ══════════════════════════════
-       GRACE & SAM – Light Warm
-       ══════════════════════════════ */
-    .fh-romance {
-      background: var(--bg-warm);
-      padding: 80px 0;
-      border-top: 1.5px solid var(--border);
-      border-bottom: 1.5px solid var(--border);
-    }
-    .fh-romance-inner {
-      max-width: 1160px; margin: 0 auto; padding: 0 20px;
-      display: grid; grid-template-columns: 300px 1fr; gap: 60px; align-items: start;
-    }
-    .fh-romance-fig {
-      position: sticky; top: 80px; border-radius: var(--r); overflow: hidden;
-      box-shadow: var(--shadow-l); margin: 0;
-    }
-    .fh-romance-fig img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
-    .fh-romance-fig figcaption {
-      padding: 12px 16px; font-size: 12px; color: var(--muted);
-      background: #fff; border-top: 1.5px solid var(--border);
-    }
-    .fh-romance-h {
-      font-family: var(--font-display); font-size: 26px; font-weight: 800;
-      color: var(--brand); margin-bottom: 20px; letter-spacing: -.02em;
-      line-height: 1.2;
-    }
-    .fh-romance-text p {
-      font-size: 15px; line-height: 1.8; color: var(--ink-mid);
-      margin-bottom: 16px;
-    }
-    .fh-romance-text em { font-style: italic; color: var(--brand); font-weight: 600; }
-
-    /* ══════════════════════════════
-       FAQ – Light Clean
-       ══════════════════════════════ */
-    .fh-faq { background: var(--bg); padding: 80px 0; }
-    .fh-faq-inner { max-width: 740px; margin: 0 auto; padding: 0 20px; }
-    .fh-faq-title {
-      font-family: var(--font-display);
-      font-size: clamp(24px, 3vw, 30px); font-weight: 800;
-      text-align: center; margin-bottom: 32px;
-      letter-spacing: -.02em; color: var(--ink);
-    }
-    .fh-faq-title span { color: var(--brand); }
-    details {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--r); margin-bottom: 8px; overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: box-shadow .2s;
-    }
-    details[open] { box-shadow: 0 4px 24px rgba(113,131,245,.1); border-color: var(--brand); }
-    summary {
-      padding: 18px 22px; font-size: 15px; font-weight: 600; color: var(--ink);
-      cursor: pointer; list-style: none;
-      display: flex; justify-content: space-between; align-items: center; gap: 12px;
-      transition: background .15s; -webkit-tap-highlight-color: transparent;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::after {
-      content: '+'; font-size: 22px; font-weight: 300;
-      color: var(--brand); flex-shrink: 0; transition: transform .2s;
-    }
-    details[open] summary::after { content: '−'; }
-    summary:hover { background: var(--bg-alt); }
-    details p { padding: 0 22px 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
-
-    /* ══════════════════════════════
-       NEWSLETTER CTA – Light Brand
-       ══════════════════════════════ */
-    .fh-cta-section {
-      position: relative; padding: 80px 0; text-align: center; overflow: hidden;
-      background: linear-gradient(135deg, var(--bg-alt) 0%, #EEEFFE 40%, #FDE8F5 100%);
-      border-top: 1.5px solid var(--border);
-    }
-    .fh-cta-section::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(113,131,245,.08), transparent 60%),
-        radial-gradient(ellipse at 80% 50%, rgba(245,113,180,.06), transparent 60%);
-      pointer-events: none;
-    }
-    .fh-cta-content { position: relative; z-index: 2; max-width: 500px; margin: 0 auto; padding: 0 20px; }
-    .fh-cta-title {
-      font-family: var(--font-display); font-size: clamp(26px, 4vw, 34px); font-weight: 800;
-      letter-spacing: -.02em; margin-bottom: 10px; color: var(--ink);
-    }
-    .fh-cta-sub {
-      font-size: 15px; color: var(--muted); margin-bottom: 28px; line-height: 1.6;
-    }
-    .fh-cta-form { display: flex; gap: 10px; }
-    .fh-cta-form input {
-      flex: 1; background: #fff; border: 1.5px solid var(--border);
-      border-radius: 12px; padding: 12px 16px; font-family: var(--font-body);
-      font-size: 14px; color: var(--ink); outline: none;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    .fh-cta-form input::placeholder { color: var(--muted); }
-    .fh-cta-form input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(113,131,245,.15); }
-    .fh-cta-form button {
-      background: linear-gradient(135deg, var(--brand), var(--pink));
-      color: #fff; border: none; border-radius: 12px; padding: 12px 22px;
-      font-family: var(--font-body); font-size: 14px; font-weight: 700; cursor: pointer;
-      white-space: nowrap; transition: transform .15s, box-shadow .2s;
-      box-shadow: var(--shadow-brand);
-    }
-    .fh-cta-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(244,113,180,.3); }
-    .fh-cta-note { color: var(--muted); font-size: 11px; margin-top: 14px; }
-
-    /* ══════════════════════════════
-       FOOTER – light
-       ══════════════════════════════ */
-    footer { background: #fff; padding: 56px 20px; border-top: 1.5px solid var(--border); }
-    .fh-footer-inner {
-      max-width: 1160px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;
-    }
-    .fh-footer-brand { display:flex; align-items:center; gap:14px; }
-    .fh-footer-brand img { height: 24px; opacity: 1; }
-    .fh-footer-brand p { font-size: 13px; max-width: 260px; line-height: 1.5; color: var(--muted); }
-    .fh-footer-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; font-size: 13px; }
-    .fh-footer-links a { color: var(--muted); transition: color .2s; }
-    .fh-footer-links a:hover { color: var(--brand); }
-    .fh-footer-bottom {
-      width: 100%; border-top: 1.5px solid var(--border); padding-top: 20px; margin-top: 8px;
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; font-size: 12px;
-      color: var(--muted);
-    }
-    .fh-footer-transp { color: #b0b3c6; }
-
-    /* ══════════════════════════════
-       RESPONSIVE
-       ══════════════════════════════ */
-    @media(max-width:900px) {
-      .fh-hero-inner { padding: 100px 16px 40px; gap: 16px; }
-      .fh-hero-wrap { min-height: auto; }
-      .fh-hero-cols { grid-template-columns: 1fr; }
-      .fh-plany-float img { height: 80px; }
-      .fh-hero-h1 { min-height: auto; }
-      .fh-romance-inner { grid-template-columns: 1fr; gap: 32px; }
-      .fh-romance-fig { position: static; }
-      .fh-trust-item:nth-child(n+4) { display: none; }
-    }
-    @media(max-width:480px) {
-      .fh-hero-h1 { font-size: 38px; }
-      .fh-dpill { padding: 6px 12px; font-size: 12px; }
-      .fh-loc-row { flex-direction: column; }
-      .fh-swap-btn { align-self: center; transform: rotate(90deg); }
-      .fh-swap-btn:hover { transform: rotate(270deg); }
-      .fh-bottom-row { flex-direction: column; gap: 12px; }
-      .fh-go-new { width: 100%; justify-content: center; }
-      .fh-plany-float img { height: 60px; }
-      footer { padding: 36px 16px; }
-      .fh-cta-form { flex-direction: column; }
-      .fh-faq { padding: 56px 0; }
-      .fh-romance { padding: 56px 0; }
-    }
-
-    /* ══════════════════════════════
-       SHUFFLE – 3 Sektionen
-       ══════════════════════════════ */
-    .fh-shuffle {
-      max-width: 1100px; margin: 0 auto;
-      padding: 56px 20px 64px;
-      display: flex; flex-direction: column; gap: 0;
-    }
-    .fh-idea-block {
-      padding: 48px 0 48px;
-      border-bottom: 1px solid var(--border);
-    }
-    .fh-idea-block:last-child { border-bottom: none; }
-    .fh-idea-label {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 11px; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--brand); margin-bottom: 8px;
-    }
-    .fh-idea-title {
-      font-family: var(--font-display); font-size: clamp(24px,3vw,36px);
-      font-weight: 800; color: var(--ink); margin-bottom: 8px; line-height: 1.1;
-    }
-    .fh-idea-pitch {
-      font-size: 15px; color: var(--muted); margin-bottom: 28px;
-      max-width: 640px; line-height: 1.7;
-    }
-
-    /* ── COUNTDOWN CARDS ── */
-    .fh-ccards { display: flex; flex-direction: column; gap: 10px; max-width: 560px; }
-    .fh-ccard {
-      background: var(--ink); border: 1px solid rgba(255,255,255,.06);
-      border-radius: 14px; overflow: hidden;
-      display: grid; grid-template-columns: 1fr auto;
-      transition: border-color .2s; text-decoration: none; color: inherit;
-    }
-    .fh-ccard:hover { border-color: rgba(113,131,245,.5); }
-    .fh-ccard-left { padding: 14px 16px; }
-    .fh-ccard-route {
-      font-family: var(--font-display); font-size: 18px; font-weight: 800;
-      color: #fff; margin-bottom: 2px;
-    }
-    .fh-ccard-meta { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 10px; }
-    .fh-cbar-wrap { height: 4px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
-    .fh-cbar { height: 100%; border-radius: 99px; transition: width 1s linear; }
-    .fh-cbar.bar-green  { background: #22c55e; }
-    .fh-cbar.bar-orange { background: #f59e0b; }
-    .fh-cbar.bar-red    { background: #ef4444; animation: urgentpulse 1s ease-in-out infinite; }
-    @keyframes urgentpulse { 0%,100%{opacity:1} 50%{opacity:.5} }
-    .fh-ccard-timer { font-family: var(--font-mono); font-size: 11px; font-weight: 700; }
-    .fh-ccard-timer.t-green  { color: #22c55e; }
-    .fh-ccard-timer.t-orange { color: #f59e0b; }
-    .fh-ccard-timer.t-red    { color: #ef4444; }
-    .fh-ccard-timer.t-gone   { color: rgba(255,255,255,.2); }
-    .fh-ccard-right {
-      padding: 14px 16px; display: flex; flex-direction: column;
-      align-items: flex-end; justify-content: space-between;
-      border-left: 1px solid rgba(255,255,255,.06);
-    }
-    .fh-ccard-price {
-      font-family: var(--font-display); font-size: 22px; font-weight: 800; color: #fff;
-    }
-    .fh-ccard-btn {
-      background: linear-gradient(135deg, var(--brand), var(--pink));
-      color: #fff; border: none; border-radius: 8px; padding: 6px 14px;
-      font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap;
-      font-family: var(--font-body);
-    }
-    .fh-ccard.cc-gone { opacity: .4; pointer-events: none; }
-
-    /* ── IMPULS KNOPF ── */
-    .fh-impuls-demo {
-      background: var(--bg-alt); border: 1.5px solid var(--border);
-      border-radius: 20px; padding: 40px; text-align: center; max-width: 640px;
-    }
-    .fh-big-btn {
-      display: inline-flex; flex-direction: column; align-items: center; gap: 6px;
-      background: linear-gradient(135deg, var(--brand), var(--pink));
-      color: #fff; border: none; border-radius: 20px;
-      padding: 28px 56px; cursor: pointer;
-      font-family: var(--font-body); transition: transform .2s, box-shadow .2s;
-      animation: bigpulse 3s ease-in-out infinite;
-    }
-    @keyframes bigpulse {
-      0%,100%{box-shadow:0 0 0 0 rgba(113,131,245,.4), 0 16px 48px rgba(113,131,245,.3)}
-      50%{box-shadow:0 0 0 16px rgba(113,131,245,.0), 0 24px 64px rgba(245,113,180,.35)}
-    }
-    .fh-big-btn:hover { transform: scale(1.04); }
-    .fh-big-btn-icon { font-size: 40px; line-height: 1; }
-    .fh-big-btn-label { font-family: var(--font-display); font-size: 24px; font-weight: 800; }
-    .fh-big-btn-sub { font-size: 13px; color: rgba(255,255,255,.7); font-weight: 500; }
-    .fh-slot-result {
-      display: inline-flex; align-items: center; gap: 16px;
-      background: var(--ink); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 14px; padding: 16px 24px; margin: 20px 0 8px;
-      animation: fadeInUp .35s ease;
-    }
-    .fh-slot-route { font-family: var(--font-display); font-size: 24px; font-weight: 800; color: #fff; }
-    .fh-slot-details { text-align: left; }
-    .fh-slot-dest { font-size: 13px; color: rgba(255,255,255,.5); }
-    .fh-slot-price { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #22c55e; }
-    .fh-slot-book {
-      background: #22c55e; color: #fff; border: none; border-radius: 10px;
-      padding: 12px 20px; font-size: 14px; font-weight: 700; cursor: pointer;
-      font-family: var(--font-body); transition: background .2s;
-    }
-    .fh-slot-book:hover { background: #16a34a; }
-    .fh-impuls-stats {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 24px;
-    }
-    .fh-istat {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 14px;
-      font-size: 12px; color: var(--muted); text-align: center; line-height: 1.6;
-    }
-    .fh-istat strong { display: block; font-size: 20px; margin-bottom: 4px; color: var(--ink); }
-
-    /* ── TAGES-RADAR ── */
-    .fh-radar-demo {
-      background: var(--ink); border: 1px solid rgba(255,255,255,.07);
-      border-radius: 20px; padding: 28px; overflow: hidden; max-width: 800px;
-    }
-    .fh-radar-hdr {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-      flex-wrap: wrap; gap: 8px;
-    }
-    .fh-radar-title { font-family: var(--font-display); font-size: 16px; font-weight: 800; color: #fff; }
-    .fh-radar-legend { display: flex; gap: 14px; flex-wrap: wrap; }
-    .fh-rleg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,.4); }
-    .fh-rleg-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .fh-rleg-dot.gone   { background: rgba(255,255,255,.15); }
-    .fh-rleg-dot.now    { background: #f59e0b; }
-    .fh-rleg-dot.soon   { background: var(--brand); }
-    .fh-rleg-dot.later  { background: rgba(113,131,245,.35); }
-    .fh-timeline-wrap { position: relative; }
-    .fh-timeline-axis {
-      display: flex; justify-content: space-between;
-      font-family: var(--font-mono); font-size: 10px; color: rgba(255,255,255,.2);
-      margin-bottom: 8px;
-    }
-    .fh-timeline-track {
-      position: relative; height: 72px;
-      background: rgba(255,255,255,.03); border-radius: 10px; overflow: visible;
-    }
-    .fh-now-line {
-      position: absolute; top: -8px; bottom: -8px; width: 2px;
-      background: rgba(255,255,255,.3); border-radius: 1px; z-index: 10;
-    }
-    .fh-now-line::before {
-      content: 'JETZT'; position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
-      font-family: var(--font-mono); font-size: 8px; font-weight: 700;
-      color: rgba(255,255,255,.4); letter-spacing: .06em; white-space: nowrap;
-    }
-    .fh-flight-dot {
-      position: absolute; top: 50%; transform: translate(-50%,-50%);
-      cursor: pointer; transition: transform .2s;
-    }
-    .fh-flight-dot:hover { transform: translate(-50%,-50%) scale(1.4); z-index: 20; }
-    .fh-dot-inner {
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 10px; transition: all .2s; position: relative;
-    }
-    .fh-dot-inner::after {
-      content: attr(data-label);
-      position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-      background: rgba(10,11,19,.97); border: 1px solid rgba(255,255,255,.12);
-      border-radius: 8px; padding: 8px 12px; font-size: 11px; font-weight: 600; color: #fff;
-      white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .15s;
-      font-family: var(--font-body); line-height: 1.5; text-align: left;
-      box-shadow: 0 8px 24px rgba(0,0,0,.4);
-    }
-    .fh-flight-dot:hover .fh-dot-inner::after { opacity: 1; }
-    .fh-dot-gone  .fh-dot-inner { width: 22px; height: 22px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.3); }
-    .fh-dot-soon  .fh-dot-inner { width: 28px; height: 28px; background: var(--brand); color: #fff; box-shadow: 0 4px 14px rgba(113,131,245,.5); }
-    .fh-dot-later .fh-dot-inner { width: 22px; height: 22px; background: rgba(113,131,245,.3); color: rgba(255,255,255,.6); }
-    .fh-dot-now   .fh-dot-inner { width: 32px; height: 32px; background: #f59e0b; color: #fff; animation: nowpulse 2s infinite; }
-    @keyframes nowpulse {
-      0%,100%{box-shadow:0 0 0 4px rgba(245,158,11,.2),0 0 0 10px rgba(245,158,11,.06)}
-      50%{box-shadow:0 0 0 8px rgba(245,158,11,.25),0 0 0 18px rgba(245,158,11,.08)}
-    }
-    .fh-radar-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 0; }
-    .fh-radar-filter {
-      padding: 5px 12px; border-radius: 99px;
-      border: 1px solid rgba(255,255,255,.1);
-      font-size: 11px; font-weight: 600;
-      background: rgba(255,255,255,.04);
-      cursor: pointer; transition: all .2s; color: rgba(255,255,255,.45);
-    }
-    .fh-radar-filter.active { border-color: var(--brand); color: var(--brand); background: rgba(113,131,245,.1); }
-
-    @media(max-width:640px){
-      .fh-shuffle { padding: 32px 16px 40px; }
-      .fh-idea-block { padding: 36px 0; }
-      .fh-big-btn { padding: 20px 36px; }
-      .fh-big-btn-label { font-size: 20px; }
-      .fh-slot-result { flex-direction: column; align-items: center; }
-      .fh-impuls-stats { grid-template-columns: 1fr; }
-    }
-
-  </style>
+/* RESPONSIVE */
+@media(max-width:900px){
+  .b-status,.b-search{grid-column:span 12}
+  .b-time,.b-pax{grid-column:span 6}
+  .b-cta{grid-column:span 12;min-height:72px;flex-direction:row;gap:10px;padding:18px 26px}
+  .two-col{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  main{padding:20px 12px 56px;gap:30px}
+  .bento{gap:7px}
+  .b-time,.b-pax{grid-column:span 12}
+  .srow{flex-direction:column}
+  .swap-btn{transform:rotate(90deg);align-self:center}
+  #plany-c{width:68px;bottom:14px;right:14px}
+}
+</style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
-<header class="fh-header">
-  <div class="fh-hdr">
-    <a href="/" class="fh-brand" aria-label="fliegheute.de – Startseite">
-      <img src="/assets/logo-plany-header.svg" alt="fliegheute.de" width="120" height="28">
-    </a>
-    <nav class="fh-nav" aria-label="Hauptnavigation">
-      <a href="#story">Unsere Story</a>
-      <a href="#faq">FAQ</a>
-      <a href="#newsletter" class="fh-nav-cta">Deal-Alerts ✈</a>
+<div class="bg-layer" aria-hidden="true">
+  <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1400&q=80&auto=format&fit=crop" alt="">
+  <div class="radar-waves">
+    <div class="radar-circle"></div>
+    <div class="radar-circle" style="animation-delay:1.3s"></div>
+    <div class="radar-circle" style="animation-delay:2.6s"></div>
+  </div>
+</div>
+
+<header>
+  <div class="hdr">
+    <div class="hdr-logo">
+      <div class="hdr-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="hdr-name">flieg<span>heute.de</span></span>
+    </div>
+    <nav class="hdr-nav">
+      <a href="#sec-countdown">Deals</a>
+      <a href="#sec-radar">Radar</a>
+      <a href="#sec-impulse">Spontan</a>
+      <a href="https://suche.fliegheute.de" target="_blank" class="hdr-cta">Suchen →</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- ══ HERO ══ -->
-<section class="fh-hero-wrap" id="hero" aria-label="Flugsuche Last-Minute">
-  <div class="hero-layer active" id="hero-layer-a" role="img" aria-label="Hero Hintergrundbild"></div>
-  <div class="hero-layer" id="hero-layer-b"></div>
-  <div class="fh-hero-overlay" aria-hidden="true"></div>
-
-  <div class="fh-hero-inner">
-    <div class="fh-hero-top">
-      <div class="fh-hero-top-text">
-        <div class="fh-live-badge">
-          <span class="fh-live-dot" aria-hidden="true"></span>
-          Live Deals – gerade verfügbar
-        </div>
-        <h1 class="fh-hero-h1" id="hero-title">Flieg.<br><em>Heute.</em></h1>
-        <p class="fh-hero-sub" id="hero-sub">Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.</p>
-      </div>
-      <div class="fh-plany-float" aria-hidden="true">
-        <img src="/assets/logo-plany-mascot.svg" alt="Plany – das fliegheute.de Maskottchen" loading="eager">
-      </div>
+  <!-- BENTO HERO -->
+  <section aria-label="Flugsuche Last-Minute">
+    <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px">
+      <div class="live-dot" style="position:relative;width:8px;height:8px;flex-shrink:0"><div class="live-ping" style="position:absolute;inset:0;border-radius:50%;background:var(--green);opacity:.65;animation:pulse-dot 2s ease-in-out infinite"></div><div style="position:absolute;inset:0;border-radius:50%;background:var(--green)"></div></div>
+      <span style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)">Live Deals – gerade verfügbar</span>
     </div>
+    <div class="bento">
 
-    <div class="fh-hero-cols">
-      <div class="fh-hero-col-left" style="max-width:560px">
-        <div class="fh-search" aria-label="Flugsuche Formular">
-          <!-- Kopfzeile: Label + Live-Zeitanzeige -->
-          <div class="fh-search-hdr">
-            <span class="fh-search-title">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Last-Minute-Deals
-            </span>
-            <div class="fh-zeitanzeige" id="fh-zeitanzeige">
-              Abflug bis ~<strong id="fh-zeit-val">—</strong>
-            </div>
+      <div class="glass b-status">
+        <div class="live-row">
+          <div class="live-dot" style="position:relative;width:9px;height:9px;flex-shrink:0">
+            <div class="live-ping" style="position:absolute;inset:0;border-radius:50%;background:var(--green);opacity:.65;animation:pulse-dot 2s ease-in-out infinite"></div>
+            <div style="position:absolute;inset:0;border-radius:50%;background:var(--green)"></div>
           </div>
-          <div class="fh-pill-row">
-            <div class="fh-pill">
-              <input type="radio" name="fh-trip" id="fh-ow" value="ow" checked>
-              <label for="fh-ow">One-Way</label>
-              <input type="radio" name="fh-trip" id="fh-rt" value="rt">
-              <label for="fh-rt">Hin &amp; Rück</label>
-            </div>
-            <div class="fh-pill">
-              <input type="radio" name="fh-mode" id="fh-ms" value="s" checked>
-              <label for="fh-ms">Spontan</label>
-              <input type="radio" name="fh-mode" id="fh-mc" value="c">
-              <label for="fh-mc">Kalender</label>
-            </div>
+          <span class="live-lbl">Live Status</span>
+        </div>
+        <div>
+          <div class="live-title">DEALS ACTIVE</div>
+          <div class="live-sub">Nächste Aktualisierung <b id="rcountdown">05:00</b></div>
+        </div>
+      </div>
+
+      <div class="glass b-search">
+        <div class="srow">
+          <div class="sfield">
+            <label class="from">Von</label>
+            <input class="sinput" id="s-from" placeholder="FRANKFURT" type="text" autocomplete="off">
+            <input type="hidden" id="s-from-i" value="FRA">
           </div>
-          <div class="fh-loc-row">
-            <div class="fh-loc-wrap">
-              <div class="fh-lfield">
-                <label>Von</label>
-                <input type="text" id="fh-origin" placeholder="Frankfurt, Baden-Baden…" autocomplete="off">
-                <span class="fh-iata" id="fh-ob"></span>
-              </div>
-              <div class="fh-ac" id="fh-oac"></div>
-              <input type="hidden" id="fh-oi">
-            </div>
-            <button class="fh-swap-btn" id="fh-swap" type="button" aria-label="Abflug und Ziel tauschen">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
-            </button>
-            <div class="fh-loc-wrap">
-              <div class="fh-lfield">
-                <label>Nach</label>
-                <input type="text" id="fh-dest" placeholder="Barcelona, London…" autocomplete="off">
-                <span class="fh-iata" id="fh-db"></span>
-              </div>
-              <div class="fh-ac" id="fh-dac"></div>
-              <input type="hidden" id="fh-di">
-            </div>
-          </div>
-          <div class="fh-slider-wrap" id="fh-slider-panel">
-            <div class="fh-slider-track">
-              <div class="fh-bubble" id="fh-bubble">24h bis Abflug</div>
-              <div class="fh-track-bg"></div>
-              <input type="range" class="fh-range" id="fh-slider" min="1" max="72" value="24">
-            </div>
-            <div class="fh-slider-lbls"><span>1h</span><span>24h</span><span>48h</span><span>72h</span></div>
-          </div>
-          <div class="fh-cal" id="fh-cal">
-            <div class="fh-cal-hdr">
-              <button class="fh-cal-nav" id="fh-cprev" type="button">&#8249;</button>
-              <span id="fh-cmlbl" style="font-weight:700;font-size:13px;color:#fff"></span>
-              <button class="fh-cal-nav" id="fh-cnext" type="button">&#8250;</button>
-            </div>
-            <div class="fh-cal-grid" id="fh-cgrid"></div>
-            <div class="fh-cal-footer">
-              <div class="fh-cal-chip active" id="fh-chip-from">Abflug wählen</div>
-              <div class="fh-cal-chip" id="fh-chip-to" style="display:none">Rückkehr wählen</div>
-            </div>
-          </div>
-          <div class="fh-bottom-row">
-            <div class="fh-pax-new">
-              <div class="fh-pax-grp">
-                <label>Erw.</label>
-                <button class="fh-cbtn" data-t="a" data-o="-" type="button">−</button>
-                <span class="fh-cval" id="fh-av">1</span>
-                <button class="fh-cbtn" data-t="a" data-o="+" type="button">+</button>
-              </div>
-              <div class="fh-pax-grp">
-                <label>Kinder</label>
-                <button class="fh-cbtn" data-t="k" data-o="-" type="button">−</button>
-                <span class="fh-cval" id="fh-kv">0</span>
-                <button class="fh-cbtn" data-t="k" data-o="+" type="button">+</button>
-              </div>
-            </div>
-            <button class="fh-go-new" id="fh-go" type="button">
-              <div class="fh-spinner" id="fh-spin"></div>
-              <svg id="fh-sico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <span id="fh-slbl">Flüge finden</span>
-            </button>
+          <button class="swap-btn" id="swap-btn" aria-label="Tauschen">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+          </button>
+          <div class="sfield">
+            <label class="to">Nach</label>
+            <input class="sinput" id="s-to" placeholder="IRGENDWOHIN" type="text" autocomplete="off">
+            <input type="hidden" id="s-to-i" value="">
           </div>
         </div>
-        <!-- trust proofs jetzt in der Banderole unter dem Hero -->
+        <div class="sbottom">
+          <div class="trip-tog">
+            <button class="act" id="tt-ow">One-Way</button>
+            <button id="tt-rt">Hin &amp; Rück</button>
+          </div>
+          <span style="font-size:10px;color:rgba(255,255,255,.28)">Direkt zum Buchungsportal</span>
+        </div>
       </div>
+
+      <div class="glass b-time">
+        <div class="b-time-hdr">
+          <span>Abflug bis</span>
+          <span class="tw-val" id="tw-val">24h</span>
+        </div>
+        <input type="range" class="rng" id="tw-slider" min="1" max="72" value="24">
+        <div class="rng-lbls"><span>Jetzt</span><span>24h</span><span>48h</span><span>72h</span></div>
+      </div>
+
+      <div class="glass b-pax">
+        <div class="pax-row">
+          <span class="pax-lbl">Erwachsene</span>
+          <div class="pax-ctrl">
+            <button class="pax-btn" id="pax-m">−</button>
+            <span class="pax-val" id="pax-v">1</span>
+            <button class="pax-btn" id="pax-p">+</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="glass b-cta" id="search-btn" aria-label="Flüge suchen">
+        <span class="cta-sub">Ignition</span>
+        <span class="cta-main">Suchen</span>
+        <svg class="cta-arr" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
     </div>
 
-    <div class="fh-dest-pills" role="group" aria-label="Reisestimmung wählen">
-      <button class="fh-dpill active" data-hero="0" type="button" aria-pressed="true">
-        <span class="pi">🌊</span> Mallorca
-      </button>
-      <button class="fh-dpill" data-hero="1" type="button" aria-pressed="false">
-        <span class="pi">🏙️</span> The City
-      </button>
-      <button class="fh-dpill" data-hero="2" type="button" aria-pressed="false">
-        <span class="pi">🏔️</span> Outdoors
-      </button>
+    <div class="dpills">
+      <button class="dpill act" data-o="FRA" data-d="PMI" data-on="Frankfurt" data-dn="Mallorca">🌊 Mallorca</button>
+      <button class="dpill" data-o="BER" data-d="LON" data-on="Berlin" data-dn="London">🏙️ London</button>
+      <button class="dpill" data-o="MUC" data-d="FCO" data-on="München" data-dn="Rom">🏛️ Rom</button>
+      <button class="dpill" data-o="FRA" data-d="BCN" data-on="Frankfurt" data-dn="Barcelona">☀️ Barcelona</button>
+      <button class="dpill" data-o="HAM" data-d="AMS" data-on="Hamburg" data-dn="Amsterdam">🚲 Amsterdam</button>
     </div>
+  </section>
+
+  <!-- TRUST -->
+  <div class="trust">
+    <div class="trust-item">Kein Aufpreis – nie</div>
+    <div class="trust-item">Direkt beim Anbieter buchen</div>
+    <div class="trust-item">Kein Account nötig</div>
+    <div class="trust-item">Last-Minute-Spezialist</div>
   </div>
-</section>
 
-<!-- ══ TRUST BAR ══ -->
-<div class="fh-trust" role="complementary">
-  <div class="fh-trust-inner">
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Aufpreis – nie</div>
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Direkt beim Anbieter buchen</div>
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kein Account nötig</div>
-    <div class="fh-trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Last-Minute-Spezialist</div>
-  </div>
-</div>
-
-<!-- ══ SHUFFLE CONTAINER ══ -->
-<div class="fh-shuffle" id="fh-shuffle">
-
-  <!-- COUNTDOWN CARDS -->
-  <section class="fh-idea-block" id="sec-countdown">
-    <div class="fh-idea-label">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+  <!-- COUNTDOWN -->
+  <section id="sec-countdown">
+    <div class="sec-lbl">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       Abflug-Countdown
     </div>
-    <h2 class="fh-idea-title">Diese Flüge starten heute.<br>Jede Minute zählt.</h2>
-    <p class="fh-idea-pitch">Sieh wie die Zeit läuft. Grün → Orange → Rot. Wer zögert, verpasst. Klick auf "Jetzt buchen" → direkt zur Buchung.</p>
-    <div class="fh-ccards" id="fh-ccards">
-      <!-- filled by JS -->
-      <div style="height:160px;background:var(--bg-alt);border-radius:14px;animation:shimmer 1.4s infinite;background-size:200% 100%;background-image:linear-gradient(90deg,var(--bg-alt) 25%,var(--border) 50%,var(--bg-alt) 75%)"></div>
-      <div style="height:80px;background:var(--bg-alt);border-radius:14px;margin-top:4px;animation:shimmer 1.4s infinite;background-size:200% 100%;background-image:linear-gradient(90deg,var(--bg-alt) 25%,var(--border) 50%,var(--bg-alt) 75%)"></div>
+    <h2 class="sec-title">Diese Flüge starten heute.<br>Jede Minute zählt.</h2>
+    <p class="sec-sub">Grün → Orange → Rot. Wer zögert, verpasst.</p>
+    <div class="ccards" id="ccards">
+      <div style="height:72px;background:rgba(255,255,255,.04);border-radius:15px"></div>
+      <div style="height:72px;background:rgba(255,255,255,.04);border-radius:15px;opacity:.5;margin-top:5px"></div>
     </div>
   </section>
 
-  <!-- IMPULS KNOPF -->
-  <section class="fh-idea-block" id="sec-impuls">
-    <div class="fh-idea-label" style="color:var(--pink)">✨ Spontan-Modus</div>
-    <h2 class="fh-idea-title">Kein Ziel? Kein Problem.<br>Plany entscheidet für dich.</h2>
-    <p class="fh-idea-pitch">Kein Suchfeld. Kein Filter. Ein einziger Knopf. Klick → zufälliger heutiger Deal → direkt zur Buchung. Die Anti-Suchmaschine.</p>
-    <div class="fh-impuls-demo">
-      <div>
-        <button class="fh-big-btn" id="fh-impuls-btn" type="button">
-          <span class="fh-big-btn-icon" id="fh-impuls-icon">✈️</span>
-          <span class="fh-big-btn-label">Überrasch mich</span>
-          <span class="fh-big-btn-sub">Heute · Jetzt · Irgendwohin</span>
-        </button>
-      </div>
-      <div id="fh-impuls-result" style="display:none">
-        <div style="display:flex;justify-content:center">
-          <div class="fh-slot-result">
-            <div class="fh-slot-route" id="fh-slot-route">—</div>
-            <div class="fh-slot-details">
-              <div class="fh-slot-dest" id="fh-slot-dest">—</div>
-            </div>
-            <div class="fh-slot-price" id="fh-slot-price">—</div>
-            <button class="fh-slot-book" id="fh-slot-book" type="button">Los! ↗</button>
-          </div>
-        </div>
-        <div style="font-size:12px;color:var(--muted);margin-top:8px">
-          Nicht überzeugt? <span style="color:var(--brand);cursor:pointer;font-weight:700" id="fh-reroll">Nochmal würfeln →</span>
-        </div>
-      </div>
-      <div class="fh-impuls-stats">
-        <div class="fh-istat"><strong>3 Sek.</strong>von Idee zu Deal</div>
-        <div class="fh-istat"><strong>0</strong>Filter, Felder, Formulare</div>
-        <div class="fh-istat"><strong>100%</strong>conversion-optimiert</div>
-      </div>
-    </div>
-  </section>
+  <!-- RADAR + IMPULSE -->
+  <div class="two-col">
 
-  <!-- TAGES-RADAR -->
-  <section class="fh-idea-block" id="sec-radar">
-    <div class="fh-idea-label" style="color:#22c55e">🛫 Tages-Radar</div>
-    <h2 class="fh-idea-title">Alle heutigen Flüge auf einen Blick.</h2>
-    <p class="fh-idea-pitch">Jeder Punkt ist ein buchbarer Flug. Vergangene grau, imminent orange, zukünftige blau. Hover = Details. Klick = buchen.</p>
-    <div class="fh-radar-demo">
-      <div class="fh-radar-hdr">
-        <span class="fh-radar-title" id="fh-radar-title">🛫 Heute — Abflug-Radar</span>
-        <div class="fh-radar-legend">
-          <div class="fh-rleg"><div class="fh-rleg-dot gone"></div>abgeflogen</div>
-          <div class="fh-rleg"><div class="fh-rleg-dot now"></div>jetzt!</div>
-          <div class="fh-rleg"><div class="fh-rleg-dot soon"></div>bald</div>
-          <div class="fh-rleg"><div class="fh-rleg-dot later"></div>später</div>
+    <section id="sec-radar">
+      <div class="sec-lbl" style="color:var(--green)">🛫 Tages-Radar</div>
+      <h2 class="sec-title" style="font-size:21px">Alle Flüge heute auf einen Blick.</h2>
+      <p class="sec-sub" style="margin-bottom:14px">Hover = Details · Klick = buchen</p>
+      <div class="glass radar-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+          <span style="font-family:var(--mono);font-size:12px;font-weight:700" id="radar-title">🛫 Abflug-Radar</span>
         </div>
-      </div>
-      <div class="fh-timeline-wrap">
-        <div class="fh-timeline-axis">
+        <div class="radar-axis">
           <span>06:00</span><span>09:00</span><span>12:00</span><span>15:00</span><span>18:00</span><span>21:00</span><span>23:00</span>
         </div>
-        <div class="fh-timeline-track" id="fh-radar-track">
-          <div class="fh-now-line" id="fh-now-line"></div>
+        <div class="radar-track" id="radar-track">
+          <div class="now-line" id="now-line"></div>
+        </div>
+        <div class="radar-legend">
+          <div class="rleg"><div class="rleg-d gone"></div>abgeflogen</div>
+          <div class="rleg"><div class="rleg-d now"></div>jetzt!</div>
+          <div class="rleg"><div class="rleg-d soon"></div>bald</div>
+          <div class="rleg"><div class="rleg-d later"></div>später</div>
+        </div>
+        <div class="rfilters" id="rfilters">
+          <button class="rfbtn act" data-f="all">Alle</button>
+          <button class="rfbtn" data-f="FRA">✈ FRA</button>
+          <button class="rfbtn" data-f="MUC">✈ MUC</button>
+          <button class="rfbtn" data-f="BER">✈ BER</button>
+          <button class="rfbtn" data-f="HAM">✈ HAM</button>
         </div>
       </div>
-      <div class="fh-radar-filters" id="fh-radar-filters">
-        <button class="fh-radar-filter active" data-filter="all" type="button">Alle</button>
-        <button class="fh-radar-filter" data-filter="FRA" type="button">✈ Frankfurt</button>
-        <button class="fh-radar-filter" data-filter="MUC" type="button">✈ München</button>
-        <button class="fh-radar-filter" data-filter="BER" type="button">✈ Berlin</button>
-        <button class="fh-radar-filter" data-filter="HAM" type="button">✈ Hamburg</button>
+    </section>
+
+    <section id="sec-impulse">
+      <div class="sec-lbl" style="color:var(--pink)">✨ Spontan-Modus</div>
+      <h2 class="sec-title" style="font-size:21px">Kein Ziel?<br>Plany entscheidet.</h2>
+      <p class="sec-sub" style="margin-bottom:14px">Ein Klick → zufälliger Deal → direkt zur Buchung.</p>
+      <div class="glass imp-card">
+        <button class="big-btn" id="imp-btn" type="button">
+          <span class="bi" id="imp-icon">✈️</span>
+          <span class="bl">Überrasch mich</span>
+          <span class="bs">Heute · Jetzt · Irgendwohin</span>
+        </button>
+        <div id="imp-result" style="display:none;width:100%;text-align:center">
+          <div style="display:flex;justify-content:center">
+            <div class="slot-res">
+              <div class="sl-route" id="sl-r">—</div>
+              <div><div class="sl-dest" id="sl-d">—</div></div>
+              <div class="sl-price" id="sl-p">—</div>
+              <button class="sl-book" id="sl-book" type="button">Los! ↗</button>
+            </div>
+          </div>
+          <div class="reroll">Nicht überzeugt? <span id="reroll">Nochmal würfeln →</span></div>
+        </div>
+        <div class="imp-stats">
+          <div class="istat"><strong>3s</strong>von Idee zu Deal</div>
+          <div class="istat"><strong>0</strong>Filter, Felder</div>
+          <div class="istat"><strong>100%</strong>spontan</div>
+        </div>
       </div>
+    </section>
+
+  </div>
+
+
+  <!-- ══ DIREKT BUCHEN – DEAL CARDS ══ -->
+  <section id="sec-deals">
+    <div class="sec-lbl" style="color:var(--pink)">💸 Direkt buchen – kein Umweg</div>
+    <h2 class="sec-title">Top-Routen. Echte Preise. Sofort buchbar.</h2>
+    <p class="sec-sub">Klick direkt zur Buchung – Flug oder Hotel. Kein Account, kein Aufpreis.</p>
+    <div class="deal-grid" id="deal-grid">
+      <!-- filled by JS with live or fallback data + affiliate links -->
     </div>
   </section>
 
-</div>
-
-<!-- ══ GRACE & SAM – SEO TEXT ══ -->
-<section class="fh-romance" id="story" aria-labelledby="romance-title">
-  <div class="fh-romance-inner">
-    <figure class="fh-romance-fig fh-reveal">
-      <img src="/assets/cluster-flights-romance.webp" alt="Grace und Sam am Flughafen – Last-Minute-Reise" width="320" height="400" loading="lazy">
-      <figcaption>Grace &amp; Sam – Aufbruchsmomente zwischen Airports der Welt.</figcaption>
-    </figure>
-    <div class="fh-romance-text fh-reveal">
-      <h2 class="fh-romance-h" id="romance-title">Flüge vergleichen – und einfach fliegen.</h2>
-      <p>Sie hieß Grace, er Sam. Ein verregneter Freitag, zwei Tassen Kaffee – und die Idee, <em>Flüge vergleichen</em> zu wollen. Die Flugsuchmaschine öffnete die Welt: günstige Angebote, günstige Flüge, Flugangebote vergleichen, alles nur einen Klick entfernt. In der Suchmaske flüsterten Abflughafen, Zielflughafen und Reisetermin von Neubeginn.</p>
-      <p>Sie liebte die Leichtigkeit: günstige Flüge buchen, Restplätze, Lastminute-Kurztrip. Er war neugierig auf Linienflüge und Charterflüge; sie probierte Low Cost Airlines und Billigairlines – Billigflieger mit Herz. Namen wurden zu Gedichten: Ryanair, Germanwings, Lufthansa, Condor. Für große Träume gab's Langstreckenflüge; für Nähe Flüge zum kleinen Preis.</p>
-      <p>„Vielleicht ein alternativer Flughafen?" fragte Grace. Flexible Datumswahl, verschiedene Flughäfen vergleichen, Anfahrtskosten sparen – alles Teil ihres Spiels. Der Flugvergleich auf fliegheute.de zeigte Flüge nach Frankfurt, Flüge nach München, Flugrouten Berlin–Köln und Hamburg–München. Für Europa lockten Flug nach Paris, Billigflug Barcelona, Amsterdam–Barcelona und Barcelona–Rom.</p>
-      <p>„Aktuelle Reiseanalysen 2025 sagen, Europa tanzt wieder," meinte Sam. <em>Travel Insights</em> schwärmten von Palma de Mallorca, Paris, London, Hurghada – Kultur plus Sonne. Trendwörter schimmerten wie Versprechen: Wellness, Coolcations, Naturreisen – Orte mit Outdoor-Mehrwert statt nur Metropole.</p>
-      <p>Am Ende saßen sie Seite an Seite, Buchungsklasse Economy, aber Herz in Business. „Mit dir ist günstig fliegen kein Kompromiss," flüsterte Grace. „Es ist unser Anfang." Und irgendwo blinkte leise: <em>fliegheute.de</em> – damit man den Mut nicht vergisst.</p>
+  <!-- ══ HOTEL CROSS-SELL ══ -->
+  <div class="hotel-strip">
+    <div style="font-size:32px">🏨</div>
+    <div class="hotel-strip-text">
+      <div class="hotel-strip-title">Auch ein Hotel gesucht?</div>
+      <div class="hotel-strip-sub">Über 2 Mio. Unterkünfte weltweit. Bis zu 5% Cashback über unsere Partner.</div>
+    </div>
+    <div class="hotel-strip-btns">
+      <a class="hotel-btn primary" href="https://www.booking.com/?aid=1547357&label=fliegheute-crosssell" target="_blank" rel="noopener sponsored">Booking.com →</a>
+      <a class="hotel-btn secondary" href="https://hotellook.com/?marker=676139&locale=de&currency=eur" target="_blank" rel="noopener sponsored">Hotellook →</a>
     </div>
   </div>
-</section>
 
-<!-- ══ FAQ ══ -->
-<section class="fh-faq" id="faq" aria-labelledby="faq-title">
-  <div class="fh-faq-inner">
-    <h2 class="fh-faq-title" id="faq-title">Häufige <span>Fragen</span></h2>
-    <details>
-      <summary>Was muss ich wissen, bevor ich einen Flug buche?</summary>
-      <p>Reisedokumente prüfen, Gepäckregeln der Airline beachten und auf mögliche Zusatzkosten (Gebühren, Transfers) achten. Bei Last-Minute-Flügen empfiehlt sich Handgepäck für maximale Flexibilität.</p>
-    </details>
-    <details>
-      <summary>Wann ist die beste Zeit, Last-Minute-Flüge zu buchen?</summary>
-      <p>Häufig 1–3 Tage vor Abflug. Airlines senken Preise für unverkaufte Sitze. Dienstags und mittwochs sind die günstigsten Buchungstage. Frühmorgens oder spät abends gibt es oft Sonderpreise.</p>
-    </details>
-    <details>
-      <summary>Kann ich mit Zwischenstopps sparen?</summary>
-      <p>Oft deutlich günstiger als Nonstop – bis zu 40% Ersparnis. Wer Zeit hat und flexibel ist, profitiert am meisten. Für Kurztrips empfehlen wir Direktflüge.</p>
-    </details>
-    <details>
-      <summary>Kostet fliegheute.de etwas?</summary>
-      <p>Nein. fliegheute.de ist komplett kostenlos. Wir vergleichen Preise und leiten zur Buchung weiter. Bei Buchung über unsere Links erhalten wir eine kleine Provision – der Preis für dich bleibt identisch.</p>
-    </details>
-    <details>
-      <summary>Welche deutschen Flughäfen eignen sich für Last-Minute am besten?</summary>
-      <p>Frankfurt (FRA), München (MUC) und Berlin (BER) bieten die meisten spontanen Verbindungen. Günstige Alternativen: Köln/Bonn (CGN), Düsseldorf (DUS) oder Karlsruhe/Baden-Baden (FKB).</p>
-    </details>
-  </div>
-</section>
+  <!-- ══ PARTNER PROGRAMME ══ -->
+  <section id="sec-partner">
+    <div class="sec-lbl">🤝 Unsere Buchungspartner</div>
+    <h2 class="sec-title">Direkt buchen. Wir vergleichen, du sparst.</h2>
+    <p class="sec-sub">Alle Partner geprüft. Buchung direkt beim Anbieter. Wir erhalten eine kleine Provision — für dich kostenlos.</p>
+    <div class="partner-grid">
 
-<!-- ══ NEWSLETTER CTA ══ -->
-<section class="fh-cta-section" id="newsletter">
-  <div class="fh-cta-content">
-    <img src="/assets/logo-plany-mascot.svg" alt="" height="70" loading="lazy" style="margin:0 auto 18px; animation:planyFloat 3.5s ease-in-out infinite; filter:drop-shadow(0 6px 20px rgba(113,131,245,.3));" aria-hidden="true">
-    <h2 class="fh-cta-title">Deals direkt ins Postfach?</h2>
-    <p class="fh-cta-sub">Die besten Last-Minute-Angebote bevor sie weg sind. Kein Spam – nur Deals.</p>
-    <div class="fh-cta-form" role="form" aria-label="Newsletter Anmeldung">
-      <input type="email" placeholder="Deine E-Mail-Adresse" aria-label="E-Mail-Adresse">
-      <button type="button">Anmelden ✈</button>
+      <a class="partner-card" href="https://www.kiwi.com/de/?affilid=travelpayoutsfliegheute" target="_blank" rel="noopener sponsored">
+        <div class="partner-logo" style="background:linear-gradient(135deg,#e8f4fd,#b3d9f7);color:#1a6fa3">K</div>
+        <div class="partner-info">
+          <div class="partner-name">Kiwi.com</div>
+          <div class="partner-desc">Flüge, Züge, Busse — auch virtuelle Verbindungen. Günstigste Routen durch cleveres Kombinieren.</div>
+          <div class="partner-rate">💰 3% Provision · 30 Tage Cookie</div>
+        </div>
+        <span class="partner-badge badge-blue">Flüge</span>
+      </a>
+
+      <a class="partner-card" href="https://www.booking.com/flights/?aid=1547357&label=fliegheute-partner" target="_blank" rel="noopener sponsored">
+        <div class="partner-logo" style="background:#003580;color:#fff;font-size:18px">B.</div>
+        <div class="partner-info">
+          <div class="partner-name">Booking.com</div>
+          <div class="partner-desc">Nr. 1 Hotelbuchung weltweit. Plus Flüge, Mietwagen und Attraktionen. Null Buchungsgebühren.</div>
+          <div class="partner-rate">💰 3–5% Provision · Session Cookie</div>
+        </div>
+        <span class="partner-badge badge-hot">🔥 Top</span>
+      </a>
+
+      <a class="partner-card" href="https://trip.com/de/?locale=de-DE&curr=EUR&Allianceid=3940&SID=676139" target="_blank" rel="noopener sponsored">
+        <div class="partner-logo" style="background:#1890ff;color:#fff;font-size:16px">T.</div>
+        <div class="partner-info">
+          <div class="partner-name">Trip.com</div>
+          <div class="partner-desc">Über 1,4 Mio. Hotels, 2 Mio. Flüge. 24/7 Support. Beliebt für Kombibuchungen.</div>
+          <div class="partner-rate">💰 1–5,5% Provision · 7–30 Tage Cookie</div>
+        </div>
+        <span class="partner-badge badge-blue">Hotel + Flug</span>
+      </a>
+
+      <a class="partner-card" href="https://www.omio.de/?utm_source=affiliate&utm_medium=cpa&utm_campaign=travelpayouts&marker=676139" target="_blank" rel="noopener sponsored">
+        <div class="partner-logo" style="background:#ff5a5f;color:#fff;font-size:13px;font-weight:900">Om</div>
+        <div class="partner-info">
+          <div class="partner-name">Omio</div>
+          <div class="partner-desc">Zug, Bus und Flug in einem. Perfekt für spontane Europa-Trips. Preis­vergleich in Sekunden.</div>
+          <div class="partner-rate">💰 6% Provision · 30 Tage Cookie</div>
+        </div>
+        <span class="partner-badge badge-green">Bahn + Flug</span>
+      </a>
+
+      <a class="partner-card" href="https://www.rentalcars.com/?affilid=travelpayouts676139&preflang=de" target="_blank" rel="noopener sponsored">
+        <div class="partner-logo" style="background:#f0a500;color:#fff;font-size:20px">🚗</div>
+        <div class="partner-info">
+          <div class="partner-name">Rentalcars.com</div>
+          <div class="partner-desc">Mietwagen am Zielort. Über 900 Anbieter verglichen. Ideal zum Flug dazubuchen.</div>
+          <div class="partner-rate">💰 bis 6% Provision · 30 Tage Cookie</div>
+        </div>
+        <span class="partner-badge badge-blue">Mietwagen</span>
+      </a>
+
+      <a class="partner-card" href="https://hotellook.com/?marker=676139&locale=de&currency=eur" target="_blank" rel="noopener sponsored">
+        <div class="partner-logo" style="background:linear-gradient(135deg,#6c63ff,#48cfad);color:#fff;font-size:20px">🏨</div>
+        <div class="partner-info">
+          <div class="partner-name">Hotellook</div>
+          <div class="partner-desc">Hotelpreise aus 70+ Buchungsseiten. Findet oft günstiger als Booking.com direkt.</div>
+          <div class="partner-rate">💰 bis 7% Provision · 30 Tage Cookie</div>
+        </div>
+        <span class="partner-badge badge-green">Hotels</span>
+      </a>
+
     </div>
-    <p class="fh-cta-note">Kein Spam. Jederzeit abmeldbar. Deine Daten bleiben bei uns.</p>
-  </div>
-</section>
+  </section>
+
+  <!-- ══ AVIASALES SEARCH WIDGET ══ -->
+  <section id="sec-widget">
+    <div class="sec-lbl">🔍 Flugsuche direkt</div>
+    <h2 class="sec-title">Preise vergleichen — in Echtzeit.</h2>
+    <p class="sec-sub">Direkt hier suchen und zum günstigsten Angebot buchen.</p>
+    <div class="tp-widget-wrap" id="tp-widget-container">
+      <div id="tp-search-widget"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="faq-title">Häufige Fragen</h2>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" type="button">Kostet fliegheute.de etwas? <span>+</span></button><div class="faq-a">Nein – komplett kostenlos. Bei Buchung über unsere Links erhalten wir eine kleine Provision. Der Preis für dich bleibt identisch.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">Wann sind Last-Minute-Flüge am günstigsten? <span>+</span></button><div class="faq-a">Häufig 1–3 Tage vor Abflug. Airlines senken Preise für unverkaufte Sitze. Dienstags und mittwochs sind oft die günstigsten Buchungstage.</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">Welche Abflughäfen eignen sich am besten? <span>+</span></button><div class="faq-a">Frankfurt (FRA), München (MUC) und Berlin (BER) bieten die meisten spontanen Verbindungen. Günstige Alternativen: Köln (CGN), Düsseldorf (DUS) oder Baden-Baden (FKB).</div></div>
+      <div class="faq-item"><button class="faq-q" type="button">Kann ich mit Zwischenstopp sparen? <span>+</span></button><div class="faq-a">Ja, oft bis zu 40% günstiger als Nonstop. Wer flexibel ist, profitiert am meisten.</div></div>
+    </div>
+  </section>
 
 </main>
 
-<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="fh-footer-inner">
-    <div class="fh-footer-brand">
-      <img src="/assets/logo-plany-header.svg" alt="fliegheute.de" width="110" height="24">
-      <p>Die günstigsten Last-Minute-Flüge der nächsten 24–72 Stunden. Spontan. Günstig. Heute.</p>
-    </div>
-    <nav class="fh-footer-links" aria-label="Footer Navigation">
-      <a href="/impressum.html">Impressum</a>
-      <a href="/datenschutz.html">Datenschutz</a>
-      <a href="/disclaimer.html">Disclaimer</a>
-      <a href="#newsletter">Kontakt</a>
-    </nav>
-    <div class="fh-footer-bottom">
-      <span>© <span id="fh-year"></span> fliegheute.de – Alle Rechte vorbehalten</span>
-      <span class="fh-footer-transp">Transparenz: Wir vergleichen Preise und leiten zur Buchung weiter. Kein Aufpreis. Bei Buchung über unsere Links erhalten wir eine Provision vom Anbieter.</span>
+  <div class="footer-in">
+    <div class="footer-copy">© 2026 fliegheute.de | Built for Spontaneity</div>
+    <div class="footer-links">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="/disclaimer">Disclaimer</a>
     </div>
   </div>
 </footer>
 
-<!-- ══ JAVASCRIPT (unverändert) ══ -->
+<div id="plany-c" aria-hidden="true">
+  <div id="plany-bub"></div>
+  <img src="/assets/logo-plany-mascot.svg" alt="">
+</div>
+
 <script>
 (function(){
-  'use strict';
+'use strict';
+var WORKER='https://lingering-fire-629f.sebastianressler-sr.workers.dev/flights';
+var WL='https://suche.fliegheute.de';
+var gF=[],rFilter='all',tripMode='ow',pax=1,slotLink='#';
+var AP={FRA:'Frankfurt',MUC:'München',BER:'Berlin',HAM:'Hamburg',DUS:'Düsseldorf',STR:'Stuttgart',CGN:'Köln',NUE:'Nürnberg',PMI:'Mallorca',BCN:'Barcelona',MAD:'Madrid',FCO:'Rom',AMS:'Amsterdam',LIS:'Lissabon',ATH:'Athen',DUB:'Dublin',VIE:'Wien',PRG:'Prag',IBZ:'Ibiza',LON:'London'};
+function an(c){return AP[c]||c;}
+function today(){return new Date().toISOString().split('T')[0];}
+function wl(f){var d=f.departureAt?f.departureAt.split('T')[0]:today();var u=WL+'/flights/?origin_iata='+f.origin+'&destination_iata='+f.destination+'&depart_date='+d+'&adults='+pax+'&children=0&infants=0&trip_class=0';if(tripMode==='rt'){var r=new Date(f.departureAt||Date.now());r.setDate(r.getDate()+3);u+='&return_date='+r.toISOString().split('T')[0];}return u;}
+function fallback(){var d=today();return[{id:'f1',origin:'FRA',destination:'BCN',airline:'Vueling',price:49,departureAt:d+'T13:25:00'},{id:'f2',origin:'BER',destination:'LON',airline:'Ryanair',price:39,departureAt:d+'T18:40:00'},{id:'f3',origin:'MUC',destination:'PMI',airline:'Lufthansa',price:89,departureAt:d+'T07:10:00'},{id:'f4',origin:'HAM',destination:'AMS',airline:'Eurowings',price:55,departureAt:d+'T11:30:00'},{id:'f5',origin:'DUS',destination:'FCO',airline:'Eurowings',price:72,departureAt:d+'T15:55:00'},{id:'f6',origin:'FRA',destination:'VIE',airline:'Austrian',price:63,departureAt:d+'T09:40:00'},{id:'f7',origin:'MUC',destination:'ATH',airline:'Aegean',price:95,departureAt:d+'T20:15:00'},{id:'f8',origin:'BER',destination:'MAD',airline:'Vueling',price:68,departureAt:d+'T06:50:00'}];}
 
-  document.getElementById('fh-year').textContent = new Date().getFullYear();
+// PAX
+var pv=1;
+document.getElementById('pax-m').onclick=function(){pv=Math.max(1,pv-1);document.getElementById('pax-v').textContent=pv;pax=pv;};
+document.getElementById('pax-p').onclick=function(){pv=Math.min(9,pv+1);document.getElementById('pax-v').textContent=pv;pax=pv;};
+// TRIP
+document.getElementById('tt-ow').onclick=function(){tripMode='ow';this.classList.add('act');document.getElementById('tt-rt').classList.remove('act');};
+document.getElementById('tt-rt').onclick=function(){tripMode='rt';this.classList.add('act');document.getElementById('tt-ow').classList.remove('act');};
+// TIME SLIDER
+document.getElementById('tw-slider').oninput=function(){document.getElementById('tw-val').textContent=this.value+'h';};
+// SWAP
+document.getElementById('swap-btn').onclick=function(){var fv=document.getElementById('s-from').value,tv=document.getElementById('s-to').value,fi=document.getElementById('s-from-i').value,ti=document.getElementById('s-to-i').value;document.getElementById('s-from').value=tv;document.getElementById('s-to').value=fv;document.getElementById('s-from-i').value=ti;document.getElementById('s-to-i').value=fi;};
+// SEARCH
+document.getElementById('search-btn').onclick=function(){var oi=document.getElementById('s-from-i').value||'FRA',di=document.getElementById('s-to-i').value;var u=WL+'/flights/?origin_iata='+oi+'&depart_date='+today()+'&adults='+pax+'&children=0&infants=0&trip_class=0';if(di)u+='&destination_iata='+di;window.open(u,'_blank','noopener');};
+// PILLS
+document.querySelectorAll('.dpill').forEach(function(b){b.onclick=function(){document.querySelectorAll('.dpill').forEach(function(x){x.classList.remove('act');});b.classList.add('act');document.getElementById('s-from').value=b.dataset.on;document.getElementById('s-to').value=b.dataset.dn;document.getElementById('s-from-i').value=b.dataset.o;document.getElementById('s-to-i').value=b.dataset.d;};});
+// REFRESH COUNTDOWN
+(function(){var n5=new Date();n5.setHours(5,0,0,0);if(n5<=new Date())n5.setDate(n5.getDate()+1);var el=document.getElementById('rcountdown');setInterval(function(){var diff=Math.max(0,n5-Date.now());var h=Math.floor(diff/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);el.textContent=(h?h+'h ':'')+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s';},1000);})();
 
-  var now=new Date();
-
-  var HEROES=[
-    {title:'Flieg.<br><em>Heute.</em>',
-     sub:'Die günstigsten Last-Minute-Flüge<br>der nächsten 24–72 Stunden.',
-     origin:{iata:'FRA', name:'Frankfurt am Main (FRA)'},
-     dest:{iata:'PMI', name:'Palma de Mallorca (PMI)'},
-     d1x:'assets/hero-mallorca-desktop@1x.webp', d2x:'assets/hero-mallorca-desktop@2x.webp',
-     m1x:'assets/hero-mallorca-mobile@1x.webp',  m2x:'assets/hero-mallorca-mobile@2x.webp'},
-    {title:'Raus-Atmen.<br><em>The City.</em>',
-     sub:'Kultur, Flair und günstige Flüge nach London.',
-     origin:{iata:'FRA', name:'Frankfurt am Main (FRA)'},
-     dest:{iata:'LON', name:'London (LON)'},
-     d1x:'assets/hero-london-desktop@1x.webp',   d2x:'assets/hero-london-desktop@2x.webp',
-     m1x:'assets/hero-london-mobile@1x.webp',    m2x:'assets/hero-london-mobile@2x.webp'},
-    {title:'Raus-Atmen.<br><em>Discovery beginnt hier.</em>',
-     sub:'Berge, Natur und spontane Freiheit – heute noch weg.',
-     origin:{iata:'MUC', name:'München (MUC)'},
-     dest:{iata:'INN', name:'Innsbruck (INN)'},
-     d1x:'assets/hero-bergsee-desktop@1x.webp',  d2x:'assets/hero-bergsee-desktop@2x.webp',
-     m1x:'assets/hero-bergsee-mobile@1x.webp',   m2x:'assets/hero-bergsee-mobile@2x.webp'},
-  ];
-
-  var lyrA=document.getElementById('hero-layer-a');
-  var lyrB=document.getElementById('hero-layer-b');
-  var h1El=document.getElementById('hero-title');
-  var subEl=document.getElementById('hero-sub');
-  var activeLyr=0, cur=0;
-
-  function getSrc(h){
-    var mob=window.innerWidth<800, hi=window.devicePixelRatio>1;
-    return mob?(hi?h.m2x:h.m1x):(hi?h.d2x:h.d1x);
-  }
-  HEROES.forEach(function(h){[h.d1x,h.d2x,h.m1x,h.m2x].forEach(function(s){var i=new Image();i.src=s;});});
-
-  var switching=false;
-  // fromPill=true: expliziter Klick → prefill wenn Feld leer
-  // fromPill=false: Auto-Rotation → kein prefill (User tippt evtl. gerade)
-  function setHero(idx, fromPill){
-    if(switching) return;
-    if(idx===cur && lyrA.style.backgroundImage && !fromPill) return;
-    switching=true;
-    var h=HEROES[idx];
-    var next=(activeLyr+1)%2;
-    var lyrs=[lyrA,lyrB];
-    lyrs[next].style.backgroundImage='url("'+getSrc(h)+'")';
-    lyrs[next].classList.add('active');
-    lyrs[activeLyr].classList.remove('active');
-    activeLyr=next;
-    if(h1El) h1El.innerHTML=h.title;
-    if(subEl) subEl.innerHTML=h.sub;
-    cur=idx;
-    // Nur bei explizitem Pill-Klick UND nur wenn Feld leer
-    if(fromPill && h.origin && h.dest){
-      var oi=document.getElementById('fh-origin');
-      var di=document.getElementById('fh-dest');
-      var oib=document.getElementById('fh-ob');
-      var dib=document.getElementById('fh-db');
-      var oih=document.getElementById('fh-oi');
-      var dih=document.getElementById('fh-di');
-      if(oi && oi.value===''){
-        oi.value=h.origin.name; oib.textContent=h.origin.iata; oib.style.display='block';
-        oih.value=h.origin.iata; selO.iata=h.origin.iata; selO.name=h.origin.name;
-      }
-      if(di && di.value===''){
-        di.value=h.dest.name; dib.textContent=h.dest.iata; dib.style.display='block';
-        dih.value=h.dest.iata; selD.iata=h.dest.iata; selD.name=h.dest.name;
-      }
-    }
-    document.querySelectorAll('.fh-dpill').forEach(function(p){
-      var a=parseInt(p.dataset.hero)===idx;
-      p.classList.toggle('active',a);
-      p.setAttribute('aria-pressed',a?'true':'false');
-    });
-    setTimeout(function(){ switching=false; }, 1500);
-  }
-
-  document.querySelectorAll('.fh-dpill').forEach(function(pill){
-    pill.addEventListener('click',function(){
-      setHero(parseInt(pill.dataset.hero), true);
-      clearInterval(timer);
-      timer=setInterval(function(){setHero((cur+1)%HEROES.length, false);},9000);
-    });
-  });
-
-  // selO/selD müssen VOR setHero(0) existieren (Prefill braucht sie)
-  var acTimers={}, selO={iata:'',name:''}, selD={iata:'',name:''};
-
-  setHero(0, true);
-  var timer=setInterval(function(){setHero((cur+1)%HEROES.length, false);},9000);
-
-  var resizeTimer;
-  window.addEventListener('resize',function(){
-    clearTimeout(resizeTimer);
-    resizeTimer=setTimeout(function(){setHero(cur);},150);
-  });
-
-  // Scroll reveal – nach Shuffle, mit Fallback
-  function setupReveal(){
-    var els=document.querySelectorAll('.fh-reveal');
-    if('IntersectionObserver' in window){
-      var obs=new IntersectionObserver(function(entries){
-        entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-      },{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
-      els.forEach(function(el){obs.observe(el);});
-    } else {
-      els.forEach(function(el){el.classList.add('visible');});
-    }
-    setTimeout(function(){
-      document.querySelectorAll('.fh-reveal:not(.visible)').forEach(function(el){el.classList.add('visible');});
-    },800);
-  }
-
-  // Search Form
-  var WHITE_LABEL = 'https://suche.fliegheute.de';
-  var AC_API = 'https://autocomplete.travelpayouts.com/places2';
-
-  var sl = document.getElementById('fh-slider');
-  var go = document.getElementById('fh-go');
-  var tst2 = document.createElement('style'); document.head.appendChild(tst2);
-
-  function lerp(a,b,t){
-    function p(s){return[parseInt(s.slice(1,3),16),parseInt(s.slice(3,5),16),parseInt(s.slice(5,7),16)];}
-    var A=p(a),B=p(b),h=function(n){return Math.round(n).toString(16).padStart(2,'0');};
-    return '#'+h(A[0]+(B[0]-A[0])*t)+h(A[1]+(B[1]-A[1])*t)+h(A[2]+(B[2]-A[2])*t);
-  }
-  function col(){return lerp('#7183f5','#f571b4',(+sl.value-1)/71);}
-
-  function updZeitanzeige(stunden){
-    var ziel=new Date(Date.now()+stunden*3600000);
-    var heute=new Date();
-    var morgen=new Date(heute); morgen.setDate(heute.getDate()+1);
-    var ubermorgen=new Date(heute); ubermorgen.setDate(heute.getDate()+2);
-    var tag;
-    if(ziel.toDateString()===heute.toDateString()) tag='heute';
-    else if(ziel.toDateString()===morgen.toDateString()) tag='morgen';
-    else tag='übermorgen';
-    var datStr=ziel.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
-    var uhrStr=ziel.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr';
-    var lbl=document.getElementById('fh-zeitanzeige');
-    if(lbl) lbl.innerHTML='Abflug '+tag+' '+datStr+'<strong> bis '+uhrStr+'</strong>';
-  }
-
-  function updSlider(){
-    var pct=(+sl.value-1)/71, tw=sl.offsetWidth;
-    var bub=document.getElementById('fh-bubble');
-    if(bub){
-      bub.style.left=(11+pct*(tw-22))+'px';
-      bub.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'+sl.value+'h bis Abflug';
-    }
-    var c=col();
-    tst2.textContent='.fh-range::-webkit-slider-thumb{border-color:'+c+'!important;} .fh-bubble{background:'+c+'!important;box-shadow:0 0 14px 4px '+c+'55!important;}';
-    if(go){go.style.background=c; go.style.boxShadow='0 4px 14px '+c+'55';}
-    updZeitanzeige(+sl.value);
-  }
-  if(sl){
-    sl.addEventListener('input',updSlider);
-    window.addEventListener('resize',updSlider);
-    setTimeout(updSlider,50);
-  }
-
-  document.querySelectorAll('input[name="fh-mode"]').forEach(function(r){
-    r.addEventListener('change',function(){
-      var isCal=r.value==='c';
-      document.getElementById('fh-slider-panel').style.display=isCal?'none':'block';
-      document.getElementById('fh-cal').style.display=isCal?'block':'none';
-      if(isCal) renderCal();
-    });
-  });
-
-  document.querySelectorAll('input[name="fh-trip"]').forEach(function(r){
-    r.addEventListener('change',function(){
-      var rt=r.value==='rt';
-      document.getElementById('fh-chip-to').style.display=rt?'block':'none';
-      if(!rt){selEnd=null;pickEnd=false;}
-      renderCal(); updChips();
-    });
-  });
-
-  function setupAC(iid,acid,bid,hid,store){
-    var inp=document.getElementById(iid), ac=document.getElementById(acid);
-    var badge=document.getElementById(bid), hidden=document.getElementById(hid);
-    var fi=-1;
-    inp.addEventListener('input',function(){
-      var q=inp.value.trim();
-      store.iata=''; badge.style.display='none'; hidden.value='';
-      if(q.length<2){ac.classList.remove('open');return;}
-      clearTimeout(acTimers[iid]);
-      acTimers[iid]=setTimeout(function(){
-        fetch(AC_API+'?term='+encodeURIComponent(q)+'&locale=de&types[]=airport&types[]=city')
-          .then(function(r){return r.json();})
-          .then(function(items){
-            if(!items||!items.length){ac.classList.remove('open');return;}
-            ac.innerHTML=items.slice(0,6).map(function(a){
-              return '<div class="fh-ac-item" data-iata="'+a.code+'" data-name="'+(a.name||a.city_name||'')+'">'
-                +'<span class="fh-ac-iata">'+a.code+'</span>'
-                +'<span class="fh-ac-name">'+(a.name||'')+'</span>'
-                +'<span class="fh-ac-cty">'+(a.country_name||a.country_code||'')+'</span></div>';
-            }).join('');
-            ac.classList.add('open'); fi=-1;
-            ac.querySelectorAll('.fh-ac-item').forEach(function(el){
-              el.addEventListener('mousedown',function(e){e.preventDefault();});
-              el.addEventListener('click',function(){pickAC(el.dataset.iata,el.dataset.name);});
-              el.addEventListener('touchend',function(e){e.preventDefault();pickAC(el.dataset.iata,el.dataset.name);});
-            });
-          }).catch(function(){});
-      },300);
-    });
-    function pickAC(iata,name){
-      store.iata=iata; store.name=name;
-      inp.value=name+' ('+iata+')';
-      hidden.value=iata; badge.textContent=iata; badge.style.display='block';
-      ac.classList.remove('open');
-    }
-    inp.addEventListener('keydown',function(e){
-      var its=ac.querySelectorAll('.fh-ac-item');
-      if(!its.length)return;
-      if(e.key==='ArrowDown'){fi=Math.min(fi+1,its.length-1);its.forEach(function(x){x.classList.remove('focused');});its[fi].classList.add('focused');e.preventDefault();}
-      else if(e.key==='ArrowUp'){fi=Math.max(fi-1,0);its.forEach(function(x){x.classList.remove('focused');});its[fi].classList.add('focused');e.preventDefault();}
-      else if(e.key==='Enter'&&fi>=0){var el=its[fi];pickAC(el.dataset.iata,el.dataset.name);e.preventDefault();}
-      else if(e.key==='Escape'){ac.classList.remove('open');}
-    });
-    inp.addEventListener('blur',function(){
-      setTimeout(function(){ ac.classList.remove('open'); },200);
-    });
-    document.addEventListener('click',function(e){if(!ac.contains(e.target)&&e.target!==inp)ac.classList.remove('open');});
-  }
-  setupAC('fh-origin','fh-oac','fh-ob','fh-oi',selO);
-  setupAC('fh-dest','fh-dac','fh-db','fh-di',selD);
-
-  document.getElementById('fh-swap').addEventListener('click',function(){
-    var oi=document.getElementById('fh-origin'),di=document.getElementById('fh-dest');
-    var ob=document.getElementById('fh-ob'),db=document.getElementById('fh-db');
-    var t=oi.value;oi.value=di.value;di.value=t;
-    t=ob.textContent;ob.textContent=db.textContent;db.textContent=t;
-    t=ob.style.display;ob.style.display=db.style.display;db.style.display=t;
-    t=Object.assign({},selO);selO.iata=selD.iata;selO.name=selD.name;selD.iata=t.iata;selD.name=t.name;
-    document.getElementById('fh-oi').value=selO.iata;
-    document.getElementById('fh-di').value=selD.iata;
-  });
-
-  var pax={a:1,k:0};
-  document.querySelectorAll('.fh-cbtn').forEach(function(b){
-    b.addEventListener('click',function(){
-      var t=b.dataset.t,o=b.dataset.o;
-      if(o==='+') pax[t]=Math.min(pax[t]+1,9);
-      else pax[t]=Math.max(pax[t]-1,t==='a'?1:0);
-      document.getElementById('fh-'+t+'v').textContent=pax[t];
-    });
-  });
-
-  var cy,cm,selStart=null,selEnd=null,pickEnd=false;
-  var MONTHS=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
-  var DOWS=['Mo','Di','Mi','Do','Fr','Sa','So'];
-  (function(){var n=new Date();cy=n.getFullYear();cm=n.getMonth();})();
-  function fmtD(d){return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'});}
-
-  function renderCal(){
-    document.getElementById('fh-cmlbl').textContent=MONTHS[cm]+' '+cy;
-    var first=new Date(cy,cm,1).getDay(),dim=new Date(cy,cm+1,0).getDate();
-    var today=new Date();today.setHours(0,0,0,0);
-    var offset=first===0?6:first-1,c=col();
-    var h=DOWS.map(function(d){return '<div class="fh-cal-dow">'+d+'</div>';}).join('');
-    for(var i=0;i<offset;i++) h+='<div class="fh-cal-day empty"></div>';
-    for(var dd=1;dd<=dim;dd++){
-      var dt=new Date(cy,cm,dd);dt.setHours(0,0,0,0);
-      var ts=dt.getTime(),isPast=dt<today;
-      var isS=selStart&&ts===selStart.getTime(),isE=selEnd&&ts===selEnd.getTime();
-      var inR=selStart&&selEnd&&dt>selStart&&dt<selEnd;
-      var cls='fh-cal-day',sty='';
-      if(isPast) cls+=' past';
-      if(isS&&isE){cls+=' sel';sty='background:'+c+';border-radius:7px';}
-      else if(isS){cls+=' sel';sty='background:'+c+';border-radius:7px 0 0 7px';}
-      else if(isE){cls+=' sel';sty='background:'+c+';border-radius:0 7px 7px 0';}
-      else if(inR){cls+=' in-range';sty='background:'+c+'25;border-radius:0';}
-      else if(!isPast&&dt.getTime()===today.getTime()){sty='color:'+c+';font-weight:800';}
-      h+='<div class="'+cls+'" style="'+sty+'" data-ts="'+ts+'">'+dd+'</div>';
-    }
-    var grid=document.getElementById('fh-cgrid');
-    grid.innerHTML=h;
-    grid.querySelectorAll('.fh-cal-day:not(.past):not(.empty)').forEach(function(el){
-      el.addEventListener('click',function(){
-        var dt=new Date(+el.dataset.ts);
-        var rt=document.getElementById('fh-rt').checked;
-        if(!rt){selStart=dt;selEnd=null;}
-        else if(!selStart||!pickEnd){selStart=dt;selEnd=null;pickEnd=true;}
-        else{if(dt<=selStart){selEnd=selStart;selStart=dt;}else selEnd=dt;pickEnd=false;}
-        renderCal();updChips();
-      });
-    });
-  }
-  function updChips(){
-    var cf=document.getElementById('fh-chip-from'),ct=document.getElementById('fh-chip-to');
-    var c=col();
-    cf.textContent=selStart?'✈ '+fmtD(selStart):'Abflug wählen';
-    cf.className='fh-cal-chip'+(selStart?' filled':' active');
-    if(!selStart){cf.style.borderColor=c;cf.style.color=c;}else{cf.style.borderColor='';cf.style.color='';}
-    if(document.getElementById('fh-rt').checked){
-      ct.textContent=selEnd?'↩ '+fmtD(selEnd):'Rückkehr wählen';
-      ct.className='fh-cal-chip'+(selEnd?' filled':(pickEnd?' active':''));
-    }
-  }
-  document.getElementById('fh-cprev').addEventListener('click',function(){cm--;if(cm<0){cm=11;cy--;}renderCal();});
-  document.getElementById('fh-cnext').addEventListener('click',function(){cm++;if(cm>11){cm=0;cy++;}renderCal();});
-
-  go.addEventListener('click',function(){
-    var origin=document.getElementById('fh-oi').value||selO.iata;
-    if(!origin){document.getElementById('fh-origin').focus();return;}
-    var dest=document.getElementById("fh-di").value||selD.iata||"";
-    var mode=document.querySelector('input[name="fh-mode"]:checked').value;
-    var depDate, retDate=null;
-    if(mode==='s'){
-      depDate=new Date(Date.now()+(+sl.value)*3600000).toISOString().slice(0,10);
-    } else {
-      depDate=selStart?selStart.toISOString().slice(0,10):new Date().toISOString().slice(0,10);
-      if(selEnd) retDate=selEnd.toISOString().slice(0,10);
-    }
-    go.disabled=true;
-    document.getElementById('fh-spin').style.display='block';
-    document.getElementById('fh-sico').style.display='none';
-    document.getElementById('fh-slbl').textContent='Leite weiter…';
-    var url=WHITE_LABEL+'/flights/?origin_iata='+origin
-      +(dest?'&destination_iata='+dest:'')
-      +'&depart_date='+depDate
-      +'&adults='+pax.a
-      +'&children='+pax.k
-      +'&infants=0'
-      +'&trip_class=0';
-    if(retDate) url+='&return_date='+retDate;
-    window.location.href=url;
-    setTimeout(function(){
-      go.disabled=false;
-      document.getElementById('fh-spin').style.display='none';
-      document.getElementById('fh-sico').style.display='block';
-      document.getElementById('fh-slbl').textContent='Flüge finden';
-    },3000);
-  });
-
-
-  // ══════════════════════════════════════════════════════
-  // DATA + SHUFFLE + COUNTDOWN + IMPULS + RADAR
-  // ══════════════════════════════════════════════════════
-
-  var WORKER_URL = 'https://lingering-fire-629f.sebastianressler-sr.workers.dev/flights';
-  var WL = 'https://suche.fliegheute.de';
-  var gFlights = [];
-  var radarFilter = 'all';
-
-  var AIRPORT_NAMES = {
-    FRA:'Frankfurt',MUC:'München',BER:'Berlin',HAM:'Hamburg',DUS:'Düsseldorf',
-    STR:'Stuttgart',CGN:'Köln',NUE:'Nürnberg',
-    PMI:'Mallorca',BCN:'Barcelona',MAD:'Madrid',FCO:'Rom',AMS:'Amsterdam',
-    LIS:'Lissabon',ATH:'Athen',DUB:'Dublin',VIE:'Wien',PRG:'Prag',IBZ:'Ibiza',
-    LON:'London',PAR:'Paris',NYC:'New York',MAN:'Manchester'
-  };
-  function apName(c){ return AIRPORT_NAMES[c]||c; }
-
-  function buildLink(f){
-    var date = f.departureAt ? f.departureAt.split('T')[0] : new Date().toISOString().split('T')[0];
-    return WL+'/flights/?origin_iata='+f.origin+'&destination_iata='+f.destination
-      +'&depart_date='+date+'&adults=1&children=0&infants=0&trip_class=0';
-  }
-
-  function getFallback(){
-    var today = new Date();
-    var d = today.toISOString().split('T')[0];
-    // realistic times spread across today
-    return [
-      {id:'f1',origin:'FRA',destination:'BCN',airline:'Vueling',price:49,departureAt:d+'T13:25:00'},
-      {id:'f2',origin:'BER',destination:'LON',airline:'Ryanair',price:39,departureAt:d+'T18:40:00'},
-      {id:'f3',origin:'MUC',destination:'PMI',airline:'Lufthansa',price:89,departureAt:d+'T07:10:00'},
-      {id:'f4',origin:'HAM',destination:'AMS',airline:'Eurowings',price:55,departureAt:d+'T11:30:00'},
-      {id:'f5',origin:'DUS',destination:'FCO',airline:'Eurowings',price:72,departureAt:d+'T15:55:00'},
-      {id:'f6',origin:'FRA',destination:'VIE',airline:'Austrian',price:63,departureAt:d+'T09:40:00'},
-      {id:'f7',origin:'MUC',destination:'ATH',airline:'Aegean',price:95,departureAt:d+'T20:15:00'},
-      {id:'f8',origin:'BER',destination:'MAD',airline:'Vueling',price:68,departureAt:d+'T06:50:00'},
-    ];
-  }
-
-  // ── SHUFFLE sections on load ─────────────────────────────
-  (function(){
-    var c = document.getElementById('fh-shuffle');
-    if(!c) return;
-    var kids = Array.from(c.children);
-    for(var i=kids.length-1;i>0;i--){
-      var j=Math.floor(Math.random()*(i+1));
-      c.appendChild(kids[j]);
-      kids.splice(j,1);
-    }
-    // re-add remaining
-    kids.forEach(function(k){ c.appendChild(k); });
+// COUNTDOWN CARDS
+function renderCards(flights){
+  var w=document.getElementById('ccards');
+  if(!flights.length){w.innerHTML='<div style="padding:26px;text-align:center;background:rgba(255,255,255,.04);border-radius:15px;color:rgba(255,255,255,.3);font-size:13px"><div style="font-size:26px;margin-bottom:8px">✈️</div>Täglich ab 05:00 Uhr aktualisiert.</div>';return;}
+  w.innerHTML=flights.slice(0,5).map(function(f){var dep=f.departureAt?new Date(f.departureAt):null;var ts=dep?dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr':'?';return'<a class="ccard" id="cc-'+f.id+'" href="'+wl(f)+'" target="_blank" rel="noopener"><div class="ccard-l"><div class="ccard-route">'+f.origin+' → '+f.destination+'</div><div class="ccard-meta">'+ts+' · '+f.airline+' · '+an(f.origin)+' → '+an(f.destination)+'</div><div class="cbar-w"><div class="cbar g" id="cb-'+f.id+'"></div></div><div class="ctmr g" id="ct-'+f.id+'">⏱ wird berechnet…</div></div><div class="ccard-r"><div class="ccard-price">'+f.price+' €</div><button class="ccard-btn">Buchen ↗</button></div></a>';}).join('');
+  flights.slice(0,5).forEach(tickCard);
+}
+function tickCard(f){
+  if(!f.departureAt)return;
+  var dep=new Date(f.departureAt).getTime()-45*60*1000;
+  var span=dep-new Date().setHours(0,0,0,0);
+  (function tick(){
+    var card=document.getElementById('cc-'+f.id),bar=document.getElementById('cb-'+f.id),tmr=document.getElementById('ct-'+f.id);
+    if(!card||!bar||!tmr)return;
+    var left=dep-Date.now();
+    if(left<=0){card.classList.add('gone');bar.style.width='0%';bar.className='cbar';tmr.textContent='✗ nicht mehr buchbar';tmr.className='ctmr gone';return;}
+    var pct=Math.max(0,Math.min(100,(left/span)*100));
+    var h=Math.floor(left/3600000),m=Math.floor((left%3600000)/60000),s=Math.floor((left%60000)/1000);
+    bar.style.width=pct+'%';
+    if(pct>60){bar.className='cbar g';tmr.className='ctmr g';tmr.textContent='⏱ noch '+h+'h '+m+'m '+s+'s';}
+    else if(pct>20){bar.className='cbar o';tmr.className='ctmr o';tmr.textContent='⚠ noch '+m+'m '+s+'s';}
+    else{bar.className='cbar r';tmr.className='ctmr r';tmr.textContent='🔴 nur noch '+m+'m '+s+'s';}
+    setTimeout(tick,1000);
   })();
+}
 
-  // reveal all after shuffle
-  setTimeout(function(){
-    document.querySelectorAll('.fh-idea-block, .fh-romance, .fh-romance-fig, .fh-romance-text').forEach(function(el){
-      el.style.opacity='1'; el.style.transform='none';
-    });
-    document.querySelectorAll('.fh-reveal').forEach(function(el){ el.classList.add('visible'); });
-  }, 100);
-
-  // ── COUNTDOWN CARDS ─────────────────────────────────────
-  function renderCountdown(flights){
-    var wrap = document.getElementById('fh-ccards');
-    if(!wrap) return;
-    if(!flights.length){
-      wrap.innerHTML = '<div style="padding:32px 0;text-align:center;color:rgba(255,255,255,.3);font-size:13px;background:var(--ink);border-radius:14px"><div style=\'font-size:28px;margin-bottom:8px\'>✈️</div>Heute noch keine Flüge – täglich ab 05:00 Uhr.</div>';
-      return;
-    }
-    wrap.innerHTML = flights.slice(0,5).map(function(f){
-      var dep = f.departureAt ? new Date(f.departureAt) : null;
-      var depStr = dep ? dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr' : '?';
-      return '<a class="fh-ccard" id="fhcc-'+f.id+'" href="'+buildLink(f)+'" target="_blank" rel="noopener">'
-        +'<div class="fh-ccard-left">'
-        +'<div class="fh-ccard-route">'+f.origin+' → '+f.destination+'</div>'
-        +'<div class="fh-ccard-meta">Heute '+depStr+' · '+f.airline+' · '+apName(f.origin)+' → '+apName(f.destination)+'</div>'
-        +'<div class="fh-cbar-wrap"><div class="fh-cbar bar-green" id="fhbar-'+f.id+'"></div></div>'
-        +'<div class="fh-ccard-timer t-green" id="fhtimer-'+f.id+'">⏱ wird berechnet…</div>'
-        +'</div>'
-        +'<div class="fh-ccard-right">'
-        +'<div class="fh-ccard-price">'+f.price+' €</div>'
-        +'<button class="fh-ccard-btn">Jetzt buchen ↗</button>'
-        +'</div>'
-        +'</a>';
-    }).join('');
-    flights.slice(0,5).forEach(function(f){ tickCard(f); });
+// IMPULSE
+function setupImpulse(flights){
+  var pool=flights.length?flights:fallback();
+  var icons=['✈️','🌍','🏖️','🏔️','🌆','🎲','🛫'];
+  function spin(){
+    var ic=document.getElementById('imp-icon'),i=0;
+    var iv=setInterval(function(){ic.textContent=icons[i%icons.length];i++;},70);
+    setTimeout(function(){
+      clearInterval(iv);ic.textContent='✈️';
+      var f=pool[Math.floor(Math.random()*pool.length)];
+      var dep=f.departureAt?new Date(f.departureAt):null;
+      var ts=dep?dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr':'Heute';
+      slotLink=wl(f);
+      document.getElementById('sl-r').textContent=f.origin+' → '+f.destination;
+      document.getElementById('sl-d').textContent=an(f.origin)+' → '+an(f.destination)+' · '+ts;
+      document.getElementById('sl-p').textContent=f.price+' €';
+      document.getElementById('imp-result').style.display='block';
+    },580);
   }
+  document.getElementById('imp-btn').onclick=spin;
+  document.getElementById('reroll').onclick=spin;
+  document.getElementById('sl-book').onclick=function(){window.open(slotLink,'_blank','noopener');};
+}
 
-  function tickCard(f){
-    if(!f.departureAt) return;
-    var boarding = new Date(f.departureAt).getTime() - 45*60*1000;
-    var total    = boarding - new Date().setHours(0,0,0,0);
-    function tick(){
-      var card  = document.getElementById('fhcc-'+f.id);
-      var bar   = document.getElementById('fhbar-'+f.id);
-      var timer = document.getElementById('fhtimer-'+f.id);
-      if(!card||!bar||!timer) return;
-      var left = boarding - Date.now();
-      if(left <= 0){
-        card.classList.add('cc-gone');
-        bar.style.width = '0%';
-        timer.textContent = '✗ nicht mehr buchbar';
-        timer.className = 'fh-ccard-timer t-gone';
-        return;
-      }
-      var pct = Math.max(0, Math.min(100, (left/total)*100));
-      var h = Math.floor(left/3600000);
-      var m = Math.floor((left%3600000)/60000);
-      var s = Math.floor((left%60000)/1000);
-      bar.style.width = pct+'%';
-      if(pct > 60){ bar.className='fh-cbar bar-green'; timer.className='fh-ccard-timer t-green'; timer.textContent='⏱ noch '+h+'h '+m+'m '+s+'s'; }
-      else if(pct > 20){ bar.className='fh-cbar bar-orange'; timer.className='fh-ccard-timer t-orange'; timer.textContent='⚠ noch '+m+'m '+s+'s'; }
-      else { bar.className='fh-cbar bar-red'; timer.className='fh-ccard-timer t-red'; timer.textContent='🔴 nur noch '+m+'m '+s+'s'; }
-      setTimeout(tick, 1000);
-    }
-    tick();
-  }
+// RADAR
+function renderRadar(flights){
+  var track=document.getElementById('radar-track'),nl=document.getElementById('now-line');
+  Array.from(track.children).forEach(function(c){if(c!==nl)c.remove();});
+  var pool=flights.length?flights:fallback();
+  var fil=rFilter==='all'?pool:pool.filter(function(f){return f.origin===rFilter;});
+  var S=6*60,E=23*60;
+  fil.forEach(function(f){
+    if(!f.departureAt)return;
+    var dep=new Date(f.departureAt),dm=dep.getHours()*60+dep.getMinutes();
+    if(dm<S||dm>E)return;
+    var pct=(dm-S)/(E-S)*100;
+    var diff=(dep.getTime()-Date.now())/60000;
+    var cls=diff<0?'gone':diff<60?'now':diff<180?'soon':'later';
+    var ts=dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+    var tip=f.origin+'→'+f.destination+' · '+ts+' · '+f.price+'€';
+    var el=document.createElement('div');
+    el.className='fdot '+cls;el.style.left=pct+'%';
+    el.innerHTML='<div class="fdot-i" data-tip="'+tip+'">✈</div>';
+    if(diff>=0)el.onclick=function(){window.open(wl(f),'_blank','noopener');};
+    track.appendChild(el);
+  });
+  updateNow();
+  var dn=new Date(),days=['So','Mo','Di','Mi','Do','Fr','Sa'];
+  document.getElementById('radar-title').textContent='🛫 Abflug-Radar · '+days[dn.getDay()]+' '+String(dn.getDate()).padStart(2,'0')+'.'+String(dn.getMonth()+1).padStart(2,'0')+'.'+dn.getFullYear();
+}
+function updateNow(){var nl=document.getElementById('now-line');if(!nl)return;var n=new Date(),nm=n.getHours()*60+n.getMinutes();nl.style.left=Math.max(0,Math.min(100,(nm-360)/(23*60-360)*100))+'%';}
+setInterval(updateNow,60000);
+document.querySelectorAll('.rfbtn').forEach(function(b){b.onclick=function(){rFilter=b.dataset.f;document.querySelectorAll('.rfbtn').forEach(function(x){x.classList.remove('act');});b.classList.add('act');renderRadar(gF);};});
 
-  // ── IMPULS KNOPF ────────────────────────────────────────
-  function setupImpuls(flights){
-    var pool = flights.length ? flights : getFallback();
-    var btn     = document.getElementById('fh-impuls-btn');
-    var result  = document.getElementById('fh-impuls-result');
-    var reroll  = document.getElementById('fh-reroll');
-    var bookBtn = document.getElementById('fh-slot-book');
-    var currentLink = '#';
+// FAQ
+document.querySelectorAll('.faq-q').forEach(function(b){b.onclick=function(){var a=b.nextElementSibling,open=a.classList.contains('open');document.querySelectorAll('.faq-a,.faq-q').forEach(function(x){x.classList.remove('open');});if(!open){a.classList.add('open');b.classList.add('open');}};});
 
-    function spin(){
-      var icon = document.getElementById('fh-impuls-icon');
-      var icons = ['✈️','🌍','🏖️','🏔️','🌆','🎲','🛫'];
-      var i=0, interval = setInterval(function(){
-        icon.textContent = icons[i%icons.length]; i++;
-      },80);
-      setTimeout(function(){ clearInterval(interval); icon.textContent='✈️'; }, 700);
+// PLANY BUBBLE
+var msgs=['✈️ Heute noch fliegen?','🌍 Irgendwohin!','🎲 Lass uns würfeln!','🏖️ Mallorca ruft…','😎 Spontanität gewinnt.','🛫 Ab jetzt – irgendwohin!'],bt;
+var bub=document.getElementById('plany-bub');
+function showBubble(msg){bub.textContent=msg||msgs[Math.floor(Math.random()*msgs.length)];bub.classList.add('show');clearTimeout(bt);bt=setTimeout(function(){bub.classList.remove('show');},2600);}
+setTimeout(function(){showBubble('👋 Hi! Ich bin Plany.');},1800);
+setTimeout(function(){setInterval(function(){showBubble();},20000);},9000);
 
-      var f = pool[Math.floor(Math.random()*pool.length)];
-      var dep = f.departureAt ? new Date(f.departureAt) : null;
-      var depStr = dep ? dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})+' Uhr' : 'Heute';
-      currentLink = buildLink(f);
 
-      document.getElementById('fh-slot-route').textContent = f.origin+' → '+f.destination;
-      document.getElementById('fh-slot-dest').textContent  = apName(f.origin)+' → '+apName(f.destination)+' · Heute '+depStr;
-      document.getElementById('fh-slot-price').textContent = f.price+' €';
+// ── DEAL CARDS ─────────────────────────────────────────────
+// Marker 676139 eingebaut in alle Links
+var TP_MARKER = '676139';
 
-      setTimeout(function(){
-        result.style.display = 'block';
-        result.style.animation = 'fadeInUp .35s ease';
-      }, 400);
-    }
+var DEAL_ROUTES = [
+  {origin:'FRA',dest:'BCN',city:'Barcelona',emoji:'☀️',img:'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=400&q=70&auto=format',price:'ab 49 €'},
+  {origin:'BER',dest:'LON',city:'London',   emoji:'🏙️',img:'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=70&auto=format',price:'ab 39 €'},
+  {origin:'MUC',dest:'PMI',city:'Mallorca', emoji:'🌊',img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=70&auto=format',price:'ab 59 €'},
+  {origin:'FRA',dest:'FCO',city:'Rom',      emoji:'🏛️',img:'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=400&q=70&auto=format',price:'ab 69 €'},
+  {origin:'HAM',dest:'AMS',city:'Amsterdam',emoji:'🚲',img:'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=400&q=70&auto=format',price:'ab 45 €'},
+  {origin:'MUC',dest:'ATH',city:'Athen',    emoji:'🏺',img:'https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=70&auto=format',price:'ab 89 €'},
+];
 
-    if(btn) btn.addEventListener('click', spin);
-    if(reroll) reroll.addEventListener('click', spin);
-    if(bookBtn) bookBtn.addEventListener('click', function(){ window.open(currentLink,'_blank','noopener'); });
-  }
+function kiwiLink(o, d){
+  var dt = today();
+  return 'https://www.kiwi.com/de/search/results/'+o+'/'+d+'/'+dt+'/no-return?affilid=travelpayouts'+TP_MARKER;
+}
+function bookingHotelLink(city){
+  return 'https://www.booking.com/searchresults.de.html?aid=1547357&label=fliegheute-deals&ss='+encodeURIComponent(city)+'&checkin_year_month_monthday='+today()+'&checkout_year_month_monthday='+tomorrow();
+}
+function tomorrow(){
+  var d=new Date(); d.setDate(d.getDate()+1); return d.toISOString().split('T')[0];
+}
 
-  // ── TAGES-RADAR ─────────────────────────────────────────
-  function renderRadar(flights){
-    var track = document.getElementById('fh-radar-track');
-    if(!track) return;
-
-    // keep now-line, remove dots
-    var nowLine = document.getElementById('fh-now-line');
-    track.innerHTML = '';
-    if(nowLine) track.appendChild(nowLine); else {
-      nowLine = document.createElement('div');
-      nowLine.className = 'fh-now-line'; nowLine.id = 'fh-now-line';
-      track.appendChild(nowLine);
-    }
-
-    var pool = flights.length ? flights : getFallback();
-    var filtered = radarFilter==='all' ? pool : pool.filter(function(f){ return f.origin===radarFilter; });
-
-    // Radar spans 06:00–23:00 (like ideen.html)
-    var START_MIN = 6*60, END_MIN = 23*60;
-
-    filtered.forEach(function(f){
-      if(!f.departureAt) return;
-      var dep  = new Date(f.departureAt);
-      var depMin = dep.getHours()*60+dep.getMinutes();
-      if(depMin < START_MIN || depMin > END_MIN) return;
-      var pct = (depMin-START_MIN)/(END_MIN-START_MIN)*100;
-      var now = Date.now();
-      var diffMin = (dep.getTime()-now)/60000;
-
-      var dot = document.createElement('div');
-      dot.className = 'fh-flight-dot';
-      dot.style.left = pct+'%';
-
-      var cls = diffMin<0 ? 'fh-dot-gone' : diffMin<60 ? 'fh-dot-now' : diffMin<180 ? 'fh-dot-soon' : 'fh-dot-later';
-      var depStr = dep.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
-      var label  = f.origin+'→'+f.destination+' · '+depStr+' · '+f.price+'€';
-
-      dot.innerHTML = '<div class="fh-dot-inner '+cls+'" data-label="'+label+'">✈</div>';
-
-      if(diffMin >= 0){
-        dot.addEventListener('click', function(){ window.open(buildLink(f),'_blank','noopener'); });
-      }
-      track.appendChild(dot);
-    });
-
-    // update now-line position (06:00–23:00 range)
-    updateNowLine();
-  }
-
-  function updateNowLine(){
-    var nl = document.getElementById('fh-now-line');
-    if(!nl) return;
-    var now = new Date();
-    var nowMin = now.getHours()*60+now.getMinutes();
-    var START_MIN=6*60, END_MIN=23*60;
-    var pct = Math.max(0,Math.min(100,(nowMin-START_MIN)/(END_MIN-START_MIN)*100));
-    nl.style.left = pct+'%';
-  }
-  setInterval(updateNowLine, 60000);
-
-  // radar date in header
-  var radarTitle = document.getElementById('fh-radar-title');
-  if(radarTitle){
-    var dn = new Date();
-    var days = ['So','Mo','Di','Mi','Do','Fr','Sa'];
-    radarTitle.textContent = '🛫 Heute — Abflug-Radar · '
-      +days[dn.getDay()]+' '
-      +String(dn.getDate()).padStart(2,'0')+'.'+String(dn.getMonth()+1).padStart(2,'0')+'.'+dn.getFullYear();
-  }
-
-  // radar filter buttons
-  document.querySelectorAll('.fh-radar-filter').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      radarFilter = btn.dataset.filter;
-      document.querySelectorAll('.fh-radar-filter').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      renderRadar(gFlights);
-    });
+function renderDealCards(flights){
+  var grid = document.getElementById('deal-grid');
+  if(!grid) return;
+  // Use live flight prices if available, otherwise use DEAL_ROUTES
+  var routes = DEAL_ROUTES.map(function(r){
+    var live = flights.find(function(f){ return f.origin===r.origin && f.destination===r.dest; });
+    return {
+      origin: r.origin, dest: r.dest, city: r.city, emoji: r.emoji,
+      img: r.img,
+      price: live ? 'ab '+live.price+' €' : r.price
+    };
   });
 
-  // ── FETCH from Worker ────────────────────────────────────
-  fetch(WORKER_URL)
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      gFlights = data.flights||[];
-      renderCountdown(gFlights);
-      renderRadar(gFlights);
-      setupImpuls(gFlights);
-    })
-    .catch(function(){
-      renderCountdown([]);
-      renderRadar([]);
-      setupImpuls([]);
-    });
+  grid.innerHTML = routes.map(function(r){
+    return '<div class="deal-card">'
+      +'<img class="deal-card-img" src="'+r.img+'" alt="'+r.city+'" loading="lazy">'
+      +'<div class="deal-card-body">'
+      +'<div class="deal-card-route">'+r.emoji+' '+r.origin+' → '+r.dest+'</div>'
+      +'<div class="deal-card-meta">'+an(r.origin)+' → '+r.city+' · Heute verfügbar</div>'
+      +'<div class="deal-card-price">'+r.price+'</div>'
+      +'</div>'
+      +'<div class="deal-card-footer">'
+      +'<a class="deal-btn flight" href="'+kiwiLink(r.origin,r.dest)+'" target="_blank" rel="noopener sponsored">✈ Flug buchen</a>'
+      +'<a class="deal-btn hotel" href="'+bookingHotelLink(r.city)+'" target="_blank" rel="noopener sponsored">🏨 Hotel</a>'
+      +'</div></div>';
+  }).join('');
+}
+
+// ── AVIASALES / TP SEARCH WIDGET ───────────────────────────
+(function(){
+  var container = document.getElementById('tp-search-widget');
+  if(!container) return;
+  // Travelpayouts Aviasales embedded search widget
+  var script = document.createElement('script');
+  script.async = true;
+  script.charset = 'utf-8';
+  script.src = 'https://tp.media/content?currency=eur&trs='+TP_MARKER+'&shmarker='+TP_MARKER
+    +'&powered_by=true&locale=de&searchUrl=suche.fliegheute.de&target=https%3A%2F%2Fsuche.fliegheute.de'
+    +'&color_button=%237183f5&color_button_text=%23ffffff&color_border=%23e4e6f0'
+    +'&color_focused_input=%237183f5&color_input_placeholder=%23888888'
+    +'&color_text=%230b0b13&color_background=%23fafaf8'
+    +'&one_way=true&only_direct=false&no_visa=false&wl_type=2'
+    +'&promo_id=4132&campaign_id=200';
+  container.appendChild(script);
+})();
+
+// FETCH
+fetch(WORKER).then(function(r){return r.json();}).then(function(data){gF=data.flights||[];renderCards(gF);renderRadar(gF);setupImpulse(gF);renderDealCards(gF);}).catch(function(){renderCards([]);renderRadar([]);setupImpulse([]);renderDealCards([]);});
 
 })();
 </script>
